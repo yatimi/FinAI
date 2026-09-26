@@ -5,6 +5,8 @@ A local-first personal finance app for iOS, building toward an assistant that he
 ## Available today
 
 - Synthetic demo data across bank, savings and credit accounts
+- CSV import with column mapping, validation, editable preview and explicit confirmation
+- Exact duplicate warnings and atomic, retry-safe import persistence
 - Persistent on-device accounts and transactions using SwiftData
 - Monthly income, expenses, refunds, net spending and net flow, grouped by original currency
 - A transaction list with original descriptions, categories, source and account details
@@ -16,7 +18,7 @@ Demo data is loaded only after confirmation and only into an empty store. It inc
 
 Swift code calculates every total using `Decimal`. Currencies are kept separate, transfers are excluded from spending and income, and refunds reduce net spending without becoming income. Adjustments and unknown transactions are excluded from the monthly summary. The overview describes activity, not account balances.
 
-The app preserves original amounts, currencies, descriptions and source metadata. Its first version provides demo data; importing personal records is planned.
+The app preserves original amounts, currencies, descriptions and source metadata. CSV files are parsed locally. Nothing is saved until the selected transactions are confirmed. Import sessions retain the source filename and record numbers; the original file is neither copied into storage nor modified.
 
 ## Architecture
 
@@ -38,9 +40,27 @@ Requirements: Xcode 27 or later and an iOS 26 or later simulator or device.
 1. Open `FinAI.xcodeproj` and let Xcode resolve Swift packages.
 2. Enable the package macros when Xcode prompts.
 3. Select the shared **FinAI** scheme and an iOS simulator, then run.
-4. Choose **Explore demo** in Overview and confirm.
+4. Choose **Explore demo**, or use **Import CSV** to load a file.
 
-For a physical device, choose your own signing team for the app and test targets. Demo data persists between launches. Since import and data management are not implemented yet, reinstalling the app provides a fresh demo store.
+For a physical device, choose your own signing team for the app and test targets. Data persists between launches. The first confirmed import replaces synthetic demo records, with a warning before confirmation. General editing and deletion are not available yet.
+
+## CSV import
+
+1. Choose a file from Files and select an existing account or name a new one.
+2. Map date, amount and description columns. Currency and transaction type are optional.
+3. Choose the date format, decimal separator and money direction convention.
+4. Review valid rows and validation errors, adjust transaction types/categories, and select which rows to keep.
+5. Confirm the import. Invalid rows are skipped and possible duplicates start unchecked.
+
+Try [the synthetic sample](Examples/transactions.csv) to exercise expenses, income, transfers and refunds without personal data.
+
+Supported files have a header row and use UTF-8 or BOM-marked UTF-16. Comma, semicolon and tab separators are detected automatically; quoted fields, escaped quotes and multiline descriptions are supported. Limits are 2 MiB, 5,000 data rows, 64 columns and 8 KiB per field.
+
+Dates use `yyyy-MM-dd`, `dd.MM.yyyy`, `dd/MM/yyyy` or `MM/dd/yyyy` in the device time zone. Amounts use explicit dot/comma decimal formats, with optional thousands separators. Currency symbols and ambiguous or unsupported numeric precision are rejected. Amounts and combined totals must fit exact `Decimal` arithmetic.
+
+A negative sign describes money leaving the account; it does not classify the transaction. Without a type column or an explicit default, rows remain **Unknown** and do not affect overview totals. Supported type values are `expense`, `income`, `transfer`, `refund`, `adjustment` and `unknown`. Types and categories can be adjusted in the preview.
+
+Duplicate warnings compare exact dates, trimmed descriptions, amounts, currencies and directions within the file and the selected account. They are review hints: distinct payments may share those fields. Merchant normalization and fuzzy duplicate matching are planned.
 
 ## Tests
 
@@ -56,7 +76,7 @@ xcodebuild test \
   CODE_SIGNING_ALLOWED=NO
 ```
 
-Tests cover decimal arithmetic and validation, currency separation, transfers and refunds, date boundaries, demo integrity, persistence and repeated seeding, feature loading/error/cancellation flows, and the demo-to-transaction-details UI journey. UI tests use an isolated in-memory store. GitHub Actions builds and tests pull requests to `develop` and `main` using the Xcode 27 runner image.
+Tests cover decimal arithmetic and validation, currency separation, transfers and refunds, date boundaries, demo integrity, persistence and repeated seeding, feature loading/error/cancellation flows, CSV parsing and locale validation, import confirmation, duplicate hints, migration and retry-safe persistence. UI journeys cover the demo and import preview/confirmation. UI tests use an isolated in-memory store. GitHub Actions builds and tests pull requests to `develop` and `main` using the Xcode 27 runner image.
 
 ## Privacy
 
@@ -64,7 +84,7 @@ The app stores data locally, with no account, bank connection, remote AI service
 
 ## Planned
 
-1. CSV import with preview, validation, categorization and duplicate review; richer deterministic analytics
+1. Merchant normalization, automatic categorization, richer duplicate review, search and deterministic analytics
 2. An assistant that queries and explains calculated results
 3. Budgets, goals, forecasts and what-if planning
 4. Document and receipt import, followed by investigation of connected banking

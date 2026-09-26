@@ -19,7 +19,7 @@ struct DashboardView: View {
                     ContentUnavailableView {
                         Label("Understand your finances", systemImage: "chart.bar.doc.horizontal")
                     } description: {
-                        Text("Start with synthetic data to explore accounts, transactions and a monthly overview.")
+                        Text("Import a CSV file using the toolbar, or explore with synthetic demo data.")
                     } actions: {
                         Button("Explore demo", action: loadDemo)
                             .buttonStyle(.borderedProminent)
@@ -29,7 +29,8 @@ struct DashboardView: View {
                 } else {
                     List {
                         Section {
-                            Label("Demo data · stored on this device", systemImage: "internaldrive")
+                            Label(overview.snapshot.transactions.allSatisfy { $0.source == .demo }
+                                  ? "Demo data · stored on this device" : "Local data · stored on this device", systemImage: "internaldrive")
                                 .font(.subheadline)
                             Text(overview.month, format: .dateTime.month(.wide).year())
                                 .font(.title2.bold())

@@ -20,6 +20,7 @@ struct AppFeature {
         var isLoading = false
         var failure: LoadError?
         @Presents var alert: AlertState<Action.Alert>?
+        @Presents var importFlow: ImportFeature.State?
         @Presents var detail: TransactionDetailFeature.State?
     }
 
@@ -30,6 +31,8 @@ struct AppFeature {
         case cancelLoading
         case demoTapped
         case response(Result<FinanceOverview, LoadError>)
+        case importTapped
+        case importFlow(PresentationAction<ImportFeature.Action>)
         case transactionTapped(UUID)
         case alert(PresentationAction<Alert>)
         case detail(PresentationAction<TransactionDetailFeature.Action>)
@@ -40,6 +43,7 @@ struct AppFeature {
     @Dependency(\.financeClient) var financeClient
     @Dependency(\.date.now) var now
     @Dependency(\.calendar) var calendar
+    @Dependency(\.uuid) var uuid
 
     var body: some ReducerOf<Self> {
         BindingReducer()
@@ -87,18 +91,29 @@ struct AppFeature {
                 state.isLoading = false
                 state.failure = error
                 return .none
+            case .importTapped:
+                guard !state.isLoading, let overview = state.overview else { return .none }
+                state.importFlow = ImportFeature.State(snapshot: overview.snapshot, newAccountID: uuid())
+                return .none
+            case .importFlow(.presented(.delegate(.didImport))):
+                state.importFlow = nil
+                state.selectedTab = .transactions
+                state.isLoading = true
+                state.failure = nil
+                return loadDemo(false)
             case let .transactionTapped(id):
                 guard let snapshot = state.overview?.snapshot,
                       let transaction = snapshot.transactions.first(where: { $0.id == id }),
                       let account = snapshot.accounts.first(where: { $0.id == transaction.accountID }) else { return .none }
                 state.detail = TransactionDetailFeature.State(transaction: transaction, accountName: account.name)
                 return .none
-            case .binding, .alert, .detail:
+            case .binding, .alert, .detail, .importFlow:
                 return .none
             }
         }
         .ifLet(\.$alert, action: \.alert)
         .ifLet(\.$detail, action: \.detail) { TransactionDetailFeature() }
+        .ifLet(\.$importFlow, action: \.importFlow) { ImportFeature() }
     }
 
     private func loadDemo(_ shouldAddDemo: Bool) -> Effect<Action> {
