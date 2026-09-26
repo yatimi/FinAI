@@ -12,13 +12,6 @@ A local-first personal finance app for iOS, building toward an assistant that he
 
 Demo data is loaded only after confirmation and only into an empty store. It includes salary, rent, groceries, transport, subscriptions, utilities, shopping, refunds and transfers across three months. No bank account or personal data is needed.
 
-## Screenshots
-
-<p>
-  <img src="docs/screenshots/overview.png" width="300" alt="Monthly overview with separate EUR and USD totals">
-  <img src="docs/screenshots/transaction-details.png" width="300" alt="Transaction details with original description and source">
-</p>
-
 ## How it works
 
 Swift code calculates every total using `Decimal`. Currencies are kept separate, transfers are excluded from spending and income, and refunds reduce net spending without becoming income. Adjustments and unknown transactions are excluded from the monthly summary. The overview describes activity, not account balances.
