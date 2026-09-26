@@ -10,11 +10,18 @@ import SwiftUI
 
 @main
 struct FinAIApp: App {
-    @State private var store = Store(initialState: AppFeature.State()) { AppFeature() }
+    @State private var store: StoreOf<AppFeature>
+
+    init() {
+        let database = FinanceDatabase(inMemory: ProcessInfo.processInfo.arguments.contains("--uitesting"))
+        _store = State(initialValue: Store(initialState: AppFeature.State()) {
+            AppFeature()
+        } withDependencies: {
+            $0.financeClient = .live(database: database)
+        })
+    }
 
     var body: some Scene {
-        WindowGroup {
-            ContentView(store: store)
-        }
+        WindowGroup { ContentView(store: store) }
     }
 }

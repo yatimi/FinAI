@@ -1,6 +1,6 @@
 //
 //  FinAIUITests.swift
-//  FinAIUITests
+//  FinAI
 //
 //  Created by Tommy on 26.09.26.
 //
@@ -8,36 +8,37 @@
 import XCTest
 
 final class FinAIUITests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+    @MainActor
+    func testDemoAndTransactionDetails() throws {
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    @MainActor
-    func testExample() throws {
-        // UI tests must launch the application that they test.
         let app = XCUIApplication()
+        app.launchArguments = ["--uitesting", "-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // XCUIAutomation Documentation
-        // https://developer.apple.com/documentation/xcuiautomation
-    }
-
-    @MainActor
-    func testLaunchPerformance() throws {
-        // This measures how long it takes to launch your application.
-        measure(metrics: [XCTApplicationLaunchMetric()]) {
-            XCUIApplication().launch()
-        }
+        let demoButton = app.buttons["loadDemo"]
+        XCTAssertTrue(demoButton.waitForExistence(timeout: 15))
+        demoButton.tap()
+        app.alerts.buttons["Cancel"].tap()
+        XCTAssertTrue(demoButton.exists)
+        demoButton.tap()
+        app.alerts.buttons["Load demo data"].tap()
+        XCTAssertTrue(app.staticTexts["Demo data · stored on this device"].waitForExistence(timeout: 15))
+        let overviewImage = XCTAttachment(screenshot: app.screenshot())
+        overviewImage.name = "Overview"
+        overviewImage.lifetime = .keepAlways
+        add(overviewImage)
+        app.tabBars.buttons["Transactions"].tap()
+        let list = app.collectionViews["transactionList"]
+        XCTAssertTrue(list.waitForExistence(timeout: 5))
+        list.buttons.firstMatch.tap()
+        XCTAssertTrue(app.navigationBars["Transaction details"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Synthetic demo data"].exists)
+        let detailImage = XCTAttachment(screenshot: app.screenshot())
+        detailImage.name = "Transaction details"
+        detailImage.lifetime = .keepAlways
+        add(detailImage)
+        app.buttons["Done"].tap()
+        app.tabBars.buttons["Accounts"].tap()
+        XCTAssertTrue(app.staticTexts["Demo current account"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Demo savings"].exists)
     }
 }
