@@ -17,10 +17,10 @@ concurrency:
 jobs:
   build-and-test:
     name: Build and test
-    runs-on: macos-26
+    runs-on: xcode-27
     timeout-minutes: 30
     env:
-      DEVELOPER_DIR: /Applications/Xcode_26.6.app/Contents/Developer
+      DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
     steps:
       - uses: actions/checkout@v4
       - name: Choose an available iPhone simulator
@@ -32,10 +32,10 @@ jobs:
           with open('/tmp/finai-devices.json') as source:
               runtimes = json.load(source)['devices']
           devices = [device for runtime, values in sorted(runtimes.items(), reverse=True)
-                     if 'iOS-26' in runtime for device in values
+                     if any(version in runtime for version in ('iOS-26', 'iOS-27')) for device in values
                      if device['name'].startswith('iPhone') and device.get('isAvailable')]
           if not devices:
-              raise SystemExit('No available iOS 26 iPhone simulator')
+              raise SystemExit('No available iOS 26 or 27 iPhone simulator')
           with open(os.environ['GITHUB_ENV'], 'a') as output:
               output.write('SIMULATOR_ID=' + devices[0]['udid'] + '\n')
           PYTHON

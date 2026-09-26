@@ -36,11 +36,11 @@ SwiftUI → TCA feature → dependency client → domain services / persistence
 - **Dependencies:** an injectable client connecting features to domain services and storage
 - **Infrastructure:** actor-isolated SwiftData access with explicit saves and no model contexts exposed to features
 
-The project uses Swift 6 with strict concurrency checking, SwiftUI, The Composable Architecture 1.26.2, SwiftData, Swift Testing and XCTest UI tests. Package versions are checked in for reproducible resolution.
+The project uses Swift 6 with strict concurrency checking, SwiftUI, The Composable Architecture 1.26.2, SwiftData, Swift Testing and XCTest UI tests. Package versions are checked in for reproducible resolution with Xcode 27.
 
 ## Getting started
 
-Requirements: Xcode 26.6 or later and an iOS 26 or later simulator or device.
+Requirements: Xcode 27 or later and an iOS 26 or later simulator or device.
 
 1. Open `FinAI.xcodeproj` and let Xcode resolve Swift packages.
 2. Enable the package macros when Xcode prompts.
@@ -63,7 +63,7 @@ xcodebuild test \
   CODE_SIGNING_ALLOWED=NO
 ```
 
-Tests cover decimal arithmetic and validation, currency separation, transfers and refunds, date boundaries, demo integrity, persistence and repeated seeding, feature loading/error/cancellation flows, and the demo-to-transaction-details UI journey. UI tests use an isolated in-memory store. GitHub Actions builds and tests pull requests to `develop` and `main`.
+Tests cover decimal arithmetic and validation, currency separation, transfers and refunds, date boundaries, demo integrity, persistence and repeated seeding, feature loading/error/cancellation flows, and the demo-to-transaction-details UI journey. UI tests use an isolated in-memory store. GitHub Actions builds and tests pull requests to `develop` and `main` using the Xcode 27 runner image.
 
 ## Privacy
 
