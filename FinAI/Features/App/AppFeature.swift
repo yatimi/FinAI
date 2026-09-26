@@ -6,11 +6,116 @@
 //
 
 import ComposableArchitecture
+import Foundation
 
 @Reducer
 struct AppFeature {
+    enum Tab: Equatable { case dashboard, transactions, accounts }
+    private enum CancelID { case loading }
+
     @ObservableState
-    struct State: Equatable {}
-    enum Action {}
-    var body: some ReducerOf<Self> { EmptyReducer() }
+    struct State: Equatable {
+        var selectedTab = Tab.dashboard
+        var overview: FinanceOverview?
+        var isLoading = false
+        var failure: LoadError?
+        @Presents var alert: AlertState<Action.Alert>?
+        @Presents var detail: TransactionDetailFeature.State?
+    }
+
+    enum Action: BindableAction, Equatable {
+        case binding(BindingAction<State>)
+        case task
+        case refresh
+        case cancelLoading
+        case demoTapped
+        case response(Result<FinanceOverview, LoadError>)
+        case transactionTapped(UUID)
+        case alert(PresentationAction<Alert>)
+        case detail(PresentationAction<TransactionDetailFeature.Action>)
+        enum Alert: Equatable { case confirmDemo }
+    }
+    enum LoadError: Error, Equatable { case loading, saving }
+
+    @Dependency(\.financeClient) var financeClient
+    @Dependency(\.date.now) var now
+    @Dependency(\.calendar) var calendar
+
+    var body: some ReducerOf<Self> {
+        BindingReducer()
+        Reduce { state, action in
+            switch action {
+            case .task:
+                guard state.overview == nil, !state.isLoading else { return .none }
+                state.isLoading = true
+                state.failure = nil
+                return loadDemo(false)
+            case .refresh:
+                guard !state.isLoading else { return .none }
+                state.isLoading = true
+                state.failure = nil
+                return loadDemo(false)
+            case .cancelLoading:
+                state.isLoading = false
+                return .cancel(id: CancelID.loading)
+            case .demoTapped:
+                guard !state.isLoading, let overview = state.overview,
+                      overview.snapshot.accounts.isEmpty, overview.snapshot.transactions.isEmpty else { return .none }
+                state.alert = AlertState {
+                    TextState("Explore with demo data?")
+                } actions: {
+                    ButtonState(action: .confirmDemo) { TextState("Load demo data") }
+                    ButtonState(role: .cancel) { TextState("Cancel") }
+                } message: {
+                    TextState("Synthetic accounts and transactions will be saved on this device. No bank connection is needed.")
+                }
+                return .none
+            case .alert(.presented(.confirmDemo)):
+                guard !state.isLoading, let overview = state.overview,
+                      overview.snapshot.accounts.isEmpty, overview.snapshot.transactions.isEmpty else { return .none }
+                state.isLoading = true
+                state.failure = nil
+                return loadDemo(true)
+            case let .response(.success(overview)):
+                guard state.isLoading else { return .none }
+                state.isLoading = false
+                state.overview = overview
+                state.failure = nil
+                return .none
+            case let .response(.failure(error)):
+                guard state.isLoading else { return .none }
+                state.isLoading = false
+                state.failure = error
+                return .none
+            case let .transactionTapped(id):
+                guard let snapshot = state.overview?.snapshot,
+                      let transaction = snapshot.transactions.first(where: { $0.id == id }),
+                      let account = snapshot.accounts.first(where: { $0.id == transaction.accountID }) else { return .none }
+                state.detail = TransactionDetailFeature.State(transaction: transaction, accountName: account.name)
+                return .none
+            case .binding, .alert, .detail:
+                return .none
+            }
+        }
+        .ifLet(\.$alert, action: \.alert)
+        .ifLet(\.$detail, action: \.detail) { TransactionDetailFeature() }
+    }
+
+    private func loadDemo(_ shouldAddDemo: Bool) -> Effect<Action> {
+        let date = now
+        let calendar = calendar
+        let client = financeClient
+        return .run { send in
+            do {
+                let result = try await shouldAddDemo ? client.addDemo(date, calendar) : client.load(date, calendar)
+                try Task.checkCancellation()
+                await send(.response(.success(result)))
+            } catch is CancellationError {
+                // Lifecycle cancellation is handled by cancelLoading, without showing an error.
+            } catch {
+                await send(.response(.failure(shouldAddDemo ? .saving : .loading)))
+            }
+        }
+        .cancellable(id: CancelID.loading, cancelInFlight: true)
+    }
 }

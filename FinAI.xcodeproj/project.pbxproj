@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A10000000000000000000001 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = A10000000000000000000002 /* ComposableArchitecture */; };
-		A10000000000000000000003 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = A10000000000000000000004 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +61,6 @@
 		65D387F030682D4800429F99 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
-				A10000000000000000000003 /* ComposableArchitecture in Frameworks */,
 			);
 		};
 		65D387FA30682D4800429F99 /* Frameworks */ = {
@@ -131,7 +129,6 @@
 			fileSystemSynchronizedGroups = (
 				65D387F630682D4800429F99 /* FinAITests */,
 			);
-			packageProductDependencies = (A10000000000000000000004 /* ComposableArchitecture */);
 			name = FinAITests;
 			productName = FinAITests;
 			productReference = 65D387F330682D4800429F99 /* FinAITests.xctest */;
@@ -261,11 +258,6 @@
 /* End XCRemoteSwiftPackageReference section */
 /* Begin XCSwiftPackageProductDependency section */
         A10000000000000000000002 /* ComposableArchitecture */ = {
-            isa = XCSwiftPackageProductDependency;
-            package = A10000000000000000000005;
-            productName = ComposableArchitecture;
-        };
-        A10000000000000000000004 /* ComposableArchitecture */ = {
             isa = XCSwiftPackageProductDependency;
             package = A10000000000000000000005;
             productName = ComposableArchitecture;
