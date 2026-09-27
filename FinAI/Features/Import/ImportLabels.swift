@@ -24,6 +24,7 @@ extension ImportError {
         case .invalidCurrency: "Use a supported three-letter currency code, such as EUR or USD."
         case .invalidKind: "The type must be expense, income, transfer, refund, adjustment or unknown."
         case .missingDescription: "The description is empty."
+        case .missingMerchant: "Enter a merchant or payee for each selected transaction."
         case .inconsistentDirection: "The transaction type conflicts with the selected money direction."
         case .invalidAccount: "Choose an account or enter a new account name of up to 100 characters."
         case .emptySelection: "Select at least one valid transaction."

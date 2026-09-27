@@ -6,6 +6,7 @@ A local-first personal finance app for iOS, building toward an assistant that he
 
 - Synthetic demo data across bank, savings and credit accounts
 - CSV import with column mapping, validation, editable preview and explicit confirmation
+- Local merchant normalization and category suggestions, editable before import
 - Exact duplicate warnings and atomic, retry-safe import persistence
 - Persistent on-device accounts and transactions using SwiftData
 - Monthly income, expenses, refunds, net spending and net flow, grouped by original currency
@@ -49,7 +50,7 @@ For a physical device, choose your own signing team for the app and test targets
 1. Choose a file from Files and select an existing account or name a new one.
 2. Map date, amount and description columns. Currency and transaction type are optional.
 3. Choose the date format, decimal separator and money direction convention.
-4. Review valid rows and validation errors, adjust transaction types/categories, and select which rows to keep.
+4. Review valid rows and validation errors, adjust merchant names, transaction types and categories, and select which rows to keep.
 5. Confirm the import. Invalid rows are skipped and possible duplicates start unchecked.
 
 Try [the synthetic sample](Examples/transactions.csv) to exercise expenses, income, transfers and refunds without personal data.
@@ -60,7 +61,9 @@ Dates use `yyyy-MM-dd`, `dd.MM.yyyy`, `dd/MM/yyyy` or `MM/dd/yyyy` in the device
 
 A negative sign describes money leaving the account; it does not classify the transaction. Without a type column or an explicit default, rows remain **Unknown** and do not affect overview totals. Supported type values are `expense`, `income`, `transfer`, `refund`, `adjustment` and `unknown`. Types and categories can be adjusted in the preview.
 
-Duplicate warnings compare exact dates, trimmed descriptions, amounts, currencies and directions within the file and the selected account. They are review hints: distinct payments may share those fields. Merchant normalization and fuzzy duplicate matching are planned.
+Duplicate warnings compare exact dates, trimmed descriptions, amounts, currencies and directions within the file and the selected account. They are review hints: distinct payments may share those fields. Fuzzy duplicate matching is planned. Normalization does not change the exact duplicate comparison.
+
+Known descriptions such as `REWE MARKT`, `AMZN` and `DB VERTRIEB` receive local merchant and category suggestions. Rules match the start of the description on word boundaries, with more specific aliases taking precedence. Unknown merchants retain their original name. Income and transfer categories follow the explicit transaction type; unknown and adjustment types remain uncategorized. Review suggestions before saving: merchants and categories are editable, and changing the type resets its category suggestion. Corrections apply to the current row; reusable user rules are planned. Existing saved transactions are unchanged.
 
 ## Tests
 
@@ -84,7 +87,7 @@ The app stores data locally, with no account, bank connection, remote AI service
 
 ## Planned
 
-1. Merchant normalization, automatic categorization, richer duplicate review, search and deterministic analytics
+1. Reusable merchant rules, broader categorization, richer duplicate review, search and deterministic analytics
 2. An assistant that queries and explains calculated results
 3. Budgets, goals, forecasts and what-if planning
 4. Document and receipt import, followed by investigation of connected banking

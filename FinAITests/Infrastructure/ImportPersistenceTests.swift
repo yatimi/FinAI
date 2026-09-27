@@ -11,6 +11,33 @@ import Testing
 @testable import FinAI
 
 struct ImportPersistenceTests {
+    @Test func normalizedMerchantAndCorrectedCategorySurviveReopening() async throws {
+        let directory = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let url = directory.appending(path: "Finance.store")
+        let document = try CSVParser().parse(
+            "date,description,amount,currency,type\n2026-09-01,AMZN*Mktp DE 123,-25,EUR,expense", name: "merchant.csv"
+        )
+        let preview = try CSVImportService().preview(
+            document: document, mapping: .suggested(for: document), account: ImportFixtures.account, existing: [], timeZone: .gmt
+        )
+        var candidate = try #require(preview.candidates.first)
+        #expect(candidate.merchant == "Amazon")
+        #expect(candidate.category == .shopping)
+        candidate.category = .family
+        let transaction = try candidate.transaction(accountID: ImportFixtures.account.id)
+        let batch = ImportBatch(
+            id: UUID(), sourceName: document.name, importedAt: TestFixtures.date, account: ImportFixtures.account,
+            transactions: [transaction], rowNumbers: [candidate.rowNumber], replacingDemo: false
+        )
+        try await FinanceDatabase(storeURL: url).saveImport(batch)
+        let saved = try await FinanceDatabase(storeURL: url).load()
+        #expect(saved.transactions == [transaction])
+        #expect(saved.transactions.first?.rawDescription == "AMZN*Mktp DE 123")
+        #expect(saved.transactions.first?.category == .family)
+    }
+
     @Test func importIsAtomicAndRetryDoesNotDuplicate() async throws {
         let database = FinanceDatabase(inMemory: true)
         let batch = try ImportFixtures.batch()
