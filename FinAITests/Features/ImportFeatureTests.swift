@@ -12,6 +12,68 @@ import Testing
 
 @MainActor
 struct ImportFeatureTests {
+    @Test func correctionsAreConfirmedAndSavedWithoutChangingOriginalDescription() async throws {
+        let state = try preparedState()
+        let first = try #require(state.preview?.candidates.first)
+        let store = TestStore(initialState: state) { ImportFeature() } withDependencies: {
+            $0.date.now = TestFixtures.date
+            $0.importClient.save = { batch in
+                let transaction = try #require(batch.transactions.first)
+                #expect(transaction.merchant == "Local Café")
+                #expect(transaction.category == .restaurants)
+                #expect(transaction.rawDescription == first.description)
+                #expect(transaction.money == first.money)
+                #expect(transaction.kind == first.kind)
+            }
+        }
+        await store.send(.categoryChanged(first.id, .restaurants)) { $0.preview?.candidates[0].category = .restaurants }
+        await store.send(.kindChanged(first.id, first.kind))
+        await store.send(.merchantChanged(first.id, " Local Café ")) { $0.preview?.candidates[0].merchant = " Local Café " }
+        await store.send(.importTapped) { $0.alert = confirmationAlert(count: 2, skipped: 1) }
+        await store.send(.alert(.presented(.confirmImport))) {
+            $0.alert = nil
+            $0.phase = .saving
+        }
+        await store.receive(.saveResponse(.success(ImportFeature.VoidSuccess()))) { $0.phase = .idle }
+        await store.receive(.delegate(.didImport))
+    }
+
+    @Test func changingTypeUsesMerchantSuggestionAndRejectsInvalidDirection() async throws {
+        var state = try preparedState()
+        state.preview?.candidates[0].merchant = "REWE"
+        state.preview?.candidates[0].category = .groceries
+        let first = try #require(state.preview?.candidates.first)
+        let store = TestStore(initialState: state) { ImportFeature() }
+        await store.send(.kindChanged(first.id, .income))
+        await store.send(.kindChanged(first.id, .transfer)) {
+            $0.preview?.candidates[0].kind = .transfer
+            $0.preview?.candidates[0].category = .transfers
+        }
+        await store.send(.kindChanged(first.id, .expense)) {
+            $0.preview?.candidates[0].kind = .expense
+            $0.preview?.candidates[0].category = .groceries
+        }
+    }
+
+    @Test func emptyMerchantBlocksConfirmationAndCanBeCorrected() async throws {
+        var state = try preparedState()
+        state.preview?.candidates[0].merchant = "  "
+        let first = try #require(state.preview?.candidates.first)
+        let store = TestStore(initialState: state) { ImportFeature() } withDependencies: {
+            $0.date.now = TestFixtures.date
+        }
+        await store.send(.importTapped) { $0.alert = confirmationAlert(count: 2, skipped: 1) }
+        await store.send(.alert(.presented(.confirmImport))) {
+            $0.alert = nil
+            $0.error = .missingMerchant
+        }
+        await store.send(.merchantChanged(first.id, "Café")) {
+            $0.preview?.candidates[0].merchant = "Café"
+            $0.error = nil
+        }
+        #expect(store.state.phase == .idle)
+    }
+
     @Test(arguments: [false, true])
     func replacingFilePreservesDefaultCurrency(useExistingAccount: Bool) async throws {
         let account = Account(id: UUID(), name: "Dollar account", kind: .bank, currency: try Currency(code: "USD"))

@@ -1507,6 +1507,39 @@
           }
         }
       }
+    },
+    "Merchant or payee": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Merchant or payee"
+          }
+        }
+      }
+    },
+    "Enter a merchant or payee for each selected transaction.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a merchant or payee for each selected transaction."
+          }
+        }
+      }
+    },
+    "Known merchants and categories are suggested locally. Review and correct them before saving. Changing the transaction type resets its category suggestion.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Known merchants and categories are suggested locally. Review and correct them before saving. Changing the transaction type resets its category suggestion."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

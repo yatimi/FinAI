@@ -8,6 +8,8 @@
 import Foundation
 
 struct CSVImportService: Sendable {
+    var classification = TransactionClassificationService()
+
     func preview(
         document: CSVDocument, mapping: CSVMapping, account: Account,
         existing: [Transaction], timeZone: TimeZone
@@ -47,9 +49,10 @@ struct CSVImportService: Sendable {
                 let money = try Money(amount: value < 0 ? -value : value, currency: currency)
                 let fingerprint = Fingerprint(date: date, description: description, amount: money.amount, currency: currency, direction: direction)
                 let duplicate = !seen.insert(fingerprint).inserted
+                let suggestion = classification.suggest(description: description, kind: kind)
                 candidates.append(ImportCandidate(
                     id: UUID(), rowNumber: row.number, date: date, description: description, money: money,
-                    direction: direction, kind: kind, category: kind == .income ? .income : (kind == .transfer ? .transfers : .other),
+                    direction: direction, merchant: suggestion.merchant, kind: kind, category: suggestion.category,
                     isPossibleDuplicate: duplicate
                 ))
             } catch let error as ImportError {

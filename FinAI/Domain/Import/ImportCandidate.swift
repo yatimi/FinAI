@@ -14,6 +14,7 @@ struct ImportCandidate: Identifiable, Equatable, Sendable {
     let description: String
     let money: Money
     let direction: Transaction.Direction
+    var merchant: String
     var kind: Transaction.Kind
     var category: Category
     let isPossibleDuplicate: Bool
@@ -23,8 +24,10 @@ struct ImportCandidate: Identifiable, Equatable, Sendable {
     }
 
     func transaction(accountID: UUID) throws -> Transaction {
-        try Transaction(
-            id: id, accountID: accountID, date: date, merchant: description.trimmingCharacters(in: .whitespacesAndNewlines),
+        let merchant = merchant.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !merchant.isEmpty else { throw ImportError.missingMerchant }
+        return try Transaction(
+            id: id, accountID: accountID, date: date, merchant: merchant,
             rawDescription: description, money: money, direction: direction, kind: kind,
             category: category, source: .imported
         )

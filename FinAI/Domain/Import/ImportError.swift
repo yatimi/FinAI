@@ -8,6 +8,6 @@
 enum ImportError: Error, Equatable {
     case unreadableFile, fileTooLarge, unsupportedEncoding, malformedCSV
     case emptyFile, tooManyRows, tooManyColumns, fieldTooLong, invalidMapping
-    case invalidAmount, invalidDate, invalidCurrency, invalidKind, missingDescription
+    case invalidAmount, invalidDate, invalidCurrency, invalidKind, missingDescription, missingMerchant
     case inconsistentDirection, invalidAccount, emptySelection, storageChanged, unsupportedTotals
 }

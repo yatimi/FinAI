@@ -62,6 +62,7 @@ struct ImportFeature {
         case toggleRow(UUID)
         case kindChanged(UUID, Transaction.Kind)
         case categoryChanged(UUID, Category)
+        case merchantChanged(UUID, String)
         case importTapped
         case alert(PresentationAction<Alert>)
         case saveResponse(Result<VoidSuccess, ImportError>)
@@ -167,9 +168,18 @@ struct ImportFeature {
             case let .kindChanged(id, kind):
                 guard state.phase == .idle,
                       let index = state.preview?.candidates.firstIndex(where: { $0.id == id }),
+                      state.preview?.candidates[index].kind != kind,
                       state.preview?.candidates[index].allowedKinds.contains(kind) == true else { return .none }
                 state.preview?.candidates[index].kind = kind
-                state.preview?.candidates[index].category = kind == .income ? .income : (kind == .transfer ? .transfers : .other)
+                if let candidate = state.preview?.candidates[index] {
+                    state.preview?.candidates[index].category = TransactionClassificationService()
+                        .suggest(description: candidate.merchant, kind: kind).category
+                }
+                return .none
+            case let .merchantChanged(id, merchant):
+                guard state.phase == .idle, let index = state.preview?.candidates.firstIndex(where: { $0.id == id }) else { return .none }
+                state.preview?.candidates[index].merchant = merchant
+                state.error = nil
                 return .none
             case let .categoryChanged(id, category):
                 guard state.phase == .idle, let index = state.preview?.candidates.firstIndex(where: { $0.id == id }) else { return .none }

@@ -18,6 +18,8 @@ struct ImportPreviewSection: View {
             Text("Invalid rows to skip: \(preview.issues.count)")
             Text("Possible duplicates are unchecked. Include them only if they are separate transactions. Unknown types are excluded from overview totals.")
                 .font(.footnote)
+            Text("Known merchants and categories are suggested locally. Review and correct them before saving. Changing the transaction type resets its category suggestion.")
+                .font(.footnote)
             Button("Edit mapping") { store.send(.editMappingTapped) }
         }
         Section("Transactions to review") {
@@ -31,6 +33,13 @@ struct ImportPreviewSection: View {
                     .buttonStyle(.borderless)
                     .accessibilityValue(store.excludedIDs.contains(candidate.id) ? "Excluded" : "Included")
                     Text(candidate.description).font(.headline)
+                    TextField("Merchant or payee", text: Binding(
+                        get: { candidate.merchant },
+                        set: { store.send(.merchantChanged(candidate.id, $0)) }
+                    ))
+                    .textFieldStyle(.roundedBorder)
+                    .submitLabel(.done)
+                    .accessibilityLabel("Merchant or payee")
                     MoneyText(money: candidate.money)
                     Text(candidate.direction.title)
                     Text(candidate.date, format: .dateTime.day().month().year())

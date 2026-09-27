@@ -10,6 +10,33 @@ import Testing
 @testable import FinAI
 
 struct CSVImportServiceTests {
+    @Test func normalizationPreservesRawDescriptionAndExactDuplicateBehavior() throws {
+        let raw = " rewe MARKT 123 "
+        let document = try CSVParser().parse(
+            "date,description,amount,currency,type\n2026-09-01,\(raw),-10,EUR,expense\n2026-09-01,REWE MARKT 456,-10,EUR,expense",
+            name: "merchants.csv"
+        )
+        let service = CSVImportService()
+        let mapping = CSVMapping.suggested(for: document)
+        let result = try service.preview(document: document, mapping: mapping, account: ImportFixtures.account, existing: [], timeZone: .gmt)
+        #expect(result.candidates.map(\.merchant) == ["REWE", "REWE"])
+        #expect(result.candidates.map(\.category) == [.groceries, .groceries])
+        #expect(result.candidates.map(\.isPossibleDuplicate) == [false, false])
+        let transactions = try result.candidates.map { try $0.transaction(accountID: ImportFixtures.account.id) }
+        #expect(transactions[0].rawDescription == raw)
+        #expect(transactions[0].merchant == "REWE")
+        let repeated = try service.preview(document: document, mapping: mapping, account: ImportFixtures.account, existing: transactions, timeZone: .gmt)
+        #expect(repeated.candidates.allSatisfy { $0.isPossibleDuplicate })
+    }
+
+    @Test func blankMerchantCorrectionCannotBeSaved() throws {
+        var candidate = try #require(ImportFixtures.preview().candidates.first)
+        candidate.merchant = " \n "
+        #expect(throws: ImportError.missingMerchant) {
+            try candidate.transaction(accountID: ImportFixtures.account.id)
+        }
+    }
+
     @Test func producesCandidatesAndIssuesWithoutDroppingRowsSilently() throws {
         let result = try ImportFixtures.preview()
         #expect(result.candidates.count == 2)
