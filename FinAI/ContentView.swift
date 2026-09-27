@@ -20,7 +20,7 @@ struct ContentView: View {
                         store.send(.demoTapped)
                     }
                     .navigationTitle("FinAI")
-                    .toolbar { refreshButton }
+                    .toolbar { importButton; refreshButton }
                 }
             }
             Tab("Transactions", systemImage: "list.bullet.rectangle", value: .transactions) {
@@ -29,6 +29,7 @@ struct ContentView: View {
                         store.send(.transactionTapped(id))
                     }
                     .navigationTitle("Transactions")
+                    .toolbar { importButton }
                 }
             }
             Tab("Accounts", systemImage: "wallet.bifold", value: .accounts) {
@@ -56,11 +57,18 @@ struct ContentView: View {
         .sheet(item: $store.scope(state: \.detail, action: \.detail)) { detailStore in
             TransactionDetailView(store: detailStore)
         }
+        .sheet(item: $store.scope(state: \.importFlow, action: \.importFlow)) { ImportView(store: $0) }
         .task { await store.send(.task).finish() }
         .onDisappear { store.send(.cancelLoading) }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active { store.send(.refresh) }
         }
+    }
+
+    private var importButton: some View {
+        Button("Import CSV", systemImage: "square.and.arrow.down") { store.send(.importTapped) }
+            .disabled(store.isLoading || store.overview == nil)
+            .accessibilityIdentifier("openImport")
     }
 
     private var refreshButton: some View {

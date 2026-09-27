@@ -1,0 +1,6 @@
+date,description,amount,currency,type
+2026-09-01,Synthetic employer,3200.00,EUR,income
+2026-09-02,Synthetic rent,-950.00,EUR,expense
+2026-09-03,Synthetic groceries,-64.25,EUR,expense
+2026-09-04,Synthetic savings transfer,-400.00,EUR,transfer
+2026-09-05,Synthetic purchase refund,24.99,EUR,refund
