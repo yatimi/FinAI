@@ -114,7 +114,9 @@ struct ImportFeature {
                 guard state.phase == .reading else { return .none }
                 state.phase = .idle
                 state.document = document
-                state.mapping = .suggested(for: document)
+                var mapping = CSVMapping.suggested(for: document)
+                mapping.currencyCode = state.mapping.currencyCode
+                state.mapping = mapping
                 return .none
             case let .fileRead(.failure(error)), let .previewResponse(.failure(error)):
                 state.phase = .idle

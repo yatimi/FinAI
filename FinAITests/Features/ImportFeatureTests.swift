@@ -12,6 +12,50 @@ import Testing
 
 @MainActor
 struct ImportFeatureTests {
+    @Test(arguments: [false, true])
+    func replacingFilePreservesDefaultCurrency(useExistingAccount: Bool) async throws {
+        let account = Account(id: UUID(), name: "Dollar account", kind: .bank, currency: try Currency(code: "USD"))
+        let document = try CSVParser().parse(
+            "amount,description,date\n-12.50,Test coffee,2026-09-01",
+            name: "replacement.csv"
+        )
+        var state = ImportFeature.State(
+            snapshot: FinanceSnapshot(accounts: [account], transactions: []), newAccountID: UUID()
+        )
+        state.document = try ImportFixtures.document()
+        state.mapping = .suggested(for: try ImportFixtures.document())
+        let store = TestStore(initialState: state) { ImportFeature() } withDependencies: {
+            $0.importClient.readFile = { _ in document }
+        }
+        if useExistingAccount {
+            await store.send(.binding(.set(\.selectedAccountID, account.id))) {
+                $0.selectedAccountID = account.id
+                $0.mapping.currencyCode = "USD"
+            }
+        } else {
+            await store.send(.binding(.set(\.newAccountName, account.name))) { $0.newAccountName = account.name }
+            await store.send(.binding(.set(\.mapping.currencyCode, "USD"))) { $0.mapping.currencyCode = "USD" }
+        }
+        await store.send(.fileChosen(URL(fileURLWithPath: "/replacement.csv"))) {
+            $0.document = nil
+            $0.phase = .reading
+        }
+        await store.receive(.fileRead(.success(document))) {
+            $0.phase = .idle
+            $0.document = document
+            $0.mapping = .suggested(for: document)
+            $0.mapping.currencyCode = "USD"
+        }
+        let preview = try CSVImportService().preview(
+            document: document, mapping: store.state.mapping, account: store.state.account(),
+            existing: [], timeZone: .gmt
+        )
+        let candidate = try #require(preview.candidates.first)
+        #expect(candidate.money.currency == account.currency)
+        #expect(candidate.money.amount == Decimal(string: "12.50"))
+        #expect(preview.issues.isEmpty)
+    }
+
     @Test func readingAndPreviewDoNotWriteData() async throws {
         let document = try ImportFixtures.document()
         let preview = try ImportFixtures.preview()
