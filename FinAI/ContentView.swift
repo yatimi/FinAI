@@ -25,9 +25,7 @@ struct ContentView: View {
             }
             Tab("Transactions", systemImage: "list.bullet.rectangle", value: .transactions) {
                 NavigationStack {
-                    TransactionsView(snapshot: store.overview?.snapshot ?? .empty) { id in
-                        store.send(.transactionTapped(id))
-                    }
+                    TransactionsView(store: store.scope(state: \.transactions, action: \.transactions))
                     .navigationTitle("Transactions")
                     .toolbar { importButton }
                 }

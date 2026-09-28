@@ -16,6 +16,7 @@ struct AppFeature {
     @ObservableState
     struct State: Equatable {
         var selectedTab = Tab.dashboard
+        var transactions = TransactionsFeature.State()
         var overview: FinanceOverview?
         var isLoading = false
         var failure: LoadError?
@@ -33,7 +34,7 @@ struct AppFeature {
         case response(Result<FinanceOverview, LoadError>)
         case importTapped
         case importFlow(PresentationAction<ImportFeature.Action>)
-        case transactionTapped(UUID)
+        case transactions(TransactionsFeature.Action)
         case alert(PresentationAction<Alert>)
         case detail(PresentationAction<TransactionDetailFeature.Action>)
         enum Alert: Equatable { case confirmDemo }
@@ -47,6 +48,7 @@ struct AppFeature {
 
     var body: some ReducerOf<Self> {
         BindingReducer()
+        Scope(state: \.transactions, action: \.transactions) { TransactionsFeature() }
         Reduce { state, action in
             switch action {
             case .task:
@@ -84,6 +86,7 @@ struct AppFeature {
                 guard state.isLoading else { return .none }
                 state.isLoading = false
                 state.overview = overview
+                state.transactions.update(snapshot: overview.snapshot, date: now, calendar: calendar)
                 state.failure = nil
                 return .none
             case let .response(.failure(error)):
@@ -97,17 +100,18 @@ struct AppFeature {
                 return .none
             case .importFlow(.presented(.delegate(.didImport))):
                 state.importFlow = nil
+                state.transactions.query = TransactionQuery()
                 state.selectedTab = .transactions
                 state.isLoading = true
                 state.failure = nil
                 return loadDemo(false)
-            case let .transactionTapped(id):
+            case let .transactions(.transactionTapped(id)):
                 guard let snapshot = state.overview?.snapshot,
                       let transaction = snapshot.transactions.first(where: { $0.id == id }),
                       let account = snapshot.accounts.first(where: { $0.id == transaction.accountID }) else { return .none }
                 state.detail = TransactionDetailFeature.State(transaction: transaction, accountName: account.name)
                 return .none
-            case .binding, .alert, .detail, .importFlow:
+            case .binding, .alert, .detail, .importFlow, .transactions:
                 return .none
             }
         }
