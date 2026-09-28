@@ -30,6 +30,13 @@ struct ContentView: View {
                     .toolbar { importButton }
                 }
             }
+            Tab("Analytics", systemImage: "chart.pie", value: .analytics) {
+                NavigationStack {
+                    AnalyticsView(analytics: store.overview?.spending)
+                        .navigationTitle("Analytics")
+                        .toolbar { refreshButton }
+                }
+            }
             Tab("Accounts", systemImage: "wallet.bifold", value: .accounts) {
                 NavigationStack {
                     AccountsView(accounts: store.overview?.snapshot.accounts ?? [])
