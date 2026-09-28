@@ -1,6 +1,149 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "Analytics": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Analytics"
+          }
+        }
+      }
+    },
+    "Current month net spending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current month net spending"
+          }
+        }
+      }
+    },
+    "Previous month": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous month"
+          }
+        }
+      }
+    },
+    "Previous month net spending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous month net spending"
+          }
+        }
+      }
+    },
+    "Change in net spending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change in net spending"
+          }
+        }
+      }
+    },
+    "Percentage change": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Percentage change"
+          }
+        }
+      }
+    },
+    "Unknown merchant": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown merchant"
+          }
+        }
+      }
+    },
+    "By category · %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "By category · %@"
+          }
+        }
+      }
+    },
+    "By merchant · %@": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "By merchant · %@"
+          }
+        }
+      }
+    },
+    "No expenses or refunds in these two months.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No expenses or refunds in these two months."
+          }
+        }
+      }
+    },
+    "Percentage change is unavailable when previous net spending is zero or negative.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Percentage change is unavailable when previous net spending is zero or negative."
+          }
+        }
+      }
+    },
+    "Current calendar month compared with the full previous month. The current month may be incomplete. Only saved transactions are included; missing activity is treated as zero.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current calendar month compared with the full previous month. The current month may be incomplete. Only saved transactions are included; missing activity is treated as zero."
+          }
+        }
+      }
+    },
+    "Breakdowns show the current month, ordered by net spending. Refunds reduce spending in their recorded month and category. Merchant names use saved values. Transfers, income, adjustments and unknown transactions are excluded.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Breakdowns show the current month, ordered by net spending. Refunds reduce spending in their recorded month and category. Merchant names use saved values. Transfers, income, adjustments and unknown transactions are excluded."
+          }
+        }
+      }
+    },
   "All dates": {
     "extractionState": "manual",
     "localizations": {

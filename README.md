@@ -10,6 +10,7 @@ A local-first personal finance app for iOS, building toward an assistant that he
 - Exact duplicate warnings and atomic, retry-safe import persistence
 - Persistent on-device accounts and transactions using SwiftData
 - Monthly income, expenses, refunds, net spending and net flow, grouped by original currency
+- Current-month spending by category and saved merchant, with previous-month net spending comparisons per currency
 - Transaction search across merchant names and original descriptions, with combined date, account, category, type and currency filters
 - Transaction details with original descriptions, categories, source and account information
 - English String Catalog localization and locale-aware money and date formatting
@@ -18,7 +19,7 @@ Demo data is loaded only after confirmation and only into an empty store. It inc
 
 ## How it works
 
-Swift code calculates every total using `Decimal`. Currencies are kept separate, transfers are excluded from spending and income, and refunds reduce net spending without becoming income. Adjustments and unknown transactions are excluded from the monthly summary. The overview describes activity, not account balances.
+Swift code calculates every total using `Decimal`. Currencies are kept separate, transfers are excluded from spending and income, and refunds reduce net spending without becoming income. Adjustments and unknown transactions are excluded from the monthly summary. The overview describes activity, not account balances. Analytics compares the current calendar month with the full previous month using saved transactions; the current month may be incomplete. Refunds apply to their recorded month and category. Percentage changes are shown only for a positive previous net spending total.
 
 The app preserves original amounts, currencies, descriptions and source metadata. CSV files are parsed locally. Nothing is saved until the selected transactions are confirmed. Import sessions retain the source filename and record numbers; the original file is neither copied into storage nor modified.
 
@@ -86,7 +87,7 @@ xcodebuild test \
   CODE_SIGNING_ALLOWED=NO
 ```
 
-Tests cover decimal arithmetic and validation, currency separation, transfers and refunds, date boundaries, demo integrity, persistence and repeated seeding, feature loading/error/cancellation flows, CSV parsing and locale validation, import confirmation, duplicate hints, migration and retry-safe persistence. UI journeys cover the demo and import preview/confirmation. UI tests use an isolated in-memory store. GitHub Actions builds and tests pull requests to `develop` and `main` using the Xcode 27 runner image.
+Tests cover decimal arithmetic and validation, currency separation, transfers and refunds, date boundaries, demo integrity, persistence and repeated seeding, feature loading/error/cancellation flows, CSV parsing and locale validation, import confirmation, duplicate hints, migration and retry-safe persistence. Analytics tests cover category and merchant totals, month boundaries, refund-only periods, currencies missing from one month, percentage baselines and arithmetic overflow. UI journeys cover the demo, import preview/confirmation, transaction search and analytics. UI tests use an isolated in-memory store. GitHub Actions builds and tests pull requests to `develop` and `main` using the Xcode 27 runner image.
 
 ## Privacy
 

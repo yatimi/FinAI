@@ -10,7 +10,7 @@ import Foundation
 
 @Reducer
 struct AppFeature {
-    enum Tab: Equatable { case dashboard, transactions, accounts }
+    enum Tab: Equatable { case dashboard, transactions, analytics, accounts }
     private enum CancelID { case loading }
 
     @ObservableState

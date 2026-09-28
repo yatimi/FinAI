@@ -37,11 +37,11 @@ struct DashboardView: View {
                         }
                         ForEach(overview.summaries) { summary in
                             Section(summary.currency.code) {
-                                metric("Income", money: summary.income)
-                                metric("Expenses", money: summary.expenses)
-                                metric("Refunds", money: summary.refunds)
-                                metric("Net spending", money: summary.netSpending)
-                                metric("Net flow", money: summary.netFlow)
+                                MoneyMetricRow(title: "Income", money: summary.income)
+                                MoneyMetricRow(title: "Expenses", money: summary.expenses)
+                                MoneyMetricRow(title: "Refunds", money: summary.refunds)
+                                MoneyMetricRow(title: "Net spending", money: summary.netSpending)
+                                MoneyMetricRow(title: "Net flow", money: summary.netFlow)
                             }
                         }
                         if overview.summaries.isEmpty {
@@ -64,13 +64,5 @@ struct DashboardView: View {
         .overlay(alignment: .topTrailing) {
             if isLoading && overview != nil { ProgressView().padding().accessibilityLabel("Loading local data…") }
         }
-    }
-
-    private func metric(_ title: LocalizedStringKey, money: Money) -> some View {
-        ViewThatFits(in: .horizontal) {
-            HStack { Text(title); Spacer(); MoneyText(money: money) }
-            VStack(alignment: .leading) { Text(title); MoneyText(money: money) }
-        }
-        .accessibilityElement(children: .combine)
     }
 }
