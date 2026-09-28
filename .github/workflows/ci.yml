@@ -1,0 +1,59 @@
+name: iOS CI
+
+on:
+  pull_request:
+    branches: [develop, main]
+  push:
+    branches: [develop, main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ios-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    name: Build and test
+    runs-on: xcode-27
+    timeout-minutes: 30
+    env:
+      DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
+    steps:
+      - uses: actions/checkout@v4
+      - name: Choose an available iPhone simulator
+        run: |
+          xcodebuild -version
+          xcrun simctl list devices available --json > /tmp/finai-devices.json
+          python3 - <<'PYTHON'
+          import json, os
+          with open('/tmp/finai-devices.json') as source:
+              runtimes = json.load(source)['devices']
+          devices = [device for runtime, values in sorted(runtimes.items(), reverse=True)
+                     if any(version in runtime for version in ('iOS-26', 'iOS-27')) for device in values
+                     if device['name'].startswith('iPhone') and device.get('isAvailable')]
+          if not devices:
+              raise SystemExit('No available iOS 26 or 27 iPhone simulator')
+          with open(os.environ['GITHUB_ENV'], 'a') as output:
+              output.write('SIMULATOR_ID=' + devices[0]['udid'] + '\n')
+          PYTHON
+      - name: Build and test
+        run: |
+          xcodebuild test \
+            -project FinAI.xcodeproj \
+            -scheme FinAI \
+            -destination "platform=iOS Simulator,id=$SIMULATOR_ID" \
+            -derivedDataPath "$RUNNER_TEMP/FinAI-DerivedData" \
+            -resultBundlePath "$RUNNER_TEMP/FinAI-Tests.xcresult" \
+            -skipMacroValidation \
+            -onlyUsePackageVersionsFromResolvedFile \
+            CODE_SIGNING_ALLOWED=NO
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: FinAI-Tests
+          path: ${{ runner.temp }}/FinAI-Tests.xcresult
+          if-no-files-found: ignore
