@@ -2,6 +2,8 @@
 
 A local-first personal finance app for iOS, building toward an assistant that helps explain financial activity and plan ahead.
 
+Version **0.1.0** is the first source release. Build and run it with Xcode; no App Store or TestFlight distribution is included. See the [changelog](CHANGELOG.md) and [release process](docs/RELEASING.md).
+
 ## Available today
 
 - Synthetic demo data across bank, savings and credit accounts
