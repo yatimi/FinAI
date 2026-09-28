@@ -10,7 +10,8 @@ A local-first personal finance app for iOS, building toward an assistant that he
 - Exact duplicate warnings and atomic, retry-safe import persistence
 - Persistent on-device accounts and transactions using SwiftData
 - Monthly income, expenses, refunds, net spending and net flow, grouped by original currency
-- A transaction list with original descriptions, categories, source and account details
+- Transaction search across merchant names and original descriptions, with combined date, account, category, type and currency filters
+- Transaction details with original descriptions, categories, source and account information
 - English String Catalog localization and locale-aware money and date formatting
 
 Demo data is loaded only after confirmation and only into an empty store. It includes salary, rent, groceries, transport, subscriptions, utilities, shopping, refunds and transfers across three months. No bank account or personal data is needed.
@@ -65,6 +66,12 @@ Duplicate warnings compare exact dates, trimmed descriptions, amounts, currencie
 
 Known descriptions such as `REWE MARKT`, `AMZN` and `DB VERTRIEB` receive local merchant and category suggestions. Rules match the start of the description on word boundaries, with more specific aliases taking precedence. Unknown merchants retain their original name. Income and transfer categories follow the explicit transaction type; unknown and adjustment types remain uncategorized. Review suggestions before saving: merchants and categories are editable, and changing the type resets its category suggestion. Corrections apply to the current row; reusable user rules are planned. Existing saved transactions are unchanged.
 
+## Transaction search
+
+Search is local, ignores case and accents, and matches merchant names or original descriptions. Filters apply together: choose all dates, this month, last month or an inclusive custom date range, plus an account, category, transaction type and currency. Results retain their original amounts and currencies.
+
+Search and filters stay in place when switching tabs or refreshing. Reset clears them together; a successful import also clears them so newly imported transactions are visible. Filters are not saved between app launches.
+
 ## Tests
 
 Use **Product → Test** in Xcode, or select an installed simulator from `xcrun simctl list devices available` and run:
@@ -87,7 +94,7 @@ The app stores data locally, with no account, bank connection, remote AI service
 
 ## Planned
 
-1. Reusable merchant rules, broader categorization, richer duplicate review, search and deterministic analytics
+1. Reusable merchant rules, broader categorization, richer duplicate review and expanded deterministic analytics
 2. An assistant that queries and explains calculated results
 3. Budgets, goals, forecasts and what-if planning
 4. Document and receipt import, followed by investigation of connected banking

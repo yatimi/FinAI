@@ -220,6 +220,7 @@ struct ImportFeatureTests {
         )
         var state = AppFeature.State()
         state.importFlow = try preparedState()
+        state.transactions.query = TransactionQuery(text: "old search", currency: .usd)
         let store = TestStore(initialState: state) { AppFeature() } withDependencies: {
             $0.date.now = TestFixtures.date
             $0.calendar = TestFixtures.calendar
@@ -227,12 +228,14 @@ struct ImportFeatureTests {
         }
         await store.send(.importFlow(.presented(.delegate(.didImport)))) {
             $0.importFlow = nil
+            $0.transactions.query = TransactionQuery()
             $0.selectedTab = .transactions
             $0.isLoading = true
         }
         await store.receive(.response(.success(overview))) {
             $0.isLoading = false
             $0.overview = overview
+            $0.transactions.update(snapshot: overview.snapshot, date: TestFixtures.date, calendar: TestFixtures.calendar)
         }
     }
 

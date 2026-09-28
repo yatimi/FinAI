@@ -23,6 +23,7 @@ struct AppFeatureTests {
         await store.receive(.response(.success(overview))) {
             $0.isLoading = false
             $0.overview = overview
+            $0.transactions.update(snapshot: overview.snapshot, date: TestFixtures.date, calendar: TestFixtures.calendar)
         }
         await store.send(.task)
     }
@@ -47,6 +48,7 @@ struct AppFeatureTests {
         await store.receive(.response(.success(overview))) {
             $0.isLoading = false
             $0.overview = overview
+            $0.transactions.update(snapshot: overview.snapshot, date: TestFixtures.date, calendar: TestFixtures.calendar)
         }
     }
 
@@ -80,6 +82,7 @@ struct AppFeatureTests {
         await store.receive(.response(.success(demo))) {
             $0.isLoading = false
             $0.overview = demo
+            $0.transactions.update(snapshot: demo.snapshot, date: TestFixtures.date, calendar: TestFixtures.calendar)
         }
         await store.send(.demoTapped)
     }
@@ -108,7 +111,7 @@ struct AppFeatureTests {
         state.overview = try FinanceOverview.make(snapshot: snapshot, date: TestFixtures.date, calendar: TestFixtures.calendar)
         let store = TestStore(initialState: state) { AppFeature() }
         await store.send(.binding(.set(\.selectedTab, .transactions))) { $0.selectedTab = .transactions }
-        await store.send(.transactionTapped(transaction.id)) {
+        await store.send(.transactions(.transactionTapped(transaction.id))) {
             $0.detail = TransactionDetailFeature.State(transaction: transaction, accountName: account.name)
         }
         await store.send(.detail(.dismiss)) { $0.detail = nil }

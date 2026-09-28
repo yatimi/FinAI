@@ -1,6 +1,237 @@
 {
   "sourceLanguage": "en",
   "strings": {
+  "All dates": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "All dates"
+        }
+      }
+    }
+  },
+  "This month": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "This month"
+        }
+      }
+    }
+  },
+  "Last month": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "Last month"
+        }
+      }
+    }
+  },
+  "Custom dates": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "Custom dates"
+        }
+      }
+    }
+  },
+  "From": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "From"
+        }
+      }
+    }
+  },
+  "Through": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "Through"
+        }
+      }
+    }
+  },
+  "The end date must be on or after the start date.": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "The end date must be on or after the start date."
+        }
+      }
+    }
+  },
+  "Transaction filters": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "Transaction filters"
+        }
+      }
+    }
+  },
+  "All accounts": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "All accounts"
+        }
+      }
+    }
+  },
+  "All categories": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "All categories"
+        }
+      }
+    }
+  },
+  "All types": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "All types"
+        }
+      }
+    }
+  },
+  "All currencies": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "All currencies"
+        }
+      }
+    }
+  },
+  "Reset search and filters": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "Reset search and filters"
+        }
+      }
+    }
+  },
+  "Filters apply together. Custom dates include both the first and last day.": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "Filters apply together. Custom dates include both the first and last day."
+        }
+      }
+    }
+  },
+  "Filters": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "Filters"
+        }
+      }
+    }
+  },
+  "Matching transactions: %lld": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "Matching transactions: %lld"
+        }
+      }
+    }
+  },
+  "Explore demo data or import a CSV from Overview to get started.": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "Explore demo data or import a CSV from Overview to get started."
+        }
+      }
+    }
+  },
+  "No matching transactions": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "No matching transactions"
+        }
+      }
+    }
+  },
+  "Try another search or reset your filters.": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "Try another search or reset your filters."
+        }
+      }
+    }
+  },
+  "Merchant or description": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "Merchant or description"
+        }
+      }
+    }
+  },
+  "Period": {
+    "extractionState": "manual",
+    "localizations": {
+      "en": {
+        "stringUnit": {
+          "state": "translated",
+          "value": "Period"
+        }
+      }
+    }
+  },
     "A CSV field is too long.": {
       "extractionState": "manual",
       "localizations": {
