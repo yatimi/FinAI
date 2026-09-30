@@ -5,14 +5,21 @@
 //  Created by Tommy on 28.09.26.
 //
 
+import ComposableArchitecture
 import SwiftUI
 
 struct AnalyticsView: View {
-    let analytics: SpendingAnalytics?
+    @Bindable var store: StoreOf<AppFeature>
 
     var body: some View {
-        if let analytics {
+        if let analytics = store.overview?.spending {
             List {
+                Section {
+                    Button("Regular payments", systemImage: "repeat") {
+                        store.isRecurringPaymentsPresented = true
+                    }
+                    .accessibilityIdentifier("openRecurringPayments")
+                }
                 Section {
                     Text(analytics.month, format: .dateTime.month(.wide).year())
                         .font(.title2.bold())
@@ -69,6 +76,9 @@ struct AnalyticsView: View {
                 }
             }
             .accessibilityIdentifier("spendingAnalytics")
+            .navigationDestination(isPresented: $store.isRecurringPaymentsPresented) {
+                RecurringPaymentsView(store: store)
+            }
         } else {
             ContentUnavailableView("Local data unavailable", systemImage: "chart.bar")
         }

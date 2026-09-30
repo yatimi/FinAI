@@ -16,6 +16,7 @@ struct AppFeature {
     @ObservableState
     struct State: Equatable {
         var selectedTab = Tab.dashboard
+        var isRecurringPaymentsPresented = false
         var transactions = TransactionsFeature.State()
         var overview: FinanceOverview?
         var isLoading = false
