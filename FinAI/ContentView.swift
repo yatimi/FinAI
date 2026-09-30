@@ -32,7 +32,7 @@ struct ContentView: View {
             }
             Tab("Analytics", systemImage: "chart.pie", value: .analytics) {
                 NavigationStack {
-                    AnalyticsView(analytics: store.overview?.spending)
+                    AnalyticsView(store: store)
                         .navigationTitle("Analytics")
                         .toolbar { refreshButton }
                 }

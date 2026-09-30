@@ -13,6 +13,7 @@ Version **0.1.0** is the first source release. Build and run it with Xcode; no A
 - Persistent on-device accounts and transactions using SwiftData
 - Monthly income, expenses, refunds, net spending and net flow, grouped by original currency
 - Current-month spending by category and saved merchant, with previous-month net spending comparisons per currency
+- Possible weekly, monthly and yearly recurring expenses, with evidence counts, estimated dates and subscription hints
 - Transaction search across merchant names and original descriptions, with combined date, account, category, type and currency filters
 - Transaction details with original descriptions, categories, source and account information
 - English String Catalog localization and locale-aware money and date formatting
@@ -75,6 +76,12 @@ Search is local, ignores case and accents, and matches merchant names or origina
 
 Search and filters stay in place when switching tabs or refreshing. Reset clears them together; a successful import also clears them so newly imported transactions are visible. Filters are not saved between app launches.
 
+## Regular payments
+
+Open **Analytics → Regular payments** to inspect possible repeating expenses. Detection requires at least three positive expenses with the same saved merchant, exact amount, currency and account. All payments in that group must follow consecutive weekly, monthly or yearly dates, anchored to the first payment. Posting tolerance is one day for weekly patterns and three days for monthly/yearly patterns. Same-day duplicates and irregular groups are omitted.
+
+A possible subscription also requires every matching expense to have the Subscriptions category. These are suggestions, not confirmed contracts. The next date is estimated from the observed pattern; if it passes without a matching saved payment, the pattern is marked as potentially ended, changed or incomplete. Changed prices and missing periods may prevent detection. No data is modified, no reminders are scheduled, and currencies are never combined.
+
 ## Tests
 
 Use **Product → Test** in Xcode, or select an installed simulator from `xcrun simctl list devices available` and run:
@@ -89,7 +96,7 @@ xcodebuild test \
   CODE_SIGNING_ALLOWED=NO
 ```
 
-Tests cover decimal arithmetic and validation, currency separation, transfers and refunds, date boundaries, demo integrity, persistence and repeated seeding, feature loading/error/cancellation flows, CSV parsing and locale validation, import confirmation, duplicate hints, migration and retry-safe persistence. Analytics tests cover category and merchant totals, month boundaries, refund-only periods, currencies missing from one month, percentage baselines and arithmetic overflow. UI journeys cover the demo, import preview/confirmation, transaction search and analytics. UI tests use an isolated in-memory store. GitHub Actions builds and tests pull requests to `develop` and `main` using the Xcode 27 runner image.
+Tests cover decimal arithmetic and validation, currency separation, transfers and refunds, date boundaries, demo integrity, persistence and repeated seeding, feature loading/error/cancellation flows, CSV parsing and locale validation, import confirmation, duplicate hints, migration and retry-safe persistence. Analytics tests cover category and merchant totals, month boundaries, refund-only periods, currencies missing from one month, percentage baselines and arithmetic overflow. Recurring-payment tests cover cadence, month ends, posting tolerance, daylight saving, stale patterns, ambiguous history and account/currency separation. UI journeys cover the demo, import preview/confirmation, transaction search, analytics and regular payments. UI tests use an isolated in-memory store. GitHub Actions builds and tests pull requests to `develop` and `main` using the Xcode 27 runner image.
 
 ## Privacy
 
