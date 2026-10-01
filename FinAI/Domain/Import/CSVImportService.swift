@@ -17,7 +17,6 @@ struct CSVImportService: Sendable {
         try mapping.validate(columnCount: document.headers.count)
         var candidates: [ImportCandidate] = []
         var issues: [ImportPreview.Issue] = []
-        var seen = Set(existing.filter { $0.accountID == account.id }.map(Fingerprint.init))
         let parser = ImportValueParser()
         for row in document.rows {
             try Task.checkCancellation()
@@ -47,39 +46,20 @@ struct CSVImportService: Sendable {
                     throw ImportError.inconsistentDirection
                 }
                 let money = try Money(amount: value < 0 ? -value : value, currency: currency)
-                let fingerprint = Fingerprint(date: date, description: description, amount: money.amount, currency: currency, direction: direction)
-                let duplicate = !seen.insert(fingerprint).inserted
                 let suggestion = classification.suggest(description: description, kind: kind)
                 candidates.append(ImportCandidate(
                     id: UUID(), rowNumber: row.number, date: date, description: description, money: money,
-                    direction: direction, merchant: suggestion.merchant, kind: kind, category: suggestion.category,
-                    isPossibleDuplicate: duplicate
+                    direction: direction, merchant: suggestion.merchant, kind: kind, category: suggestion.category
                 ))
             } catch let error as ImportError {
                 issues.append(.init(rowNumber: row.number, error: error))
             }
         }
-        return ImportPreview(candidates: candidates, issues: issues)
-    }
-
-    private struct Fingerprint: Hashable {
-        let date: Date
-        let description: String
-        let amount: Decimal
-        let currency: Currency
-        let direction: Transaction.Direction
-
-        init(date: Date, description: String, amount: Decimal, currency: Currency, direction: Transaction.Direction) {
-            self.date = date
-            self.description = description.trimmingCharacters(in: .whitespacesAndNewlines)
-            self.amount = amount
-            self.currency = currency
-            self.direction = direction
-        }
-
-        init(_ transaction: Transaction) {
-            self.init(date: transaction.date, description: transaction.rawDescription, amount: transaction.money.amount,
-                      currency: transaction.money.currency, direction: transaction.direction)
-        }
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = timeZone
+        return try ImportPreview(
+            candidates: DuplicateDetectionService().review(candidates, accountID: account.id, existing: existing, calendar: calendar),
+            issues: issues
+        )
     }
 }

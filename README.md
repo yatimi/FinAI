@@ -9,7 +9,8 @@ Version **0.1.0** is the first source release. Build and run it with Xcode; no A
 - Synthetic demo data across bank, savings and credit accounts
 - CSV import with column mapping, validation, editable preview and explicit confirmation
 - Local merchant normalization and category suggestions, editable before import
-- Exact duplicate warnings and atomic, retry-safe import persistence
+- Exact and conservative similar-transaction duplicate hints, with match evidence and explicit skip/keep-both review
+- Atomic, retry-safe import persistence
 - Persistent on-device accounts and transactions using SwiftData
 - Monthly income, expenses, refunds, net spending and net flow, grouped by original currency
 - Current-month spending by category and saved merchant, with previous-month net spending comparisons per currency
@@ -66,7 +67,9 @@ Dates use `yyyy-MM-dd`, `dd.MM.yyyy`, `dd/MM/yyyy` or `MM/dd/yyyy` in the device
 
 A negative sign describes money leaving the account; it does not classify the transaction. Without a type column or an explicit default, rows remain **Unknown** and do not affect overview totals. Supported type values are `expense`, `income`, `transfer`, `refund`, `adjustment` and `unknown`. Types and categories can be adjusted in the preview.
 
-Duplicate warnings compare exact dates, trimmed descriptions, amounts, currencies and directions within the file and the selected account. They are review hints: distinct payments may share those fields. Fuzzy duplicate matching is planned. Normalization does not change the exact duplicate comparison.
+Duplicate hints compare transactions within the file and the selected account. Exact matches use dates, trimmed original descriptions, amounts, currencies and directions. Conservative similar matches require the same exact amount, currency and direction, compatible explicit types, and dates within three calendar days. Descriptions are compared without case, accent, punctuation or whitespace differences. Changed descriptions require the same known merchant and strong token overlap; tokens containing numbers must remain identical.
+
+Up to three matches show their original description, date, source and matching reason. Possible duplicates start unchecked. **Skip this transaction** or **Keep both transactions** changes the preview selection; nothing is merged or deleted automatically. These are review hints: distinct payments may share the matching fields. Corrections to the current preview do not recompute duplicate hints; edit the mapping and rebuild the preview to rerun detection.
 
 Known descriptions such as `REWE MARKT`, `AMZN` and `DB VERTRIEB` receive local merchant and category suggestions. Rules match the start of the description on word boundaries, with more specific aliases taking precedence. Unknown merchants retain their original name. Income and transfer categories follow the explicit transaction type; unknown and adjustment types remain uncategorized. Review suggestions before saving: merchants and categories are editable, and changing the type resets its category suggestion. Corrections apply to the current row; reusable user rules are planned. Existing saved transactions are unchanged.
 
@@ -96,7 +99,7 @@ xcodebuild test \
   CODE_SIGNING_ALLOWED=NO
 ```
 
-Tests cover decimal arithmetic and validation, currency separation, transfers and refunds, date boundaries, demo integrity, persistence and repeated seeding, feature loading/error/cancellation flows, CSV parsing and locale validation, import confirmation, duplicate hints, migration and retry-safe persistence. Analytics tests cover category and merchant totals, month boundaries, refund-only periods, currencies missing from one month, percentage baselines and arithmetic overflow. Recurring-payment tests cover cadence, month ends, posting tolerance, daylight saving, stale patterns, ambiguous history and account/currency separation. UI journeys cover the demo, import preview/confirmation, transaction search, analytics and regular payments. UI tests use an isolated in-memory store. GitHub Actions builds and tests pull requests to `develop` and `main` using the Xcode 27 runner image.
+Tests cover decimal arithmetic and validation, currency separation, transfers and refunds, date boundaries, demo integrity, persistence and repeated seeding, feature loading/error/cancellation flows, CSV parsing and locale validation, import confirmation, duplicate hints, migration and retry-safe persistence. Analytics tests cover category and merchant totals, month boundaries, refund-only periods, currencies missing from one month, percentage baselines and arithmetic overflow. Recurring-payment tests cover cadence, month ends, posting tolerance, daylight saving, stale patterns, ambiguous history and account/currency separation. Duplicate tests cover normalization, nearby dates, numeric references, semantic/account/currency boundaries, bounded match evidence and cancellation. UI journeys cover the demo, import preview/confirmation, explicit duplicate review, transaction search, analytics and regular payments. UI tests use an isolated in-memory store and a fixed reference date/calendar. GitHub Actions builds and tests pull requests to `develop` and `main` using the Xcode 27 runner image.
 
 ## Privacy
 
@@ -104,7 +107,7 @@ The app stores data locally, with no account, bank connection, remote AI service
 
 ## Planned
 
-1. Reusable merchant rules, broader categorization, richer duplicate review and expanded deterministic analytics
+1. Reusable merchant rules, broader categorization and expanded deterministic analytics
 2. An assistant that queries and explains calculated results
 3. Budgets, goals, forecasts and what-if planning
 4. Document and receipt import, followed by investigation of connected banking
