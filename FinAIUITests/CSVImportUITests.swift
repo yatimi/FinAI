@@ -50,4 +50,37 @@ final class CSVImportUITests: XCTestCase {
         app.tabBars.buttons["Accounts"].tap()
         XCTAssertTrue(app.staticTexts["Test bank"].waitForExistence(timeout: 5))
     }
+
+    @MainActor
+    func testSimilarDuplicateReviewAndKeepBoth() throws {
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--uitesting", "-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
+        app.launchEnvironment["FINAI_TEST_CSV"] = "date,description,amount,currency,type\n2026-09-01,REWE MARKT 123,-10,EUR,expense\n2026-09-02,rewe markt 123,-10,EUR,expense"
+        app.launch()
+        let account = app.textFields["importAccountName"]
+        XCTAssertTrue(account.waitForExistence(timeout: 15))
+        account.tap()
+        account.typeText("Test bank")
+        app.keyboards.buttons["Done"].tap()
+        let preview = app.buttons["previewImport"]
+        for _ in 0..<8 where !preview.isHittable { app.swipeUp() }
+        XCTAssertTrue(preview.isHittable)
+        preview.tap()
+        XCTAssertTrue(app.navigationBars["Review import"].waitForExistence(timeout: 10))
+        XCTAssertTrue(app.staticTexts["Selected transactions: 1"].exists)
+        let decision = app.buttons["duplicateDecision-3"]
+        for _ in 0..<12 where !decision.isHittable { app.swipeUp() }
+        XCTAssertTrue(decision.isHittable)
+        XCTAssertTrue(app.staticTexts["Matches earlier import row 2"].exists)
+        XCTAssertTrue(app.staticTexts["Same amount and a similar description within three days"].exists)
+        XCTAssertEqual(decision.label, "Keep both transactions")
+        decision.tap()
+        XCTAssertEqual(decision.label, "Skip this transaction")
+        app.buttons["confirmSelectedImport"].tap()
+        XCTAssertTrue(app.alerts.staticTexts["Selected: 2. Skipped: 0. Your CSV file will not be changed."].waitForExistence(timeout: 5))
+        app.alerts.buttons["Confirm import"].tap()
+        XCTAssertTrue(app.navigationBars["Transactions"].waitForExistence(timeout: 10))
+        XCTAssertEqual(app.staticTexts.matching(identifier: "REWE").count, 2)
+    }
 }

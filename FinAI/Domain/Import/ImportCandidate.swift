@@ -17,7 +17,8 @@ struct ImportCandidate: Identifiable, Equatable, Sendable {
     var merchant: String
     var kind: Transaction.Kind
     var category: Category
-    let isPossibleDuplicate: Bool
+    var duplicateMatches: [ImportDuplicateMatch] = []
+    var isPossibleDuplicate: Bool { !duplicateMatches.isEmpty }
 
     var allowedKinds: [Transaction.Kind] {
         direction == .debit ? [.expense, .transfer, .adjustment, .unknown] : [.income, .refund, .transfer, .adjustment, .unknown]

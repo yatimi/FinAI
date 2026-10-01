@@ -43,3 +43,14 @@ extension CSVMapping.DirectionRule {
         }
     }
 }
+
+
+extension ImportDuplicateMatch.Reason {
+    var title: LocalizedStringResource {
+        switch self {
+        case .exact: "Same date, amount and original description"
+        case .similarDescription: "Same day and amount with a similar description"
+        case .nearbyDate: "Same amount and a similar description within three days"
+        }
+    }
+}

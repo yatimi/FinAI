@@ -16,7 +16,7 @@ struct ImportPreviewSection: View {
         Section("Review before saving") {
             Text("Selected transactions: \(store.selectedCandidates.count)")
             Text("Invalid rows to skip: \(preview.issues.count)")
-            Text("Possible duplicates are unchecked. Include them only if they are separate transactions. Unknown types are excluded from overview totals.")
+            Text("Possible duplicates are unchecked. Up to three matches are shown for review. Keep both only if they are separate transactions. Unknown types are excluded from overview totals.")
                 .font(.footnote)
             Text("Known merchants and categories are suggested locally. Review and correct them before saving. Changing the transaction type resets its category suggestion.")
                 .font(.footnote)
@@ -45,6 +45,24 @@ struct ImportPreviewSection: View {
                     Text(candidate.date, format: .dateTime.day().month().year())
                     if candidate.isPossibleDuplicate {
                         Label("Possible duplicate", systemImage: "exclamationmark.triangle")
+                        ForEach(candidate.duplicateMatches) { match in
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(match.reason.title).font(.subheadline.bold())
+                                switch match.source {
+                                case .savedTransaction: Text("Matches a saved transaction on this account")
+                                case let .importRow(row): Text("Matches earlier import row \(row)")
+                                }
+                                Text(verbatim: match.description)
+                                Text(match.date, format: .dateTime.day().month().year())
+                            }
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                        }
+                        Button(store.excludedIDs.contains(candidate.id) ? "Keep both transactions" : "Skip this transaction") {
+                            store.send(.toggleRow(candidate.id))
+                        }
+                        .buttonStyle(.borderless)
+                        .accessibilityIdentifier("duplicateDecision-\(candidate.rowNumber)")
                     }
                     Menu {
                         ForEach(candidate.allowedKinds, id: \.self) { kind in
