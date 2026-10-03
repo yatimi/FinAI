@@ -62,6 +62,7 @@ struct ImportView: View {
                 }
             }
         }
+        .sheet(item: $store.scope(state: \.merchantRules, action: \.merchantRules)) { MerchantRulesView(store: $0) }
         .interactiveDismissDisabled(store.phase == .saving)
         .alert($store.scope(state: \.alert, action: \.alert))
         .fileImporter(isPresented: $store.isFilePickerPresented, allowedContentTypes: [.commaSeparatedText, .plainText]) { result in

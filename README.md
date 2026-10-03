@@ -71,7 +71,9 @@ Duplicate hints compare transactions within the file and the selected account. E
 
 Up to three matches show their original description, date, source and matching reason. Possible duplicates start unchecked. **Skip this transaction** or **Keep both transactions** changes the preview selection; nothing is merged or deleted automatically. These are review hints: distinct payments may share the matching fields. Corrections to the current preview do not recompute duplicate hints; edit the mapping and rebuild the preview to rerun detection.
 
-Known descriptions such as `REWE MARKT`, `AMZN` and `DB VERTRIEB` receive local merchant and category suggestions. Rules match the start of the description on word boundaries, with more specific aliases taking precedence. Unknown merchants retain their original name. Income and transfer categories follow the explicit transaction type; unknown and adjustment types remain uncategorized. Review suggestions before saving: merchants and categories are editable, and changing the type resets its category suggestion. Corrections apply to the current row; reusable user rules are planned. Existing saved transactions are unchanged.
+Known descriptions such as `REWE MARKT`, `AMZN` and `DB VERTRIEB` receive local merchant and category suggestions. Built-in aliases match the start of the description on word boundaries, with more specific aliases taking precedence. Unknown merchants retain their original name. Built-in categories follow the explicit transaction type: income and transfers use their corresponding categories; unknown and adjustment types default to Other. Review suggestions before saving: merchants and categories are editable, and changing the type resets its category suggestion.
+
+Save an optional merchant rule from the preview to reuse a merchant and category for the same transaction type. Rules match full descriptions by default, or an explicitly selected whole-word prefix, ignoring case, punctuation and spacing. User rules run before the built-in catalog; exact matches take priority over prefixes, then the longest prefix wins. Manage rules from **Accounts → Merchant rules**. Saved rules apply when a preview is built again; current corrections and saved transactions remain unchanged.
 
 ## Transaction search
 
@@ -107,7 +109,7 @@ The app stores data locally, with no account, bank connection, remote AI service
 
 ## Planned
 
-1. Reusable merchant rules, broader categorization and expanded deterministic analytics
+1. Broader categorization and expanded deterministic analytics
 2. An assistant that queries and explains calculated results
 3. Budgets, goals, forecasts and what-if planning
 4. Document and receipt import, followed by investigation of connected banking

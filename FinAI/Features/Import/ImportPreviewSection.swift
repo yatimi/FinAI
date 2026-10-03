@@ -78,6 +78,9 @@ struct ImportPreviewSection: View {
                     } label: {
                         LabeledContent("Category") { Text(candidate.category.title) }
                     }
+                    Button("Save merchant rule") { store.send(.saveRuleTapped(candidate.id)) }
+                        .buttonStyle(.borderless)
+                        .accessibilityIdentifier("saveRule-\(candidate.rowNumber)")
                 }
                 .padding(.vertical, 4)
             }

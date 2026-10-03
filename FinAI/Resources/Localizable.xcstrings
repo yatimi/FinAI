@@ -1,6 +1,292 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "A rule for this description, match mode and transaction type already exists. Edit that rule instead.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A rule for this description, match mode and transaction type already exists. Edit that rule instead."
+          }
+        }
+      }
+    },
+    "Add rule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add rule"
+          }
+        }
+      }
+    },
+    "Cancel editing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel editing"
+          }
+        }
+      }
+    },
+    "Delete merchant rule?": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete merchant rule?"
+          }
+        }
+      }
+    },
+    "Delete rule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete rule"
+          }
+        }
+      }
+    },
+    "Description starts with": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Description starts with"
+          }
+        }
+      }
+    },
+    "Description to match": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Description to match"
+          }
+        }
+      }
+    },
+    "Edit merchant rule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit merchant rule"
+          }
+        }
+      }
+    },
+    "Edit rule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit rule"
+          }
+        }
+      }
+    },
+    "Enter a description with letters or numbers (up to 500 characters) and a merchant (up to 200 characters).": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a description with letters or numbers (up to 500 characters) and a merchant (up to 200 characters)."
+          }
+        }
+      }
+    },
+    "Full description": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full description"
+          }
+        }
+      }
+    },
+    "Match": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Match"
+          }
+        }
+      }
+    },
+    "Matching ignores case, punctuation and spacing, and uses whole words. A short prefix can match many transactions; review every suggestion.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matching ignores case, punctuation and spacing, and uses whole words. A short prefix can match many transactions; review every suggestion."
+          }
+        }
+      }
+    },
+    "Merchant rules": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Merchant rules"
+          }
+        }
+      }
+    },
+    "New merchant rule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New merchant rule"
+          }
+        }
+      }
+    },
+    "No merchant rules saved.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No merchant rules saved."
+          }
+        }
+      }
+    },
+    "Rules need attention": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rules need attention"
+          }
+        }
+      }
+    },
+    "Rules run locally before built-in suggestions. They apply to future previews only. Exact descriptions take priority, then the longest prefix. Transaction types, amounts and currencies stay unchanged.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rules run locally before built-in suggestions. They apply to future previews only. Exact descriptions take priority, then the longest prefix. Transaction types, amounts and currencies stay unchanged."
+          }
+        }
+      }
+    },
+    "Save merchant rule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save merchant rule"
+          }
+        }
+      }
+    },
+    "Save rule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save rule"
+          }
+        }
+      }
+    },
+    "Saved merchant rules": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved merchant rules"
+          }
+        }
+      }
+    },
+    "Saved transactions will stay unchanged.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved transactions will stay unchanged."
+          }
+        }
+      }
+    },
+    "This rule no longer exists. Close and reopen merchant rules.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This rule no longer exists. Close and reopen merchant rules."
+          }
+        }
+      }
+    },
+    "Unable to load merchant rules. Try again before editing.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to load merchant rules. Try again before editing."
+          }
+        }
+      }
+    },
+    "Unable to save merchant rules. Please try again.": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to save merchant rules. Please try again."
+          }
+        }
+      }
+    },
+    "Updating rules…": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updating rules…"
+          }
+        }
+      }
+    },
     "Possible duplicates are unchecked. Up to three matches are shown for review. Keep both only if they are separate transactions. Unknown types are excluded from overview totals.": {
       "extractionState": "manual",
       "localizations": {
