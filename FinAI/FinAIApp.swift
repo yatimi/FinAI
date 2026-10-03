@@ -30,6 +30,7 @@ struct FinAIApp: App {
         } withDependencies: {
             $0.financeClient = .live(database: database)
             $0.importClient = .live(database: database)
+            $0.merchantRulesClient = .live(database: database)
             #if DEBUG
             if ProcessInfo.processInfo.arguments.contains("--uitesting") {
                 // Keep synthetic UI journeys independent of month boundaries and device time zones.

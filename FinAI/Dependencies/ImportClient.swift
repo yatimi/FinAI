@@ -17,16 +17,19 @@ struct ImportClient: Sendable {
     static func live(database: FinanceDatabase) -> Self {
         Self(
             readFile: { try await CSVFileReader().read($0) },
-            preview: { try await makePreview(document: $0, mapping: $1, account: $2, existing: $3, timeZone: $4) },
+            preview: { document, mapping, account, existing, timeZone in
+                let rules = try await database.loadMerchantRules()
+                return try await makePreview(document: document, mapping: mapping, account: account, existing: existing, timeZone: timeZone, rules: rules)
+            },
             save: { try await database.saveImport($0) }
         )
     }
 
     @concurrent
     private static func makePreview(
-        document: CSVDocument, mapping: CSVMapping, account: Account, existing: [Transaction], timeZone: TimeZone
+        document: CSVDocument, mapping: CSVMapping, account: Account, existing: [Transaction], timeZone: TimeZone, rules: [MerchantRule]
     ) async throws -> ImportPreview {
-        try CSVImportService().preview(document: document, mapping: mapping, account: account, existing: existing, timeZone: timeZone)
+        try CSVImportService(classification: TransactionClassificationService(rules: rules)).preview(document: document, mapping: mapping, account: account, existing: existing, timeZone: timeZone)
     }
 }
 

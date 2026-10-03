@@ -41,6 +41,9 @@ struct ContentView: View {
                 NavigationStack {
                     AccountsView(accounts: store.overview?.snapshot.accounts ?? [])
                         .navigationTitle("Accounts")
+                        .toolbar {
+                            Button("Merchant rules", systemImage: "list.bullet.clipboard") { store.send(.merchantRulesTapped) }
+                        }
                 }
             }
         }
@@ -62,6 +65,7 @@ struct ContentView: View {
         .sheet(item: $store.scope(state: \.detail, action: \.detail)) { detailStore in
             TransactionDetailView(store: detailStore)
         }
+        .sheet(item: $store.scope(state: \.merchantRules, action: \.merchantRules)) { MerchantRulesView(store: $0) }
         .sheet(item: $store.scope(state: \.importFlow, action: \.importFlow)) { ImportView(store: $0) }
         .task { await store.send(.task).finish() }
         .onDisappear { store.send(.cancelLoading) }

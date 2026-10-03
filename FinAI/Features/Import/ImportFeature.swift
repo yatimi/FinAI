@@ -29,6 +29,7 @@ struct ImportFeature {
         var sessionID: UUID?
         var excludedIDs: Set<UUID> = []
         var error: ImportError?
+        @Presents var merchantRules: MerchantRulesFeature.State?
         @Presents var alert: AlertState<Action.Alert>?
 
         var replacingDemo: Bool { snapshot.transactions.contains { $0.source == .demo } }
@@ -63,6 +64,8 @@ struct ImportFeature {
         case kindChanged(UUID, Transaction.Kind)
         case categoryChanged(UUID, Category)
         case merchantChanged(UUID, String)
+        case saveRuleTapped(UUID)
+        case merchantRules(PresentationAction<MerchantRulesFeature.Action>)
         case importTapped
         case alert(PresentationAction<Alert>)
         case saveResponse(Result<VoidSuccess, ImportError>)
@@ -185,6 +188,10 @@ struct ImportFeature {
                 guard state.phase == .idle, let index = state.preview?.candidates.firstIndex(where: { $0.id == id }) else { return .none }
                 state.preview?.candidates[index].category = category
                 return .none
+            case let .saveRuleTapped(id):
+                guard state.phase == .idle, let candidate = state.preview?.candidates.first(where: { $0.id == id }) else { return .none }
+                state.merchantRules = MerchantRulesFeature.State(candidate: candidate)
+                return .none
             case .importTapped:
                 guard state.phase == .idle, !state.selectedCandidates.isEmpty else { return .none }
                 let count = state.selectedCandidates.count
@@ -239,10 +246,11 @@ struct ImportFeature {
             case .closeTapped:
                 guard state.phase != .saving else { return .none }
                 return .merge(.cancel(id: CancelID.work), .run { _ in await dismiss() })
-            case .alert, .delegate:
+            case .alert, .delegate, .merchantRules:
                 return .none
             }
         }
+        .ifLet(\.$merchantRules, action: \.merchantRules) { MerchantRulesFeature() }
         .ifLet(\.$alert, action: \.alert)
     }
 }

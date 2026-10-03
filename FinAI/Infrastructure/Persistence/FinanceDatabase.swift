@@ -95,9 +95,59 @@ actor FinanceDatabase {
         }
     }
 
+    func loadMerchantRules() throws -> [MerchantRule] {
+        try Task.checkCancellation()
+        return try makeContext().fetch(FetchDescriptor<MerchantRuleRecord>(sortBy: [SortDescriptor(\.pattern)]))
+            .map { try $0.domainValue() }
+    }
+
+    func saveMerchantRule(_ rule: MerchantRule, replacingExisting: Bool) throws -> [MerchantRule] {
+        try Task.checkCancellation()
+        try rule.validate()
+        let context = try makeContext()
+        let records = try context.fetch(FetchDescriptor<MerchantRuleRecord>())
+        let existing = records.first { $0.id == rule.id }
+        guard !replacingExisting || existing != nil else { throw MerchantRule.RuleError.missing }
+        guard replacingExisting || existing == nil else { throw MerchantRule.RuleError.conflict }
+        let otherRules = try records.filter { $0.id != rule.id }.map { try $0.domainValue() }
+        guard !otherRules.contains(where: { rule.conflicts(with: $0) }) else { throw MerchantRule.RuleError.conflict }
+        let result = (otherRules + [rule]).sorted { $0.pattern < $1.pattern }
+        do {
+            if let existing {
+                existing.pattern = rule.pattern
+                existing.matchMode = rule.matchMode.rawValue
+                existing.kind = rule.kind.rawValue
+                existing.merchant = rule.merchant
+                existing.category = rule.category.rawValue
+            } else { context.insert(MerchantRuleRecord(rule)) }
+            try Task.checkCancellation()
+            try context.save()
+        } catch {
+            context.rollback()
+            throw error
+        }
+        return result
+    }
+
+    func deleteMerchantRule(_ id: UUID) throws -> [MerchantRule] {
+        try Task.checkCancellation()
+        let context = try makeContext()
+        let records = try context.fetch(FetchDescriptor<MerchantRuleRecord>())
+        let result = try records.filter { $0.id != id }.map { try $0.domainValue() }.sorted { $0.pattern < $1.pattern }
+        do {
+            for record in records where record.id == id { context.delete(record) }
+            try Task.checkCancellation()
+            try context.save()
+        } catch {
+            context.rollback()
+            throw error
+        }
+        return result
+    }
+
     private func makeContext() throws -> ModelContext {
         if container == nil {
-            let schema = Schema([AccountRecord.self, TransactionRecord.self, ImportSessionRecord.self], version: Schema.Version(2, 0, 0))
+            let schema = Schema([AccountRecord.self, TransactionRecord.self, ImportSessionRecord.self, MerchantRuleRecord.self], version: Schema.Version(3, 0, 0))
             let configuration: ModelConfiguration
             if let storeURL {
                 configuration = ModelConfiguration(schema: schema, url: storeURL, cloudKitDatabase: .none)
