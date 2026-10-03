@@ -11,6 +11,83 @@ import Testing
 @testable import FinAI
 
 struct ImportPersistenceTests {
+    @Test func concurrentRetriesCommitOneBatch() async throws {
+        let database = FinanceDatabase(inMemory: true)
+        let batch = try ImportFixtures.batch()
+        try await withThrowingTaskGroup(of: Void.self) { group in
+            for _ in 0..<8 {
+                group.addTask { try await database.saveImport(batch) }
+            }
+            try await group.waitForAll()
+        }
+        let saved = try await database.load()
+        #expect(saved.accounts == [batch.account])
+        #expect(saved.transactions.sorted { $0.id.uuidString < $1.id.uuidString }
+                == batch.transactions.sorted { $0.id.uuidString < $1.id.uuidString })
+        #expect(saved.transactions.count == batch.transactions.count)
+    }
+
+    @Test func changedReceiptCannotOverwriteCommittedImport() async throws {
+        let database = FinanceDatabase(inMemory: true)
+        let batch = try ImportFixtures.batch()
+        try await database.saveImport(batch)
+        let before = try await database.load()
+        let changed = ImportBatch(
+            id: batch.id, sourceName: "changed.csv", importedAt: batch.importedAt,
+            account: batch.account, transactions: batch.transactions,
+            rowNumbers: batch.rowNumbers, replacingDemo: batch.replacingDemo
+        )
+        await #expect(throws: ImportError.storageChanged) { try await database.saveImport(changed) }
+        #expect(try await database.load() == before)
+        try await database.saveImport(batch)
+        #expect(try await database.load() == before)
+    }
+
+    @Test func cancelledImportPreservesDemoAndCanBeRetried() async throws {
+        let database = FinanceDatabase(inMemory: true)
+        let demo = try await database.addDemo(referenceDate: TestFixtures.date, calendar: TestFixtures.calendar)
+        let batch = try ImportFixtures.batch(replacingDemo: true)
+        await withTaskGroup(of: Void.self) { group in
+            group.addTask {
+                withUnsafeCurrentTask { $0?.cancel() }
+                await #expect(throws: CancellationError.self) { try await database.saveImport(batch) }
+            }
+        }
+        #expect(try await database.load() == demo)
+        try await database.saveImport(batch)
+        #expect(try await database.load().transactions.count == batch.transactions.count)
+    }
+
+    @Test func failedSaveRollsBackDemoReplacementAccountTransactionsAndReceipt() async throws {
+        let directory = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let url = directory.appending(path: "Finance.store")
+        let demo = try await FinanceDatabase(storeURL: url).addDemo(
+            referenceDate: TestFixtures.date, calendar: TestFixtures.calendar
+        )
+        let schema = try FinanceStoreConfiguration(storeURL: url).makeContainer().schema
+        let container = try ModelContainer(for: schema, configurations: [
+            ModelConfiguration(schema: schema, url: url, allowsSave: false, cloudKitDatabase: .none)
+        ])
+        let context = ModelContext(container)
+        context.autosaveEnabled = false
+        let batch = try ImportFixtures.batch(replacingDemo: true)
+
+        #expect(throws: (any Error).self) { try ImportBatchStore().save(batch, in: context) }
+
+        #expect(!context.hasChanges)
+        // Failed contexts are discarded by FinanceDatabase; verify persisted data with a fresh context.
+        let verificationContext = ModelContext(container)
+        #expect(try FinanceSnapshotStore().load(in: verificationContext) == demo)
+        #expect(try verificationContext.fetchCount(FetchDescriptor<ImportSessionRecord>()) == 0)
+        let reopened = FinanceDatabase(storeURL: url)
+        #expect(try await reopened.load() == demo)
+        try await reopened.saveImport(batch)
+        try await reopened.saveImport(batch)
+        #expect(try await reopened.load().transactions.count == batch.transactions.count)
+    }
+
     @Test func normalizedMerchantAndCorrectedCategorySurviveReopening() async throws {
         let directory = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString)
         try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
