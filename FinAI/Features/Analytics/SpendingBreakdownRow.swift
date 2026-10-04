@@ -14,9 +14,9 @@ struct SpendingBreakdownRow: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             title.font(.headline)
-            MoneyMetricRow(title: "Expenses", money: row.expenses)
-            MoneyMetricRow(title: "Refunds", money: row.refunds)
-            MoneyMetricRow(title: "Net spending", money: row.netSpending)
+            MoneyMetricRow(title: .expenses, money: row.expenses)
+            MoneyMetricRow(title: .refunds, money: row.refunds)
+            MoneyMetricRow(title: .netSpending, money: row.netSpending)
         }
         .accessibilityElement(children: .combine)
     }

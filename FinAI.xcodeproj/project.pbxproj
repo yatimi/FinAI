@@ -49,6 +49,11 @@
 			path = FinAIUITests;
 			sourceTree = "<group>";
 		};
+		A20000000000000000000001 /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Shared;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +82,7 @@
 				65D387E830682D4700429F99 /* FinAI */,
 				65D387F630682D4800429F99 /* FinAITests */,
 				65D3880030682D4800429F99 /* FinAIUITests */,
+				A20000000000000000000001 /* Shared */,
 				65D387E730682D4700429F99 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,6 +111,7 @@
 			buildRules = (
 			);
 			fileSystemSynchronizedGroups = (
+				A20000000000000000000001 /* Shared */,
 				65D387E830682D4700429F99 /* FinAI */,
 			);
 			packageProductDependencies = (A10000000000000000000002 /* ComposableArchitecture */);
@@ -149,6 +156,7 @@
 			);
 			fileSystemSynchronizedGroups = (
 				65D3880030682D4800429F99 /* FinAIUITests */,
+				A20000000000000000000001 /* Shared */,
 			);
 			name = FinAIUITests;
 			productName = FinAIUITests;

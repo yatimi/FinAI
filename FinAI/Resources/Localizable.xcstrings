@@ -1,920 +1,7 @@
 {
   "sourceLanguage": "en",
   "strings": {
-    "A rule for this description, match mode and transaction type already exists. Edit that rule instead.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A rule for this description, match mode and transaction type already exists. Edit that rule instead."
-          }
-        }
-      }
-    },
-    "Add rule": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Add rule"
-          }
-        }
-      }
-    },
-    "Cancel editing": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancel editing"
-          }
-        }
-      }
-    },
-    "Delete merchant rule?": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Delete merchant rule?"
-          }
-        }
-      }
-    },
-    "Delete rule": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Delete rule"
-          }
-        }
-      }
-    },
-    "Description starts with": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Description starts with"
-          }
-        }
-      }
-    },
-    "Description to match": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Description to match"
-          }
-        }
-      }
-    },
-    "Edit merchant rule": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Edit merchant rule"
-          }
-        }
-      }
-    },
-    "Edit rule": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Edit rule"
-          }
-        }
-      }
-    },
-    "Enter a description with letters or numbers (up to 500 characters) and a merchant (up to 200 characters).": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enter a description with letters or numbers (up to 500 characters) and a merchant (up to 200 characters)."
-          }
-        }
-      }
-    },
-    "Full description": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Full description"
-          }
-        }
-      }
-    },
-    "Match": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Match"
-          }
-        }
-      }
-    },
-    "Matching ignores case, punctuation and spacing, and uses whole words. A short prefix can match many transactions; review every suggestion.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Matching ignores case, punctuation and spacing, and uses whole words. A short prefix can match many transactions; review every suggestion."
-          }
-        }
-      }
-    },
-    "Merchant rules": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Merchant rules"
-          }
-        }
-      }
-    },
-    "New merchant rule": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "New merchant rule"
-          }
-        }
-      }
-    },
-    "No merchant rules saved.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No merchant rules saved."
-          }
-        }
-      }
-    },
-    "Rules need attention": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rules need attention"
-          }
-        }
-      }
-    },
-    "Rules run locally before built-in suggestions. They apply to future previews only. Exact descriptions take priority, then the longest prefix. Transaction types, amounts and currencies stay unchanged.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rules run locally before built-in suggestions. They apply to future previews only. Exact descriptions take priority, then the longest prefix. Transaction types, amounts and currencies stay unchanged."
-          }
-        }
-      }
-    },
-    "Save merchant rule": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Save merchant rule"
-          }
-        }
-      }
-    },
-    "Save rule": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Save rule"
-          }
-        }
-      }
-    },
-    "Saved merchant rules": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saved merchant rules"
-          }
-        }
-      }
-    },
-    "Saved transactions will stay unchanged.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Saved transactions will stay unchanged."
-          }
-        }
-      }
-    },
-    "This rule no longer exists. Close and reopen merchant rules.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This rule no longer exists. Close and reopen merchant rules."
-          }
-        }
-      }
-    },
-    "Unable to load merchant rules. Try again before editing.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unable to load merchant rules. Try again before editing."
-          }
-        }
-      }
-    },
-    "Unable to save merchant rules. Please try again.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unable to save merchant rules. Please try again."
-          }
-        }
-      }
-    },
-    "Updating rules…": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Updating rules…"
-          }
-        }
-      }
-    },
-    "Possible duplicates are unchecked. Up to three matches are shown for review. Keep both only if they are separate transactions. Unknown types are excluded from overview totals.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Possible duplicates are unchecked. Up to three matches are shown for review. Keep both only if they are separate transactions. Unknown types are excluded from overview totals."
-          }
-        }
-      }
-    },
-    "Matches a saved transaction on this account": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Matches a saved transaction on this account"
-          }
-        }
-      }
-    },
-    "Matches earlier import row %lld": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Matches earlier import row %lld"
-          }
-        }
-      }
-    },
-    "Keep both transactions": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Keep both transactions"
-          }
-        }
-      }
-    },
-    "Skip this transaction": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Skip this transaction"
-          }
-        }
-      }
-    },
-    "Same date, amount and original description": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Same date, amount and original description"
-          }
-        }
-      }
-    },
-    "Same day and amount with a similar description": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Same day and amount with a similar description"
-          }
-        }
-      }
-    },
-    "Same amount and a similar description within three days": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Same amount and a similar description within three days"
-          }
-        }
-      }
-    },
-    "Possible recurring expenses, not confirmed contracts. Matching uses at least three equal payments to the same saved merchant, on one account and in one currency. Weekly dates may vary by one day; monthly and yearly dates by three days.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Possible recurring expenses, not confirmed contracts. Matching uses at least three equal payments to the same saved merchant, on one account and in one currency. Weekly dates may vary by one day; monthly and yearly dates by three days."
-          }
-        }
-      }
-    },
-    "No regular payment patterns found. More transaction history may be needed.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No regular payment patterns found. More transaction history may be needed."
-          }
-        }
-      }
-    },
-    "Interval": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Interval"
-          }
-        }
-      }
-    },
-    "Possible subscription": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Possible subscription"
-          }
-        }
-      }
-    },
-    "Matching payments": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Matching payments"
-          }
-        }
-      }
-    },
-    "First observed": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "First observed"
-          }
-        }
-      }
-    },
-    "Last observed": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Last observed"
-          }
-        }
-      }
-    },
-    "Next date from pattern": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Next date from pattern"
-          }
-        }
-      }
-    },
-    "Expected date has passed without a matching saved payment. This pattern may have ended, changed, or be missing imported data.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Expected date has passed without a matching saved payment. This pattern may have ended, changed, or be missing imported data."
-          }
-        }
-      }
-    },
-    "Estimated from saved activity. Future payment dates and amounts are not guaranteed.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Estimated from saved activity. Future payment dates and amounts are not guaranteed."
-          }
-        }
-      }
-    },
-    "Only positive expenses are considered. Transfers, refunds, income and future transactions are excluded. Changed amounts, missing periods and irregular groups may not be detected. The subscription label also requires every matched payment to use the Subscriptions category. Nothing is changed or scheduled automatically.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Only positive expenses are considered. Transfers, refunds, income and future transactions are excluded. Changed amounts, missing periods and irregular groups may not be detected. The subscription label also requires every matched payment to use the Subscriptions category. Nothing is changed or scheduled automatically."
-          }
-        }
-      }
-    },
-    "Regular payments": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regular payments"
-          }
-        }
-      }
-    },
-    "Weekly": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Weekly"
-          }
-        }
-      }
-    },
-    "Monthly": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Monthly"
-          }
-        }
-      }
-    },
-    "Yearly": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Yearly"
-          }
-        }
-      }
-    },
-    "Analytics": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Analytics"
-          }
-        }
-      }
-    },
-    "Current month net spending": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Current month net spending"
-          }
-        }
-      }
-    },
-    "Previous month": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Previous month"
-          }
-        }
-      }
-    },
-    "Previous month net spending": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Previous month net spending"
-          }
-        }
-      }
-    },
-    "Change in net spending": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Change in net spending"
-          }
-        }
-      }
-    },
-    "Percentage change": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Percentage change"
-          }
-        }
-      }
-    },
-    "Unknown merchant": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unknown merchant"
-          }
-        }
-      }
-    },
-    "By category · %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "By category · %@"
-          }
-        }
-      }
-    },
-    "By merchant · %@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "By merchant · %@"
-          }
-        }
-      }
-    },
-    "No expenses or refunds in these two months.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No expenses or refunds in these two months."
-          }
-        }
-      }
-    },
-    "Percentage change is unavailable when previous net spending is zero or negative.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Percentage change is unavailable when previous net spending is zero or negative."
-          }
-        }
-      }
-    },
-    "Current calendar month compared with the full previous month. The current month may be incomplete. Only saved transactions are included; missing activity is treated as zero.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Current calendar month compared with the full previous month. The current month may be incomplete. Only saved transactions are included; missing activity is treated as zero."
-          }
-        }
-      }
-    },
-    "Breakdowns show the current month, ordered by net spending. Refunds reduce spending in their recorded month and category. Merchant names use saved values. Transfers, income, adjustments and unknown transactions are excluded.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Breakdowns show the current month, ordered by net spending. Refunds reduce spending in their recorded month and category. Merchant names use saved values. Transfers, income, adjustments and unknown transactions are excluded."
-          }
-        }
-      }
-    },
-  "All dates": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "All dates"
-        }
-      }
-    }
-  },
-  "This month": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "This month"
-        }
-      }
-    }
-  },
-  "Last month": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Last month"
-        }
-      }
-    }
-  },
-  "Custom dates": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Custom dates"
-        }
-      }
-    }
-  },
-  "From": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "From"
-        }
-      }
-    }
-  },
-  "Through": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Through"
-        }
-      }
-    }
-  },
-  "The end date must be on or after the start date.": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "The end date must be on or after the start date."
-        }
-      }
-    }
-  },
-  "Transaction filters": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Transaction filters"
-        }
-      }
-    }
-  },
-  "All accounts": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "All accounts"
-        }
-      }
-    }
-  },
-  "All categories": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "All categories"
-        }
-      }
-    }
-  },
-  "All types": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "All types"
-        }
-      }
-    }
-  },
-  "All currencies": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "All currencies"
-        }
-      }
-    }
-  },
-  "Reset search and filters": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Reset search and filters"
-        }
-      }
-    }
-  },
-  "Filters apply together. Custom dates include both the first and last day.": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Filters apply together. Custom dates include both the first and last day."
-        }
-      }
-    }
-  },
-  "Filters": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Filters"
-        }
-      }
-    }
-  },
-  "Matching transactions: %lld": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Matching transactions: %lld"
-        }
-      }
-    }
-  },
-  "Explore demo data or import a CSV from Overview to get started.": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Explore demo data or import a CSV from Overview to get started."
-        }
-      }
-    }
-  },
-  "No matching transactions": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "No matching transactions"
-        }
-      }
-    }
-  },
-  "Try another search or reset your filters.": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Try another search or reset your filters."
-        }
-      }
-    }
-  },
-  "Merchant or description": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Merchant or description"
-        }
-      }
-    }
-  },
-  "Period": {
-    "extractionState": "manual",
-    "localizations": {
-      "en": {
-        "stringUnit": {
-          "state": "translated",
-          "value": "Period"
-        }
-      }
-    }
-  },
-    "A CSV field is too long.": {
+    "aCsvFieldIsTooLong": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -925,7 +12,7 @@
         }
       }
     },
-    "A file can contain up to 5,000 data rows.": {
+    "aFileCanContainUpTo5000DataRows": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -936,7 +23,7 @@
         }
       }
     },
-    "A file can contain up to 64 columns.": {
+    "aFileCanContainUpTo64Columns": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -947,7 +34,7 @@
         }
       }
     },
-    "Account": {
+    "account": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -958,7 +45,7 @@
         }
       }
     },
-    "Account kind": {
+    "accountKind": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -969,7 +56,7 @@
         }
       }
     },
-    "Account name": {
+    "accountName": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -980,7 +67,7 @@
         }
       }
     },
-    "Accounts": {
+    "accounts": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -991,7 +78,18 @@
         }
       }
     },
-    "Adjustment": {
+    "addRule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add rule"
+          }
+        }
+      }
+    },
+    "adjustment": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -1002,7 +100,18 @@
         }
       }
     },
-    "All amounts are money in": {
+    "allAccounts": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All accounts"
+          }
+        }
+      }
+    },
+    "allAmountsAreMoneyIn": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -1013,7 +122,7 @@
         }
       }
     },
-    "All amounts are money out": {
+    "allAmountsAreMoneyOut": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -1024,7 +133,51 @@
         }
       }
     },
-    "Amount column": {
+    "allCategories": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All categories"
+          }
+        }
+      }
+    },
+    "allCurrencies": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All currencies"
+          }
+        }
+      }
+    },
+    "allDates": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All dates"
+          }
+        }
+      }
+    },
+    "allTypes": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All types"
+          }
+        }
+      }
+    },
+    "amountColumn": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -1035,7 +188,18 @@
         }
       }
     },
-    "Bank": {
+    "analytics": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Analytics"
+          }
+        }
+      }
+    },
+    "bank": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -1046,18 +210,7 @@
         }
       }
     },
-    "CSV file": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "CSV file"
-          }
-        }
-      }
-    },
-    "Cancel": {
+    "cancel": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -1068,7 +221,18 @@
         }
       }
     },
-    "Cash": {
+    "cancelEditing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cancel editing"
+          }
+        }
+      }
+    },
+    "cash": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -1079,7 +243,7 @@
         }
       }
     },
-    "Category": {
+    "category": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -1090,18 +254,29 @@
         }
       }
     },
-    "Choose CSV file": {
+    "categoryBreakdownHeading": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Choose CSV file"
+            "value": "By category · %@"
           }
         }
       }
     },
-    "Choose a column": {
+    "changeInNetSpending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change in net spending"
+          }
+        }
+      }
+    },
+    "chooseAColumn": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -1112,7 +287,7 @@
         }
       }
     },
-    "Choose a file smaller than 2 MB.": {
+    "chooseAFileSmallerThan2Mb": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -1123,18 +298,18 @@
         }
       }
     },
-    "Choose an account or enter a new account name of up to 100 characters.": {
+    "chooseCsvFile": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Choose an account or enter a new account name of up to 100 characters."
+            "value": "Choose CSV file"
           }
         }
       }
     },
-    "Choose different columns for date, amount and description.": {
+    "chooseDifferentColumnsForDateAmountAndDescription": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -1145,7 +320,7 @@
         }
       }
     },
-    "Close": {
+    "close": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -1156,7 +331,7 @@
         }
       }
     },
-    "Column %lld: %@": {
+    "column": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -1167,7 +342,7 @@
         }
       }
     },
-    "Column mapping": {
+    "columnMapping": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -1178,7 +353,7 @@
         }
       }
     },
-    "Confirm import": {
+    "confirmImport": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -1189,7 +364,18 @@
         }
       }
     },
-    "Credit": {
+    "conflictingMerchantRuleMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A rule for this description, match mode and transaction type already exists. Edit that rule instead."
+          }
+        }
+      }
+    },
+    "credit": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -1200,1129 +386,18 @@
         }
       }
     },
-    "Currency": {
+    "csvFile": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Currency"
+            "value": "CSV file"
           }
         }
       }
     },
-    "Currency column": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Currency column"
-          }
-        }
-      }
-    },
-    "Data rows: %lld": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Data rows: %lld"
-          }
-        }
-      }
-    },
-    "Date": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Date"
-          }
-        }
-      }
-    },
-    "Date column": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Date column"
-          }
-        }
-      }
-    },
-    "Date format": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Date format"
-          }
-        }
-      }
-    },
-    "Debit": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Debit"
-          }
-        }
-      }
-    },
-    "Default currency (EUR, USD…)": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Default currency (EUR, USD…)"
-          }
-        }
-      }
-    },
-    "Default transaction type": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Default transaction type"
-          }
-        }
-      }
-    },
-    "Demo data will be replaced only after you confirm this import.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Demo data will be replaced only after you confirm this import."
-          }
-        }
-      }
-    },
-    "Demo data will be replaced. Selected: %lld. Skipped: %lld. Your CSV file will not be changed.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Demo data will be replaced. Selected: %lld. Skipped: %lld. Your CSV file will not be changed."
-          }
-        }
-      }
-    },
-    "Demo data · stored on this device": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Demo data · stored on this device"
-          }
-        }
-      }
-    },
-    "Description column": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Description column"
-          }
-        }
-      }
-    },
-    "Destination account": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Destination account"
-          }
-        }
-      }
-    },
-    "Direction": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Direction"
-          }
-        }
-      }
-    },
-    "Done": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Done"
-          }
-        }
-      }
-    },
-    "Edit mapping": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Edit mapping"
-          }
-        }
-      }
-    },
-    "Entertainment": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Entertainment"
-          }
-        }
-      }
-    },
-    "Excluded": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Excluded"
-          }
-        }
-      }
-    },
-    "Expense": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Expense"
-          }
-        }
-      }
-    },
-    "Expenses": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Expenses"
-          }
-        }
-      }
-    },
-    "Explore demo": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Explore demo"
-          }
-        }
-      }
-    },
-    "Explore demo data from Overview to get started.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Explore demo data from Overview to get started."
-          }
-        }
-      }
-    },
-    "Explore with demo data?": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Explore with demo data?"
-          }
-        }
-      }
-    },
-    "Family": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Family"
-          }
-        }
-      }
-    },
-    "FinAI": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "FinAI"
-          }
-        }
-      }
-    },
-    "First rows": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "First rows"
-          }
-        }
-      }
-    },
-    "Groceries": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Groceries"
-          }
-        }
-      }
-    },
-    "Health": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Health"
-          }
-        }
-      }
-    },
-    "Housing": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Housing"
-          }
-        }
-      }
-    },
-    "Import CSV": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Import CSV"
-          }
-        }
-      }
-    },
-    "Import a CSV file using the toolbar, or explore with synthetic demo data.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Import a CSV file using the toolbar, or explore with synthetic demo data."
-          }
-        }
-      }
-    },
-    "Import needs attention": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Import needs attention"
-          }
-        }
-      }
-    },
-    "Import selected": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Import selected"
-          }
-        }
-      }
-    },
-    "Import selected transactions?": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Import selected transactions?"
-          }
-        }
-      }
-    },
-    "Imported data": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Imported data"
-          }
-        }
-      }
-    },
-    "Included": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Included"
-          }
-        }
-      }
-    },
-    "Income": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Income"
-          }
-        }
-      }
-    },
-    "Interpretation": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Interpretation"
-          }
-        }
-      }
-    },
-    "Invalid rows to skip: %lld": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Invalid rows to skip: %lld"
-          }
-        }
-      }
-    },
-    "Load demo data": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Load demo data"
-          }
-        }
-      }
-    },
-    "Loading local data…": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Loading local data…"
-          }
-        }
-      }
-    },
-    "Local data unavailable": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Local data unavailable"
-          }
-        }
-      }
-    },
-    "Local data · stored on this device": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Local data · stored on this device"
-          }
-        }
-      }
-    },
-    "Money direction": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Money direction"
-          }
-        }
-      }
-    },
-    "Money in": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Money in"
-          }
-        }
-      }
-    },
-    "Money out": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Money out"
-          }
-        }
-      }
-    },
-    "Negative out, positive in": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Negative out, positive in"
-          }
-        }
-      }
-    },
-    "Net flow": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Net flow"
-          }
-        }
-      }
-    },
-    "Net spending": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Net spending"
-          }
-        }
-      }
-    },
-    "Net spending is expenses minus refunds. Net flow is income minus net spending. Transfers, adjustments and unknown transactions are excluded. These totals are not account balances.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Net spending is expenses minus refunds. Net flow is income minus net spending. Transfers, adjustments and unknown transactions are excluded. These totals are not account balances."
-          }
-        }
-      }
-    },
-    "New account": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "New account"
-          }
-        }
-      }
-    },
-    "No accounts yet": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No accounts yet"
-          }
-        }
-      }
-    },
-    "No transactions this month.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No transactions this month."
-          }
-        }
-      }
-    },
-    "No transactions yet": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No transactions yet"
-          }
-        }
-      }
-    },
-    "Number format": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Number format"
-          }
-        }
-      }
-    },
-    "Optional columns use the default currency and transaction type below. Type values: expense, income, transfer, refund, adjustment, unknown.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Optional columns use the default currency and transaction type below. Type values: expense, income, transfer, refund, adjustment, unknown."
-          }
-        }
-      }
-    },
-    "Original description": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Original description"
-          }
-        }
-      }
-    },
-    "Other": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Other"
-          }
-        }
-      }
-    },
-    "Overview": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Overview"
-          }
-        }
-      }
-    },
-    "Possible duplicate": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Possible duplicate"
-          }
-        }
-      }
-    },
-    "Possible duplicates are unchecked. Include them only if they are separate transactions. Unknown types are excluded from overview totals.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Possible duplicates are unchecked. Include them only if they are separate transactions. Unknown types are excluded from overview totals."
-          }
-        }
-      }
-    },
-    "Preview import": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Preview import"
-          }
-        }
-      }
-    },
-    "Refresh": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Refresh"
-          }
-        }
-      }
-    },
-    "Refund": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Refund"
-          }
-        }
-      }
-    },
-    "Refunds": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Refunds"
-          }
-        }
-      }
-    },
-    "Restaurants": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Restaurants"
-          }
-        }
-      }
-    },
-    "Review before saving": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Review before saving"
-          }
-        }
-      }
-    },
-    "Review import": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Review import"
-          }
-        }
-      }
-    },
-    "Row %lld": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Row %lld"
-          }
-        }
-      }
-    },
-    "Rows that cannot be imported": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Rows that cannot be imported"
-          }
-        }
-      }
-    },
-    "Savings": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Savings"
-          }
-        }
-      }
-    },
-    "Select at least one valid transaction.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Select at least one valid transaction."
-          }
-        }
-      }
-    },
-    "Selected transactions: %lld": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Selected transactions: %lld"
-          }
-        }
-      }
-    },
-    "Selected: %lld. Skipped: %lld. Your CSV file will not be changed.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Selected: %lld. Skipped: %lld. Your CSV file will not be changed."
-          }
-        }
-      }
-    },
-    "Shopping": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Shopping"
-          }
-        }
-      }
-    },
-    "Source": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Source"
-          }
-        }
-      }
-    },
-    "Subscriptions": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Subscriptions"
-          }
-        }
-      }
-    },
-    "Synthetic accounts and transactions will be saved on this device. No bank connection is needed.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Synthetic accounts and transactions will be saved on this device. No bank connection is needed."
-          }
-        }
-      }
-    },
-    "Synthetic demo data": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Synthetic demo data"
-          }
-        }
-      }
-    },
-    "The amount does not match the selected number format or exceeds supported precision.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The amount does not match the selected number format or exceeds supported precision."
-          }
-        }
-      }
-    },
-    "The date does not match the selected format or is not a valid calendar date.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The date does not match the selected format or is not a valid calendar date."
-          }
-        }
-      }
-    },
-    "The description is empty.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The description is empty."
-          }
-        }
-      }
-    },
-    "The file could not be read. Choose it again and check access in Files.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The file could not be read. Choose it again and check access in Files."
-          }
-        }
-      }
-    },
-    "The file needs a header and at least one data row.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The file needs a header and at least one data row."
-          }
-        }
-      }
-    },
-    "The import could not be saved. Your previous data is preserved. Try again or reopen the import.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The import could not be saved. Your previous data is preserved. Try again or reopen the import."
-          }
-        }
-      }
-    },
-    "The row has invalid CSV formatting or a different number of columns.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The row has invalid CSV formatting or a different number of columns."
-          }
-        }
-      }
-    },
-    "The sign controls direction, not the transaction type. Unknown transactions are excluded from overview totals until you choose a type in the preview.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The sign controls direction, not the transaction type. Unknown transactions are excluded from overview totals until you choose a type in the preview."
-          }
-        }
-      }
-    },
-    "The transaction type conflicts with the selected money direction.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The transaction type conflicts with the selected money direction."
-          }
-        }
-      }
-    },
-    "The type must be expense, income, transfer, refund, adjustment or unknown.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The type must be expense, income, transfer, refund, adjustment or unknown."
-          }
-        }
-      }
-    },
-    "These amounts cannot be combined with your saved data without losing precision. Check the amounts and number format.": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "These amounts cannot be combined with your saved data without losing precision. Check the amounts and number format."
-          }
-        }
-      }
-    },
-    "Transaction": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Transaction"
-          }
-        }
-      }
-    },
-    "Transaction details": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Transaction details"
-          }
-        }
-      }
-    },
-    "Transaction type": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Transaction type"
-          }
-        }
-      }
-    },
-    "Transactions": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Transactions"
-          }
-        }
-      }
-    },
-    "Transactions to review": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Transactions to review"
-          }
-        }
-      }
-    },
-    "Transfer": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Transfer"
-          }
-        }
-      }
-    },
-    "Transfers": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Transfers"
-          }
-        }
-      }
-    },
-    "Transport": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Transport"
-          }
-        }
-      }
-    },
-    "Travel": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Travel"
-          }
-        }
-      }
-    },
-    "Try again": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Try again"
-          }
-        }
-      }
-    },
-    "Type column": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Type column"
-          }
-        }
-      }
-    },
-    "UTF-8 or UTF-16. Comma, semicolon and tab delimiters are detected automatically. Up to 2 MB and 5,000 rows.": {
+    "csvRequirementsExplanation": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -2333,106 +408,315 @@
         }
       }
     },
-    "Unable to load local data. Your saved data has not been replaced.": {
+    "currency": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Unable to load local data. Your saved data has not been replaced."
+            "value": "Currency"
           }
         }
       }
     },
-    "Unable to save demo data. Please try again.": {
+    "currencyColumn": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Unable to save demo data. Please try again."
+            "value": "Currency column"
           }
         }
       }
     },
-    "Understand your finances": {
+    "currentMonthNetSpending": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Understand your finances"
+            "value": "Current month net spending"
           }
         }
       }
     },
-    "Unknown": {
+    "customDates": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Unknown"
+            "value": "Custom dates"
           }
         }
       }
     },
-    "Use a UTF-8 or UTF-16 CSV file.": {
+    "dashboardTotalsExplanation": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Use a UTF-8 or UTF-16 CSV file."
+            "value": "Net spending is expenses minus refunds. Net flow is income minus net spending. Transfers, adjustments and unknown transactions are excluded. These totals are not account balances."
           }
         }
       }
     },
-    "Use a supported three-letter currency code, such as EUR or USD.": {
+    "dataRows": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Use a supported three-letter currency code, such as EUR or USD."
+            "value": "Data rows: %lld"
           }
         }
       }
     },
-    "Use default": {
+    "date": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Use default"
+            "value": "Date"
           }
         }
       }
     },
-    "Utilities": {
+    "dateColumn": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Utilities"
+            "value": "Date column"
           }
         }
       }
     },
-    "Merchant or payee": {
+    "dateFormat": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Merchant or payee"
+            "value": "Date format"
           }
         }
       }
     },
-    "Enter a merchant or payee for each selected transaction.": {
+    "debit": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Debit"
+          }
+        }
+      }
+    },
+    "defaultCurrencyEurUsd": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Default currency (EUR, USD…)"
+          }
+        }
+      }
+    },
+    "defaultTransactionType": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Default transaction type"
+          }
+        }
+      }
+    },
+    "deleteMerchantRule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete merchant rule?"
+          }
+        }
+      }
+    },
+    "deleteRule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Delete rule"
+          }
+        }
+      }
+    },
+    "demoConfirmationMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synthetic accounts and transactions will be saved on this device. No bank connection is needed."
+          }
+        }
+      }
+    },
+    "demoDataWillBeReplacedOnlyAfterYouConfirmThisImport": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Demo data will be replaced only after you confirm this import."
+          }
+        }
+      }
+    },
+    "demoDataOnDevice": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Demo data · stored on this device"
+          }
+        }
+      }
+    },
+    "demoImportConfirmationMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Demo data will be replaced. Selected: %lld. Skipped: %lld. Your CSV file will not be changed."
+          }
+        }
+      }
+    },
+    "descriptionColumn": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Description column"
+          }
+        }
+      }
+    },
+    "descriptionStartsWith": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Description starts with"
+          }
+        }
+      }
+    },
+    "descriptionToMatch": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Description to match"
+          }
+        }
+      }
+    },
+    "destinationAccount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Destination account"
+          }
+        }
+      }
+    },
+    "direction": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Direction"
+          }
+        }
+      }
+    },
+    "done": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Done"
+          }
+        }
+      }
+    },
+    "duplicateReviewExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Possible duplicates are unchecked. Up to three matches are shown for review. Keep both only if they are separate transactions. Unknown types are excluded from overview totals."
+          }
+        }
+      }
+    },
+    "editMapping": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit mapping"
+          }
+        }
+      }
+    },
+    "editMerchantRule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit merchant rule"
+          }
+        }
+      }
+    },
+    "editRule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit rule"
+          }
+        }
+      }
+    },
+    "enterAMerchantOrPayeeForEachSelectedTransaction": {
       "extractionState": "manual",
       "localizations": {
         "en": {
@@ -2443,13 +727,1732 @@
         }
       }
     },
-    "Known merchants and categories are suggested locally. Review and correct them before saving. Changing the transaction type resets its category suggestion.": {
+    "entertainment": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Entertainment"
+          }
+        }
+      }
+    },
+    "excluded": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluded"
+          }
+        }
+      }
+    },
+    "expense": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expense"
+          }
+        }
+      }
+    },
+    "expenses": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expenses"
+          }
+        }
+      }
+    },
+    "exploreDemo": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Explore demo"
+          }
+        }
+      }
+    },
+    "exploreDemoDataFromOverviewToGetStarted": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Explore demo data from Overview to get started."
+          }
+        }
+      }
+    },
+    "exploreDemoDataOrImportACsvFromOverviewToGetStarted": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Explore demo data or import a CSV from Overview to get started."
+          }
+        }
+      }
+    },
+    "exploreWithDemoData": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Explore with demo data?"
+          }
+        }
+      }
+    },
+    "family": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Family"
+          }
+        }
+      }
+    },
+    "filters": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filters"
+          }
+        }
+      }
+    },
+    "finAI": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "FinAI"
+          }
+        }
+      }
+    },
+    "firstObserved": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "First observed"
+          }
+        }
+      }
+    },
+    "firstRows": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "First rows"
+          }
+        }
+      }
+    },
+    "from": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "From"
+          }
+        }
+      }
+    },
+    "fullDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Full description"
+          }
+        }
+      }
+    },
+    "gettingStartedExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import a CSV file using the toolbar, or explore with synthetic demo data."
+          }
+        }
+      }
+    },
+    "groceries": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Groceries"
+          }
+        }
+      }
+    },
+    "health": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Health"
+          }
+        }
+      }
+    },
+    "housing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Housing"
+          }
+        }
+      }
+    },
+    "importConfirmationMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selected: %lld. Skipped: %lld. Your CSV file will not be changed."
+          }
+        }
+      }
+    },
+    "importCsv": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import CSV"
+          }
+        }
+      }
+    },
+    "importDirectionExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The sign controls direction, not the transaction type. Unknown transactions are excluded from overview totals until you choose a type in the preview."
+          }
+        }
+      }
+    },
+    "importNeedsAttention": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import needs attention"
+          }
+        }
+      }
+    },
+    "importSelected": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import selected"
+          }
+        }
+      }
+    },
+    "importSelectedTransactions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import selected transactions?"
+          }
+        }
+      }
+    },
+    "importStorageChangedMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The import could not be saved. Your previous data is preserved. Try again or reopen the import."
+          }
+        }
+      }
+    },
+    "importedData": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Imported data"
+          }
+        }
+      }
+    },
+    "included": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Included"
+          }
+        }
+      }
+    },
+    "income": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Income"
+          }
+        }
+      }
+    },
+    "interpretation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interpretation"
+          }
+        }
+      }
+    },
+    "interval": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interval"
+          }
+        }
+      }
+    },
+    "invalidImportAccountMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose an account or enter a new account name of up to 100 characters."
+          }
+        }
+      }
+    },
+    "invalidImportAmountMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The amount does not match the selected number format or exceeds supported precision."
+          }
+        }
+      }
+    },
+    "invalidImportDateMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The date does not match the selected format or is not a valid calendar date."
+          }
+        }
+      }
+    },
+    "invalidImportKindMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The type must be expense, income, transfer, refund, adjustment or unknown."
+          }
+        }
+      }
+    },
+    "invalidMerchantRuleMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a description with letters or numbers (up to 500 characters) and a merchant (up to 200 characters)."
+          }
+        }
+      }
+    },
+    "invalidRowsToSkip": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Invalid rows to skip: %lld"
+          }
+        }
+      }
+    },
+    "keepBothTransactions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep both transactions"
+          }
+        }
+      }
+    },
+    "lastMonth": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last month"
+          }
+        }
+      }
+    },
+    "lastObserved": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Last observed"
+          }
+        }
+      }
+    },
+    "legacyDuplicateReviewExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Possible duplicates are unchecked. Include them only if they are separate transactions. Unknown types are excluded from overview totals."
+          }
+        }
+      }
+    },
+    "loadDemoData": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Load demo data"
+          }
+        }
+      }
+    },
+    "loadingLocalData": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Loading local data…"
+          }
+        }
+      }
+    },
+    "localDataUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Local data unavailable"
+          }
+        }
+      }
+    },
+    "localDataOnDevice": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Local data · stored on this device"
+          }
+        }
+      }
+    },
+    "malformedCSVMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The row has invalid CSV formatting or a different number of columns."
+          }
+        }
+      }
+    },
+    "match": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Match"
+          }
+        }
+      }
+    },
+    "matchesASavedTransactionOnThisAccount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matches a saved transaction on this account"
+          }
+        }
+      }
+    },
+    "matchesEarlierImportRow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matches earlier import row %lld"
+          }
+        }
+      }
+    },
+    "matchingPayments": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matching payments"
+          }
+        }
+      }
+    },
+    "matchingTransactions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matching transactions: %lld"
+          }
+        }
+      }
+    },
+    "merchantBreakdownHeading": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "By merchant · %@"
+          }
+        }
+      }
+    },
+    "merchantOrDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Merchant or description"
+          }
+        }
+      }
+    },
+    "merchantOrPayee": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Merchant or payee"
+          }
+        }
+      }
+    },
+    "merchantRuleMatchingExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Matching ignores case, punctuation and spacing, and uses whole words. A short prefix can match many transactions; review every suggestion."
+          }
+        }
+      }
+    },
+    "merchantRules": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Merchant rules"
+          }
+        }
+      }
+    },
+    "merchantRulesExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rules run locally before built-in suggestions. They apply to future previews only. Exact descriptions take priority, then the longest prefix. Transaction types, amounts and currencies stay unchanged."
+          }
+        }
+      }
+    },
+    "merchantSuggestionsExplanation": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
             "value": "Known merchants and categories are suggested locally. Review and correct them before saving. Changing the transaction type resets its category suggestion."
+          }
+        }
+      }
+    },
+    "moneyDirection": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Money direction"
+          }
+        }
+      }
+    },
+    "moneyIn": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Money in"
+          }
+        }
+      }
+    },
+    "moneyOut": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Money out"
+          }
+        }
+      }
+    },
+    "monthly": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly"
+          }
+        }
+      }
+    },
+    "monthlyComparisonExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Current calendar month compared with the full previous month. The current month may be incomplete. Only saved transactions are included; missing activity is treated as zero."
+          }
+        }
+      }
+    },
+    "negativeOutPositiveIn": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Negative out, positive in"
+          }
+        }
+      }
+    },
+    "netFlow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net flow"
+          }
+        }
+      }
+    },
+    "netSpending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net spending"
+          }
+        }
+      }
+    },
+    "newAccount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New account"
+          }
+        }
+      }
+    },
+    "newMerchantRule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "New merchant rule"
+          }
+        }
+      }
+    },
+    "nextDateFromPattern": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next date from pattern"
+          }
+        }
+      }
+    },
+    "noAccountsYet": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No accounts yet"
+          }
+        }
+      }
+    },
+    "noExpensesOrRefundsInTheseTwoMonths": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No expenses or refunds in these two months."
+          }
+        }
+      }
+    },
+    "noMatchingTransactions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No matching transactions"
+          }
+        }
+      }
+    },
+    "noMerchantRulesSaved": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No merchant rules saved."
+          }
+        }
+      }
+    },
+    "noRecurringPaymentsExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No regular payment patterns found. More transaction history may be needed."
+          }
+        }
+      }
+    },
+    "noTransactionsThisMonth": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No transactions this month."
+          }
+        }
+      }
+    },
+    "noTransactionsYet": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No transactions yet"
+          }
+        }
+      }
+    },
+    "numberFormat": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Number format"
+          }
+        }
+      }
+    },
+    "optionalImportColumnsExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Optional columns use the default currency and transaction type below. Type values: expense, income, transfer, refund, adjustment, unknown."
+          }
+        }
+      }
+    },
+    "originalDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original description"
+          }
+        }
+      }
+    },
+    "other": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Other"
+          }
+        }
+      }
+    },
+    "overview": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Overview"
+          }
+        }
+      }
+    },
+    "percentageChange": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Percentage change"
+          }
+        }
+      }
+    },
+    "percentageChangeUnavailableExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Percentage change is unavailable when previous net spending is zero or negative."
+          }
+        }
+      }
+    },
+    "period": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Period"
+          }
+        }
+      }
+    },
+    "possibleDuplicate": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Possible duplicate"
+          }
+        }
+      }
+    },
+    "possibleSubscription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Possible subscription"
+          }
+        }
+      }
+    },
+    "preparingImport": {
+      "extractionState": "manual"
+    },
+    "previewImport": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preview import"
+          }
+        }
+      }
+    },
+    "previousMonth": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous month"
+          }
+        }
+      }
+    },
+    "previousMonthNetSpending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Previous month net spending"
+          }
+        }
+      }
+    },
+    "recurringDetectionExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Possible recurring expenses, not confirmed contracts. Matching uses at least three equal payments to the same saved merchant, on one account and in one currency. Weekly dates may vary by one day; monthly and yearly dates by three days."
+          }
+        }
+      }
+    },
+    "recurringEstimateExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimated from saved activity. Future payment dates and amounts are not guaranteed."
+          }
+        }
+      }
+    },
+    "recurringLimitationsExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Only positive expenses are considered. Transfers, refunds, income and future transactions are excluded. Changed amounts, missing periods and irregular groups may not be detected. The subscription label also requires every matched payment to use the Subscriptions category. Nothing is changed or scheduled automatically."
+          }
+        }
+      }
+    },
+    "refresh": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refresh"
+          }
+        }
+      }
+    },
+    "refund": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refund"
+          }
+        }
+      }
+    },
+    "refunds": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Refunds"
+          }
+        }
+      }
+    },
+    "regularPayments": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Regular payments"
+          }
+        }
+      }
+    },
+    "resetSearchAndFilters": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset search and filters"
+          }
+        }
+      }
+    },
+    "restaurants": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restaurants"
+          }
+        }
+      }
+    },
+    "reviewBeforeSaving": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review before saving"
+          }
+        }
+      }
+    },
+    "reviewImport": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Review import"
+          }
+        }
+      }
+    },
+    "row": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Row %lld"
+          }
+        }
+      }
+    },
+    "rowsThatCannotBeImported": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rows that cannot be imported"
+          }
+        }
+      }
+    },
+    "rulesNeedAttention": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rules need attention"
+          }
+        }
+      }
+    },
+    "sameAmountAndASimilarDescriptionWithinThreeDays": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Same amount and a similar description within three days"
+          }
+        }
+      }
+    },
+    "sameDateAmountAndOriginalDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Same date, amount and original description"
+          }
+        }
+      }
+    },
+    "sameDayAndAmountWithASimilarDescription": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Same day and amount with a similar description"
+          }
+        }
+      }
+    },
+    "saveMerchantRule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save merchant rule"
+          }
+        }
+      }
+    },
+    "saveRule": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save rule"
+          }
+        }
+      }
+    },
+    "savedMerchantRules": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved merchant rules"
+          }
+        }
+      }
+    },
+    "savedTransactionsWillStayUnchanged": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved transactions will stay unchanged."
+          }
+        }
+      }
+    },
+    "savings": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Savings"
+          }
+        }
+      }
+    },
+    "selectAtLeastOneValidTransaction": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Select at least one valid transaction."
+          }
+        }
+      }
+    },
+    "selectedTransactions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Selected transactions: %lld"
+          }
+        }
+      }
+    },
+    "shopping": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Shopping"
+          }
+        }
+      }
+    },
+    "skipThisTransaction": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Skip this transaction"
+          }
+        }
+      }
+    },
+    "source": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Source"
+          }
+        }
+      }
+    },
+    "spendingBreakdownExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Breakdowns show the current month, ordered by net spending. Refunds reduce spending in their recorded month and category. Merchant names use saved values. Transfers, income, adjustments and unknown transactions are excluded."
+          }
+        }
+      }
+    },
+    "staleRecurringPaymentExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expected date has passed without a matching saved payment. This pattern may have ended, changed, or be missing imported data."
+          }
+        }
+      }
+    },
+    "subscriptions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Subscriptions"
+          }
+        }
+      }
+    },
+    "syntheticDemoData": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Synthetic demo data"
+          }
+        }
+      }
+    },
+    "theDescriptionIsEmpty": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The description is empty."
+          }
+        }
+      }
+    },
+    "theEndDateMustBeOnOrAfterTheStartDate": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The end date must be on or after the start date."
+          }
+        }
+      }
+    },
+    "theFileNeedsAHeaderAndAtLeastOneDataRow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The file needs a header and at least one data row."
+          }
+        }
+      }
+    },
+    "theTransactionTypeConflictsWithTheSelectedMoneyDirection": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The transaction type conflicts with the selected money direction."
+          }
+        }
+      }
+    },
+    "thisMonth": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This month"
+          }
+        }
+      }
+    },
+    "thisRuleNoLongerExistsCloseAndReopenMerchantRules": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This rule no longer exists. Close and reopen merchant rules."
+          }
+        }
+      }
+    },
+    "through": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Through"
+          }
+        }
+      }
+    },
+    "transaction": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transaction"
+          }
+        }
+      }
+    },
+    "transactionDetails": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transaction details"
+          }
+        }
+      }
+    },
+    "transactionFilters": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transaction filters"
+          }
+        }
+      }
+    },
+    "transactionFiltersExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Filters apply together. Custom dates include both the first and last day."
+          }
+        }
+      }
+    },
+    "transactionType": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transaction type"
+          }
+        }
+      }
+    },
+    "transactions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transactions"
+          }
+        }
+      }
+    },
+    "transactionsToReview": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transactions to review"
+          }
+        }
+      }
+    },
+    "transfer": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfer"
+          }
+        }
+      }
+    },
+    "transfers": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transfers"
+          }
+        }
+      }
+    },
+    "transport": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Transport"
+          }
+        }
+      }
+    },
+    "travel": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Travel"
+          }
+        }
+      }
+    },
+    "tryAgain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try again"
+          }
+        }
+      }
+    },
+    "tryAnotherSearchOrResetYourFilters": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try another search or reset your filters."
+          }
+        }
+      }
+    },
+    "typeColumn": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Type column"
+          }
+        }
+      }
+    },
+    "unableToLoadLocalDataYourSavedDataHasNotBeenReplaced": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to load local data. Your saved data has not been replaced."
+          }
+        }
+      }
+    },
+    "unableToLoadMerchantRulesTryAgainBeforeEditing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to load merchant rules. Try again before editing."
+          }
+        }
+      }
+    },
+    "unableToSaveDemoDataPleaseTryAgain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to save demo data. Please try again."
+          }
+        }
+      }
+    },
+    "unableToSaveMerchantRulesPleaseTryAgain": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to save merchant rules. Please try again."
+          }
+        }
+      }
+    },
+    "understandYourFinances": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Understand your finances"
+          }
+        }
+      }
+    },
+    "unknown": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown"
+          }
+        }
+      }
+    },
+    "unknownMerchant": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unknown merchant"
+          }
+        }
+      }
+    },
+    "unreadableImportFileMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The file could not be read. Choose it again and check access in Files."
+          }
+        }
+      }
+    },
+    "unsupportedImportTotalsMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "These amounts cannot be combined with your saved data without losing precision. Check the amounts and number format."
+          }
+        }
+      }
+    },
+    "updatingRules": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updating rules…"
+          }
+        }
+      }
+    },
+    "useASupportedThreeLetterCurrencyCodeSuchAsEurOrUsd": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use a supported three-letter currency code, such as EUR or USD."
+          }
+        }
+      }
+    },
+    "useAUtf8OrUtf16CsvFile": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use a UTF-8 or UTF-16 CSV file."
+          }
+        }
+      }
+    },
+    "useDefault": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Use default"
+          }
+        }
+      }
+    },
+    "utilities": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Utilities"
+          }
+        }
+      }
+    },
+    "weekly": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Weekly"
+          }
+        }
+      }
+    },
+    "yearly": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Yearly"
           }
         }
       }

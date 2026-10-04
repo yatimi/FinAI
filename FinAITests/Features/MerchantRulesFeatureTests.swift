@@ -73,11 +73,11 @@ struct MerchantRulesFeatureTests {
             }
         }
         let alert = AlertState<MerchantRulesFeature.Action.Alert> {
-            TextState("Delete merchant rule?")
+            TextState(.deleteMerchantRule)
         } actions: {
-            ButtonState(role: .destructive, action: .confirmDelete(rule.id)) { TextState("Delete rule") }
-            ButtonState(role: .cancel) { TextState("Cancel") }
-        } message: { TextState("Saved transactions will stay unchanged.") }
+            ButtonState(role: .destructive, action: .confirmDelete(rule.id)) { TextState(.deleteRule) }
+            ButtonState(role: .cancel) { TextState(.cancel) }
+        } message: { TextState(.savedTransactionsWillStayUnchanged) }
         await store.send(.deleteTapped(rule.id)) { $0.alert = alert }
         await store.send(.alert(.dismiss)) { $0.alert = nil }
         await store.send(.deleteTapped(rule.id)) { $0.alert = alert }

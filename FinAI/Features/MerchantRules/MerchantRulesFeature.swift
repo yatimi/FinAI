@@ -148,11 +148,11 @@ struct MerchantRulesFeature {
             case let .deleteTapped(id):
                 guard state.phase == .idle else { return .none }
                 state.alert = AlertState {
-                    TextState("Delete merchant rule?")
+                    TextState(.deleteMerchantRule)
                 } actions: {
-                    ButtonState(role: .destructive, action: .confirmDelete(id)) { TextState("Delete rule") }
-                    ButtonState(role: .cancel) { TextState("Cancel") }
-                } message: { TextState("Saved transactions will stay unchanged.") }
+                    ButtonState(role: .destructive, action: .confirmDelete(id)) { TextState(.deleteRule) }
+                    ButtonState(role: .cancel) { TextState(.cancel) }
+                } message: { TextState(.savedTransactionsWillStayUnchanged) }
                 return .none
             case let .alert(.presented(.confirmDelete(id))):
                 guard state.phase == .idle else { return .none }

@@ -10,26 +10,26 @@ import Foundation
 extension ImportError {
     var message: LocalizedStringResource {
         switch self {
-        case .unreadableFile: "The file could not be read. Choose it again and check access in Files."
-        case .fileTooLarge: "Choose a file smaller than 2 MB."
-        case .unsupportedEncoding: "Use a UTF-8 or UTF-16 CSV file."
-        case .malformedCSV: "The row has invalid CSV formatting or a different number of columns."
-        case .emptyFile: "The file needs a header and at least one data row."
-        case .tooManyRows: "A file can contain up to 5,000 data rows."
-        case .tooManyColumns: "A file can contain up to 64 columns."
-        case .fieldTooLong: "A CSV field is too long."
-        case .invalidMapping: "Choose different columns for date, amount and description."
-        case .invalidAmount: "The amount does not match the selected number format or exceeds supported precision."
-        case .invalidDate: "The date does not match the selected format or is not a valid calendar date."
-        case .invalidCurrency: "Use a supported three-letter currency code, such as EUR or USD."
-        case .invalidKind: "The type must be expense, income, transfer, refund, adjustment or unknown."
-        case .missingDescription: "The description is empty."
-        case .missingMerchant: "Enter a merchant or payee for each selected transaction."
-        case .inconsistentDirection: "The transaction type conflicts with the selected money direction."
-        case .invalidAccount: "Choose an account or enter a new account name of up to 100 characters."
-        case .emptySelection: "Select at least one valid transaction."
-        case .unsupportedTotals: "These amounts cannot be combined with your saved data without losing precision. Check the amounts and number format."
-        case .storageChanged: "The import could not be saved. Your previous data is preserved. Try again or reopen the import."
+        case .unreadableFile: .unreadableImportFileMessage
+        case .fileTooLarge: .chooseAFileSmallerThan2Mb
+        case .unsupportedEncoding: .useAUtf8OrUtf16CsvFile
+        case .malformedCSV: .malformedCSVMessage
+        case .emptyFile: .theFileNeedsAHeaderAndAtLeastOneDataRow
+        case .tooManyRows: .aFileCanContainUpTo5000DataRows
+        case .tooManyColumns: .aFileCanContainUpTo64Columns
+        case .fieldTooLong: .aCsvFieldIsTooLong
+        case .invalidMapping: .chooseDifferentColumnsForDateAmountAndDescription
+        case .invalidAmount: .invalidImportAmountMessage
+        case .invalidDate: .invalidImportDateMessage
+        case .invalidCurrency: .useASupportedThreeLetterCurrencyCodeSuchAsEurOrUsd
+        case .invalidKind: .invalidImportKindMessage
+        case .missingDescription: .theDescriptionIsEmpty
+        case .missingMerchant: .enterAMerchantOrPayeeForEachSelectedTransaction
+        case .inconsistentDirection: .theTransactionTypeConflictsWithTheSelectedMoneyDirection
+        case .invalidAccount: .invalidImportAccountMessage
+        case .emptySelection: .selectAtLeastOneValidTransaction
+        case .unsupportedTotals: .unsupportedImportTotalsMessage
+        case .storageChanged: .importStorageChangedMessage
         }
     }
 }
@@ -37,9 +37,9 @@ extension ImportError {
 extension CSVMapping.DirectionRule {
     var title: LocalizedStringResource {
         switch self {
-        case .signed: "Negative out, positive in"
-        case .moneyOut: "All amounts are money out"
-        case .moneyIn: "All amounts are money in"
+        case .signed: .negativeOutPositiveIn
+        case .moneyOut: .allAmountsAreMoneyOut
+        case .moneyIn: .allAmountsAreMoneyIn
         }
     }
 }
@@ -48,9 +48,9 @@ extension CSVMapping.DirectionRule {
 extension ImportDuplicateMatch.Reason {
     var title: LocalizedStringResource {
         switch self {
-        case .exact: "Same date, amount and original description"
-        case .similarDescription: "Same day and amount with a similar description"
-        case .nearbyDate: "Same amount and a similar description within three days"
+        case .exact: .sameDateAmountAndOriginalDescription
+        case .similarDescription: .sameDayAndAmountWithASimilarDescription
+        case .nearbyDate: .sameAmountAndASimilarDescriptionWithinThreeDays
         }
     }
 }

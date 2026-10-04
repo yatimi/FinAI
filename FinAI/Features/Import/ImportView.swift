@@ -15,49 +15,49 @@ struct ImportView: View {
     var body: some View {
         NavigationStack {
             Form {
-                if store.phase != .idle { ProgressView("Preparing import…") }
+                if store.phase != .idle { ProgressView(.preparingImport) }
                 if let error = store.error {
-                    Section("Import needs attention") { Text(error.message).foregroundStyle(.red) }
-                        .accessibilityIdentifier("importError")
+                    Section(.importNeedsAttention) { Text(error.message).foregroundStyle(.red) }
+                        .accessibilityIdentifier(AccessibilityID.importError)
                 }
                 if store.replacingDemo {
                     Section {
-                        Text("Demo data will be replaced only after you confirm this import.")
+                        Text(.demoDataWillBeReplacedOnlyAfterYouConfirmThisImport)
                     }
                 }
                 if let preview = store.preview {
                     ImportPreviewSection(store: store, preview: preview)
                 } else {
-                    Section("CSV file") {
+                    Section(.csvFile) {
                         if let document = store.document {
                             Text(document.name)
-                            Text("Data rows: \(document.rows.count)")
+                            Text(.dataRows(document.rows.count))
                         }
-                        Button("Choose CSV file") { store.isFilePickerPresented = true }
-                            .accessibilityIdentifier("chooseCSV")
-                        Text("UTF-8 or UTF-16. Comma, semicolon and tab delimiters are detected automatically. Up to 2 MB and 5,000 rows.")
+                        Button(.chooseCsvFile) { store.isFilePickerPresented = true }
+                            .accessibilityIdentifier(AccessibilityID.chooseCSV)
+                        Text(.csvRequirementsExplanation)
                             .font(.footnote).foregroundStyle(.secondary)
                     }
                     if let document = store.document {
                         ImportMappingSection(store: store, document: document)
                         Section {
-                            Button("Preview import") { store.send(.previewTapped) }
-                                .accessibilityIdentifier("previewImport")
+                            Button(.previewImport) { store.send(.previewTapped) }
+                                .accessibilityIdentifier(AccessibilityID.previewImport)
                         }
                     }
                 }
             }
             .disabled(store.phase != .idle)
-            .navigationTitle(store.preview == nil ? "Import CSV" : "Review import")
+            .navigationTitle(store.preview == nil ? .importCsv : .reviewImport)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Close") { store.send(.closeTapped) }.disabled(store.phase == .saving)
+                    Button(.close) { store.send(.closeTapped) }.disabled(store.phase == .saving)
                 }
                 if store.preview != nil {
                     ToolbarItem(placement: .confirmationAction) {
-                        Button("Import selected") { store.send(.importTapped) }
+                        Button(.importSelected) { store.send(.importTapped) }
                             .disabled(store.selectedCandidates.isEmpty || store.phase != .idle)
-                            .accessibilityIdentifier("confirmSelectedImport")
+                            .accessibilityIdentifier(AccessibilityID.confirmSelectedImport)
                     }
                 }
             }
