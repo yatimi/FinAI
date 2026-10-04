@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MoneyMetricRow: View {
-    let title: LocalizedStringKey
+    let title: LocalizedStringResource
     let money: Money
 
     var body: some View {

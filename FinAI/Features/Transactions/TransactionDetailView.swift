@@ -13,27 +13,27 @@ struct TransactionDetailView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Transaction") {
+                Section(.transaction) {
                     Text(store.transaction.merchant).font(.headline)
                     MoneyText(money: store.transaction.money).font(.title2)
-                    LabeledContent("Currency", value: store.transaction.money.currency.code)
-                    LabeledContent("Transaction type") { Text(store.transaction.kind.title) }
-                    LabeledContent("Direction") { Text(store.transaction.direction.title) }
-                    LabeledContent("Category") { Text(store.transaction.category.title) }
-                    LabeledContent("Account", value: store.accountName)
-                    LabeledContent("Date") {
+                    LabeledContent(.currency, value: store.transaction.money.currency.code)
+                    LabeledContent(.transactionType) { Text(store.transaction.kind.title) }
+                    LabeledContent(.direction) { Text(store.transaction.direction.title) }
+                    LabeledContent(.category) { Text(store.transaction.category.title) }
+                    LabeledContent(.account, value: store.accountName)
+                    LabeledContent(.date) {
                         Text(store.transaction.date, format: .dateTime.day().month().year())
                     }
                 }
-                Section("Original description") { Text(store.transaction.rawDescription) }
-                Section("Source") {
-                    Text(store.transaction.source == .demo ? "Synthetic demo data" : "Imported data")
+                Section(.originalDescription) { Text(store.transaction.rawDescription) }
+                Section(.source) {
+                    Text(store.transaction.source == .demo ? .syntheticDemoData : .importedData)
                 }
             }
-            .navigationTitle("Transaction details")
+            .navigationTitle(.transactionDetails)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Done") { store.send(.closeTapped) }
+                    Button(.done) { store.send(.closeTapped) }
                 }
             }
         }

@@ -198,15 +198,15 @@ struct ImportFeature {
                 let skipped = (state.document?.rows.count ?? 0) - count
                 let replacingDemo = state.replacingDemo
                 state.alert = AlertState {
-                    TextState("Import selected transactions?")
+                    TextState(.importSelectedTransactions)
                 } actions: {
-                    ButtonState(action: .confirmImport) { TextState("Confirm import") }
-                    ButtonState(role: .cancel) { TextState("Cancel") }
+                    ButtonState(action: .confirmImport) { TextState(.confirmImport) }
+                    ButtonState(role: .cancel) { TextState(.cancel) }
                 } message: {
                     if replacingDemo {
-                        TextState("Demo data will be replaced. Selected: \(count). Skipped: \(skipped). Your CSV file will not be changed.")
+                        TextState(.demoImportConfirmationMessage(count, skipped))
                     } else {
-                        TextState("Selected: \(count). Skipped: \(skipped). Your CSV file will not be changed.")
+                        TextState(.importConfirmationMessage(count, skipped))
                     }
                 }
                 return .none

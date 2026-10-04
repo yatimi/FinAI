@@ -290,12 +290,12 @@ struct ImportFeatureTests {
 
     private func confirmationAlert(count: Int, skipped: Int) -> AlertState<ImportFeature.Action.Alert> {
         AlertState {
-            TextState("Import selected transactions?")
+            TextState(.importSelectedTransactions)
         } actions: {
-            ButtonState(action: .confirmImport) { TextState("Confirm import") }
-            ButtonState(role: .cancel) { TextState("Cancel") }
+            ButtonState(action: .confirmImport) { TextState(.confirmImport) }
+            ButtonState(role: .cancel) { TextState(.cancel) }
         } message: {
-            TextState("Selected: \(count). Skipped: \(skipped). Your CSV file will not be changed.")
+            TextState(.importConfirmationMessage(count, skipped))
         }
     }
 }

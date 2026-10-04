@@ -67,12 +67,12 @@ struct AppFeatureTests {
         }
         await store.send(.demoTapped) {
             $0.alert = AlertState {
-                TextState("Explore with demo data?")
+                TextState(.exploreWithDemoData)
             } actions: {
-                ButtonState(action: .confirmDemo) { TextState("Load demo data") }
-                ButtonState(role: .cancel) { TextState("Cancel") }
+                ButtonState(action: .confirmDemo) { TextState(.loadDemoData) }
+                ButtonState(role: .cancel) { TextState(.cancel) }
             } message: {
-                TextState("Synthetic accounts and transactions will be saved on this device. No bank connection is needed.")
+                TextState(.demoConfirmationMessage)
             }
         }
         await store.send(.alert(.presented(.confirmDemo))) {

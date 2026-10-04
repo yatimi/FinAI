@@ -15,12 +15,12 @@ final class CSVImportUITests: XCTestCase {
         app.launchArguments = ["--uitesting", "-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
         app.launchEnvironment["FINAI_TEST_CSV"] = "date,description,amount,currency,type\n2026-09-01,REWE MARKT 123,-12.50,EUR,expense\n2026-09-02,Test employer,1000,EUR,income\n2026-09-03,Invalid,bad,EUR,expense\n"
         app.launch()
-        let accountName = app.textFields["importAccountName"]
+        let accountName = app.textFields[AccessibilityID.importAccountName]
         XCTAssertTrue(accountName.waitForExistence(timeout: 15))
         accountName.tap()
         accountName.typeText("Test bank")
         app.keyboards.buttons["Done"].tap()
-        let preview = app.buttons["previewImport"]
+        let preview = app.buttons[AccessibilityID.previewImport]
         for _ in 0..<8 {
             if preview.isHittable { break }
             app.swipeUp()
@@ -39,10 +39,10 @@ final class CSVImportUITests: XCTestCase {
         merchant.tap()
         merchant.typeText(" Market")
         app.keyboards.buttons["Done"].tap()
-        app.buttons["confirmSelectedImport"].tap()
+        app.buttons[AccessibilityID.confirmSelectedImport].tap()
         app.alerts.buttons["Cancel"].tap()
         XCTAssertTrue(app.navigationBars["Review import"].exists)
-        app.buttons["confirmSelectedImport"].tap()
+        app.buttons[AccessibilityID.confirmSelectedImport].tap()
         app.alerts.buttons["Confirm import"].tap()
         XCTAssertTrue(app.navigationBars["Transactions"].waitForExistence(timeout: 10))
         XCTAssertTrue(app.staticTexts["REWE Market"].exists)
@@ -58,18 +58,18 @@ final class CSVImportUITests: XCTestCase {
         app.launchArguments = ["--uitesting", "-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
         app.launchEnvironment["FINAI_TEST_CSV"] = "date,description,amount,currency,type\n2026-09-01,REWE MARKT 123,-10,EUR,expense\n2026-09-02,rewe markt 123,-10,EUR,expense"
         app.launch()
-        let account = app.textFields["importAccountName"]
+        let account = app.textFields[AccessibilityID.importAccountName]
         XCTAssertTrue(account.waitForExistence(timeout: 15))
         account.tap()
         account.typeText("Test bank")
         app.keyboards.buttons["Done"].tap()
-        let preview = app.buttons["previewImport"]
+        let preview = app.buttons[AccessibilityID.previewImport]
         for _ in 0..<8 where !preview.isHittable { app.swipeUp() }
         XCTAssertTrue(preview.isHittable)
         preview.tap()
         XCTAssertTrue(app.navigationBars["Review import"].waitForExistence(timeout: 10))
         XCTAssertTrue(app.staticTexts["Selected transactions: 1"].exists)
-        let decision = app.buttons["duplicateDecision-3"]
+        let decision = app.buttons[AccessibilityID.duplicateDecision(row: 3)]
         for _ in 0..<12 where !decision.isHittable { app.swipeUp() }
         XCTAssertTrue(decision.isHittable)
         XCTAssertTrue(app.staticTexts["Matches earlier import row 2"].exists)
@@ -77,7 +77,7 @@ final class CSVImportUITests: XCTestCase {
         XCTAssertEqual(decision.label, "Keep both transactions")
         decision.tap()
         XCTAssertEqual(decision.label, "Skip this transaction")
-        app.buttons["confirmSelectedImport"].tap()
+        app.buttons[AccessibilityID.confirmSelectedImport].tap()
         XCTAssertTrue(app.alerts.staticTexts["Selected: 2. Skipped: 0. Your CSV file will not be changed."].waitForExistence(timeout: 5))
         app.alerts.buttons["Confirm import"].tap()
         XCTAssertTrue(app.navigationBars["Transactions"].waitForExistence(timeout: 10))

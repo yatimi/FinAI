@@ -11,7 +11,7 @@ struct AccountsView: View {
     let accounts: [Account]
     var body: some View {
         if accounts.isEmpty {
-            ContentUnavailableView("No accounts yet", systemImage: "wallet.bifold", description: Text("Explore demo data from Overview to get started."))
+            ContentUnavailableView(.noAccountsYet, systemImage: AppSymbol.accounts.rawValue, description: Text(.exploreDemoDataFromOverviewToGetStarted))
         } else {
             List(accounts) { account in
                 VStack(alignment: .leading, spacing: 4) {

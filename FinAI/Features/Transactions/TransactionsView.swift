@@ -16,7 +16,7 @@ struct TransactionsView: View {
         List {
             if store.query.isActive && !results.isEmpty {
                 Section {
-                    Text("Matching transactions: \(results.count)")
+                    Text(.matchingTransactions(results.count))
                 }
             }
             ForEach(results) { transaction in
@@ -27,32 +27,32 @@ struct TransactionsView: View {
                 .buttonStyle(.plain)
             }
         }
-        .accessibilityIdentifier("transactionList")
+        .accessibilityIdentifier(AccessibilityID.transactionList)
         .overlay {
             if store.snapshot.transactions.isEmpty {
-                ContentUnavailableView("No transactions yet", systemImage: "list.bullet.rectangle", description: Text("Explore demo data or import a CSV from Overview to get started."))
+                ContentUnavailableView(.noTransactionsYet, systemImage: AppSymbol.transactions.rawValue, description: Text(.exploreDemoDataOrImportACsvFromOverviewToGetStarted))
             } else if results.isEmpty {
                 ContentUnavailableView {
-                    Label("No matching transactions", systemImage: "magnifyingglass")
+                    Label(.noMatchingTransactions, systemImage: AppSymbol.search.rawValue)
                 } description: {
                     Text(store.hasInvalidDateRange
-                         ? "The end date must be on or after the start date."
-                         : "Try another search or reset your filters.")
+                         ? .theEndDateMustBeOnOrAfterTheStartDate
+                         : .tryAnotherSearchOrResetYourFilters)
                 }
             }
         }
-        .searchable(text: $store.query.text, prompt: "Merchant or description")
+        .searchable(text: $store.query.text, prompt: .merchantOrDescription)
         .autocorrectionDisabled()
         .safeAreaInset(edge: .top) {
             HStack {
-                Button("Filters", systemImage: "line.3.horizontal.decrease.circle") {
+                Button(.filters, systemImage: AppSymbol.filters.rawValue) {
                     store.send(.filtersTapped)
                 }
-                .accessibilityIdentifier("transactionFilters")
+                .accessibilityIdentifier(AccessibilityID.transactionFilters)
                 Spacer()
                 if store.query.isActive {
-                    Button("Reset search and filters") { store.send(.resetTapped) }
-                        .accessibilityIdentifier("resetTransactionFilters")
+                    Button(.resetSearchAndFilters) { store.send(.resetTapped) }
+                        .accessibilityIdentifier(AccessibilityID.resetTransactionFilters)
                 }
             }
             .padding(.horizontal)

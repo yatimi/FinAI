@@ -14,16 +14,16 @@ final class RecurringPaymentsUITests: XCTestCase {
         let app = XCUIApplication()
         app.launchArguments = ["--uitesting", "-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
         app.launch()
-        XCTAssertTrue(app.buttons["loadDemo"].waitForExistence(timeout: 15))
+        XCTAssertTrue(app.buttons[AccessibilityID.loadDemo].waitForExistence(timeout: 15))
         app.tabBars.buttons["Analytics"].tap()
-        app.buttons["openRecurringPayments"].tap()
+        app.buttons[AccessibilityID.openRecurringPayments].tap()
         XCTAssertTrue(app.staticTexts["No regular payment patterns found. More transaction history may be needed."].waitForExistence(timeout: 5))
         app.tabBars.buttons["Overview"].tap()
-        app.buttons["loadDemo"].tap()
+        app.buttons[AccessibilityID.loadDemo].tap()
         app.alerts.buttons["Load demo data"].tap()
         XCTAssertTrue(app.staticTexts["Demo data · stored on this device"].waitForExistence(timeout: 15))
         app.tabBars.buttons["Analytics"].tap()
-        let list = app.collectionViews["recurringPayments"]
+        let list = app.collectionViews[AccessibilityID.recurringPayments]
         XCTAssertTrue(list.waitForExistence(timeout: 5))
         XCTAssertFalse(app.staticTexts["No regular payment patterns found. More transaction history may be needed."].exists)
         let interval = app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "Monthly")).firstMatch
