@@ -11,6 +11,7 @@ Second source release, improving local import review and recurring-payment analy
 - Strengthen persistence regression coverage for migration, reopening, concurrent retries, cancellation and rollback after save failures.
 - Use typed localized strings and shared UI resources consistently across the app and UI tests.
 - Explain currencies with no current-month expenses or refunds instead of showing empty breakdown sections.
+- Restore the readable import loading message instead of displaying a localization key.
 
 ### Scope and limitations
 

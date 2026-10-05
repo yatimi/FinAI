@@ -1685,7 +1685,15 @@
       }
     },
     "preparingImport": {
-      "extractionState": "manual"
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparing import…"
+          }
+        }
+      }
     },
     "previewImport": {
       "extractionState": "manual",
