@@ -48,25 +48,33 @@ struct AnalyticsView: View {
                                 .foregroundStyle(.secondary)
                         }
                     }
-                    Section {
-                        ForEach(spending.categories) { row in
-                            if case let .category(category) = row.group {
-                                SpendingBreakdownRow(title: Text(category.title), row: row)
-                            }
-                        }
-                    } header: {
-                        Text(.categoryBreakdownHeading(spending.currency.code))
+                    if spending.categories.isEmpty && spending.merchants.isEmpty {
+                        Text(.noSpendingForCurrencyThisMonth(spending.currency.code))
+                            .foregroundStyle(.secondary)
                     }
-                    Section {
-                        ForEach(spending.merchants) { row in
-                            if case let .merchant(merchant) = row.group {
-                                SpendingBreakdownRow(
-                                    title: merchant.isEmpty ? Text(.unknownMerchant) : Text(verbatim: merchant), row: row
-                                )
+                    if !spending.categories.isEmpty {
+                        Section {
+                            ForEach(spending.categories) { row in
+                                if case let .category(category) = row.group {
+                                    SpendingBreakdownRow(title: Text(category.title), row: row)
+                                }
                             }
+                        } header: {
+                            Text(.categoryBreakdownHeading(spending.currency.code))
                         }
-                    } header: {
-                        Text(.merchantBreakdownHeading(spending.currency.code))
+                    }
+                    if !spending.merchants.isEmpty {
+                        Section {
+                            ForEach(spending.merchants) { row in
+                                if case let .merchant(merchant) = row.group {
+                                    SpendingBreakdownRow(
+                                        title: merchant.isEmpty ? Text(.unknownMerchant) : Text(verbatim: merchant), row: row
+                                    )
+                                }
+                            }
+                        } header: {
+                            Text(.merchantBreakdownHeading(spending.currency.code))
+                        }
                     }
                 }
                 Section {
