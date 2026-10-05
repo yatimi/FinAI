@@ -2,13 +2,14 @@
 
 A local-first personal finance app for iOS, building toward an assistant that helps explain financial activity and plan ahead.
 
-Version **0.1.0** is the first source release. Build and run it with Xcode; no App Store or TestFlight distribution is included. See the [changelog](CHANGELOG.md) and [release process](docs/RELEASING.md).
+Version **0.2.0** is the latest source release. Build and run it with Xcode; no App Store or TestFlight distribution is included. See the [changelog](CHANGELOG.md) and [release process](docs/RELEASING.md).
 
 ## Available today
 
 - Synthetic demo data across bank, savings and credit accounts
 - CSV import with column mapping, validation, editable preview and explicit confirmation
 - Local merchant normalization and category suggestions, editable before import
+- Saved local merchant and category rules, with explicit matching and rule management
 - Exact and conservative similar-transaction duplicate hints, with match evidence and explicit skip/keep-both review
 - Atomic, retry-safe import persistence
 - Persistent on-device accounts and transactions using SwiftData
@@ -109,9 +110,9 @@ The app stores data locally, with no account, bank connection, remote AI service
 
 ## Planned
 
-1. Broader categorization and expanded deterministic analytics
+1. Local PDF statement import for supported text-based bank formats
 2. An assistant that queries and explains calculated results
 3. Budgets, goals, forecasts and what-if planning
-4. Document and receipt import, followed by investigation of connected banking
+4. Broader document and receipt import, followed by investigation of connected banking
 
 These capabilities are not yet implemented.

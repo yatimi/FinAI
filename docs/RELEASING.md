@@ -24,7 +24,7 @@ These are provisional capability targets, not delivery dates. Split or adjust sc
 | 0.5.0 | Document, screenshot and receipt import |
 | 1.0.0 | Validated everyday-use experience |
 
-Connected banking requires a separate investigation before release scope is committed.
+The next import scope is a focused text-based PDF statement format before assistant work. Broader scanned-document and receipt extraction remain separate future work. Connected banking requires a separate investigation before release scope is committed.
 
 ## Release checklist
 
