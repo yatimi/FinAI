@@ -1497,6 +1497,17 @@
         }
       }
     },
+    "noSpendingForCurrencyThisMonth": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No expenses or refunds in %@ this month."
+          }
+        }
+      }
+    },
     "noExpensesOrRefundsInTheseTwoMonths": {
       "extractionState": "manual",
       "localizations": {

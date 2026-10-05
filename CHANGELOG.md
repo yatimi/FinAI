@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2.0 — 2026-10-04
+## 0.2.0 — 2026-10-05
 
 Second source release, improving local import review and recurring-payment analysis.
 
@@ -10,6 +10,7 @@ Second source release, improving local import review and recurring-payment analy
 - Preserve imported financial fields while applying user rules before built-in merchant suggestions.
 - Strengthen persistence regression coverage for migration, reopening, concurrent retries, cancellation and rollback after save failures.
 - Use typed localized strings and shared UI resources consistently across the app and UI tests.
+- Explain currencies with no current-month expenses or refunds instead of showing empty breakdown sections.
 
 ### Scope and limitations
 
