@@ -78,7 +78,7 @@ final class CSVImportUITests: XCTestCase {
         decision.tap()
         XCTAssertEqual(decision.label, "Skip this transaction")
         app.buttons[AccessibilityID.confirmSelectedImport].tap()
-        XCTAssertTrue(app.alerts.staticTexts["Selected: 2. Skipped: 0. Your CSV file will not be changed."].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.alerts.staticTexts["Selected: 2. Skipped: 0. Your source file will not be changed."].waitForExistence(timeout: 5))
         app.alerts.buttons["Confirm import"].tap()
         XCTAssertTrue(app.navigationBars["Transactions"].waitForExistence(timeout: 10))
         XCTAssertEqual(app.staticTexts.matching(identifier: "REWE").count, 2)

@@ -18,6 +18,7 @@ struct CSVImportService: Sendable {
         var candidates: [ImportCandidate] = []
         var issues: [ImportPreview.Issue] = []
         let parser = ImportValueParser()
+        let service = ImportPreviewService(classification: classification)
         for row in document.rows {
             try Task.checkCancellation()
             do {
@@ -46,20 +47,14 @@ struct CSVImportService: Sendable {
                     throw ImportError.inconsistentDirection
                 }
                 let money = try Money(amount: value < 0 ? -value : value, currency: currency)
-                let suggestion = classification.suggest(description: description, kind: kind)
-                candidates.append(ImportCandidate(
-                    id: UUID(), rowNumber: row.number, date: date, description: description, money: money,
-                    direction: direction, merchant: suggestion.merchant, kind: kind, category: suggestion.category
+                candidates.append(service.candidate(
+                    rowNumber: row.number, date: date, description: description, money: money,
+                    direction: direction, kind: kind
                 ))
             } catch let error as ImportError {
                 issues.append(.init(rowNumber: row.number, error: error))
             }
         }
-        var calendar = Calendar(identifier: .gregorian)
-        calendar.timeZone = timeZone
-        return try ImportPreview(
-            candidates: DuplicateDetectionService().review(candidates, accountID: account.id, existing: existing, calendar: calendar),
-            issues: issues
-        )
+        return try service.review(candidates: candidates, issues: issues, account: account, existing: existing, timeZone: timeZone)
     }
 }

@@ -601,7 +601,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Demo data will be replaced. Selected: %lld. Skipped: %lld. Your CSV file will not be changed."
+            "value": "Demo data will be replaced. Selected: %lld. Skipped: %lld. Your source file will not be changed."
           }
         }
       }
@@ -799,7 +799,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Explore demo data or import a CSV from Overview to get started."
+            "value": "Explore demo data or import CSV or a supported PDF statement from Overview to get started."
           }
         }
       }
@@ -898,7 +898,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Import a CSV file using the toolbar, or explore with synthetic demo data."
+            "value": "Import CSV or a supported PDF statement using the toolbar, or explore with synthetic demo data."
           }
         }
       }
@@ -942,7 +942,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Selected: %lld. Skipped: %lld. Your CSV file will not be changed."
+            "value": "Selected: %lld. Skipped: %lld. Your source file will not be changed."
           }
         }
       }
@@ -2472,6 +2472,149 @@
           "stringUnit": {
             "state": "translated",
             "value": "Yearly"
+          }
+        }
+      }
+    },
+    "importTransactions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import transactions"
+          }
+        }
+      }
+    },
+    "importFile": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import file"
+          }
+        }
+      }
+    },
+    "chooseImportFile": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose CSV or PDF file"
+          }
+        }
+      }
+    },
+    "importFileRequirementsExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CSV: UTF-8 or UTF-16 with a header row. PDF: supported German Sparkasse statements with selectable text. Files are processed on this device."
+          }
+        }
+      }
+    },
+    "statementReviewExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statement balances were verified before preview. Review all transaction types, especially credits and transfers. Booking dates are used; value dates and fee appendices do not create extra transactions. Nothing is saved until you confirm."
+          }
+        }
+      }
+    },
+    "statementCurrency": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statement currency: %@"
+          }
+        }
+      }
+    },
+    "editImportAccount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit account"
+          }
+        }
+      }
+    },
+    "pdfSizeLimitMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a PDF smaller than 10 MB with at most 100 pages and 2 MB of extracted text."
+          }
+        }
+      }
+    },
+    "lockedPdfMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This PDF is password protected. Choose an unlocked copy."
+          }
+        }
+      }
+    },
+    "pdfTextRequiredMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every PDF page must contain selectable text. Scanned or image-only statements are not supported yet."
+          }
+        }
+      }
+    },
+    "unsupportedStatementMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This PDF format is not supported. Choose a complete German Sparkasse statement with the Datum / Erläuterung / Betrag EUR table."
+          }
+        }
+      }
+    },
+    "malformedStatementMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The statement could not be read completely. No data was imported. Choose a complete original PDF."
+          }
+        }
+      }
+    },
+    "statementBalanceMismatchMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The extracted transactions do not reconcile with the statement balances. No data was imported."
           }
         }
       }

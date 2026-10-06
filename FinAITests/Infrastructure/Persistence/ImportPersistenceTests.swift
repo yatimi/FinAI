@@ -183,6 +183,30 @@ struct ImportPersistenceTests {
         #expect(try await database.load().transactions.count == original.transactions.count)
     }
 
+    @Test func statementImportPreservesOriginalsAndReceiptAcrossReopenAndRetry() async throws {
+        let directory = FileManager.default.temporaryDirectory.appending(path: UUID().uuidString)
+        try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: directory) }
+        let url = directory.appending(path: "Finance.store")
+        let statement = try StatementFixtures.document()
+        let preview = try ImportPreviewService().preview(statement: statement, account: ImportFixtures.account, existing: [], timeZone: .gmt)
+        let batch = try ImportBatch(
+            id: UUID(), sourceName: statement.name, importedAt: TestFixtures.date, account: ImportFixtures.account,
+            transactions: preview.candidates.map { try $0.transaction(accountID: ImportFixtures.account.id) },
+            rowNumbers: preview.candidates.map(\.rowNumber), replacingDemo: false
+        )
+        try await FinanceDatabase(storeURL: url).saveImport(batch)
+        let reopened = FinanceDatabase(storeURL: url)
+        try await reopened.saveImport(batch)
+        let saved = try await reopened.load()
+        #expect(saved.transactions.count == statement.entries.count)
+        #expect(Set(saved.transactions.map(\.id)) == Set(batch.transactions.map(\.id)))
+        let first = try #require(saved.transactions.first { $0.id == batch.transactions[0].id })
+        #expect(first.rawDescription == statement.entries[0].description)
+        #expect(first.money.amount == Decimal(string: "12.50"))
+        #expect(first.money.currency == .eur)
+    }
+
     private func createFoundationStore(at url: URL) throws {
         let schema = Schema([AccountRecord.self, TransactionRecord.self], version: Schema.Version(1, 0, 0))
         let container = try ModelContainer(for: schema, configurations: [ModelConfiguration(schema: schema, url: url, cloudKitDatabase: .none)])

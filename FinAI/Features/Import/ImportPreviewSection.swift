@@ -14,13 +14,14 @@ struct ImportPreviewSection: View {
 
     var body: some View {
         Section(.reviewBeforeSaving) {
+            if store.statement != nil { Text(.statementReviewExplanation).font(.footnote) }
             Text(.selectedTransactions(store.selectedCandidates.count))
             Text(.invalidRowsToSkip(preview.issues.count))
             Text(.duplicateReviewExplanation)
                 .font(.footnote)
             Text(.merchantSuggestionsExplanation)
                 .font(.footnote)
-            Button(.editMapping) { store.send(.editMappingTapped) }
+            Button(store.statement == nil ? .editMapping : .editImportAccount) { store.send(.editMappingTapped) }
         }
         Section(.transactionsToReview) {
             ForEach(preview.candidates) { candidate in

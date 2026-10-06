@@ -28,18 +28,24 @@ struct ImportView: View {
                 if let preview = store.preview {
                     ImportPreviewSection(store: store, preview: preview)
                 } else {
-                    Section(.csvFile) {
-                        if let document = store.document {
-                            Text(document.name)
-                            Text(.dataRows(document.rows.count))
+                    Section(.importFile) {
+                        if let name = store.sourceName {
+                            Text(verbatim: name)
+                            Text(.dataRows(store.sourceRowCount))
                         }
-                        Button(.chooseCsvFile) { store.isFilePickerPresented = true }
+                        Button(.chooseImportFile) { store.isFilePickerPresented = true }
                             .accessibilityIdentifier(AccessibilityID.chooseCSV)
-                        Text(.csvRequirementsExplanation)
+                        Text(.importFileRequirementsExplanation)
                             .font(.footnote).foregroundStyle(.secondary)
                     }
-                    if let document = store.document {
-                        ImportMappingSection(store: store, document: document)
+                    if store.sourceName != nil {
+                        ImportAccountSection(store: store)
+                        if let document = store.document {
+                            ImportMappingSection(store: store, document: document)
+                        }
+                        if store.statement != nil {
+                            Section { Text(.statementReviewExplanation).font(.footnote) }
+                        }
                         Section {
                             Button(.previewImport) { store.send(.previewTapped) }
                                 .accessibilityIdentifier(AccessibilityID.previewImport)
@@ -48,7 +54,7 @@ struct ImportView: View {
                 }
             }
             .disabled(store.phase != .idle)
-            .navigationTitle(store.preview == nil ? .importCsv : .reviewImport)
+            .navigationTitle(store.preview == nil ? .importTransactions : .reviewImport)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button(.close) { store.send(.closeTapped) }.disabled(store.phase == .saving)
@@ -65,7 +71,7 @@ struct ImportView: View {
         .sheet(item: $store.scope(state: \.merchantRules, action: \.merchantRules)) { MerchantRulesView(store: $0) }
         .interactiveDismissDisabled(store.phase == .saving)
         .alert($store.scope(state: \.alert, action: \.alert))
-        .fileImporter(isPresented: $store.isFilePickerPresented, allowedContentTypes: [.commaSeparatedText, .plainText]) { result in
+        .fileImporter(isPresented: $store.isFilePickerPresented, allowedContentTypes: [.commaSeparatedText, .plainText, .pdf]) { result in
             switch result {
             case let .success(url): store.send(.fileChosen(url))
             case let .failure(error):

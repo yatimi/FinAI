@@ -19,6 +19,10 @@ struct ImportFeature {
         let newAccountID: UUID
         var isFilePickerPresented = false
         var document: CSVDocument?
+        var statement: StatementDocument?
+
+        var sourceName: String? { statement?.name ?? document?.name }
+        var sourceRowCount: Int { statement?.entries.count ?? document?.rows.count ?? 0 }
         var mapping = CSVMapping()
         var selectedAccountID: UUID?
         var newAccountName = ""
@@ -47,7 +51,7 @@ struct ImportFeature {
             }
             let name = newAccountName.trimmingCharacters(in: .whitespacesAndNewlines)
             guard !name.isEmpty, name.count <= 100 else { throw ImportError.invalidAccount }
-            guard let currency = try? Currency(code: mapping.currencyCode) else { throw ImportError.invalidCurrency }
+            guard let currency = try? Currency(code: statement?.currency.code ?? mapping.currencyCode) else { throw ImportError.invalidCurrency }
             return Account(id: newAccountID, name: name, kind: newAccountKind, currency: currency)
         }
     }
@@ -57,6 +61,7 @@ struct ImportFeature {
         case fileChosen(URL)
         case fileSelectionFailed
         case fileRead(Result<CSVDocument, ImportError>)
+        case statementRead(Result<StatementDocument, ImportError>)
         case previewTapped
         case previewResponse(Result<ImportPreview, ImportError>)
         case editMappingTapped
@@ -98,17 +103,26 @@ struct ImportFeature {
             case let .fileChosen(url):
                 guard state.phase == .idle else { return .none }
                 state.document = nil
+                state.statement = nil
                 state.preview = nil
                 state.error = nil
                 state.phase = .reading
                 let client = client
                 return .run { send in
                     do {
-                        let document = try await client.readFile(url)
-                        try Task.checkCancellation()
-                        await send(.fileRead(.success(document)))
+                        if url.pathExtension.lowercased() == "pdf" {
+                            let statement = try await client.readStatement(url)
+                            try Task.checkCancellation()
+                            await send(.statementRead(.success(statement)))
+                        } else {
+                            let document = try await client.readFile(url)
+                            try Task.checkCancellation()
+                            await send(.fileRead(.success(document)))
+                        }
                     } catch is CancellationError {} catch {
-                        await send(.fileRead(.failure(error as? ImportError ?? .unreadableFile)))
+                        let failure = error as? ImportError ?? .unreadableFile
+                        if url.pathExtension.lowercased() == "pdf" { await send(.statementRead(.failure(failure))) }
+                        else { await send(.fileRead(.failure(failure))) }
                     }
                 }.cancellable(id: CancelID.work, cancelInFlight: true)
             case .fileSelectionFailed:
@@ -122,15 +136,23 @@ struct ImportFeature {
                 mapping.currencyCode = state.mapping.currencyCode
                 state.mapping = mapping
                 return .none
-            case let .fileRead(.failure(error)), let .previewResponse(.failure(error)):
+            case let .statementRead(.success(statement)):
+                guard state.phase == .reading else { return .none }
+                state.phase = .idle
+                state.statement = statement
+                if state.selectedAccountID == nil { state.mapping.currencyCode = statement.currency.code }
+                return .none
+            case let .fileRead(.failure(error)), let .statementRead(.failure(error)), let .previewResponse(.failure(error)):
                 state.phase = .idle
                 state.error = error
                 return .none
             case .previewTapped:
-                guard state.phase == .idle, let document = state.document else { return .none }
+                guard state.phase == .idle, state.sourceName != nil else { return .none }
                 do {
                     let account = try state.account()
-                    try state.mapping.validate(columnCount: document.headers.count)
+                    let document = state.document
+                    let statement = state.statement
+                    if let document { try state.mapping.validate(columnCount: document.headers.count) }
                     state.phase = .previewing
                     state.error = nil
                     state.previewAccount = account
@@ -141,7 +163,12 @@ struct ImportFeature {
                     let client = client
                     return .run { send in
                         do {
-                            let preview = try await client.preview(document, mapping, account, existing, timeZone)
+                            let preview: ImportPreview
+                            if let statement {
+                                preview = try await client.previewStatement(statement, account, existing, timeZone)
+                            } else if let document {
+                                preview = try await client.preview(document, mapping, account, existing, timeZone)
+                            } else { throw ImportError.emptyFile }
                             try Task.checkCancellation()
                             await send(.previewResponse(.success(preview)))
                         } catch is CancellationError {} catch {
@@ -195,7 +222,7 @@ struct ImportFeature {
             case .importTapped:
                 guard state.phase == .idle, !state.selectedCandidates.isEmpty else { return .none }
                 let count = state.selectedCandidates.count
-                let skipped = (state.document?.rows.count ?? 0) - count
+                let skipped = state.sourceRowCount - count
                 let replacingDemo = state.replacingDemo
                 state.alert = AlertState {
                     TextState(.importSelectedTransactions)
@@ -212,11 +239,11 @@ struct ImportFeature {
                 return .none
             case .alert(.presented(.confirmImport)):
                 guard state.phase == .idle, let account = state.previewAccount,
-                      let sessionID = state.sessionID, let document = state.document else { return .none }
+                      let sessionID = state.sessionID, let sourceName = state.sourceName else { return .none }
                 do {
                     let candidates = state.selectedCandidates
                     let batch = try ImportBatch(
-                        id: sessionID, sourceName: document.name, importedAt: now, account: account,
+                        id: sessionID, sourceName: sourceName, importedAt: now, account: account,
                         transactions: candidates.map { try $0.transaction(accountID: account.id) },
                         rowNumbers: candidates.map(\.rowNumber), replacingDemo: state.replacingDemo
                     )
