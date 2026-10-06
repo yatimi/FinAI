@@ -10,12 +10,12 @@ import Foundation
 extension Account.Kind {
     var title: LocalizedStringResource {
         switch self {
-        case .bank: "Bank"
-        case .debit: "Debit"
-        case .credit: "Credit"
-        case .cash: "Cash"
-        case .savings: "Savings"
-        case .other: "Other"
+        case .bank: .bank
+        case .debit: .debit
+        case .credit: .credit
+        case .cash: .cash
+        case .savings: .savings
+        case .other: .other
         }
     }
 }
@@ -23,37 +23,37 @@ extension Account.Kind {
 extension Transaction.Kind {
     var title: LocalizedStringResource {
         switch self {
-        case .expense: "Expense"
-        case .income: "Income"
-        case .transfer: "Transfer"
-        case .refund: "Refund"
-        case .adjustment: "Adjustment"
-        case .unknown: "Unknown"
+        case .expense: .expense
+        case .income: .income
+        case .transfer: .transfer
+        case .refund: .refund
+        case .adjustment: .adjustment
+        case .unknown: .unknown
         }
     }
 }
 
 extension Transaction.Direction {
-    var title: LocalizedStringResource { self == .debit ? "Money out" : "Money in" }
+    var title: LocalizedStringResource { self == .debit ? .moneyOut : .moneyIn }
 }
 
 extension Category {
     var title: LocalizedStringResource {
         switch self {
-        case .groceries: "Groceries"
-        case .restaurants: "Restaurants"
-        case .transport: "Transport"
-        case .shopping: "Shopping"
-        case .housing: "Housing"
-        case .utilities: "Utilities"
-        case .health: "Health"
-        case .entertainment: "Entertainment"
-        case .subscriptions: "Subscriptions"
-        case .travel: "Travel"
-        case .family: "Family"
-        case .transfers: "Transfers"
-        case .income: "Income"
-        case .other: "Other"
+        case .groceries: .groceries
+        case .restaurants: .restaurants
+        case .transport: .transport
+        case .shopping: .shopping
+        case .housing: .housing
+        case .utilities: .utilities
+        case .health: .health
+        case .entertainment: .entertainment
+        case .subscriptions: .subscriptions
+        case .travel: .travel
+        case .family: .family
+        case .transfers: .transfers
+        case .income: .income
+        case .other: .other
         }
     }
 }

@@ -16,12 +16,14 @@ struct AppFeature {
     @ObservableState
     struct State: Equatable {
         var selectedTab = Tab.dashboard
+        var isRecurringPaymentsPresented = false
         var transactions = TransactionsFeature.State()
         var overview: FinanceOverview?
         var isLoading = false
         var failure: LoadError?
         @Presents var alert: AlertState<Action.Alert>?
         @Presents var importFlow: ImportFeature.State?
+        @Presents var merchantRules: MerchantRulesFeature.State?
         @Presents var detail: TransactionDetailFeature.State?
     }
 
@@ -32,6 +34,8 @@ struct AppFeature {
         case cancelLoading
         case demoTapped
         case response(Result<FinanceOverview, LoadError>)
+        case merchantRulesTapped
+        case merchantRules(PresentationAction<MerchantRulesFeature.Action>)
         case importTapped
         case importFlow(PresentationAction<ImportFeature.Action>)
         case transactions(TransactionsFeature.Action)
@@ -68,12 +72,12 @@ struct AppFeature {
                 guard !state.isLoading, let overview = state.overview,
                       overview.snapshot.accounts.isEmpty, overview.snapshot.transactions.isEmpty else { return .none }
                 state.alert = AlertState {
-                    TextState("Explore with demo data?")
+                    TextState(.exploreWithDemoData)
                 } actions: {
-                    ButtonState(action: .confirmDemo) { TextState("Load demo data") }
-                    ButtonState(role: .cancel) { TextState("Cancel") }
+                    ButtonState(action: .confirmDemo) { TextState(.loadDemoData) }
+                    ButtonState(role: .cancel) { TextState(.cancel) }
                 } message: {
-                    TextState("Synthetic accounts and transactions will be saved on this device. No bank connection is needed.")
+                    TextState(.demoConfirmationMessage)
                 }
                 return .none
             case .alert(.presented(.confirmDemo)):
@@ -94,6 +98,9 @@ struct AppFeature {
                 state.isLoading = false
                 state.failure = error
                 return .none
+            case .merchantRulesTapped:
+                state.merchantRules = MerchantRulesFeature.State()
+                return .none
             case .importTapped:
                 guard !state.isLoading, let overview = state.overview else { return .none }
                 state.importFlow = ImportFeature.State(snapshot: overview.snapshot, newAccountID: uuid())
@@ -111,11 +118,12 @@ struct AppFeature {
                       let account = snapshot.accounts.first(where: { $0.id == transaction.accountID }) else { return .none }
                 state.detail = TransactionDetailFeature.State(transaction: transaction, accountName: account.name)
                 return .none
-            case .binding, .alert, .detail, .importFlow, .transactions:
+            case .binding, .alert, .detail, .importFlow, .transactions, .merchantRules:
                 return .none
             }
         }
         .ifLet(\.$alert, action: \.alert)
+        .ifLet(\.$merchantRules, action: \.merchantRules) { MerchantRulesFeature() }
         .ifLet(\.$detail, action: \.detail) { TransactionDetailFeature() }
         .ifLet(\.$importFlow, action: \.importFlow) { ImportFeature() }
     }

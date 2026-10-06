@@ -67,12 +67,12 @@ struct AppFeatureTests {
         }
         await store.send(.demoTapped) {
             $0.alert = AlertState {
-                TextState("Explore with demo data?")
+                TextState(.exploreWithDemoData)
             } actions: {
-                ButtonState(action: .confirmDemo) { TextState("Load demo data") }
-                ButtonState(role: .cancel) { TextState("Cancel") }
+                ButtonState(action: .confirmDemo) { TextState(.loadDemoData) }
+                ButtonState(role: .cancel) { TextState(.cancel) }
             } message: {
-                TextState("Synthetic accounts and transactions will be saved on this device. No bank connection is needed.")
+                TextState(.demoConfirmationMessage)
             }
         }
         await store.send(.alert(.presented(.confirmDemo))) {
@@ -101,6 +101,17 @@ struct AppFeatureTests {
         await store.send(.cancelLoading) { $0.isLoading = false }
         await store.finish()
         #expect(store.state.failure == nil)
+    }
+
+    @Test func regularPaymentsNavigationIsOwnedByRootState() async {
+        let store = TestStore(initialState: AppFeature.State()) { AppFeature() }
+        await store.send(.binding(.set(\.selectedTab, .analytics))) { $0.selectedTab = .analytics }
+        await store.send(.binding(.set(\.isRecurringPaymentsPresented, true))) {
+            $0.isRecurringPaymentsPresented = true
+        }
+        await store.send(.binding(.set(\.isRecurringPaymentsPresented, false))) {
+            $0.isRecurringPaymentsPresented = false
+        }
     }
 
     @Test func navigationShowsSelectedTransactionAndDismisses() async throws {

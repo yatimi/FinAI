@@ -14,33 +14,36 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $store.selectedTab) {
-            Tab("Overview", systemImage: "chart.bar", value: .dashboard) {
+            Tab(.overview, systemImage: AppSymbol.overview.rawValue, value: .dashboard) {
                 NavigationStack {
                     DashboardView(overview: store.overview, isLoading: store.isLoading) {
                         store.send(.demoTapped)
                     }
-                    .navigationTitle("FinAI")
+                    .navigationTitle(.finAI)
                     .toolbar { importButton; refreshButton }
                 }
             }
-            Tab("Transactions", systemImage: "list.bullet.rectangle", value: .transactions) {
+            Tab(.transactions, systemImage: AppSymbol.transactions.rawValue, value: .transactions) {
                 NavigationStack {
                     TransactionsView(store: store.scope(state: \.transactions, action: \.transactions))
-                    .navigationTitle("Transactions")
+                    .navigationTitle(.transactions)
                     .toolbar { importButton }
                 }
             }
-            Tab("Analytics", systemImage: "chart.pie", value: .analytics) {
+            Tab(.analytics, systemImage: AppSymbol.analytics.rawValue, value: .analytics) {
                 NavigationStack {
-                    AnalyticsView(analytics: store.overview?.spending)
-                        .navigationTitle("Analytics")
+                    AnalyticsView(store: store)
+                        .navigationTitle(.analytics)
                         .toolbar { refreshButton }
                 }
             }
-            Tab("Accounts", systemImage: "wallet.bifold", value: .accounts) {
+            Tab(.accounts, systemImage: AppSymbol.accounts.rawValue, value: .accounts) {
                 NavigationStack {
                     AccountsView(accounts: store.overview?.snapshot.accounts ?? [])
-                        .navigationTitle("Accounts")
+                        .navigationTitle(.accounts)
+                        .toolbar {
+                            Button(.merchantRules, systemImage: AppSymbol.merchantRules.rawValue) { store.send(.merchantRulesTapped) }
+                        }
                 }
             }
         }
@@ -48,20 +51,21 @@ struct ContentView: View {
             if let failure = store.failure {
                 VStack(spacing: 8) {
                     Text(failure == .loading
-                         ? "Unable to load local data. Your saved data has not been replaced."
-                         : "Unable to save demo data. Please try again.")
-                    Button("Try again") { store.send(.refresh) }
+                         ? .unableToLoadLocalDataYourSavedDataHasNotBeenReplaced
+                         : .unableToSaveDemoDataPleaseTryAgain)
+                    Button(.tryAgain) { store.send(.refresh) }
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
                 .background(.regularMaterial)
-                .accessibilityIdentifier("dataError")
+                .accessibilityIdentifier(AccessibilityID.dataError)
             }
         }
         .alert($store.scope(state: \.alert, action: \.alert))
         .sheet(item: $store.scope(state: \.detail, action: \.detail)) { detailStore in
             TransactionDetailView(store: detailStore)
         }
+        .sheet(item: $store.scope(state: \.merchantRules, action: \.merchantRules)) { MerchantRulesView(store: $0) }
         .sheet(item: $store.scope(state: \.importFlow, action: \.importFlow)) { ImportView(store: $0) }
         .task { await store.send(.task).finish() }
         .onDisappear { store.send(.cancelLoading) }
@@ -71,13 +75,13 @@ struct ContentView: View {
     }
 
     private var importButton: some View {
-        Button("Import CSV", systemImage: "square.and.arrow.down") { store.send(.importTapped) }
+        Button(.importCsv, systemImage: AppSymbol.importFile.rawValue) { store.send(.importTapped) }
             .disabled(store.isLoading || store.overview == nil)
-            .accessibilityIdentifier("openImport")
+            .accessibilityIdentifier(AccessibilityID.openImport)
     }
 
     private var refreshButton: some View {
-        Button("Refresh", systemImage: "arrow.clockwise") { store.send(.refresh) }
+        Button(.refresh, systemImage: AppSymbol.refresh.rawValue) { store.send(.refresh) }
             .disabled(store.isLoading)
     }
 }

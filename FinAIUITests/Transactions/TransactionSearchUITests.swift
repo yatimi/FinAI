@@ -14,7 +14,7 @@ final class TransactionSearchUITests: XCTestCase {
         let app = XCUIApplication()
         app.launchArguments = ["--uitesting", "-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
         app.launch()
-        let demo = app.buttons["loadDemo"]
+        let demo = app.buttons[AccessibilityID.loadDemo]
         XCTAssertTrue(demo.waitForExistence(timeout: 15))
         demo.tap()
         app.alerts.buttons["Load demo data"].tap()
@@ -26,10 +26,10 @@ final class TransactionSearchUITests: XCTestCase {
         search.tap()
         search.typeText("amazon")
         app.keyboards.buttons["Search"].tap()
-        let list = app.collectionViews["transactionList"]
+        let list = app.collectionViews[AccessibilityID.transactionList]
         XCTAssertTrue(list.staticTexts["Amazon"].firstMatch.waitForExistence(timeout: 5))
         XCTAssertFalse(list.staticTexts["REWE"].exists)
-        app.buttons["transactionFilters"].tap()
+        app.buttons[AccessibilityID.transactionFilters].tap()
         app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Transaction type")).firstMatch.tap()
         app.buttons["Refund"].tap()
         app.buttons["Done"].tap()
@@ -42,7 +42,7 @@ final class TransactionSearchUITests: XCTestCase {
         search.typeText("notfound")
         app.keyboards.buttons["Search"].tap()
         XCTAssertTrue(app.staticTexts["No matching transactions"].waitForExistence(timeout: 5))
-        app.buttons["resetTransactionFilters"].tap()
+        app.buttons[AccessibilityID.resetTransactionFilters].tap()
         XCTAssertTrue(list.staticTexts["REWE"].firstMatch.waitForExistence(timeout: 5))
     }
 }

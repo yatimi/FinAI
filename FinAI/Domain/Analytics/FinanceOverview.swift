@@ -12,6 +12,7 @@ struct FinanceOverview: Equatable, Sendable {
     let month: Date
     let summaries: [CurrencySummary]
     let spending: SpendingAnalytics
+    let recurringPayments: [RecurringPayment]
 
     static func make(snapshot: FinanceSnapshot, date: Date, calendar: Calendar) throws -> Self {
         guard let interval = calendar.dateInterval(of: .month, for: date) else {
@@ -20,7 +21,8 @@ struct FinanceOverview: Equatable, Sendable {
         return try Self(
             snapshot: snapshot, month: interval.start,
             summaries: FinanceSummaryService().summarize(snapshot.transactions, from: interval.start, to: interval.end),
-            spending: SpendingAnalyticsService().analyze(snapshot.transactions, date: date, calendar: calendar)
+            spending: SpendingAnalyticsService().analyze(snapshot.transactions, date: date, calendar: calendar),
+            recurringPayments: RecurringPaymentService().detect(snapshot.transactions, date: date, calendar: calendar)
         )
     }
 }

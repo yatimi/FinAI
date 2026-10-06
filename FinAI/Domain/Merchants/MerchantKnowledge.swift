@@ -35,7 +35,7 @@ struct MerchantKnowledge: Sendable {
         return best
     }
 
-    private static func tokens(_ text: String) -> [String] {
+    static func tokens(_ text: String) -> [String] {
         text.lowercased(with: Locale(identifier: "en_US_POSIX"))
             .split { !$0.isLetter && !$0.isNumber }
             .map(String.init)

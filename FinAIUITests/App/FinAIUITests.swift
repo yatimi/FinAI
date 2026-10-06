@@ -14,7 +14,7 @@ final class FinAIUITests: XCTestCase {
         let app = XCUIApplication()
         app.launchArguments = ["--uitesting", "-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
         app.launch()
-        let demoButton = app.buttons["loadDemo"]
+        let demoButton = app.buttons[AccessibilityID.loadDemo]
         XCTAssertTrue(demoButton.waitForExistence(timeout: 15))
         demoButton.tap()
         app.alerts.buttons["Cancel"].tap()
@@ -27,7 +27,7 @@ final class FinAIUITests: XCTestCase {
         overviewImage.lifetime = .keepAlways
         add(overviewImage)
         app.tabBars.buttons["Transactions"].tap()
-        let list = app.collectionViews["transactionList"]
+        let list = app.collectionViews[AccessibilityID.transactionList]
         XCTAssertTrue(list.waitForExistence(timeout: 5))
         list.buttons.firstMatch.tap()
         XCTAssertTrue(app.navigationBars["Transaction details"].waitForExistence(timeout: 5))

@@ -239,6 +239,46 @@ struct ImportFeatureTests {
         }
     }
 
+    @Test func similarDuplicatesStartExcludedAndCanBeExplicitlyKept() async throws {
+        let document = try CSVParser().parse(
+            "date,description,amount,currency,type\n2026-09-01,REWE MARKT 123,-10,EUR,expense\n2026-09-02,rewe markt 123,-10,EUR,expense",
+            name: "overlap.csv"
+        )
+        let preview = try CSVImportService().preview(
+            document: document, mapping: .suggested(for: document), account: ImportFixtures.account, existing: [], timeZone: .gmt
+        )
+        let duplicate = try #require(preview.candidates.last)
+        #expect(duplicate.isPossibleDuplicate)
+        var state = ImportFeature.State(snapshot: .empty, newAccountID: ImportFixtures.account.id)
+        state.document = document
+        state.mapping = .suggested(for: document)
+        state.newAccountName = ImportFixtures.account.name
+        state.phase = .previewing
+        state.previewAccount = ImportFixtures.account
+        state.sessionID = UUID()
+        let store = TestStore(initialState: state) { ImportFeature() } withDependencies: {
+            $0.date.now = TestFixtures.date
+            $0.importClient.save = { batch in
+                #expect(batch.transactions.count == 2)
+                #expect(batch.transactions.map(\.rawDescription) == preview.candidates.map(\.description))
+            }
+        }
+        await store.send(.previewResponse(.success(preview))) {
+            $0.phase = .idle
+            $0.preview = preview
+            $0.excludedIDs = [duplicate.id]
+        }
+        #expect(store.state.selectedCandidates.count == 1)
+        await store.send(.toggleRow(duplicate.id)) { $0.excludedIDs = [] }
+        await store.send(.importTapped) { $0.alert = confirmationAlert(count: 2, skipped: 0) }
+        await store.send(.alert(.presented(.confirmImport))) {
+            $0.alert = nil
+            $0.phase = .saving
+        }
+        await store.receive(.saveResponse(.success(ImportFeature.VoidSuccess()))) { $0.phase = .idle }
+        await store.receive(.delegate(.didImport))
+    }
+
     private func preparedState() throws -> ImportFeature.State {
         var state = ImportFeature.State(snapshot: .empty, newAccountID: ImportFixtures.account.id)
         state.document = try ImportFixtures.document()
@@ -250,12 +290,12 @@ struct ImportFeatureTests {
 
     private func confirmationAlert(count: Int, skipped: Int) -> AlertState<ImportFeature.Action.Alert> {
         AlertState {
-            TextState("Import selected transactions?")
+            TextState(.importSelectedTransactions)
         } actions: {
-            ButtonState(action: .confirmImport) { TextState("Confirm import") }
-            ButtonState(role: .cancel) { TextState("Cancel") }
+            ButtonState(action: .confirmImport) { TextState(.confirmImport) }
+            ButtonState(role: .cancel) { TextState(.cancel) }
         } message: {
-            TextState("Selected: \(count). Skipped: \(skipped). Your CSV file will not be changed.")
+            TextState(.importConfirmationMessage(count, skipped))
         }
     }
 }
