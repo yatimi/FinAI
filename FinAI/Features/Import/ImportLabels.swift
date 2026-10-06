@@ -10,6 +10,12 @@ import Foundation
 extension ImportError {
     var message: LocalizedStringResource {
         switch self {
+        case .pdfTooLarge: .pdfSizeLimitMessage
+        case .lockedPDF: .lockedPdfMessage
+        case .pdfNeedsText: .pdfTextRequiredMessage
+        case .unsupportedStatement: .unsupportedStatementMessage
+        case .malformedStatement: .malformedStatementMessage
+        case .statementBalanceMismatch: .statementBalanceMismatchMessage
         case .unreadableFile: .unreadableImportFileMessage
         case .fileTooLarge: .chooseAFileSmallerThan2Mb
         case .unsupportedEncoding: .useAUtf8OrUtf16CsvFile

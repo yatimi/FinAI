@@ -15,8 +15,8 @@ struct LocalizedResourceTests {
     }
 
     @Test func importConfirmationKeepsCountsAndPrivacyMessage() {
-        #expect(english(.importConfirmationMessage(2, 1)) == "Selected: 2. Skipped: 1. Your CSV file will not be changed.")
-        #expect(english(.demoImportConfirmationMessage(0, 3)) == "Demo data will be replaced. Selected: 0. Skipped: 3. Your CSV file will not be changed.")
+        #expect(english(.importConfirmationMessage(2, 1)) == "Selected: 2. Skipped: 1. Your source file will not be changed.")
+        #expect(english(.demoImportConfirmationMessage(0, 3)) == "Demo data will be replaced. Selected: 0. Skipped: 3. Your source file will not be changed.")
     }
 
     @Test func importedHeaderIsAnArgumentRatherThanAFormatString() {

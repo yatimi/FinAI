@@ -23,6 +23,12 @@ struct FinAIApp: App {
             importState.document = document
             importState.mapping = .suggested(for: document)
             initialState.importFlow = importState
+        } else if ProcessInfo.processInfo.arguments.contains("--uitesting"),
+                  let text = ProcessInfo.processInfo.environment["FINAI_TEST_STATEMENT"],
+                  let statement = try? SparkasseStatementParser().parse(pages: text.components(separatedBy: "\u{000C}"), name: "UI test.pdf") {
+            var importState = ImportFeature.State(snapshot: .empty, newAccountID: UUID())
+            importState.statement = statement
+            initialState.importFlow = importState
         }
         #endif
         _store = State(initialValue: Store(initialState: initialState) {

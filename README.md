@@ -8,6 +8,7 @@ Version **0.2.0** is the latest source release. Build and run it with Xcode; no 
 
 - Synthetic demo data across bank, savings and credit accounts
 - CSV import with column mapping, validation, editable preview and explicit confirmation
+- Local text-based German Sparkasse PDF statement import with balance reconciliation and the same editable review flow
 - Local merchant normalization and category suggestions, editable before import
 - Saved local merchant and category rules, with explicit matching and rule management
 - Exact and conservative similar-transaction duplicate hints, with match evidence and explicit skip/keep-both review
@@ -26,7 +27,7 @@ Demo data is loaded only after confirmation and only into an empty store. It inc
 
 Swift code calculates every total using `Decimal`. Currencies are kept separate, transfers are excluded from spending and income, and refunds reduce net spending without becoming income. Adjustments and unknown transactions are excluded from the monthly summary. The overview describes activity, not account balances. Analytics compares the current calendar month with the full previous month using saved transactions; the current month may be incomplete. Refunds apply to their recorded month and category. Percentage changes are shown only for a positive previous net spending total.
 
-The app preserves original amounts, currencies, descriptions and source metadata. CSV files are parsed locally. Nothing is saved until the selected transactions are confirmed. Import sessions retain the source filename and record numbers; the original file is neither copied into storage nor modified.
+The app preserves original amounts, currencies, descriptions and source metadata. CSV and supported PDF statements are parsed locally. Nothing is saved until the selected transactions are confirmed. Import sessions retain the source filename and record numbers; the original file is neither copied into storage nor modified.
 
 ## Architecture
 
@@ -39,7 +40,7 @@ SwiftUI → TCA feature → dependency client → domain services / persistence
 - **Dependencies:** an injectable client connecting features to domain services and storage
 - **Infrastructure:** actor-isolated SwiftData access with explicit saves and no model contexts exposed to features
 
-The project uses Swift 6 with strict concurrency checking, SwiftUI, The Composable Architecture 1.26.2, SwiftData, Swift Testing and XCTest UI tests. Package versions are checked in for reproducible resolution with Xcode 27.
+The project uses Swift 6 with strict concurrency checking, SwiftUI, The Composable Architecture 1.26.2, SwiftData, PDFKit, Swift Testing and XCTest UI tests. Package versions are checked in for reproducible resolution with Xcode 27.
 
 ## Getting started
 
@@ -48,7 +49,7 @@ Requirements: Xcode 27 or later and an iOS 26 or later simulator or device.
 1. Open `FinAI.xcodeproj` and let Xcode resolve Swift packages.
 2. Enable the package macros when Xcode prompts.
 3. Select the shared **FinAI** scheme and an iOS simulator, then run.
-4. Choose **Explore demo**, or use **Import CSV** to load a file.
+4. Choose **Explore demo**, or use **Import transactions** to load CSV or a supported PDF statement.
 
 For a physical device, choose your own signing team for the app and test targets. Data persists between launches. The first confirmed import replaces synthetic demo records, with a warning before confirmation. General editing and deletion are not available yet.
 
@@ -75,6 +76,16 @@ Up to three matches show their original description, date, source and matching r
 Known descriptions such as `REWE MARKT`, `AMZN` and `DB VERTRIEB` receive local merchant and category suggestions. Built-in aliases match the start of the description on word boundaries, with more specific aliases taking precedence. Unknown merchants retain their original name. Built-in categories follow the explicit transaction type: income and transfers use their corresponding categories; unknown and adjustment types default to Other. Review suggestions before saving: merchants and categories are editable, and changing the type resets its category suggestion.
 
 Save an optional merchant rule from the preview to reuse a merchant and category for the same transaction type. Rules match full descriptions by default, or an explicitly selected whole-word prefix, ignoring case, punctuation and spacing. User rules run before the built-in catalog; exact matches take priority over prefixes, then the longest prefix wins. Manage rules from **Accounts → Merchant rules**. Saved rules apply when a preview is built again; current corrections and saved transactions remain unchanged.
+
+## PDF statement import
+
+Choose **Import transactions → Choose CSV or PDF file**, select a complete original PDF and choose the destination account. Supported documents use the German Sparkasse layout headed **Datum / Erläuterung / Betrag EUR**, with selectable text, numbered pages, opening/closing balances and a Postanschrift footer. Other layouts, scanned pages and password-protected PDFs are not supported yet.
+
+The parser joins multiline descriptions across pages, preserves booking dates and exact EUR amounts, and verifies that opening balance plus all signed entries equals closing balance. Fee appendices are excluded to avoid importing the same fees twice; zero-value accounting entries remain reviewable adjustments. Missing pages, malformed entries and failed reconciliation block the entire preview. Statement balances validate extraction; they are not saved as account balances.
+
+Card purchases, direct debits and bank fees are suggested as expenses using their bank operation labels. Credits and transfers remain **Unknown** until reviewed; change them to income, refund or transfer as appropriate. Unknown transactions and adjustments are excluded from monthly spending/income summaries. Merchant rules, duplicate hints, editable categories, explicit confirmation and atomic persistence work as in CSV import. Original bank descriptions are preserved; the PDF itself is not stored.
+
+Limits: 10 MiB per PDF, 100 pages, 2 MiB of extracted text and 5,000 entries. Statement row numbers are sequential import references, not physical PDF line numbers. Unsupported formats are rejected rather than guessed.
 
 ## Transaction search
 
@@ -110,9 +121,9 @@ The app stores data locally, with no account, bank connection, remote AI service
 
 ## Planned
 
-1. Local PDF statement import for supported text-based bank formats
-2. An assistant that queries and explains calculated results
-3. Budgets, goals, forecasts and what-if planning
-4. Broader document and receipt import, followed by investigation of connected banking
+1. An assistant that queries and explains calculated results
+2. Budgets, goals, forecasts and what-if planning
+3. Broader statement, document and receipt import
+4. Investigation of connected banking
 
 These capabilities are not yet implemented.

@@ -75,7 +75,7 @@ struct ContentView: View {
     }
 
     private var importButton: some View {
-        Button(.importCsv, systemImage: AppSymbol.importFile.rawValue) { store.send(.importTapped) }
+        Button(.importTransactions, systemImage: AppSymbol.importFile.rawValue) { store.send(.importTapped) }
             .disabled(store.isLoading || store.overview == nil)
             .accessibilityIdentifier(AccessibilityID.openImport)
     }
