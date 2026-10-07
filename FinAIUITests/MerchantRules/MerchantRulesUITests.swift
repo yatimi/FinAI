@@ -24,6 +24,9 @@ final class MerchantRulesUITests: XCTestCase {
         reveal(preview, app: app)
         preview.tap()
         XCTAssertTrue(app.navigationBars["Review import"].waitForExistence(timeout: 10))
+        let details = app.buttons[AccessibilityID.importDetails(row: 2)]
+        reveal(details, app: app)
+        details.tap()
         let saveRule = app.buttons[AccessibilityID.saveRule(row: 2)]
         reveal(saveRule, app: app)
         saveRule.tap()
@@ -43,6 +46,8 @@ final class MerchantRulesUITests: XCTestCase {
         reveal(preview, app: app)
         preview.tap()
         XCTAssertTrue(app.navigationBars["Review import"].waitForExistence(timeout: 10))
+        reveal(details, app: app)
+        details.tap()
         let suggested = app.textFields["Merchant or payee"].firstMatch
         reveal(suggested, app: app)
         XCTAssertEqual(suggested.value as? String, "REWE Family")
