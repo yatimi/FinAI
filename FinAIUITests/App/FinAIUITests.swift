@@ -22,6 +22,12 @@ final class FinAIUITests: XCTestCase {
         demoButton.tap()
         app.alerts.buttons["Load demo data"].tap()
         XCTAssertTrue(app.staticTexts["Demo data · stored on this device"].waitForExistence(timeout: 15))
+        let dashboard = app.scrollViews[AccessibilityID.dashboard]
+        XCTAssertTrue(dashboard.waitForExistence(timeout: 5))
+        XCTAssertTrue(dashboard.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "Net spending")).firstMatch.exists)
+        XCTAssertTrue(dashboard.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "Income")).firstMatch.exists)
+        dashboard.swipeUp()
+        XCTAssertTrue(dashboard.staticTexts["USD"].waitForExistence(timeout: 5))
         let overviewImage = XCTAttachment(screenshot: app.screenshot())
         overviewImage.name = "Overview"
         overviewImage.lifetime = .keepAlways
