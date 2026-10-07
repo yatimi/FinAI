@@ -30,9 +30,8 @@ struct PDFStatementReader: Sendable {
         var totalBytes = 0
         for index in 0..<document.pageCount {
             try Task.checkCancellation()
-            guard let text = document.page(at: index)?.string, !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
-                throw ImportError.pdfNeedsText
-            }
+            guard let page = document.page(at: index) else { throw ImportError.unreadableFile }
+            let text = try PDFPageTextReader().text(from: page)
             totalBytes += text.utf8.count
             guard totalBytes <= Self.maximumTextBytes else { throw ImportError.pdfTooLarge }
             pages.append(text)

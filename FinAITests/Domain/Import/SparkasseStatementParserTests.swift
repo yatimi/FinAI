@@ -10,6 +10,26 @@ import Testing
 @testable import FinAI
 
 struct SparkasseStatementParserTests {
+    @Test func acceptsVisualRowsWithAmountsBeforeDetailsAndCombinedPageHeading() throws {
+        let page = StatementFixtures.page("""
+        Kontostand am 31.08.2026, Auszug Nr. 0 100,00
+        01.09.2026Basis-Lastschr.einlös -5,00
+        Test merchant
+        Additional payment detail
+        Kontostand am 30.09.2026 um 20:00 Uhr 95,00
+        """).replacingOccurrences(of: "Kontoauszug 1/2026", with: "Kontoauszug 1/2026 Seite 1 von 1")
+            .replacingOccurrences(of: "\nSeite 1 von 1", with: "")
+        let result = try SparkasseStatementParser().parse(pages: [page], name: "Synthetic.pdf")
+        #expect(result.entries.count == 1)
+        #expect(result.entries[0].signedAmount == -5)
+        #expect(result.entries[0].payeeDescription == "Test merchant\nAdditional payment detail")
+        #expect(result.entries[0].description == "Basis-Lastschr.einlös\nTest merchant\nAdditional payment detail")
+        let ambiguous = page.replacingOccurrences(of: "Test merchant", with: "-5,00\nTest merchant")
+        #expect(throws: ImportError.malformedStatement) {
+            try SparkasseStatementParser().parse(pages: [ambiguous], name: "Synthetic.pdf")
+        }
+    }
+
     @Test func parsesBookingDatesExactAmountsAndIndependentKinds() throws {
         let result = try StatementFixtures.document()
         #expect(result.entries.count == 5)
