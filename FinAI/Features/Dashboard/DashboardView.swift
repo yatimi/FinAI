@@ -27,32 +27,43 @@ struct DashboardView: View {
                             .accessibilityIdentifier(AccessibilityID.loadDemo)
                     }
                 } else {
-                    List {
-                        Section {
-                            Label(overview.snapshot.transactions.allSatisfy { $0.source == .demo }
-                                  ? .demoDataOnDevice : .localDataOnDevice, systemImage: AppSymbol.localStorage.rawValue)
-                                .font(.subheadline)
-                            Text(overview.month, format: .dateTime.month(.wide).year())
-                                .font(.title2.bold())
-                        }
-                        ForEach(overview.summaries) { summary in
-                            Section(summary.currency.code) {
-                                MoneyMetricRow(title: .income, money: summary.income)
-                                MoneyMetricRow(title: .expenses, money: summary.expenses)
-                                MoneyMetricRow(title: .refunds, money: summary.refunds)
-                                MoneyMetricRow(title: .netSpending, money: summary.netSpending)
-                                MoneyMetricRow(title: .netFlow, money: summary.netFlow)
+                    ScrollView {
+                        LazyVStack(alignment: .leading, spacing: FinanceStyle.Spacing.section) {
+                            VStack(alignment: .leading, spacing: FinanceStyle.Spacing.compact) {
+                                Label(overview.snapshot.transactions.allSatisfy { $0.source == .demo }
+                                      ? .demoDataOnDevice : .localDataOnDevice, systemImage: AppSymbol.localStorage.rawValue)
+                                    .font(FinanceStyle.Typography.label)
+                                    .foregroundStyle(.secondary)
+                                Text(overview.month, format: .dateTime.month(.wide).year())
+                                    .font(FinanceStyle.Typography.heading)
                             }
-                        }
-                        if overview.summaries.isEmpty {
-                            Text(.noTransactionsThisMonth)
-                        }
-                        Section {
+                            ForEach(overview.summaries) { summary in
+                                VStack(alignment: .leading, spacing: FinanceStyle.Spacing.standard) {
+                                    Text(verbatim: summary.currency.code)
+                                        .font(.headline)
+                                        .accessibilityAddTraits(.isHeader)
+                                    MoneyMetricCard(title: .netSpending, money: summary.netSpending)
+                                    FinanceCard {
+                                        VStack(spacing: FinanceStyle.Spacing.standard) {
+                                            MoneyMetricRow(title: .income, money: summary.income)
+                                            MoneyMetricRow(title: .expenses, money: summary.expenses)
+                                            MoneyMetricRow(title: .refunds, money: summary.refunds)
+                                            Divider()
+                                            MoneyMetricRow(title: .netFlow, money: summary.netFlow)
+                                        }
+                                    }
+                                }
+                            }
+                            if overview.summaries.isEmpty {
+                                Text(.noTransactionsThisMonth)
+                            }
                             Text(.dashboardTotalsExplanation)
-                                .font(.footnote)
+                                .font(FinanceStyle.Typography.explanation)
                                 .foregroundStyle(.secondary)
                         }
+                        .padding(FinanceStyle.Spacing.standard)
                     }
+                    .background(FinanceStyle.Surface.canvas)
                     .accessibilityIdentifier(AccessibilityID.dashboard)
                 }
             } else if isLoading {
