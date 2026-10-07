@@ -86,7 +86,7 @@ struct ImportCandidateRow: View {
                 DisclosureGroup(isExpanded: $detailsExpanded) {
                     editingDetails
                 } label: {
-                    Text(.transactionDetails)
+                    Text(.importRowDetails)
                         .accessibilityIdentifier(AccessibilityID.importDetails(row: candidate.rowNumber))
                 }
             } else {

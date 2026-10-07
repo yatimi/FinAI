@@ -2201,7 +2201,7 @@
         }
       }
     },
-    "transactionDetails": {
+    "importRowDetails": {
       "extractionState": "manual",
       "localizations": {
         "en": {
