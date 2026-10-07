@@ -61,11 +61,13 @@ struct SparkasseStatementParser: Sendable {
                 .replacingOccurrences(of: "\r", with: "\n")
                 .split(separator: "\n").map { $0.trimmingCharacters(in: .whitespaces) }.filter { !$0.isEmpty }
             guard lines.contains(where: { $0.contains("Sparkasse") }),
-                  let reference = lines.first(where: { $0.range(of: #"^Kontoauszug [0-9]+/[0-9]{4}$"#, options: .regularExpression) != nil }),
-                  lines.contains("Seite \(index + 1) von \(pages.count)"),
+                  let referenceLine = lines.first(where: { $0.range(of: #"^Kontoauszug [0-9]+/[0-9]{4}(?=$|\s+Seite )"#, options: .regularExpression) != nil }),
+                  let referenceRange = referenceLine.range(of: #"^Kontoauszug [0-9]+/[0-9]{4}"#, options: .regularExpression),
+                  lines.contains(where: { $0 == "Seite \(index + 1) von \(pages.count)" || $0 == "\(referenceLine[referenceRange]) Seite \(index + 1) von \(pages.count)" }),
                   let account = lines.first(where: { $0.range(of: #"DE[0-9]{2}(?: ?[0-9]){18}"#, options: .regularExpression) != nil }) else {
                 throw ImportError.unsupportedStatement
             }
+            let reference = String(referenceLine[referenceRange])
             // Compare only the account/IBAN prefix; the first page omits the account holder.
             let accountPrefix = String(account.split(separator: ",").prefix(2).joined(separator: ","))
             if let statementReference, statementReference != reference { throw ImportError.unsupportedStatement }
@@ -113,7 +115,11 @@ struct SparkasseStatementParser: Sendable {
                     guard opening != nil else { throw ImportError.malformedStatement }
                     let date = String(line[range])
                     _ = try values.date(date, format: .dotted, timeZone: .gmt)
-                    let operation = line[range.upperBound...].trimmingCharacters(in: .whitespaces)
+                    var operation = line[range.upperBound...].trimmingCharacters(in: .whitespaces)
+                    if let amountRange = operation.range(of: #"\s[+-]?(?:[0-9]+|[0-9]{1,3}(?:\.[0-9]{3})+),[0-9]{2}$"#, options: .regularExpression) {
+                        pendingAmount = try values.amount(String(operation[amountRange]), separator: .comma)
+                        operation = operation[..<amountRange.lowerBound].trimmingCharacters(in: .whitespaces)
+                    }
                     guard !operation.isEmpty else { throw ImportError.malformedStatement }
                     pendingDate = date
                     pendingLines = [operation]
@@ -121,7 +127,7 @@ struct SparkasseStatementParser: Sendable {
                     guard pendingDate != nil, pendingAmount == nil else { throw ImportError.malformedStatement }
                     pendingAmount = try values.amount(line, separator: .comma)
                 } else {
-                    guard pendingDate != nil, pendingAmount == nil else { throw ImportError.malformedStatement }
+                    guard pendingDate != nil else { throw ImportError.malformedStatement }
                     pendingLines.append(line)
                     guard pendingLines.joined(separator: "\n").utf8.count <= CSVParser.maximumFieldLength else { throw ImportError.fieldTooLong }
                 }
