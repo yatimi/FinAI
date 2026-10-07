@@ -18,7 +18,7 @@ struct FinanceStoreConfiguration: Sendable {
     }
 
     func makeContainer() throws -> ModelContainer {
-        let schema = Schema([AccountRecord.self, TransactionRecord.self, ImportSessionRecord.self, MerchantRuleRecord.self], version: Schema.Version(3, 0, 0))
+        let schema = Schema([AccountRecord.self, TransactionRecord.self, ImportSessionRecord.self, MerchantRuleRecord.self], version: Schema.Version(4, 0, 0))
         let configuration: ModelConfiguration
         if let storeURL {
             configuration = ModelConfiguration(schema: schema, url: storeURL, cloudKitDatabase: .none)

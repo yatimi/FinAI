@@ -42,6 +42,7 @@ struct TransactionsFeature {
         case filtersTapped
         case resetTapped
         case transactionTapped(UUID)
+        case editTapped(UUID)
     }
 
     @Dependency(\.date.now) var now
@@ -60,7 +61,7 @@ struct TransactionsFeature {
             case .resetTapped:
                 state.query = TransactionQuery(startDate: now, endDate: now)
                 return .none
-            case .binding, .transactionTapped:
+            case .binding, .transactionTapped, .editTapped:
                 return .none
             }
         }

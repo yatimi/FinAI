@@ -123,7 +123,7 @@ struct AppFeatureTests {
         let store = TestStore(initialState: state) { AppFeature() }
         await store.send(.binding(.set(\.selectedTab, .transactions))) { $0.selectedTab = .transactions }
         await store.send(.transactions(.transactionTapped(transaction.id))) {
-            $0.detail = TransactionDetailFeature.State(transaction: transaction, accountName: account.name)
+            $0.detail = TransactionDetailFeature.State(transaction: transaction, accountName: account.name, accounts: snapshot.accounts, original: snapshot.originals[transaction.id])
         }
         await store.send(.detail(.dismiss)) { $0.detail = nil }
     }

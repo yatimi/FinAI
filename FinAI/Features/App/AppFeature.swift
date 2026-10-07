@@ -112,12 +112,19 @@ struct AppFeature {
                 state.isLoading = true
                 state.failure = nil
                 return loadDemo(false)
-            case let .transactions(.transactionTapped(id)):
+            case let .transactions(.transactionTapped(id)), let .transactions(.editTapped(id)):
                 guard let snapshot = state.overview?.snapshot,
                       let transaction = snapshot.transactions.first(where: { $0.id == id }),
                       let account = snapshot.accounts.first(where: { $0.id == transaction.accountID }) else { return .none }
-                state.detail = TransactionDetailFeature.State(transaction: transaction, accountName: account.name)
+                state.detail = TransactionDetailFeature.State(transaction: transaction, accountName: account.name, accounts: snapshot.accounts, original: snapshot.originals[transaction.id])
+                if case .transactions(.editTapped) = action { return .send(.detail(.presented(.editTapped))) }
                 return .none
+            case let .detail(.presented(.delegate(.didUpdate(overview)))):
+                state.overview = overview
+                state.transactions.update(snapshot: overview.snapshot, date: now, calendar: calendar)
+                state.isLoading = false
+                state.failure = nil
+                return .cancel(id: CancelID.loading)
             case .binding, .alert, .detail, .importFlow, .transactions, .merchantRules:
                 return .none
             }

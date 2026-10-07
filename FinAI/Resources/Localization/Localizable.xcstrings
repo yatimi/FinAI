@@ -210,6 +210,17 @@
         }
       }
     },
+    "bonusIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bonus"
+          }
+        }
+      }
+    },
     "cancel": {
       "extractionState": "manual",
       "localizations": {
@@ -661,6 +672,28 @@
         }
       }
     },
+    "discardChanges": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discard changes"
+          }
+        }
+      }
+    },
+    "discardTransactionChanges": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discard changes?"
+          }
+        }
+      }
+    },
     "done": {
       "extractionState": "manual",
       "localizations": {
@@ -712,6 +745,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Edit rule"
+          }
+        }
+      }
+    },
+    "editTransaction": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit transaction"
           }
         }
       }
@@ -866,6 +910,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "First rows"
+          }
+        }
+      }
+    },
+    "freelanceIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freelance"
           }
         }
       }
@@ -1046,6 +1101,28 @@
         }
       }
     },
+    "incomeSource": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Income source"
+          }
+        }
+      }
+    },
+    "interestIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interest"
+          }
+        }
+      }
+    },
     "interpretation": {
       "extractionState": "manual",
       "localizations": {
@@ -1141,6 +1218,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Keep both transactions"
+          }
+        }
+      }
+    },
+    "keepEditing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep editing"
           }
         }
       }
@@ -1607,6 +1695,17 @@
         }
       }
     },
+    "originalTransactionValues": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original values"
+          }
+        }
+      }
+    },
     "other": {
       "extractionState": "manual",
       "localizations": {
@@ -1805,6 +1904,17 @@
         }
       }
     },
+    "reimbursementIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reimbursement"
+          }
+        }
+      }
+    },
     "resetSearchAndFilters": {
       "extractionState": "manual",
       "localizations": {
@@ -1882,6 +1992,17 @@
         }
       }
     },
+    "salaryIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salary"
+          }
+        }
+      }
+    },
     "sameAmountAndASimilarDescriptionWithinThreeDays": {
       "extractionState": "manual",
       "localizations": {
@@ -1937,6 +2058,17 @@
         }
       }
     },
+    "saveTransaction": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save"
+          }
+        }
+      }
+    },
     "savedMerchantRules": {
       "extractionState": "manual",
       "localizations": {
@@ -1955,6 +2087,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Saved transactions will stay unchanged."
+          }
+        }
+      }
+    },
+    "savingTransaction": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saving transaction…"
           }
         }
       }
@@ -2157,6 +2300,39 @@
         }
       }
     },
+    "transactionAmount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amount"
+          }
+        }
+      }
+    },
+    "transactionAmountExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a nonnegative amount. Money in or out is selected separately."
+          }
+        }
+      }
+    },
+    "transactionChangesNotSaved": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your transaction changes have not been saved."
+          }
+        }
+      }
+    },
     "transactionDetails": {
       "extractionState": "manual",
       "localizations": {
@@ -2164,6 +2340,105 @@
           "stringUnit": {
             "state": "translated",
             "value": "Transaction details"
+          }
+        }
+      }
+    },
+    "transactionEditInvalidAccount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The selected account is no longer available. Close and reopen this transaction."
+          }
+        }
+      }
+    },
+    "transactionEditInvalidAmount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a valid nonnegative amount using your locale’s decimal separator."
+          }
+        }
+      }
+    },
+    "transactionEditInvalidCurrency": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a supported three-letter currency code, such as EUR or USD."
+          }
+        }
+      }
+    },
+    "transactionEditInvalidDate": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a valid date."
+          }
+        }
+      }
+    },
+    "transactionEditInvalidDirection": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expenses require money out. Income and refunds require money in."
+          }
+        }
+      }
+    },
+    "transactionEditMissingMerchant": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a merchant or payee."
+          }
+        }
+      }
+    },
+    "transactionEditSaveFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your changes could not be saved. Try again."
+          }
+        }
+      }
+    },
+    "transactionEditStorageChanged": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This transaction changed since you opened it. Your edits are still here. Close and reopen it to review the latest values."
+          }
+        }
+      }
+    },
+    "transactionEditUnsupportedTotals": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This amount would exceed the supported precision for financial totals."
           }
         }
       }
@@ -2186,6 +2461,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Filters apply together. Custom dates include both the first and last day."
+          }
+        }
+      }
+    },
+    "transactionOriginalPreserved": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your original imported values and description are preserved when you save corrections."
           }
         }
       }
@@ -2384,6 +2670,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "The file could not be read. Choose it again and check access in Files."
+          }
+        }
+      }
+    },
+    "unspecifiedIncomeSource": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unspecified"
           }
         }
       }

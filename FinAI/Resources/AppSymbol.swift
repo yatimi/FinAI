@@ -6,6 +6,7 @@
 //
 
 enum AppSymbol: String {
+    case edit = "pencil"
     case overview = "chart.bar"
     case transactions = "list.bullet.rectangle"
     case analytics = "chart.pie"
