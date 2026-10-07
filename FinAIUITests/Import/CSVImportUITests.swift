@@ -30,6 +30,13 @@ final class CSVImportUITests: XCTestCase {
         XCTAssertTrue(app.navigationBars["Review import"].waitForExistence(timeout: 10))
         XCTAssertTrue(app.staticTexts["Selected transactions: 2"].exists)
         XCTAssertTrue(app.staticTexts["Invalid rows to skip: 1"].exists)
+        let compact = app.switches[AccessibilityID.compactImportReview]
+        XCTAssertEqual(compact.value as? String, "1")
+        XCTAssertFalse(app.textFields["Merchant or payee"].firstMatch.exists)
+        let details = app.buttons[AccessibilityID.importDetails(row: 2)]
+        for _ in 0..<5 where !details.isHittable { app.swipeUp() }
+        XCTAssertTrue(details.isHittable)
+        details.tap()
         let merchant = app.textFields["Merchant or payee"].firstMatch
         for _ in 0..<5 {
             if merchant.isHittable { break }
@@ -39,6 +46,13 @@ final class CSVImportUITests: XCTestCase {
         merchant.tap()
         merchant.typeText(" Market")
         app.keyboards.buttons["Done"].tap()
+        for _ in 0..<8 where !compact.isHittable { app.swipeDown() }
+        XCTAssertTrue(compact.isHittable)
+        compact.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
+        XCTAssertEqual(compact.value as? String, "0")
+        compact.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
+        XCTAssertEqual(compact.value as? String, "1")
+        XCTAssertTrue(app.staticTexts["Selected transactions: 2"].exists)
         app.buttons[AccessibilityID.confirmSelectedImport].tap()
         app.alerts.buttons["Cancel"].tap()
         XCTAssertTrue(app.navigationBars["Review import"].exists)

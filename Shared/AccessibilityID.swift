@@ -7,6 +7,9 @@
 
 /// Stable automation identifiers shared by the app and its UI tests.
 enum AccessibilityID {
+    static let compactImportReview = "compactImportReview"
+    static func importDetails(row: Int) -> String { "importDetails-\(row)" }
+
     static let dataError = "dataError"
     static let openImport = "openImport"
     static let openRecurringPayments = "openRecurringPayments"
