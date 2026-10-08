@@ -33,6 +33,11 @@ actor FinanceDatabase {
         try ImportBatchStore().save(batch, in: makeContext())
     }
 
+    func editTransaction(expected: Transaction, replacement: Transaction, date: Date, calendar: Calendar) throws -> FinanceOverview {
+        try Task.checkCancellation()
+        return try TransactionEditStore().save(expected: expected, replacement: replacement, date: date, calendar: calendar, in: makeContext())
+    }
+
     func loadMerchantRules() throws -> [MerchantRule] {
         try Task.checkCancellation()
         return try MerchantRuleStore().load(in: makeContext())

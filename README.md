@@ -19,6 +19,7 @@ Version **0.2.0** is the latest source release. Build and run it with Xcode; no 
 - Possible weekly, monthly and yearly recurring expenses, with evidence counts, estimated dates and subscription hints
 - Transaction search across merchant names and original descriptions, with combined date, account, category, type and currency filters
 - Transaction details with original descriptions, categories, source and account information
+- Saved-transaction editing from a list swipe action or transaction details, with validation, explicit saving and preserved original values
 - English String Catalog localization and locale-aware money and date formatting
 
 Demo data is loaded only after confirmation and only into an empty store. It includes salary, rent, groceries, transport, subscriptions, utilities, shopping, refunds and transfers across three months. No bank account or personal data is needed.
@@ -51,7 +52,13 @@ Requirements: Xcode 27 or later and an iOS 26 or later simulator or device.
 3. Select the shared **FinAI** scheme and an iOS simulator, then run.
 4. Choose **Explore demo**, or use **Import transactions** to load CSV or a supported PDF statement.
 
-For a physical device, choose your own signing team for the app and test targets. Data persists between launches. The first confirmed import replaces synthetic demo records, with a warning before confirmation. General editing and deletion are not available yet.
+For a physical device, choose your own signing team for the app and test targets. Data persists between launches. The first confirmed import replaces synthetic demo records, with a warning before confirmation. Saved transactions can be edited; deletion and manual entry are not available yet.
+
+## Correcting transactions
+
+Swipe left on a transaction and choose **Edit transaction**, or open its details and tap **Edit transaction**. Change the merchant, date, nonnegative amount, currency, existing account, money direction, type, category or income source, then save. Cancelled edits do not change saved data; unsaved changes require a discard decision.
+
+The app preserves the values before the first correction, along with the original description and import provenance. These original values remain available in transaction details and keep repeat imports from creating duplicates. Corrections update the list, active search results, overview, analytics and recurring-payment hints. Changing a currency corrects the record; it does not perform exchange-rate conversion. If a transaction changed while its editor was open, saving is rejected so it cannot silently overwrite the newer version.
 
 ## CSV import
 

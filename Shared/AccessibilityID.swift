@@ -7,6 +7,12 @@
 
 /// Stable automation identifiers shared by the app and its UI tests.
 enum AccessibilityID {
+    static let editTransaction = "editTransaction"
+    static let saveTransaction = "saveTransaction"
+    static let editTransactionMerchant = "editTransactionMerchant"
+    static let editTransactionAmount = "editTransactionAmount"
+    static let editTransactionCurrency = "editTransactionCurrency"
+    static let transactionEditError = "transactionEditError"
     static let compactImportReview = "compactImportReview"
     static func importDetails(row: Int) -> String { "importDetails-\(row)" }
 

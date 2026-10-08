@@ -158,7 +158,7 @@ struct ImportFeature {
                     state.previewAccount = account
                     state.sessionID = uuid()
                     let mapping = state.mapping
-                    let existing = state.snapshot.transactions
+                    let existing = state.snapshot.originalTransactions
                     let timeZone = calendar.timeZone
                     let client = client
                     return .run { send in
