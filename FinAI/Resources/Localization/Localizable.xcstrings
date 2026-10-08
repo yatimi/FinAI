@@ -364,6 +364,17 @@
         }
       }
     },
+    "compactReview": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compact review"
+          }
+        }
+      }
+    },
     "confirmImport": {
       "extractionState": "manual",
       "localizations": {
@@ -2461,6 +2472,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Filters apply together. Custom dates include both the first and last day."
+          }
+        }
+      }
+    },
+    "importRowDetails": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original description and editing"
           }
         }
       }

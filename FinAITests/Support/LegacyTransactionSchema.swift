@@ -41,5 +41,5 @@ enum LegacyTransactionSchema {
             incomeKind = transaction.incomeKind?.rawValue
             source = transaction.source.rawValue
         }
-        }
+    }
 }

@@ -13,6 +13,9 @@ enum AccessibilityID {
     static let editTransactionAmount = "editTransactionAmount"
     static let editTransactionCurrency = "editTransactionCurrency"
     static let transactionEditError = "transactionEditError"
+    static let compactImportReview = "compactImportReview"
+    static func importDetails(row: Int) -> String { "importDetails-\(row)" }
+
     static let dataError = "dataError"
     static let openImport = "openImport"
     static let openRecurringPayments = "openRecurringPayments"
