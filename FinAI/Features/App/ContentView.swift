@@ -20,7 +20,12 @@ struct ContentView: View {
                         store.send(.demoTapped)
                     }
                     .navigationTitle(.finAI)
-                    .toolbar { importButton; refreshButton }
+                    .toolbar {
+                        importButton
+                        refreshButton
+                        Button(.savingsGoals, systemImage: AppSymbol.goals.rawValue) { store.send(.goalsTapped) }
+                            .accessibilityIdentifier(AccessibilityID.openGoals)
+                    }
                 }
             }
             Tab(.transactions, systemImage: AppSymbol.transactions.rawValue, value: .transactions) {
@@ -66,6 +71,7 @@ struct ContentView: View {
             TransactionDetailView(store: detailStore)
         }
         .sheet(item: $store.scope(state: \.merchantRules, action: \.merchantRules)) { MerchantRulesView(store: $0) }
+        .sheet(item: $store.scope(state: \.goals, action: \.goals)) { GoalsView(store: $0) }
         .sheet(item: $store.scope(state: \.importFlow, action: \.importFlow)) { ImportView(store: $0) }
         .task { await store.send(.task).finish() }
         .onDisappear { store.send(.cancelLoading) }

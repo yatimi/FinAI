@@ -25,6 +25,7 @@ struct AppFeature {
         @Presents var importFlow: ImportFeature.State?
         @Presents var merchantRules: MerchantRulesFeature.State?
         @Presents var detail: TransactionDetailFeature.State?
+        @Presents var goals: GoalsFeature.State?
     }
 
     enum Action: BindableAction, Equatable {
@@ -35,6 +36,8 @@ struct AppFeature {
         case demoTapped
         case response(Result<FinanceOverview, LoadError>)
         case merchantRulesTapped
+        case goalsTapped
+        case goals(PresentationAction<GoalsFeature.Action>)
         case merchantRules(PresentationAction<MerchantRulesFeature.Action>)
         case importTapped
         case importFlow(PresentationAction<ImportFeature.Action>)
@@ -101,6 +104,9 @@ struct AppFeature {
             case .merchantRulesTapped:
                 state.merchantRules = MerchantRulesFeature.State()
                 return .none
+            case .goalsTapped:
+                state.goals = GoalsFeature.State()
+                return .none
             case .importTapped:
                 guard !state.isLoading, let overview = state.overview else { return .none }
                 state.importFlow = ImportFeature.State(snapshot: overview.snapshot, newAccountID: uuid())
@@ -125,12 +131,13 @@ struct AppFeature {
                 state.isLoading = false
                 state.failure = nil
                 return .cancel(id: CancelID.loading)
-            case .binding, .alert, .detail, .importFlow, .transactions, .merchantRules:
+            case .binding, .alert, .detail, .importFlow, .transactions, .merchantRules, .goals:
                 return .none
             }
         }
         .ifLet(\.$alert, action: \.alert)
         .ifLet(\.$merchantRules, action: \.merchantRules) { MerchantRulesFeature() }
+        .ifLet(\.$goals, action: \.goals) { GoalsFeature() }
         .ifLet(\.$detail, action: \.detail) { TransactionDetailFeature() }
         .ifLet(\.$importFlow, action: \.importFlow) { ImportFeature() }
     }

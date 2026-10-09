@@ -19,6 +19,7 @@ Version **0.2.0** is the latest source release. Build and run it with Xcode; no 
 - Possible weekly, monthly and yearly recurring expenses, with evidence counts, estimated dates and subscription hints
 - Transaction search across merchant names and original descriptions, with combined date, account, category, type and currency filters
 - Transaction details with original descriptions, categories, source and account information
+- Local savings goals with editable targets, deadlines and manually recorded savings; deterministic remaining amounts and monthly contribution schedules
 - Saved-transaction editing from a list swipe action or transaction details, with validation, explicit saving and preserved original values
 - English String Catalog localization and locale-aware money and date formatting
 
@@ -106,6 +107,12 @@ Open **Analytics → Regular payments** to inspect possible repeating expenses. 
 
 A possible subscription also requires every matching expense to have the Subscriptions category. These are suggestions, not confirmed contracts. The next date is estimated from the observed pattern; if it passes without a matching saved payment, the pattern is marked as potentially ended, changed or incomplete. Changed prices and missing periods may prevent detection. No data is modified, no reminders are scheduled, and currencies are never combined.
 
+## Savings goals
+
+Open **Overview → Savings goals** to create or edit a goal with a name, target amount, original currency, deadline and manually recorded savings. Saving a goal does not move money or change transactions or account balances. Each goal is calculated separately; currencies are never combined.
+
+The remaining target is divided over calendar months including the current month and deadline month. Monthly contributions round upward to the currency's standard precision. A deadline today allows one contribution; a passed deadline with an outstanding target is marked overdue. Savings at or above the target mark the goal completed. This is a contribution schedule, not an assessment of affordability or a forecast of investment returns. Goals are stored locally and drafts require explicit saving.
+
 ## Tests
 
 Use **Product → Test** in Xcode, or select an installed simulator from `xcrun simctl list devices available` and run:
@@ -120,6 +127,8 @@ xcodebuild test \
   CODE_SIGNING_ALLOWED=NO
 ```
 
+Goal tests cover exact localized input, currency precision, deadline and year boundaries, completion, migration from schema version 4, reopening storage, cancellation, stale edits and save failures. The goals UI journey creates, edits and reopens a saved goal.
+
 Tests cover decimal arithmetic and validation, currency separation, transfers and refunds, date boundaries, demo integrity, persistence and repeated seeding, feature loading/error/cancellation flows, CSV parsing and locale validation, import confirmation, duplicate hints, migration and retry-safe persistence. Analytics tests cover category and merchant totals, month boundaries, refund-only periods, currencies missing from one month, percentage baselines and arithmetic overflow. Recurring-payment tests cover cadence, month ends, posting tolerance, daylight saving, stale patterns, ambiguous history and account/currency separation. Duplicate tests cover normalization, nearby dates, numeric references, semantic/account/currency boundaries, bounded match evidence and cancellation. UI journeys cover the demo, import preview/confirmation, explicit duplicate review, transaction search, analytics and regular payments. UI tests use an isolated in-memory store and a fixed reference date/calendar. GitHub Actions builds and tests pull requests to `develop` and `main` using the Xcode 27 runner image.
 
 ## Privacy
@@ -129,7 +138,7 @@ The app stores data locally, with no account, bank connection, remote AI service
 ## Planned
 
 1. An assistant that queries and explains calculated results
-2. Budgets, goals, forecasts and what-if planning
+2. Budgets, forecasts, what-if planning and richer goal tracking
 3. Broader statement, document and receipt import
 4. Investigation of connected banking
 
