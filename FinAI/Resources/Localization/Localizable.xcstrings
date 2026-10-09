@@ -1,6 +1,248 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "addGoal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add goal"
+          }
+        }
+      }
+    },
+    "discardGoalChanges": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discard goal changes?"
+          }
+        }
+      }
+    },
+    "editGoal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit goal"
+          }
+        }
+      }
+    },
+    "goalChangedFailure": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This goal has changed. Close and reopen goals before editing again."
+          }
+        }
+      }
+    },
+    "goalCompleted": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goal completed"
+          }
+        }
+      }
+    },
+    "goalDeadline": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deadline"
+          }
+        }
+      }
+    },
+    "goalDetails": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goal details"
+          }
+        }
+      }
+    },
+    "goalInvalidInput": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a name, positive target, nonnegative savings, valid currency code and date."
+          }
+        }
+      }
+    },
+    "goalMonthlyContribution": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Required per month"
+          }
+        }
+      }
+    },
+    "goalName": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goal name"
+          }
+        }
+      }
+    },
+    "goalOverdue": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deadline passed — revise the date or savings amount."
+          }
+        }
+      }
+    },
+    "goalPlanningExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Record savings manually. Goals do not move money or change account balances. Monthly contributions include the current and deadline months and are rounded up. This schedule does not assess affordability."
+          }
+        }
+      }
+    },
+    "goalRemainingAmount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remaining"
+          }
+        }
+      }
+    },
+    "goalSavedAmount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Already saved"
+          }
+        }
+      }
+    },
+    "goalTargetAmount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target amount"
+          }
+        }
+      }
+    },
+    "goalsLoadFailure": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to load goals. Try again before editing."
+          }
+        }
+      }
+    },
+    "goalsSaveFailure": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to save the goal. Your draft is preserved; try again."
+          }
+        }
+      }
+    },
+    "noGoalsYet": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No savings goals yet."
+          }
+        }
+      }
+    },
+    "saveGoal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save goal"
+          }
+        }
+      }
+    },
+    "savedGoals": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved goals"
+          }
+        }
+      }
+    },
+    "savingsGoals": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Savings goals"
+          }
+        }
+      }
+    },
+    "updatingGoals": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updating goals…"
+          }
+        }
+      }
+    },
     "aCsvFieldIsTooLong": {
       "extractionState": "manual",
       "localizations": {

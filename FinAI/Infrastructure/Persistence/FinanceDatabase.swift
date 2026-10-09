@@ -54,6 +54,17 @@ actor FinanceDatabase {
         return try MerchantRuleStore().delete(id, in: makeContext())
     }
 
+    func loadGoals() throws -> [SavingsGoal] {
+        try Task.checkCancellation()
+        return try GoalStore().load(in: makeContext())
+    }
+
+    func saveGoal(_ goal: SavingsGoal, expected: SavingsGoal?) throws -> [SavingsGoal] {
+        try Task.checkCancellation()
+        try goal.validate()
+        return try GoalStore().save(goal, expected: expected, in: makeContext())
+    }
+
     private func makeContext() throws -> ModelContext {
         let container: ModelContainer
         if let existing = self.container {

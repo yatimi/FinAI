@@ -95,6 +95,13 @@ final class CSVImportUITests: XCTestCase {
         XCTAssertTrue(app.alerts.staticTexts["Selected: 2. Skipped: 0. Your source file will not be changed."].waitForExistence(timeout: 5))
         app.alerts.buttons["Confirm import"].tap()
         XCTAssertTrue(app.navigationBars["Transactions"].waitForExistence(timeout: 10))
-        XCTAssertEqual(app.staticTexts.matching(identifier: "REWE").count, 2)
+        let list = app.collectionViews[AccessibilityID.transactionList]
+        XCTAssertTrue(list.waitForExistence(timeout: 5))
+        // Verify imported transactions through list rows rather than accessibility text nodes.
+        XCTAssertTrue(list.cells.element(boundBy: 1).waitForExistence(timeout: 5))
+        XCTAssertEqual(list.cells.count, 2)
+        for row in list.cells.allElementsBoundByIndex {
+            XCTAssertTrue(row.buttons.matching(NSPredicate(format: "label CONTAINS %@", "REWE")).firstMatch.exists)
+        }
     }
 }
