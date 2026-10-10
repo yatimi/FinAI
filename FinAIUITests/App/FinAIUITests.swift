@@ -10,12 +10,36 @@ import XCTest
 final class FinAIUITests: XCTestCase {
     @MainActor
     func testDemoAndTransactionDetails() throws {
+        try exerciseDemoAndDetails(appearance: .light, appearanceArguments: [
+            "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryL"
+        ])
+    }
+
+    @MainActor
+    func testDemoAndDetailsWithLargeTextInDarkMode() throws {
+        try exerciseDemoAndDetails(appearance: .dark, appearanceArguments: [
+            "-UIPreferredContentSizeCategoryName", "UICTContentSizeCategoryAccessibilityXXXL"
+        ])
+    }
+
+    @MainActor
+    private func exerciseDemoAndDetails(
+        appearance: XCUIDevice.Appearance,
+        appearanceArguments: [String]
+    ) throws {
+        let previousAppearance = XCUIDevice.shared.appearance
+        XCUIDevice.shared.appearance = appearance
+        defer { XCUIDevice.shared.appearance = previousAppearance }
         continueAfterFailure = false
         let app = XCUIApplication()
-        app.launchArguments = ["--uitesting", "-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
+        app.launchArguments = ["--uitesting", "-AppleLanguages", "(en)", "-AppleLocale", "en_US"] + appearanceArguments
         app.launch()
         let demoButton = app.buttons[AccessibilityID.loadDemo]
         XCTAssertTrue(demoButton.waitForExistence(timeout: 15))
+        let emptyImage = XCTAttachment(screenshot: app.screenshot())
+        emptyImage.name = "Empty overview"
+        emptyImage.lifetime = .keepAlways
+        add(emptyImage)
         demoButton.tap()
         app.alerts.buttons["Cancel"].tap()
         XCTAssertTrue(demoButton.exists)
@@ -37,7 +61,11 @@ final class FinAIUITests: XCTestCase {
         XCTAssertTrue(list.waitForExistence(timeout: 5))
         list.buttons.firstMatch.tap()
         XCTAssertTrue(app.navigationBars["Transaction details"].waitForExistence(timeout: 5))
-        XCTAssertTrue(app.staticTexts["Synthetic demo data"].exists)
+        let provenance = app.staticTexts["Synthetic demo data"]
+        for _ in 0..<6 where !provenance.exists {
+            app.swipeUp()
+        }
+        XCTAssertTrue(provenance.exists)
         let detailImage = XCTAttachment(screenshot: app.screenshot())
         detailImage.name = "Transaction details"
         detailImage.lifetime = .keepAlways
