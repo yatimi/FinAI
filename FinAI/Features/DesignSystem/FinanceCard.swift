@@ -17,6 +17,7 @@ struct FinanceCard<Content: View>: View {
     var body: some View {
         content
             .frame(maxWidth: .infinity, alignment: .leading)
+            .foregroundStyle(FinanceStyle.ColorRole.text)
             .padding(FinanceStyle.Spacing.standard)
             .background(FinanceStyle.Surface.card, in: .rect(cornerRadius: FinanceStyle.cardRadius))
     }

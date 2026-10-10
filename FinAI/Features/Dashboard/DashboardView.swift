@@ -16,15 +16,16 @@ struct DashboardView: View {
         Group {
             if let overview {
                 if overview.snapshot.accounts.isEmpty {
-                    ContentUnavailableView {
-                        Label(.understandYourFinances, systemImage: AppSymbol.gettingStarted.rawValue)
-                    } description: {
-                        Text(.gettingStartedExplanation)
-                    } actions: {
-                        Button(.exploreDemo, action: loadDemo)
-                            .buttonStyle(.borderedProminent)
-                            .disabled(isLoading)
-                            .accessibilityIdentifier(AccessibilityID.loadDemo)
+                    ScrollView {
+                        FinanceEmptyState(
+                            title: .understandYourFinances,
+                            message: .gettingStartedExplanation,
+                            systemImage: AppSymbol.gettingStarted.rawValue,
+                            actionTitle: .exploreDemo,
+                            action: loadDemo,
+                            isLoading: isLoading,
+                            actionAccessibilityIdentifier: AccessibilityID.loadDemo
+                        )
                     }
                 } else {
                     ScrollView {
@@ -33,7 +34,7 @@ struct DashboardView: View {
                                 Label(overview.snapshot.transactions.allSatisfy { $0.source == .demo }
                                       ? .demoDataOnDevice : .localDataOnDevice, systemImage: AppSymbol.localStorage.rawValue)
                                     .font(FinanceStyle.Typography.label)
-                                    .foregroundStyle(.secondary)
+                                    .foregroundStyle(FinanceStyle.ColorRole.secondaryText)
                                 Text(overview.month, format: .dateTime.month(.wide).year())
                                     .font(FinanceStyle.Typography.heading)
                             }
@@ -55,11 +56,15 @@ struct DashboardView: View {
                                 }
                             }
                             if overview.summaries.isEmpty {
-                                Text(.noTransactionsThisMonth)
+                                FinanceEmptyState(
+                                    title: .noTransactionsThisMonth,
+                                    message: .dashboardTotalsExplanation,
+                                    systemImage: "calendar"
+                                )
                             }
                             Text(.dashboardTotalsExplanation)
                                 .font(FinanceStyle.Typography.explanation)
-                                .foregroundStyle(.secondary)
+                                .foregroundStyle(FinanceStyle.ColorRole.secondaryText)
                         }
                         .padding(FinanceStyle.Spacing.standard)
                     }
@@ -67,11 +72,13 @@ struct DashboardView: View {
                     .accessibilityIdentifier(AccessibilityID.dashboard)
                 }
             } else if isLoading {
-                ProgressView(.loadingLocalData)
+                FinanceLoadingState(title: .loadingLocalData)
             } else {
                 ContentUnavailableView(.localDataUnavailable, systemImage: AppSymbol.unavailableStorage.rawValue)
             }
         }
+        .foregroundStyle(FinanceStyle.ColorRole.text)
+        .tint(FinanceStyle.ColorRole.accent)
         .overlay(alignment: .topTrailing) {
             if isLoading && overview != nil { ProgressView().padding().accessibilityLabel(.loadingLocalData) }
         }
