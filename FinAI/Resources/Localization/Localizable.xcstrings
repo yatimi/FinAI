@@ -3179,6 +3179,215 @@
           }
         }
       }
+    },
+    "budgets": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Budgets"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetDetails": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Budget details"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetLimit": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly limit"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetSpent": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net spending"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetRemaining": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remaining"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetExceeded": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Over budget"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetPlanningExplanation": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly category limits across all accounts. Same-currency refunds received this month reduce spending; transfers and income are excluded. Limits repeat each calendar month. No currency conversion or money movement."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "updatingBudgets": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updating budgets…"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "saveBudget": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save budget"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "addBudget": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add budget"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "editBudget": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit budget"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "savedBudgets": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved budgets"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "noBudgetsYet": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No budgets yet."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetsLoadFailure": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to load budgets. Try again before editing."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetsSaveFailure": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to save budget. Your changes are kept. Try again."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetInvalidInput": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a valid positive limit and currency."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetChangedFailure": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This budget has changed. Close and reopen budgets before editing again."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetDuplicateFailure": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A budget already exists for this category and currency. Edit that budget instead."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "discardBudgetChanges": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discard budget changes?"
+          }
+        }
+      },
+      "extractionState": "manual"
     }
   },
   "version": "1.0"
