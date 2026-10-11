@@ -25,6 +25,7 @@ struct AppFeature {
         @Presents var importFlow: ImportFeature.State?
         @Presents var merchantRules: MerchantRulesFeature.State?
         @Presents var detail: TransactionDetailFeature.State?
+        @Presents var budgets: BudgetsFeature.State?
         @Presents var goals: GoalsFeature.State?
     }
 
@@ -36,6 +37,8 @@ struct AppFeature {
         case demoTapped
         case response(Result<FinanceOverview, LoadError>)
         case merchantRulesTapped
+        case budgetsTapped
+        case budgets(PresentationAction<BudgetsFeature.Action>)
         case goalsTapped
         case goals(PresentationAction<GoalsFeature.Action>)
         case merchantRules(PresentationAction<MerchantRulesFeature.Action>)
@@ -95,6 +98,9 @@ struct AppFeature {
                 state.overview = overview
                 state.transactions.update(snapshot: overview.snapshot, date: now, calendar: calendar)
                 state.failure = nil
+                if state.budgets != nil {
+                    return .send(.budgets(.presented(.transactionsUpdated(overview.snapshot.transactions))))
+                }
                 return .none
             case let .response(.failure(error)):
                 guard state.isLoading else { return .none }
@@ -103,6 +109,9 @@ struct AppFeature {
                 return .none
             case .merchantRulesTapped:
                 state.merchantRules = MerchantRulesFeature.State()
+                return .none
+            case .budgetsTapped:
+                state.budgets = BudgetsFeature.State(transactions: state.overview?.snapshot.transactions ?? [])
                 return .none
             case .goalsTapped:
                 state.goals = GoalsFeature.State()
@@ -131,12 +140,13 @@ struct AppFeature {
                 state.isLoading = false
                 state.failure = nil
                 return .cancel(id: CancelID.loading)
-            case .binding, .alert, .detail, .importFlow, .transactions, .merchantRules, .goals:
+            case .binding, .alert, .detail, .importFlow, .transactions, .merchantRules, .goals, .budgets:
                 return .none
             }
         }
         .ifLet(\.$alert, action: \.alert)
         .ifLet(\.$merchantRules, action: \.merchantRules) { MerchantRulesFeature() }
+        .ifLet(\.$budgets, action: \.budgets) { BudgetsFeature() }
         .ifLet(\.$goals, action: \.goals) { GoalsFeature() }
         .ifLet(\.$detail, action: \.detail) { TransactionDetailFeature() }
         .ifLet(\.$importFlow, action: \.importFlow) { ImportFeature() }
