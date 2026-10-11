@@ -65,6 +65,16 @@ actor FinanceDatabase {
         return try GoalStore().save(goal, expected: expected, in: makeContext())
     }
 
+    func loadBudgets() throws -> [CategoryBudget] {
+        try Task.checkCancellation()
+        return try BudgetStore().load(in: makeContext())
+    }
+
+    func saveBudget(_ budget: CategoryBudget, expected: CategoryBudget?) throws -> [CategoryBudget] {
+        try Task.checkCancellation()
+        return try BudgetStore().save(budget, expected: expected, in: makeContext())
+    }
+
     private func makeContext() throws -> ModelContext {
         let container: ModelContainer
         if let existing = self.container {

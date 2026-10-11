@@ -37,6 +37,7 @@ struct FinAIApp: App {
             $0.financeClient = .live(database: database)
             $0.importClient = .live(database: database)
             $0.merchantRulesClient = .live(database: database)
+            $0.budgetsClient = .live(database: database)
             $0.goalsClient = .live(database: database)
             #if DEBUG
             if ProcessInfo.processInfo.arguments.contains("--uitesting") {
