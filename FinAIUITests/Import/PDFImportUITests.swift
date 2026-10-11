@@ -57,7 +57,8 @@ final class PDFImportUITests: XCTestCase {
         XCTAssertTrue(app.navigationBars["Transactions"].waitForExistence(timeout: 10))
         XCTAssertTrue(app.staticTexts["REWE"].exists)
         XCTAssertTrue(app.staticTexts["Test employer"].exists)
-        app.tabBars.buttons["Accounts"].tap()
+        app.tabBars.buttons["Home"].tap()
+        app.buttons["Accounts"].tap()
         XCTAssertTrue(app.staticTexts["Statement bank"].waitForExistence(timeout: 5))
     }
 }

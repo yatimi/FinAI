@@ -38,12 +38,17 @@ struct BudgetsView: View {
                     Section { Button(.addBudget, systemImage: AppSymbol.add.rawValue) { store.send(.addTapped) }
                         .disabled(store.failure == .loading) }
                 }
-                Section(.savedBudgets) {
-                    if store.budgets.isEmpty { Text(.noBudgetsYet) }
-                    ForEach(store.budgets) { budget in
-                        BudgetRow(budget: budget, progress: store.plans[budget.id])
-                        Button(.editBudget) { store.send(.editTapped(budget.id)) }
-                            .disabled(store.draft != nil)
+                if store.draft == nil {
+                    Section(.savedBudgets) {
+                        if store.budgets.isEmpty { Text(.noBudgetsYet) }
+                        ForEach(store.budgets) { budget in
+                            DisclosureGroup {
+                                BudgetRow(budget: budget, progress: store.plans[budget.id])
+                            } label: {
+                                Text(budget.category.title).font(.headline)
+                            }
+                            Button(.editBudget) { store.send(.editTapped(budget.id)) }
+                        }
                     }
                 }
             }

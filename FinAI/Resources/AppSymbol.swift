@@ -8,6 +8,7 @@
 enum AppSymbol: String {
     case edit = "pencil"
     case goals = "target"
+    case home = "house"
     case overview = "chart.bar"
     case transactions = "list.bullet.rectangle"
     case analytics = "chart.pie"

@@ -20,10 +20,14 @@ internal enum FinanceStrings {
   internal static let accounts = FinanceStrings.tr("Localizable", "accounts", fallback: "Accounts")
   /// A CSV field is too long.
   internal static let aCsvFieldIsTooLong = FinanceStrings.tr("Localizable", "aCsvFieldIsTooLong", fallback: "A CSV field is too long.")
+  /// Add budget
+  internal static let addBudget = FinanceStrings.tr("Localizable", "addBudget", fallback: "Add budget")
   /// Add goal
   internal static let addGoal = FinanceStrings.tr("Localizable", "addGoal", fallback: "Add goal")
   /// Add rule
   internal static let addRule = FinanceStrings.tr("Localizable", "addRule", fallback: "Add rule")
+  /// Add to plan
+  internal static let addToPlan = FinanceStrings.tr("Localizable", "addToPlan", fallback: "Add to plan")
   /// Adjustment
   internal static let adjustment = FinanceStrings.tr("Localizable", "adjustment", fallback: "Adjustment")
   /// A file can contain up to 5,000 data rows.
@@ -52,6 +56,30 @@ internal enum FinanceStrings {
   internal static let bank = FinanceStrings.tr("Localizable", "bank", fallback: "Bank")
   /// Bonus
   internal static let bonusIncome = FinanceStrings.tr("Localizable", "bonusIncome", fallback: "Bonus")
+  /// This budget has changed. Close and reopen budgets before editing again.
+  internal static let budgetChangedFailure = FinanceStrings.tr("Localizable", "budgetChangedFailure", fallback: "This budget has changed. Close and reopen budgets before editing again.")
+  /// Budget details
+  internal static let budgetDetails = FinanceStrings.tr("Localizable", "budgetDetails", fallback: "Budget details")
+  /// A budget already exists for this category and currency. Edit that budget instead.
+  internal static let budgetDuplicateFailure = FinanceStrings.tr("Localizable", "budgetDuplicateFailure", fallback: "A budget already exists for this category and currency. Edit that budget instead.")
+  /// Over budget
+  internal static let budgetExceeded = FinanceStrings.tr("Localizable", "budgetExceeded", fallback: "Over budget")
+  /// Enter a valid positive limit and currency.
+  internal static let budgetInvalidInput = FinanceStrings.tr("Localizable", "budgetInvalidInput", fallback: "Enter a valid positive limit and currency.")
+  /// Monthly limit
+  internal static let budgetLimit = FinanceStrings.tr("Localizable", "budgetLimit", fallback: "Monthly limit")
+  /// Monthly category limits across all accounts. Same-currency refunds received this month reduce spending; transfers and income are excluded. Limits repeat each calendar month. No currency conversion or money movement.
+  internal static let budgetPlanningExplanation = FinanceStrings.tr("Localizable", "budgetPlanningExplanation", fallback: "Monthly category limits across all accounts. Same-currency refunds received this month reduce spending; transfers and income are excluded. Limits repeat each calendar month. No currency conversion or money movement.")
+  /// Remaining
+  internal static let budgetRemaining = FinanceStrings.tr("Localizable", "budgetRemaining", fallback: "Remaining")
+  /// Budgets
+  internal static let budgets = FinanceStrings.tr("Localizable", "budgets", fallback: "Budgets")
+  /// Unable to load budgets. Try again before editing.
+  internal static let budgetsLoadFailure = FinanceStrings.tr("Localizable", "budgetsLoadFailure", fallback: "Unable to load budgets. Try again before editing.")
+  /// Net spending
+  internal static let budgetSpent = FinanceStrings.tr("Localizable", "budgetSpent", fallback: "Net spending")
+  /// Unable to save budget. Your changes are kept. Try again.
+  internal static let budgetsSaveFailure = FinanceStrings.tr("Localizable", "budgetsSaveFailure", fallback: "Unable to save budget. Your changes are kept. Try again.")
   /// Cancel
   internal static let cancel = FinanceStrings.tr("Localizable", "cancel", fallback: "Cancel")
   /// Cancel editing
@@ -146,6 +174,8 @@ internal enum FinanceStrings {
   internal static let destinationAccount = FinanceStrings.tr("Localizable", "destinationAccount", fallback: "Destination account")
   /// Direction
   internal static let direction = FinanceStrings.tr("Localizable", "direction", fallback: "Direction")
+  /// Discard budget changes?
+  internal static let discardBudgetChanges = FinanceStrings.tr("Localizable", "discardBudgetChanges", fallback: "Discard budget changes?")
   /// Discard changes
   internal static let discardChanges = FinanceStrings.tr("Localizable", "discardChanges", fallback: "Discard changes")
   /// Discard goal changes?
@@ -156,6 +186,8 @@ internal enum FinanceStrings {
   internal static let done = FinanceStrings.tr("Localizable", "done", fallback: "Done")
   /// Possible duplicates are unchecked. Up to three matches are shown for review. Keep both only if they are separate transactions. Unknown types are excluded from overview totals.
   internal static let duplicateReviewExplanation = FinanceStrings.tr("Localizable", "duplicateReviewExplanation", fallback: "Possible duplicates are unchecked. Up to three matches are shown for review. Keep both only if they are separate transactions. Unknown types are excluded from overview totals.")
+  /// Edit budget
+  internal static let editBudget = FinanceStrings.tr("Localizable", "editBudget", fallback: "Edit budget")
   /// Edit goal
   internal static let editGoal = FinanceStrings.tr("Localizable", "editGoal", fallback: "Edit goal")
   /// Edit account
@@ -236,6 +268,8 @@ internal enum FinanceStrings {
   internal static let groceries = FinanceStrings.tr("Localizable", "groceries", fallback: "Groceries")
   /// Health
   internal static let health = FinanceStrings.tr("Localizable", "health", fallback: "Health")
+  /// Home
+  internal static let home = FinanceStrings.tr("Localizable", "home", fallback: "Home")
   /// Housing
   internal static let housing = FinanceStrings.tr("Localizable", "housing", fallback: "Housing")
   /// Selected: %lld. Skipped: %lld. Your source file will not be changed.
@@ -352,6 +386,8 @@ internal enum FinanceStrings {
   internal static let moneyOut = FinanceStrings.tr("Localizable", "moneyOut", fallback: "Money out")
   /// Monthly
   internal static let monthly = FinanceStrings.tr("Localizable", "monthly", fallback: "Monthly")
+  /// Monthly budgets
+  internal static let monthlyBudgets = FinanceStrings.tr("Localizable", "monthlyBudgets", fallback: "Monthly budgets")
   /// Current calendar month compared with the full previous month. The current month may be incomplete. Only saved transactions are included; missing activity is treated as zero.
   internal static let monthlyComparisonExplanation = FinanceStrings.tr("Localizable", "monthlyComparisonExplanation", fallback: "Current calendar month compared with the full previous month. The current month may be incomplete. Only saved transactions are included; missing activity is treated as zero.")
   /// Negative out, positive in
@@ -368,6 +404,8 @@ internal enum FinanceStrings {
   internal static let nextDateFromPattern = FinanceStrings.tr("Localizable", "nextDateFromPattern", fallback: "Next date from pattern")
   /// No accounts yet
   internal static let noAccountsYet = FinanceStrings.tr("Localizable", "noAccountsYet", fallback: "No accounts yet")
+  /// No budgets yet.
+  internal static let noBudgetsYet = FinanceStrings.tr("Localizable", "noBudgetsYet", fallback: "No budgets yet.")
   /// No expenses or refunds in these two months.
   internal static let noExpensesOrRefundsInTheseTwoMonths = FinanceStrings.tr("Localizable", "noExpensesOrRefundsInTheseTwoMonths", fallback: "No expenses or refunds in these two months.")
   /// No savings goals yet.
@@ -408,6 +446,10 @@ internal enum FinanceStrings {
   internal static let percentageChangeUnavailableExplanation = FinanceStrings.tr("Localizable", "percentageChangeUnavailableExplanation", fallback: "Percentage change is unavailable when previous net spending is zero or negative.")
   /// Period
   internal static let period = FinanceStrings.tr("Localizable", "period", fallback: "Period")
+  /// Plan
+  internal static let plan = FinanceStrings.tr("Localizable", "plan", fallback: "Plan")
+  /// Unable to load your plan. Try again.
+  internal static let planLoadFailure = FinanceStrings.tr("Localizable", "planLoadFailure", fallback: "Unable to load your plan. Try again.")
   /// Possible duplicate
   internal static let possibleDuplicate = FinanceStrings.tr("Localizable", "possibleDuplicate", fallback: "Possible duplicate")
   /// Possible subscription
@@ -460,6 +502,10 @@ internal enum FinanceStrings {
   internal static let sameDateAmountAndOriginalDescription = FinanceStrings.tr("Localizable", "sameDateAmountAndOriginalDescription", fallback: "Same date, amount and original description")
   /// Same day and amount with a similar description
   internal static let sameDayAndAmountWithASimilarDescription = FinanceStrings.tr("Localizable", "sameDayAndAmountWithASimilarDescription", fallback: "Same day and amount with a similar description")
+  /// Save budget
+  internal static let saveBudget = FinanceStrings.tr("Localizable", "saveBudget", fallback: "Save budget")
+  /// Saved budgets
+  internal static let savedBudgets = FinanceStrings.tr("Localizable", "savedBudgets", fallback: "Saved budgets")
   /// Saved goals
   internal static let savedGoals = FinanceStrings.tr("Localizable", "savedGoals", fallback: "Saved goals")
   /// Saved merchant rules
@@ -598,8 +644,12 @@ internal enum FinanceStrings {
   internal static let unsupportedImportTotalsMessage = FinanceStrings.tr("Localizable", "unsupportedImportTotalsMessage", fallback: "These amounts cannot be combined with your saved data without losing precision. Check the amounts and number format.")
   /// This PDF format is not supported. Choose a complete German Sparkasse statement with the Datum / Erläuterung / Betrag EUR table.
   internal static let unsupportedStatementMessage = FinanceStrings.tr("Localizable", "unsupportedStatementMessage", fallback: "This PDF format is not supported. Choose a complete German Sparkasse statement with the Datum / Erläuterung / Betrag EUR table.")
+  /// Updating budgets…
+  internal static let updatingBudgets = FinanceStrings.tr("Localizable", "updatingBudgets", fallback: "Updating budgets…")
   /// Updating goals…
   internal static let updatingGoals = FinanceStrings.tr("Localizable", "updatingGoals", fallback: "Updating goals…")
+  /// Updating plan…
+  internal static let updatingPlan = FinanceStrings.tr("Localizable", "updatingPlan", fallback: "Updating plan…")
   /// Updating rules…
   internal static let updatingRules = FinanceStrings.tr("Localizable", "updatingRules", fallback: "Updating rules…")
   /// Use a supported three-letter currency code, such as EUR or USD.

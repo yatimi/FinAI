@@ -38,12 +38,17 @@ struct GoalsView: View {
                     Section { Button(.addGoal, systemImage: AppSymbol.add.rawValue) { store.send(.addTapped) }
                         .disabled(store.failure == .loading) }
                 }
-                Section(.savedGoals) {
-                    if store.goals.isEmpty { Text(.noGoalsYet) }
-                    ForEach(store.goals) { goal in
-                        GoalRow(goal: goal, plan: store.plans[goal.id])
-                        Button(.editGoal) { store.send(.editTapped(goal.id)) }
-                            .disabled(store.draft != nil)
+                if store.draft == nil {
+                    Section(.savedGoals) {
+                        if store.goals.isEmpty { Text(.noGoalsYet) }
+                        ForEach(store.goals) { goal in
+                            DisclosureGroup {
+                                GoalRow(goal: goal, plan: store.plans[goal.id])
+                            } label: {
+                                Text(verbatim: goal.name).font(.headline)
+                            }
+                            Button(.editGoal) { store.send(.editTapped(goal.id)) }
+                        }
                     }
                 }
             }
