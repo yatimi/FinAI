@@ -3388,6 +3388,72 @@
         }
       },
       "extractionState": "manual"
+    },
+    "home": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Home"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "plan": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plan"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "monthlyBudgets": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly budgets"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "updatingPlan": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updating plan…"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "planLoadFailure": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to load your plan. Try again."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "addToPlan": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add to plan"
+          }
+        }
+      },
+      "extractionState": "manual"
     }
   },
   "version": "1.0"

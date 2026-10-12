@@ -10,11 +10,12 @@ import Foundation
 
 @Reducer
 struct AppFeature {
-    enum Tab: Equatable { case dashboard, transactions, analytics, accounts }
+    enum Tab: Equatable { case dashboard, transactions, plan }
     private enum CancelID { case loading }
 
     @ObservableState
     struct State: Equatable {
+        var plan = PlanFeature.State()
         var selectedTab = Tab.dashboard
         var isRecurringPaymentsPresented = false
         var transactions = TransactionsFeature.State()
@@ -31,12 +32,17 @@ struct AppFeature {
 
     enum Action: BindableAction, Equatable {
         case binding(BindingAction<State>)
+        case plan(PlanFeature.Action)
         case task
         case refresh
         case cancelLoading
         case demoTapped
         case response(Result<FinanceOverview, LoadError>)
         case merchantRulesTapped
+        case addBudgetTapped
+        case budgetTapped(UUID)
+        case addGoalTapped
+        case goalTapped(UUID)
         case budgetsTapped
         case budgets(PresentationAction<BudgetsFeature.Action>)
         case goalsTapped
@@ -58,6 +64,7 @@ struct AppFeature {
 
     var body: some ReducerOf<Self> {
         BindingReducer()
+        Scope(state: \.plan, action: \.plan) { PlanFeature() }
         Scope(state: \.transactions, action: \.transactions) { TransactionsFeature() }
         Reduce { state, action in
             switch action {
@@ -110,6 +117,18 @@ struct AppFeature {
             case .merchantRulesTapped:
                 state.merchantRules = MerchantRulesFeature.State()
                 return .none
+            case .addBudgetTapped:
+                state.budgets = BudgetsFeature.State(editorRequest: .add, transactions: state.overview?.snapshot.transactions ?? [])
+                return .none
+            case let .budgetTapped(id):
+                state.budgets = BudgetsFeature.State(editorRequest: .edit(id), transactions: state.overview?.snapshot.transactions ?? [])
+                return .none
+            case .addGoalTapped:
+                state.goals = GoalsFeature.State(editorRequest: .add)
+                return .none
+            case let .goalTapped(id):
+                state.goals = GoalsFeature.State(editorRequest: .edit(id))
+                return .none
             case .budgetsTapped:
                 state.budgets = BudgetsFeature.State(transactions: state.overview?.snapshot.transactions ?? [])
                 return .none
@@ -140,7 +159,9 @@ struct AppFeature {
                 state.isLoading = false
                 state.failure = nil
                 return .cancel(id: CancelID.loading)
-            case .binding, .alert, .detail, .importFlow, .transactions, .merchantRules, .goals, .budgets:
+            case .goals(.dismiss), .budgets(.dismiss):
+                return .send(.plan(.task))
+            case .plan, .binding, .alert, .detail, .importFlow, .transactions, .merchantRules, .goals, .budgets:
                 return .none
             }
         }

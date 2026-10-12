@@ -105,7 +105,7 @@ struct AppFeatureTests {
 
     @Test func regularPaymentsNavigationIsOwnedByRootState() async {
         let store = TestStore(initialState: AppFeature.State()) { AppFeature() }
-        await store.send(.binding(.set(\.selectedTab, .analytics))) { $0.selectedTab = .analytics }
+        await store.send(.binding(.set(\.selectedTab, .plan))) { $0.selectedTab = .plan }
         await store.send(.binding(.set(\.isRecurringPaymentsPresented, true))) {
             $0.isRecurringPaymentsPresented = true
         }

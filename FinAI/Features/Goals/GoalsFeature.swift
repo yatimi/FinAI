@@ -10,12 +10,14 @@ import Foundation
 
 @Reducer
 struct GoalsFeature {
+    enum EditorRequest: Equatable { case add, edit(UUID) }
     enum Phase: Equatable { case idle, loading, saving }
     enum Failure: Error, Equatable { case loading, saving, invalid, changed }
     private enum CancelID { case work }
 
     @ObservableState
     struct State: Equatable {
+        var editorRequest: EditorRequest?
         var goals: [SavingsGoal] = []
         var plans: [UUID: GoalPlan] = [:]
         var phase = Phase.idle
@@ -76,6 +78,13 @@ struct GoalsFeature {
                     state.goals = goals
                     state.failure = nil
                     if case .saved = action { clearEditor(&state) }
+                    if let request = state.editorRequest {
+                        state.editorRequest = nil
+                        switch request {
+                        case .add: return .send(.addTapped)
+                        case let .edit(id): return .send(.editTapped(id))
+                        }
+                    }
                 } catch { state.failure = .loading }
                 return .none
             case let .loaded(.failure(failure)), let .saved(.failure(failure)):

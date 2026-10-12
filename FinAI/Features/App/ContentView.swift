@@ -14,19 +14,30 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $store.selectedTab) {
-            Tab(.overview, systemImage: AppSymbol.overview.rawValue, value: .dashboard) {
+            Tab(.home, systemImage: AppSymbol.home.rawValue, value: .dashboard) {
                 NavigationStack {
                     DashboardView(overview: store.overview, isLoading: store.isLoading) {
                         store.send(.demoTapped)
+                    }
+                    .safeAreaInset(edge: .bottom) {
+                        ViewThatFits(in: .horizontal) {
+                            HStack {
+                                analyticsLink
+                                Spacer()
+                                accountsLink
+                            }
+                            VStack(alignment: .leading, spacing: FinanceStyle.Spacing.standard) {
+                                analyticsLink
+                                accountsLink
+                            }
+                        }
+                        .padding()
+                        .background(FinanceStyle.Surface.card)
                     }
                     .navigationTitle(.finAI)
                     .toolbar {
                         importButton
                         refreshButton
-                        Button(.budgets, systemImage: AppSymbol.analytics.rawValue) { store.send(.budgetsTapped) }
-                            .accessibilityIdentifier(AccessibilityID.openBudgets)
-                        Button(.savingsGoals, systemImage: AppSymbol.goals.rawValue) { store.send(.goalsTapped) }
-                            .accessibilityIdentifier(AccessibilityID.openGoals)
                     }
                 }
             }
@@ -37,23 +48,19 @@ struct ContentView: View {
                     .toolbar { importButton }
                 }
             }
-            Tab(.analytics, systemImage: AppSymbol.analytics.rawValue, value: .analytics) {
+            Tab(.plan, systemImage: AppSymbol.goals.rawValue, value: .plan) {
                 NavigationStack {
-                    AnalyticsView(store: store)
-                        .navigationTitle(.analytics)
-                        .toolbar { refreshButton }
-                }
-            }
-            Tab(.accounts, systemImage: AppSymbol.accounts.rawValue, value: .accounts) {
-                NavigationStack {
-                    AccountsView(accounts: store.overview?.snapshot.accounts ?? [])
-                        .navigationTitle(.accounts)
-                        .toolbar {
-                            Button(.merchantRules, systemImage: AppSymbol.merchantRules.rawValue) { store.send(.merchantRulesTapped) }
-                        }
+                    PlanView(store: store.scope(state: \.plan, action: \.plan),
+                             openBudgets: { store.send(.budgetsTapped) },
+                             openGoals: { store.send(.goalsTapped) },
+                             addBudget: { store.send(.addBudgetTapped) },
+                             addGoal: { store.send(.addGoalTapped) },
+                             selectBudget: { store.send(.budgetTapped($0)) },
+                             selectGoal: { store.send(.goalTapped($0)) })
                 }
             }
         }
+        .tint(FinanceStyle.ColorRole.accent)
         .safeAreaInset(edge: .top) {
             if let failure = store.failure {
                 VStack(spacing: 8) {
@@ -80,6 +87,30 @@ struct ContentView: View {
         .onDisappear { store.send(.cancelLoading) }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active { store.send(.refresh) }
+        }
+    }
+
+    private var analyticsLink: some View {
+        NavigationLink {
+            AnalyticsView(store: store)
+                .navigationTitle(.analytics)
+                .toolbar { refreshButton }
+        } label: {
+            Label(.analytics, systemImage: AppSymbol.analytics.rawValue)
+        }
+    }
+
+    private var accountsLink: some View {
+        NavigationLink {
+            AccountsView(accounts: store.overview?.snapshot.accounts ?? [])
+                .navigationTitle(.accounts)
+                .toolbar {
+                    Button(.merchantRules, systemImage: AppSymbol.merchantRules.rawValue) {
+                        store.send(.merchantRulesTapped)
+                    }
+                }
+        } label: {
+            Label(.accounts, systemImage: AppSymbol.accounts.rawValue)
         }
     }
 

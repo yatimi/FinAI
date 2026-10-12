@@ -52,7 +52,8 @@ final class MerchantRulesUITests: XCTestCase {
         reveal(suggested, app: app)
         XCTAssertEqual(suggested.value as? String, "REWE Family")
         app.navigationBars["Review import"].buttons["Close"].tap()
-        app.tabBars.buttons["Accounts"].tap()
+        app.tabBars.buttons["Home"].tap()
+        app.buttons["Accounts"].tap()
         app.buttons["Merchant rules"].tap()
         XCTAssertTrue(app.navigationBars["Merchant rules"].waitForExistence(timeout: 10))
         let delete = app.buttons["Delete rule"]

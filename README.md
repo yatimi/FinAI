@@ -28,6 +28,8 @@ Demo data is loaded only after confirmation and only into an empty store. It inc
 
 ## How it works
 
+The three tabs are **Home**, **Transactions** and **Plan**. Home links to analytics and accounts. Plan brings saved category limits and savings goals together, with direct creation from the plus menu and editing from a saved item.
+
 Swift code calculates every total using `Decimal`. Currencies are kept separate, transfers are excluded from spending and income, and refunds reduce net spending without becoming income. Adjustments and unknown transactions are excluded from the monthly summary. The overview describes activity, not account balances. Analytics compares the current calendar month with the full previous month using saved transactions; the current month may be incomplete. Refunds apply to their recorded month and category. Percentage changes are shown only for a positive previous net spending total.
 
 The app preserves original amounts, currencies, descriptions and source metadata. CSV and supported PDF statements are parsed locally. Nothing is saved until the selected transactions are confirmed. Import sessions retain the source filename and record numbers; the original file is neither copied into storage nor modified.
@@ -84,7 +86,7 @@ Up to three matches show their original description, date, source and matching r
 
 Known descriptions such as `REWE MARKT`, `AMZN` and `DB VERTRIEB` receive local merchant and category suggestions. Built-in aliases match the start of the description on word boundaries, with more specific aliases taking precedence. Unknown merchants retain their original name. Built-in categories follow the explicit transaction type: income and transfers use their corresponding categories; unknown and adjustment types default to Other. Review suggestions before saving: merchants and categories are editable, and changing the type resets its category suggestion.
 
-Save an optional merchant rule from the preview to reuse a merchant and category for the same transaction type. Rules match full descriptions by default, or an explicitly selected whole-word prefix, ignoring case, punctuation and spacing. User rules run before the built-in catalog; exact matches take priority over prefixes, then the longest prefix wins. Manage rules from **Accounts → Merchant rules**. Saved rules apply when a preview is built again; current corrections and saved transactions remain unchanged.
+Save an optional merchant rule from the preview to reuse a merchant and category for the same transaction type. Rules match full descriptions by default, or an explicitly selected whole-word prefix, ignoring case, punctuation and spacing. User rules run before the built-in catalog; exact matches take priority over prefixes, then the longest prefix wins. Manage rules from **Home → Accounts → Merchant rules**. Saved rules apply when a preview is built again; current corrections and saved transactions remain unchanged.
 
 ## PDF statement import
 
@@ -104,19 +106,19 @@ Search and filters stay in place when switching tabs or refreshing. Reset clears
 
 ## Regular payments
 
-Open **Analytics → Regular payments** to inspect possible repeating expenses. Detection requires at least three positive expenses with the same saved merchant, exact amount, currency and account. All payments in that group must follow consecutive weekly, monthly or yearly dates, anchored to the first payment. Posting tolerance is one day for weekly patterns and three days for monthly/yearly patterns. Same-day duplicates and irregular groups are omitted.
+Open **Home → Analytics → Regular payments** to inspect possible repeating expenses. Detection requires at least three positive expenses with the same saved merchant, exact amount, currency and account. All payments in that group must follow consecutive weekly, monthly or yearly dates, anchored to the first payment. Posting tolerance is one day for weekly patterns and three days for monthly/yearly patterns. Same-day duplicates and irregular groups are omitted.
 
 A possible subscription also requires every matching expense to have the Subscriptions category. These are suggestions, not confirmed contracts. The next date is estimated from the observed pattern; if it passes without a matching saved payment, the pattern is marked as potentially ended, changed or incomplete. Changed prices and missing periods may prevent detection. No data is modified, no reminders are scheduled, and currencies are never combined.
 
 ## Budgets
 
-Open **Overview → Budgets** to create or edit a monthly category limit in one currency. A category can have one budget per currency. Limits repeat each calendar month across all accounts; they do not move money or change saved transactions.
+Open **Plan → Budgets** to create or edit a monthly category limit in one currency. A category can have one budget per currency. Limits repeat each calendar month across all accounts; they do not move money or change saved transactions.
 
 Spending uses expenses minus refunds recorded in the current month and category. Transfers, income, adjustments and unknown transactions are excluded. Currencies are never converted or combined. Refunds can make net spending negative and the remaining amount larger than the limit. A negative remaining amount is shown alongside the amount over budget. Budgets are stored locally; edits require explicit saving and conflicting changes are rejected.
 
 ## Savings goals
 
-Open **Overview → Savings goals** to create or edit a goal with a name, target amount, original currency, deadline and manually recorded savings. Saving a goal does not move money or change transactions or account balances. Each goal is calculated separately; currencies are never combined.
+Open **Plan → Savings goals** to create or edit a goal with a name, target amount, original currency, deadline and manually recorded savings. Saving a goal does not move money or change transactions or account balances. Each goal is calculated separately; currencies are never combined.
 
 The remaining target is divided over calendar months including the current month and deadline month. Monthly contributions round upward to the currency's standard precision. A deadline today allows one contribution; a passed deadline with an outstanding target is marked overdue. Savings at or above the target mark the goal completed. This is a contribution schedule, not an assessment of affordability or a forecast of investment returns. Goals are stored locally and drafts require explicit saving.
 

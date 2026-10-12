@@ -28,7 +28,8 @@ final class SpendingAnalyticsUITests: XCTestCase {
         app.buttons[AccessibilityID.confirmSelectedImport].tap()
         app.alerts.buttons["Confirm import"].tap()
         XCTAssertTrue(app.navigationBars["Transactions"].waitForExistence(timeout: 10))
-        app.tabBars.buttons["Analytics"].tap()
+        app.tabBars.buttons["Home"].tap()
+        app.buttons["Analytics"].tap()
         let list = app.collectionViews[AccessibilityID.spendingAnalytics]
         XCTAssertTrue(list.waitForExistence(timeout: 5))
         let categories = app.staticTexts["By category · EUR"]
@@ -54,13 +55,15 @@ final class SpendingAnalyticsUITests: XCTestCase {
         app.launchArguments = ["--uitesting", "-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
         app.launch()
         XCTAssertTrue(app.buttons[AccessibilityID.loadDemo].waitForExistence(timeout: 15))
-        app.tabBars.buttons["Analytics"].tap()
+        app.tabBars.buttons["Home"].tap()
+        app.buttons["Analytics"].tap()
         XCTAssertTrue(app.staticTexts["No expenses or refunds in these two months."].waitForExistence(timeout: 5))
-        app.tabBars.buttons["Overview"].tap()
+        app.navigationBars.buttons["FinAI"].tap()
         app.buttons[AccessibilityID.loadDemo].tap()
         app.alerts.buttons["Load demo data"].tap()
         XCTAssertTrue(app.staticTexts["Demo data · stored on this device"].waitForExistence(timeout: 15))
-        app.tabBars.buttons["Analytics"].tap()
+        app.tabBars.buttons["Home"].tap()
+        app.buttons["Analytics"].tap()
         XCTAssertTrue(app.staticTexts["Current month net spending"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["Previous month net spending"].exists)
         let list = app.collectionViews[AccessibilityID.spendingAnalytics]

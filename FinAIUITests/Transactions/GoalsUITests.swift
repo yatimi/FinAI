@@ -14,6 +14,7 @@ final class GoalsUITests: XCTestCase {
         let app = XCUIApplication()
         app.launchArguments = ["--uitesting", "-AppleLanguages", "(en)", "-AppleLocale", "en_US"]
         app.launch()
+        app.tabBars.buttons["Plan"].tap()
         let open = app.buttons[AccessibilityID.openGoals]
         XCTAssertTrue(open.waitForExistence(timeout: 15))
         open.tap()

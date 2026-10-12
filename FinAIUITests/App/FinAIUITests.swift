@@ -71,7 +71,8 @@ final class FinAIUITests: XCTestCase {
         detailImage.lifetime = .keepAlways
         add(detailImage)
         app.buttons["Done"].tap()
-        app.tabBars.buttons["Accounts"].tap()
+        app.tabBars.buttons["Home"].tap()
+        app.buttons["Accounts"].tap()
         XCTAssertTrue(app.staticTexts["Demo current account"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["Demo savings"].exists)
     }
