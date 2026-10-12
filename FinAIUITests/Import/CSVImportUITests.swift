@@ -46,12 +46,25 @@ final class CSVImportUITests: XCTestCase {
         merchant.tap()
         merchant.typeText(" Market")
         app.keyboards.buttons["Done"].tap()
-        for _ in 0..<8 where !compact.isHittable { app.swipeDown() }
+        let reviewNavigationBar = app.navigationBars["Review import"]
+        for _ in 0..<8 {
+            if compact.isHittable, compact.frame.minY > reviewNavigationBar.frame.maxY { break }
+            app.swipeDown()
+        }
         XCTAssertTrue(compact.isHittable)
-        compact.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
-        XCTAssertEqual(compact.value as? String, "0")
-        compact.coordinate(withNormalizedOffset: CGVector(dx: 0.9, dy: 0.5)).tap()
-        XCTAssertEqual(compact.value as? String, "1")
+        XCTAssertGreaterThan(compact.frame.minY, reviewNavigationBar.frame.maxY)
+        let compactControl = app.collectionViews.cells
+            .containing(.switch, identifier: AccessibilityID.compactImportReview)
+            .switches.matching(NSPredicate(format: "label == ''")).firstMatch
+        XCTAssertTrue(compactControl.isHittable)
+        compactControl.tap()
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "value == %@", "0"), object: compact
+        )], timeout: 5), .completed)
+        compactControl.tap()
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "value == %@", "1"), object: compact
+        )], timeout: 5), .completed)
         XCTAssertTrue(app.staticTexts["Selected transactions: 2"].exists)
         app.buttons[AccessibilityID.confirmSelectedImport].tap()
         app.alerts.buttons["Cancel"].tap()
