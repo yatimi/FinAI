@@ -16,11 +16,10 @@ struct MoneyMetricCard: View {
             VStack(alignment: .leading, spacing: FinanceStyle.Spacing.compact) {
                 Text(title)
                     .font(FinanceStyle.Typography.label)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(FinanceStyle.ColorRole.secondaryText)
                 MoneyText(money: money)
                     .font(FinanceStyle.Typography.amount)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.5)
+                    .fixedSize(horizontal: false, vertical: true)
             }
         }
         .accessibilityElement(children: .combine)
