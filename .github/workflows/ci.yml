@@ -39,21 +39,34 @@ jobs:
           with open(os.environ['GITHUB_ENV'], 'a') as output:
               output.write('SIMULATOR_ID=' + devices[0]['udid'] + '\n')
           PYTHON
+      - name: Cache package sources
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/FinAI-SourcePackages
+          key: spm-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('FinAI.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
       - name: Build and test
         run: |
+          set -o pipefail
+          started=$(date +%s)
           xcodebuild test \
             -project FinAI.xcodeproj \
             -scheme FinAI \
             -destination "platform=iOS Simulator,id=$SIMULATOR_ID" \
             -derivedDataPath "$RUNNER_TEMP/FinAI-DerivedData" \
             -resultBundlePath "$RUNNER_TEMP/FinAI-Tests.xcresult" \
+            -clonedSourcePackagesDirPath "$RUNNER_TEMP/FinAI-SourcePackages" \
+            -collect-test-diagnostics never \
+            -showBuildTimingSummary \
             -skipMacroValidation \
             -onlyUsePackageVersionsFromResolvedFile \
-            CODE_SIGNING_ALLOWED=NO
+            CODE_SIGNING_ALLOWED=NO 2>&1 | tee "$RUNNER_TEMP/FinAI-Test.log"
+          echo "Build and test: $(( $(date +%s) - started )) seconds" >> "$GITHUB_STEP_SUMMARY"
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: FinAI-Tests
-          path: ${{ runner.temp }}/FinAI-Tests.xcresult
+          path: |
+            ${{ runner.temp }}/FinAI-Tests.xcresult
+            ${{ runner.temp }}/FinAI-Test.log
           if-no-files-found: ignore
