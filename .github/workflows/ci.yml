@@ -48,19 +48,33 @@ jobs:
         run: |
           set -o pipefail
           started=$(date +%s)
-          xcodebuild test \
-            -project FinAI.xcodeproj \
-            -scheme FinAI \
-            -destination "platform=iOS Simulator,id=$SIMULATOR_ID" \
-            -derivedDataPath "$RUNNER_TEMP/FinAI-DerivedData" \
-            -resultBundlePath "$RUNNER_TEMP/FinAI-Tests.xcresult" \
-            -clonedSourcePackagesDirPath "$RUNNER_TEMP/FinAI-SourcePackages" \
-            -collect-test-diagnostics never \
+          common_args=(
+            -project FinAI.xcodeproj
+            -scheme FinAI
+            -destination "platform=iOS Simulator,id=$SIMULATOR_ID"
+            -derivedDataPath "$RUNNER_TEMP/FinAI-DerivedData"
+            -clonedSourcePackagesDirPath "$RUNNER_TEMP/FinAI-SourcePackages"
+            -onlyUsePackageVersionsFromResolvedFile
+            CODE_SIGNING_ALLOWED=NO
+          )
+          # Prepare the same destination while Xcode builds all test products.
+          xcrun simctl bootstatus "$SIMULATOR_ID" -b > "$RUNNER_TEMP/FinAI-Simulator.log" 2>&1 &
+          boot_pid=$!
+          trap 'kill "$boot_pid" 2>/dev/null || true' EXIT
+          xcodebuild build-for-testing "${common_args[@]}" \
             -showBuildTimingSummary \
-            -skipMacroValidation \
-            -onlyUsePackageVersionsFromResolvedFile \
-            CODE_SIGNING_ALLOWED=NO 2>&1 | tee "$RUNNER_TEMP/FinAI-Test.log"
-          echo "Build and test: $(( $(date +%s) - started )) seconds" >> "$GITHUB_STEP_SUMMARY"
+            -skipMacroValidation 2>&1 | tee "$RUNNER_TEMP/FinAI-Build.log"
+          echo "Build for testing: $(( $(date +%s) - started )) seconds" >> "$GITHUB_STEP_SUMMARY"
+          wait "$boot_pid"
+          trap - EXIT
+          echo "Build and simulator ready: $(( $(date +%s) - started )) seconds" >> "$GITHUB_STEP_SUMMARY"
+          test_started=$(date +%s)
+          xcodebuild test-without-building "${common_args[@]}" \
+            -resultBundlePath "$RUNNER_TEMP/FinAI-Tests.xcresult" \
+            -collect-test-diagnostics never \
+            -skipMacroValidation 2>&1 | tee "$RUNNER_TEMP/FinAI-Test.log"
+          echo "Test execution and finalization: $(( $(date +%s) - test_started )) seconds" >> "$GITHUB_STEP_SUMMARY"
+          echo "Build and test total: $(( $(date +%s) - started )) seconds" >> "$GITHUB_STEP_SUMMARY"
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
@@ -69,4 +83,6 @@ jobs:
           path: |
             ${{ runner.temp }}/FinAI-Tests.xcresult
             ${{ runner.temp }}/FinAI-Test.log
+            ${{ runner.temp }}/FinAI-Build.log
+            ${{ runner.temp }}/FinAI-Simulator.log
           if-no-files-found: ignore
