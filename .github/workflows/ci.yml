@@ -6,12 +6,18 @@ on:
   push:
     branches: [develop, main]
   workflow_dispatch:
+    inputs:
+      simulator_boot:
+        description: Simulator preparation for a full CI comparison
+        type: choice
+        options: [early, late]
+        default: early
 
 permissions:
   contents: read
 
 concurrency:
-  group: ios-${{ github.ref }}
+  group: ios-${{ github.event_name == 'workflow_dispatch' && github.run_id || github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -45,9 +51,22 @@ jobs:
           path: ${{ runner.temp }}/FinAI-SourcePackages
           key: spm-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('FinAI.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
       - name: Build and test
+        env:
+          SIMULATOR_BOOT_MODE: ${{ inputs.simulator_boot || 'early' }}
         run: |
           set -o pipefail
           started=$(date +%s)
+          sysctl hw.ncpu hw.memsize > "$RUNNER_TEMP/FinAI-Runner.log"
+          xcodebuild -version >> "$RUNNER_TEMP/FinAI-Runner.log"
+          echo "$SIMULATOR_BOOT_MODE" > "$RUNNER_TEMP/FinAI-BootMode.txt"
+          python3 Scripts/sample-ci-runner.py "$RUNNER_TEMP" &
+          sample_pid=$!
+          boot_pid=""
+          cleanup() {
+            kill "$sample_pid" 2>/dev/null || true
+            if [[ -n "$boot_pid" ]]; then kill "$boot_pid" 2>/dev/null || true; fi
+          }
+          trap cleanup EXIT
           common_args=(
             -project FinAI.xcodeproj
             -scheme FinAI
@@ -57,24 +76,32 @@ jobs:
             -onlyUsePackageVersionsFromResolvedFile
             CODE_SIGNING_ALLOWED=NO
           )
-          # Prepare the same destination while Xcode builds all test products.
-          xcrun simctl bootstatus "$SIMULATOR_ID" -b > "$RUNNER_TEMP/FinAI-Simulator.log" 2>&1 &
-          boot_pid=$!
-          trap 'kill "$boot_pid" 2>/dev/null || true' EXIT
+          if [[ "$SIMULATOR_BOOT_MODE" == early ]]; then
+            xcrun simctl bootstatus "$SIMULATOR_ID" -b > "$RUNNER_TEMP/FinAI-Simulator.log" 2>&1 &
+            boot_pid=$!
+          fi
+          echo build > "$RUNNER_TEMP/FinAI-Phase.txt"
           xcodebuild build-for-testing "${common_args[@]}" \
             -showBuildTimingSummary \
             -skipMacroValidation 2>&1 | tee "$RUNNER_TEMP/FinAI-Build.log"
-          echo "Build for testing: $(( $(date +%s) - started )) seconds" >> "$GITHUB_STEP_SUMMARY"
+          echo "Build for testing: $(( $(date +%s) - started )) seconds" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo simulator-ready > "$RUNNER_TEMP/FinAI-Phase.txt"
+          if [[ "$SIMULATOR_BOOT_MODE" == late ]]; then
+            xcrun simctl bootstatus "$SIMULATOR_ID" -b > "$RUNNER_TEMP/FinAI-Simulator.log" 2>&1 &
+            boot_pid=$!
+          fi
           wait "$boot_pid"
-          trap - EXIT
-          echo "Build and simulator ready: $(( $(date +%s) - started )) seconds" >> "$GITHUB_STEP_SUMMARY"
+          boot_pid=""
+          echo "Build and simulator ready: $(( $(date +%s) - started )) seconds" | tee -a "$GITHUB_STEP_SUMMARY"
           test_started=$(date +%s)
+          echo test > "$RUNNER_TEMP/FinAI-Phase.txt"
           xcodebuild test-without-building "${common_args[@]}" \
             -resultBundlePath "$RUNNER_TEMP/FinAI-Tests.xcresult" \
             -collect-test-diagnostics never \
             -skipMacroValidation 2>&1 | tee "$RUNNER_TEMP/FinAI-Test.log"
-          echo "Test execution and finalization: $(( $(date +%s) - test_started )) seconds" >> "$GITHUB_STEP_SUMMARY"
-          echo "Build and test total: $(( $(date +%s) - started )) seconds" >> "$GITHUB_STEP_SUMMARY"
+          echo "Test execution and finalization: $(( $(date +%s) - test_started )) seconds" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo complete > "$RUNNER_TEMP/FinAI-Phase.txt"
+          echo "Build and test total: $(( $(date +%s) - started )) seconds" | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
@@ -85,4 +112,7 @@ jobs:
             ${{ runner.temp }}/FinAI-Test.log
             ${{ runner.temp }}/FinAI-Build.log
             ${{ runner.temp }}/FinAI-Simulator.log
+            ${{ runner.temp }}/FinAI-Runner.log
+            ${{ runner.temp }}/FinAI-RunnerSamples.jsonl
+            ${{ runner.temp }}/FinAI-BootMode.txt
           if-no-files-found: ignore
