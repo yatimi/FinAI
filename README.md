@@ -104,6 +104,12 @@ Search is local, ignores case and accents, and matches merchant names or origina
 
 Search and filters stay in place when switching tabs or refreshing. Reset clears them together; a successful import also clears them so newly imported transactions are visible. Filters are not saved between app launches.
 
+## Spending analytics
+
+Open **Home → Analytics** and browse calendar months, or return to **This month**. Each currency has its own comparison with the previous calendar month and a daily net-spending chart. At accessibility text sizes, expandable daily totals replace the chart to keep every amount readable. Expenses add to spending; refunds reduce it on their recorded date. Current-month data may be incomplete, and missing imports can affect any month.
+
+Tap the selected-month total, a category or a merchant to see the contributing expenses and refunds. Open a transaction to inspect or correct it. These drilldowns preserve the search and filters on the Transactions tab. Calculations use exact Decimal amounts; currencies are never combined or converted.
+
 ## Regular payments
 
 Open **Home → Analytics → Regular payments** to inspect possible repeating expenses. Detection requires at least three positive expenses with the same saved merchant, exact amount, currency and account. All payments in that group must follow consecutive weekly, monthly or yearly dates, anchored to the first payment. Posting tolerance is one day for weekly patterns and three days for monthly/yearly patterns. Same-day duplicates and irregular groups are omitted.

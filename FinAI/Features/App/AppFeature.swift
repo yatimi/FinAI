@@ -15,6 +15,7 @@ struct AppFeature {
 
     @ObservableState
     struct State: Equatable {
+        var analytics = AnalyticsFeature.State()
         var plan = PlanFeature.State()
         var selectedTab = Tab.dashboard
         var isRecurringPaymentsPresented = false
@@ -32,6 +33,8 @@ struct AppFeature {
 
     enum Action: BindableAction, Equatable {
         case binding(BindingAction<State>)
+        case analyticsOpened
+        case analytics(AnalyticsFeature.Action)
         case plan(PlanFeature.Action)
         case task
         case refresh
@@ -64,10 +67,21 @@ struct AppFeature {
 
     var body: some ReducerOf<Self> {
         BindingReducer()
+        Scope(state: \.analytics, action: \.analytics) { AnalyticsFeature() }
         Scope(state: \.plan, action: \.plan) { PlanFeature() }
         Scope(state: \.transactions, action: \.transactions) { TransactionsFeature() }
         Reduce { state, action in
             switch action {
+            case .analyticsOpened:
+                state.analytics.hasBeenOpened = true
+                if let overview = state.overview {
+                    state.analytics.update(snapshot: overview.snapshot, date: now, calendar: calendar)
+                } else {
+                    state.analytics.hasFailure = state.failure != nil
+                }
+                return .none
+            case .analytics(.retryTapped):
+                return .send(.refresh)
             case .task:
                 guard state.overview == nil, !state.isLoading else { return .none }
                 state.isLoading = true
@@ -103,6 +117,9 @@ struct AppFeature {
                 guard state.isLoading else { return .none }
                 state.isLoading = false
                 state.overview = overview
+                if state.analytics.hasBeenOpened {
+                    state.analytics.update(snapshot: overview.snapshot, date: now, calendar: calendar)
+                }
                 state.transactions.update(snapshot: overview.snapshot, date: now, calendar: calendar)
                 state.failure = nil
                 if state.budgets != nil {
@@ -113,6 +130,9 @@ struct AppFeature {
                 guard state.isLoading else { return .none }
                 state.isLoading = false
                 state.failure = error
+                if state.analytics.hasBeenOpened && state.analytics.report == nil {
+                    state.analytics.hasFailure = true
+                }
                 return .none
             case .merchantRulesTapped:
                 state.merchantRules = MerchantRulesFeature.State()
@@ -146,7 +166,7 @@ struct AppFeature {
                 state.isLoading = true
                 state.failure = nil
                 return loadDemo(false)
-            case let .transactions(.transactionTapped(id)), let .transactions(.editTapped(id)):
+            case let .transactions(.transactionTapped(id)), let .transactions(.editTapped(id)), let .analytics(.transactionTapped(id)):
                 guard let snapshot = state.overview?.snapshot,
                       let transaction = snapshot.transactions.first(where: { $0.id == id }),
                       let account = snapshot.accounts.first(where: { $0.id == transaction.accountID }) else { return .none }
@@ -155,13 +175,16 @@ struct AppFeature {
                 return .none
             case let .detail(.presented(.delegate(.didUpdate(overview)))):
                 state.overview = overview
+                if state.analytics.hasBeenOpened {
+                    state.analytics.update(snapshot: overview.snapshot, date: now, calendar: calendar)
+                }
                 state.transactions.update(snapshot: overview.snapshot, date: now, calendar: calendar)
                 state.isLoading = false
                 state.failure = nil
                 return .cancel(id: CancelID.loading)
             case .goals(.dismiss), .budgets(.dismiss):
                 return .send(.plan(.task))
-            case .plan, .binding, .alert, .detail, .importFlow, .transactions, .merchantRules, .goals, .budgets:
+            case .analytics, .plan, .binding, .alert, .detail, .importFlow, .transactions, .merchantRules, .goals, .budgets:
                 return .none
             }
         }

@@ -13,7 +13,11 @@ struct SpendingBreakdownRow: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 6) {
-            title.font(.headline)
+            HStack {
+                title.font(.headline)
+                Spacer()
+                Image(systemName: AppSymbol.next.rawValue).foregroundStyle(.secondary)
+            }
             MoneyMetricRow(title: .expenses, money: row.expenses)
             MoneyMetricRow(title: .refunds, money: row.refunds)
             MoneyMetricRow(title: .netSpending, money: row.netSpending)

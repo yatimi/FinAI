@@ -39,13 +39,13 @@ final class SpendingAnalyticsUITests: XCTestCase {
         for _ in 0..<8 where !merchants.isHittable { list.swipeUp() }
         XCTAssertTrue(merchants.isHittable)
         XCTAssertTrue(app.staticTexts["Current EUR purchase"].exists)
-        let empty = app.staticTexts["No expenses or refunds in USD this month."]
+        let empty = app.staticTexts["No expenses or refunds in USD in the selected month."]
         for _ in 0..<8 where !empty.isHittable { list.swipeUp() }
         XCTAssertTrue(empty.isHittable)
         XCTAssertTrue(app.staticTexts["Previous month net spending"].exists)
         XCTAssertFalse(app.staticTexts["By category · USD"].exists)
         XCTAssertFalse(app.staticTexts["By merchant · USD"].exists)
-        XCTAssertFalse(app.staticTexts["No expenses or refunds in EUR this month."].exists)
+        XCTAssertFalse(app.staticTexts["No expenses or refunds in EUR in the selected month."].exists)
     }
 
     @MainActor
@@ -64,7 +64,7 @@ final class SpendingAnalyticsUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Demo data · stored on this device"].waitForExistence(timeout: 15))
         app.tabBars.buttons["Home"].tap()
         app.buttons["Analytics"].tap()
-        XCTAssertTrue(app.staticTexts["Current month net spending"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Selected month net spending"].waitForExistence(timeout: 5))
         XCTAssertTrue(app.staticTexts["Previous month net spending"].exists)
         let list = app.collectionViews[AccessibilityID.spendingAnalytics]
         let categories = app.staticTexts["By category · EUR"]
@@ -73,5 +73,67 @@ final class SpendingAnalyticsUITests: XCTestCase {
         let merchants = app.staticTexts["By merchant · EUR"]
         for _ in 0..<15 where !merchants.isHittable { list.swipeUp() }
         XCTAssertTrue(merchants.isHittable)
+    }
+
+    @MainActor
+    func testBrowseMonthsAndOpenContributingTransactions() throws {
+        try exerciseMonthBrowsing(appearance: .light, contentSize: "UICTContentSizeCategoryL")
+    }
+
+    @MainActor
+    func testBrowseMonthsWithLargestTextInDarkMode() throws {
+        try exerciseMonthBrowsing(appearance: .dark, contentSize: "UICTContentSizeCategoryAccessibilityXXXL")
+    }
+
+    @MainActor
+    private func exerciseMonthBrowsing(appearance: XCUIDevice.Appearance, contentSize: String) throws {
+        let previousAppearance = XCUIDevice.shared.appearance
+        XCUIDevice.shared.appearance = appearance
+        defer { XCUIDevice.shared.appearance = previousAppearance }
+        continueAfterFailure = false
+        let app = XCUIApplication()
+        app.launchArguments = ["--uitesting", "-AppleLanguages", "(en)", "-AppleLocale", "en_US",
+                               "-UIPreferredContentSizeCategoryName", contentSize]
+        app.launch()
+        XCTAssertTrue(app.buttons[AccessibilityID.loadDemo].waitForExistence(timeout: 15))
+        app.buttons[AccessibilityID.loadDemo].tap()
+        app.alerts.buttons["Load demo data"].tap()
+        XCTAssertTrue(app.staticTexts["Demo data · stored on this device"].waitForExistence(timeout: 15))
+        app.buttons["Analytics"].tap()
+        XCTAssertTrue(app.staticTexts["September 2026"].waitForExistence(timeout: 5))
+        app.buttons["Previous month"].tap()
+        XCTAssertTrue(app.staticTexts["August 2026"].waitForExistence(timeout: 5))
+        app.buttons["Next month"].tap()
+        XCTAssertTrue(app.staticTexts["September 2026"].waitForExistence(timeout: 5))
+        let total = app.buttons.matching(NSPredicate(format: "label CONTAINS %@", "Selected month net spending")).firstMatch
+        let listBeforeDrilldown = app.collectionViews[AccessibilityID.spendingAnalytics]
+        let chartHeading = app.staticTexts["Daily net spending"]
+        for _ in 0..<12 where !chartHeading.isHittable { listBeforeDrilldown.swipeUp() }
+        XCTAssertTrue(chartHeading.isHittable)
+        chartHeading.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.5))
+            .press(forDuration: 0.05, thenDragTo: listBeforeDrilldown.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.15)))
+        if contentSize == "UICTContentSizeCategoryAccessibilityXXXL" {
+            let dailyTotals = app.buttons["Daily totals"]
+            for _ in 0..<8 where !dailyTotals.isHittable { listBeforeDrilldown.swipeUp() }
+            XCTAssertTrue(dailyTotals.isHittable)
+            dailyTotals.tap()
+        }
+        let attachment = XCTAttachment(screenshot: app.screenshot())
+        attachment.name = "Analytics-\(appearance)-\(contentSize)"
+        attachment.lifetime = .keepAlways
+        add(attachment)
+        if contentSize == "UICTContentSizeCategoryAccessibilityXXXL" {
+            app.buttons["Daily totals"].tap()
+        }
+        for _ in 0..<12 where !total.isHittable { listBeforeDrilldown.swipeDown() }
+        XCTAssertTrue(total.isHittable)
+        total.tap()
+        XCTAssertTrue(app.navigationBars["Transactions"].waitForExistence(timeout: 5))
+        let list = app.collectionViews.firstMatch
+        let transaction = list.buttons.firstMatch
+        for _ in 0..<8 where !transaction.isHittable { list.swipeUp() }
+        XCTAssertTrue(transaction.isHittable)
+        transaction.tap()
+        XCTAssertTrue(app.buttons[AccessibilityID.editTransaction].waitForExistence(timeout: 5))
     }
 }
