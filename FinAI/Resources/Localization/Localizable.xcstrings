@@ -700,7 +700,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Current month net spending"
+            "value": "Selected month net spending"
           }
         }
       }
@@ -1756,7 +1756,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Current calendar month compared with the full previous month. The current month may be incomplete. Only saved transactions are included; missing activity is treated as zero."
+            "value": "Selected calendar month compared with the full previous month. Current-month data may be incomplete; results use saved transactions only."
           }
         }
       }
@@ -1844,7 +1844,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No expenses or refunds in %@ this month."
+            "value": "No expenses or refunds in %@ in the selected month."
           }
         }
       }
@@ -3454,6 +3454,50 @@
         }
       },
       "extractionState": "manual"
+    },
+    "nextMonth": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next month"
+          }
+        }
+      }
+    },
+    "dailyNetSpending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daily net spending"
+          }
+        }
+      }
+    },
+    "spendingDrilldownExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expenses minus refunds in this month and currency. Tap a transaction to inspect or correct it."
+          }
+        }
+      }
+    },
+    "dailyTotals": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daily totals"
+          }
+        }
+      }
     }
   },
   "version": "1.0"
