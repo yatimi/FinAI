@@ -128,10 +128,14 @@ internal enum FinanceStrings {
   internal static let currency = FinanceStrings.tr("Localizable", "currency", fallback: "Currency")
   /// Currency column
   internal static let currencyColumn = FinanceStrings.tr("Localizable", "currencyColumn", fallback: "Currency column")
-  /// Current month net spending
-  internal static let currentMonthNetSpending = FinanceStrings.tr("Localizable", "currentMonthNetSpending", fallback: "Current month net spending")
+  /// Selected month net spending
+  internal static let currentMonthNetSpending = FinanceStrings.tr("Localizable", "currentMonthNetSpending", fallback: "Selected month net spending")
   /// Custom dates
   internal static let customDates = FinanceStrings.tr("Localizable", "customDates", fallback: "Custom dates")
+  /// Daily net spending
+  internal static let dailyNetSpending = FinanceStrings.tr("Localizable", "dailyNetSpending", fallback: "Daily net spending")
+  /// Daily totals
+  internal static let dailyTotals = FinanceStrings.tr("Localizable", "dailyTotals", fallback: "Daily totals")
   /// Net spending is expenses minus refunds. Net flow is income minus net spending. Transfers, adjustments and unknown transactions are excluded. These totals are not account balances.
   internal static let dashboardTotalsExplanation = FinanceStrings.tr("Localizable", "dashboardTotalsExplanation", fallback: "Net spending is expenses minus refunds. Net flow is income minus net spending. Transfers, adjustments and unknown transactions are excluded. These totals are not account balances.")
   /// Data rows: %lld
@@ -388,8 +392,8 @@ internal enum FinanceStrings {
   internal static let monthly = FinanceStrings.tr("Localizable", "monthly", fallback: "Monthly")
   /// Monthly budgets
   internal static let monthlyBudgets = FinanceStrings.tr("Localizable", "monthlyBudgets", fallback: "Monthly budgets")
-  /// Current calendar month compared with the full previous month. The current month may be incomplete. Only saved transactions are included; missing activity is treated as zero.
-  internal static let monthlyComparisonExplanation = FinanceStrings.tr("Localizable", "monthlyComparisonExplanation", fallback: "Current calendar month compared with the full previous month. The current month may be incomplete. Only saved transactions are included; missing activity is treated as zero.")
+  /// Selected calendar month compared with the full previous month. Current-month data may be incomplete; results use saved transactions only.
+  internal static let monthlyComparisonExplanation = FinanceStrings.tr("Localizable", "monthlyComparisonExplanation", fallback: "Selected calendar month compared with the full previous month. Current-month data may be incomplete; results use saved transactions only.")
   /// Negative out, positive in
   internal static let negativeOutPositiveIn = FinanceStrings.tr("Localizable", "negativeOutPositiveIn", fallback: "Negative out, positive in")
   /// Net flow
@@ -402,6 +406,8 @@ internal enum FinanceStrings {
   internal static let newMerchantRule = FinanceStrings.tr("Localizable", "newMerchantRule", fallback: "New merchant rule")
   /// Next date from pattern
   internal static let nextDateFromPattern = FinanceStrings.tr("Localizable", "nextDateFromPattern", fallback: "Next date from pattern")
+  /// Next month
+  internal static let nextMonth = FinanceStrings.tr("Localizable", "nextMonth", fallback: "Next month")
   /// No accounts yet
   internal static let noAccountsYet = FinanceStrings.tr("Localizable", "noAccountsYet", fallback: "No accounts yet")
   /// No budgets yet.
@@ -416,9 +422,9 @@ internal enum FinanceStrings {
   internal static let noMerchantRulesSaved = FinanceStrings.tr("Localizable", "noMerchantRulesSaved", fallback: "No merchant rules saved.")
   /// No regular payment patterns found. More transaction history may be needed.
   internal static let noRecurringPaymentsExplanation = FinanceStrings.tr("Localizable", "noRecurringPaymentsExplanation", fallback: "No regular payment patterns found. More transaction history may be needed.")
-  /// No expenses or refunds in %@ this month.
+  /// No expenses or refunds in %@ in the selected month.
   internal static func noSpendingForCurrencyThisMonth(_ p1: Any) -> String {
-    return FinanceStrings.tr("Localizable", "noSpendingForCurrencyThisMonth", String(describing: p1), fallback: "No expenses or refunds in %@ this month.")
+    return FinanceStrings.tr("Localizable", "noSpendingForCurrencyThisMonth", String(describing: p1), fallback: "No expenses or refunds in %@ in the selected month.")
   }
   /// No transactions this month.
   internal static let noTransactionsThisMonth = FinanceStrings.tr("Localizable", "noTransactionsThisMonth", fallback: "No transactions this month.")
@@ -540,6 +546,8 @@ internal enum FinanceStrings {
   internal static let source = FinanceStrings.tr("Localizable", "source", fallback: "Source")
   /// Breakdowns show the current month, ordered by net spending. Refunds reduce spending in their recorded month and category. Merchant names use saved values. Transfers, income, adjustments and unknown transactions are excluded.
   internal static let spendingBreakdownExplanation = FinanceStrings.tr("Localizable", "spendingBreakdownExplanation", fallback: "Breakdowns show the current month, ordered by net spending. Refunds reduce spending in their recorded month and category. Merchant names use saved values. Transfers, income, adjustments and unknown transactions are excluded.")
+  /// Expenses minus refunds in this month and currency. Tap a transaction to inspect or correct it.
+  internal static let spendingDrilldownExplanation = FinanceStrings.tr("Localizable", "spendingDrilldownExplanation", fallback: "Expenses minus refunds in this month and currency. Tap a transaction to inspect or correct it.")
   /// Expected date has passed without a matching saved payment. This pattern may have ended, changed, or be missing imported data.
   internal static let staleRecurringPaymentExplanation = FinanceStrings.tr("Localizable", "staleRecurringPaymentExplanation", fallback: "Expected date has passed without a matching saved payment. This pattern may have ended, changed, or be missing imported data.")
   /// The extracted transactions do not reconcile with the statement balances. No data was imported.

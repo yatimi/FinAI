@@ -16,5 +16,6 @@ struct MonthlySpending: Identifiable, Equatable, Sendable {
     let changeRatio: Decimal?
     let categories: [SpendingBreakdown]
     let merchants: [SpendingBreakdown]
+    var days: [DailySpending] = []
     var id: String { currency.code }
 }

@@ -6,6 +6,8 @@
 //
 
 enum AppSymbol: String {
+    case previous = "chevron.left"
+    case next = "chevron.right"
     case edit = "pencil"
     case goals = "target"
     case home = "house"
