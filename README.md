@@ -1,6 +1,6 @@
 # FinAI
 
-A local-first personal finance app for iOS, building toward an assistant that helps explain financial activity and plan ahead.
+A local-first personal finance app for iOS for importing transactions, understanding spending and planning savings.
 
 Version **0.2.0** is the latest source release. Build and run it with Xcode; no App Store or TestFlight distribution is included. See the [changelog](CHANGELOG.md) and [release process](docs/RELEASING.md).
 
@@ -22,6 +22,7 @@ Version **0.2.0** is the latest source release. Build and run it with Xcode; no 
 - Repeating monthly category budgets with exact limits, net spending, remaining amounts and overspend per original currency
 - Local savings goals with editable targets, deadlines and manually recorded savings; deterministic remaining amounts and monthly contribution schedules
 - Saved-transaction editing from a list swipe action or transaction details, with validation, explicit saving and preserved original values
+- A read-only spending assistant with suggested questions, optional on-device free-text interpretation, currency-separated results and transaction drilldowns
 - English String Catalog localization and locale-aware money and date formatting
 
 Demo data is loaded only after confirmation and only into an empty store. It includes salary, rent, groceries, transport, subscriptions, utilities, shopping, refunds and transfers across three months. No bank account or personal data is needed.
@@ -110,6 +111,14 @@ Open **Home → Analytics** and browse calendar months, or return to **This mont
 
 Tap the selected-month total, a category or a merchant to see the contributing expenses and refunds. Open a transaction to inspect or correct it. These drilldowns preserve the search and filters on the Transactions tab. Calculations use exact Decimal amounts; currencies are never combined or converted.
 
+## Spending assistant
+
+Open **Home → Assistant** to ask about recorded net spending for this month or last month, compare a selected month with its previous month, or choose one saved merchant. Suggested questions work without Apple Intelligence. Free-text interpretation uses Apple's on-device Foundation Models when the device, model and current language are supported.
+
+The model receives only the question and returns a structured query. Swift validates the query, resolves an exact saved merchant and calculates results using the same spending analytics as the rest of the app. Answers show the interpreted scope, calendar month, original currencies, recorded category changes and links to contributing transactions. Expenses minus refunds determine net spending; income, transfers, adjustments and unknown entries are excluded. Results reflect saved data and may be incomplete.
+
+This first version handles one independent question at a time. Custom date ranges, account/category/currency filters, exclusions, contextual follow-ups, advice and data changes are outside its supported scope. Unsupported or ambiguous queries require rephrasing or a suggested question. Questions and answers remain in memory while the assistant is open and are discarded when it closes. Answers are cleared when the financial data changes. No remote model, conversation storage or transaction upload is used.
+
 ## Regular payments
 
 Open **Home → Analytics → Regular payments** to inspect possible repeating expenses. Detection requires at least three positive expenses with the same saved merchant, exact amount, currency and account. All payments in that group must follow consecutive weekly, monthly or yearly dates, anchored to the first payment. Posting tolerance is one day for weekly patterns and three days for monthly/yearly patterns. Same-day duplicates and irregular groups are omitted.
@@ -150,11 +159,11 @@ Tests cover decimal arithmetic and validation, currency separation, transfers an
 
 ## Privacy
 
-The app stores data locally, with no account, bank connection, remote AI service, analytics SDK or custom backend. SwiftData CloudKit integration is disabled. Future remote processing will require explicit consent and a defined privacy boundary.
+The app stores data locally, with no account, bank connection, remote AI service, analytics SDK or custom backend. SwiftData CloudKit integration is disabled. Free-text questions use the on-device language model; financial records are not supplied to it. Future remote processing will require explicit consent and a defined privacy boundary. System iPhone backups remain supported and can include financial data, depending on the user’s backup settings.
 
 ## Planned
 
-1. An assistant that queries and explains calculated results
+1. Broader assistant tools and contextual follow-ups
 2. Forecasts, what-if planning and richer goal tracking
 3. Broader statement, document and receipt import
 4. Investigation of connected banking
