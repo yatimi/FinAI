@@ -3498,6 +3498,358 @@
           }
         }
       }
+    },
+    "assistant": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assistant"
+          }
+        }
+      }
+    },
+    "assistantIntroduction": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Explore your recorded spending for this month or last month. Compare months or choose a saved merchant. Each question starts a new query."
+          }
+        }
+      }
+    },
+    "assistantPrivacyExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Questions are processed on this device. Calculations use saved transactions; questions and answers are not saved."
+          }
+        }
+      }
+    },
+    "assistantSuggestedQuestions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suggested questions"
+          }
+        }
+      }
+    },
+    "assistantThisMonthQuestion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How much did I spend this month?"
+          }
+        }
+      }
+    },
+    "assistantLastMonthQuestion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How much did I spend last month?"
+          }
+        }
+      }
+    },
+    "assistantCompareQuestion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What changed from last month?"
+          }
+        }
+      }
+    },
+    "assistantMerchantQuestion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spending at a merchant this month"
+          }
+        }
+      }
+    },
+    "assistantYourQuestion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your question"
+          }
+        }
+      }
+    },
+    "assistantQuestionPlaceholder": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ask about recorded spending"
+          }
+        }
+      }
+    },
+    "assistantQuestionLimit": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Up to 1,000 characters. Supported periods: this month and last month."
+          }
+        }
+      }
+    },
+    "assistantAsk": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ask"
+          }
+        }
+      }
+    },
+    "assistantCheckAvailability": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check availability"
+          }
+        }
+      }
+    },
+    "assistantWorking": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparing answer"
+          }
+        }
+      }
+    },
+    "assistantClear": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear"
+          }
+        }
+      }
+    },
+    "assistantDeviceUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Free-text questions need a device that supports Apple Intelligence. Suggested questions work on this device."
+          }
+        }
+      }
+    },
+    "assistantEnableIntelligence": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable Apple Intelligence in Settings to ask free-text questions. Suggested questions work without it."
+          }
+        }
+      }
+    },
+    "assistantModelNotReady": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The on-device language model is not ready. You can use the suggested questions while it becomes available."
+          }
+        }
+      }
+    },
+    "assistantLanguageUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The on-device model does not support the current language. You can still use the suggested questions."
+          }
+        }
+      }
+    },
+    "assistantUnsupportedQuestion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This question could not be matched to a supported query. Ask about total spending, a month comparison or one merchant for this month or last month, or use a suggested question."
+          }
+        }
+      }
+    },
+    "assistantChooseSavedMerchant": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No unique saved merchant matched the question. Choose a merchant from the suggested questions to use its exact saved name."
+          }
+        }
+      }
+    },
+    "assistantModelUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Free-text questions are currently unavailable. Check Apple Intelligence availability or use a suggested question."
+          }
+        }
+      }
+    },
+    "assistantInterpretationFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The on-device model could not interpret this question. Try rephrasing it or use a suggested question."
+          }
+        }
+      }
+    },
+    "assistantCalculationFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The recorded data could not be calculated safely. No answer is shown. Try again after reviewing your transactions."
+          }
+        }
+      }
+    },
+    "assistantAnswerScope": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interpreted query"
+          }
+        }
+      }
+    },
+    "assistantComparison": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spending comparison"
+          }
+        }
+      }
+    },
+    "assistantScopeExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net spending is expenses minus refunds, across all saved accounts. Income, transfers, adjustments and unknown transactions are excluded. Currencies stay separate."
+          }
+        }
+      }
+    },
+    "assistantViewTransactions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View contributing transactions"
+          }
+        }
+      }
+    },
+    "assistantViewPreviousTransactions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View previous month transactions"
+          }
+        }
+      }
+    },
+    "assistantCategoryChanges": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recorded changes by category"
+          }
+        }
+      }
+    },
+    "assistantAnswer": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Answer"
+          }
+        }
+      }
+    },
+    "assistantNoCategoryChanges": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No net spending changes by category."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

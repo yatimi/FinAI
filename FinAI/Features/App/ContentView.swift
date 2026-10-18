@@ -36,6 +36,7 @@ struct ContentView: View {
                     }
                     .navigationTitle(.finAI)
                     .toolbar {
+                        assistantButton
                         importButton
                         refreshButton
                     }
@@ -76,6 +77,7 @@ struct ContentView: View {
             }
         }
         .alert($store.scope(state: \.alert, action: \.alert))
+        .sheet(item: $store.scope(state: \.assistant, action: \.assistant)) { AssistantView(store: $0) }
         .sheet(item: $store.scope(state: \.detail, action: \.detail)) { detailStore in
             TransactionDetailView(store: detailStore)
         }
@@ -112,6 +114,12 @@ struct ContentView: View {
         } label: {
             Label(.accounts, systemImage: AppSymbol.accounts.rawValue)
         }
+    }
+
+    private var assistantButton: some View {
+        Button(.assistant, systemImage: AppSymbol.assistant.rawValue) { store.send(.assistantTapped) }
+            .disabled(store.isLoading || store.overview == nil)
+            .accessibilityIdentifier(AccessibilityID.openAssistant)
     }
 
     private var importButton: some View {

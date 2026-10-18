@@ -42,6 +42,7 @@ struct FinAIApp: App {
             #if DEBUG
             if ProcessInfo.processInfo.arguments.contains("--uitesting") {
                 // Keep synthetic UI journeys independent of month boundaries and device time zones.
+                $0.assistantClient.availability = { _ in .notEnabled }
                 $0.date.now = Date(timeIntervalSince1970: 1_790_380_800)
                 var calendar = Calendar(identifier: .gregorian)
                 calendar.timeZone = .gmt

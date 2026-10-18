@@ -23,6 +23,7 @@ struct AppFeature {
         var overview: FinanceOverview?
         var isLoading = false
         var failure: LoadError?
+        @Presents var assistant: AssistantFeature.State?
         @Presents var alert: AlertState<Action.Alert>?
         @Presents var importFlow: ImportFeature.State?
         @Presents var merchantRules: MerchantRulesFeature.State?
@@ -33,6 +34,8 @@ struct AppFeature {
 
     enum Action: BindableAction, Equatable {
         case binding(BindingAction<State>)
+        case assistantTapped
+        case assistant(PresentationAction<AssistantFeature.Action>)
         case analyticsOpened
         case analytics(AnalyticsFeature.Action)
         case plan(PlanFeature.Action)
@@ -70,8 +73,23 @@ struct AppFeature {
         Scope(state: \.analytics, action: \.analytics) { AnalyticsFeature() }
         Scope(state: \.plan, action: \.plan) { PlanFeature() }
         Scope(state: \.transactions, action: \.transactions) { TransactionsFeature() }
+        core
+        .ifLet(\.$assistant, action: \.assistant) { AssistantFeature() }
+        .ifLet(\.$alert, action: \.alert)
+        .ifLet(\.$merchantRules, action: \.merchantRules) { MerchantRulesFeature() }
+        .ifLet(\.$budgets, action: \.budgets) { BudgetsFeature() }
+        .ifLet(\.$goals, action: \.goals) { GoalsFeature() }
+        .ifLet(\.$detail, action: \.detail) { TransactionDetailFeature() }
+        .ifLet(\.$importFlow, action: \.importFlow) { ImportFeature() }
+    }
+
+    private var core: Reduce<State, Action> {
         Reduce { state, action in
             switch action {
+            case .assistantTapped:
+                guard !state.isLoading, let overview = state.overview else { return .none }
+                state.assistant = AssistantFeature.State(snapshot: overview.snapshot, referenceDate: now, calendar: calendar)
+                return .none
             case .analyticsOpened:
                 state.analytics.hasBeenOpened = true
                 if let overview = state.overview {
@@ -122,10 +140,10 @@ struct AppFeature {
                 }
                 state.transactions.update(snapshot: overview.snapshot, date: now, calendar: calendar)
                 state.failure = nil
-                if state.budgets != nil {
-                    return .send(.budgets(.presented(.transactionsUpdated(overview.snapshot.transactions))))
-                }
-                return .none
+                return .merge(
+                    state.budgets != nil ? .send(.budgets(.presented(.transactionsUpdated(overview.snapshot.transactions)))) : .none,
+                    state.assistant != nil ? .send(.assistant(.presented(.contextUpdated(overview.snapshot, now, calendar)))) : .none
+                )
             case let .response(.failure(error)):
                 guard state.isLoading else { return .none }
                 state.isLoading = false
@@ -173,7 +191,8 @@ struct AppFeature {
                 state.detail = TransactionDetailFeature.State(transaction: transaction, accountName: account.name, accounts: snapshot.accounts, original: snapshot.originals[transaction.id])
                 if case .transactions(.editTapped) = action { return .send(.detail(.presented(.editTapped))) }
                 return .none
-            case let .detail(.presented(.delegate(.didUpdate(overview)))):
+            case let .detail(.presented(.delegate(.didUpdate(overview)))),
+                 let .assistant(.presented(.delegate(.didUpdate(overview)))):
                 state.overview = overview
                 if state.analytics.hasBeenOpened {
                     state.analytics.update(snapshot: overview.snapshot, date: now, calendar: calendar)
@@ -181,19 +200,16 @@ struct AppFeature {
                 state.transactions.update(snapshot: overview.snapshot, date: now, calendar: calendar)
                 state.isLoading = false
                 state.failure = nil
-                return .cancel(id: CancelID.loading)
+                return .merge(
+                    .cancel(id: CancelID.loading),
+                    state.assistant != nil ? .send(.assistant(.presented(.contextUpdated(overview.snapshot, now, calendar)))) : .none
+                )
             case .goals(.dismiss), .budgets(.dismiss):
                 return .send(.plan(.task))
-            case .analytics, .plan, .binding, .alert, .detail, .importFlow, .transactions, .merchantRules, .goals, .budgets:
+            case .assistant, .analytics, .plan, .binding, .alert, .detail, .importFlow, .transactions, .merchantRules, .goals, .budgets:
                 return .none
             }
         }
-        .ifLet(\.$alert, action: \.alert)
-        .ifLet(\.$merchantRules, action: \.merchantRules) { MerchantRulesFeature() }
-        .ifLet(\.$budgets, action: \.budgets) { BudgetsFeature() }
-        .ifLet(\.$goals, action: \.goals) { GoalsFeature() }
-        .ifLet(\.$detail, action: \.detail) { TransactionDetailFeature() }
-        .ifLet(\.$importFlow, action: \.importFlow) { ImportFeature() }
     }
 
     private func loadDemo(_ shouldAddDemo: Bool) -> Effect<Action> {

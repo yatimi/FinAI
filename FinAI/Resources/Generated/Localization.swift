@@ -52,6 +52,70 @@ internal enum FinanceStrings {
   internal static let amountColumn = FinanceStrings.tr("Localizable", "amountColumn", fallback: "Amount column")
   /// Analytics
   internal static let analytics = FinanceStrings.tr("Localizable", "analytics", fallback: "Analytics")
+  /// Assistant
+  internal static let assistant = FinanceStrings.tr("Localizable", "assistant", fallback: "Assistant")
+  /// Answer
+  internal static let assistantAnswer = FinanceStrings.tr("Localizable", "assistantAnswer", fallback: "Answer")
+  /// Interpreted query
+  internal static let assistantAnswerScope = FinanceStrings.tr("Localizable", "assistantAnswerScope", fallback: "Interpreted query")
+  /// Ask
+  internal static let assistantAsk = FinanceStrings.tr("Localizable", "assistantAsk", fallback: "Ask")
+  /// The recorded data could not be calculated safely. No answer is shown. Try again after reviewing your transactions.
+  internal static let assistantCalculationFailed = FinanceStrings.tr("Localizable", "assistantCalculationFailed", fallback: "The recorded data could not be calculated safely. No answer is shown. Try again after reviewing your transactions.")
+  /// Recorded changes by category
+  internal static let assistantCategoryChanges = FinanceStrings.tr("Localizable", "assistantCategoryChanges", fallback: "Recorded changes by category")
+  /// Check availability
+  internal static let assistantCheckAvailability = FinanceStrings.tr("Localizable", "assistantCheckAvailability", fallback: "Check availability")
+  /// No unique saved merchant matched the question. Choose a merchant from the suggested questions to use its exact saved name.
+  internal static let assistantChooseSavedMerchant = FinanceStrings.tr("Localizable", "assistantChooseSavedMerchant", fallback: "No unique saved merchant matched the question. Choose a merchant from the suggested questions to use its exact saved name.")
+  /// Clear
+  internal static let assistantClear = FinanceStrings.tr("Localizable", "assistantClear", fallback: "Clear")
+  /// What changed from last month?
+  internal static let assistantCompareQuestion = FinanceStrings.tr("Localizable", "assistantCompareQuestion", fallback: "What changed from last month?")
+  /// Spending comparison
+  internal static let assistantComparison = FinanceStrings.tr("Localizable", "assistantComparison", fallback: "Spending comparison")
+  /// Free-text questions need a device that supports Apple Intelligence. Suggested questions work on this device.
+  internal static let assistantDeviceUnavailable = FinanceStrings.tr("Localizable", "assistantDeviceUnavailable", fallback: "Free-text questions need a device that supports Apple Intelligence. Suggested questions work on this device.")
+  /// Enable Apple Intelligence in Settings to ask free-text questions. Suggested questions work without it.
+  internal static let assistantEnableIntelligence = FinanceStrings.tr("Localizable", "assistantEnableIntelligence", fallback: "Enable Apple Intelligence in Settings to ask free-text questions. Suggested questions work without it.")
+  /// The on-device model could not interpret this question. Try rephrasing it or use a suggested question.
+  internal static let assistantInterpretationFailed = FinanceStrings.tr("Localizable", "assistantInterpretationFailed", fallback: "The on-device model could not interpret this question. Try rephrasing it or use a suggested question.")
+  /// Explore your recorded spending for this month or last month. Compare months or choose a saved merchant. Each question starts a new query.
+  internal static let assistantIntroduction = FinanceStrings.tr("Localizable", "assistantIntroduction", fallback: "Explore your recorded spending for this month or last month. Compare months or choose a saved merchant. Each question starts a new query.")
+  /// The on-device model does not support the current language. You can still use the suggested questions.
+  internal static let assistantLanguageUnavailable = FinanceStrings.tr("Localizable", "assistantLanguageUnavailable", fallback: "The on-device model does not support the current language. You can still use the suggested questions.")
+  /// How much did I spend last month?
+  internal static let assistantLastMonthQuestion = FinanceStrings.tr("Localizable", "assistantLastMonthQuestion", fallback: "How much did I spend last month?")
+  /// Spending at a merchant this month
+  internal static let assistantMerchantQuestion = FinanceStrings.tr("Localizable", "assistantMerchantQuestion", fallback: "Spending at a merchant this month")
+  /// The on-device language model is not ready. You can use the suggested questions while it becomes available.
+  internal static let assistantModelNotReady = FinanceStrings.tr("Localizable", "assistantModelNotReady", fallback: "The on-device language model is not ready. You can use the suggested questions while it becomes available.")
+  /// Free-text questions are currently unavailable. Check Apple Intelligence availability or use a suggested question.
+  internal static let assistantModelUnavailable = FinanceStrings.tr("Localizable", "assistantModelUnavailable", fallback: "Free-text questions are currently unavailable. Check Apple Intelligence availability or use a suggested question.")
+  /// No net spending changes by category.
+  internal static let assistantNoCategoryChanges = FinanceStrings.tr("Localizable", "assistantNoCategoryChanges", fallback: "No net spending changes by category.")
+  /// Questions are processed on this device. Calculations use saved transactions; questions and answers are not saved.
+  internal static let assistantPrivacyExplanation = FinanceStrings.tr("Localizable", "assistantPrivacyExplanation", fallback: "Questions are processed on this device. Calculations use saved transactions; questions and answers are not saved.")
+  /// Up to 1,000 characters. Supported periods: this month and last month.
+  internal static let assistantQuestionLimit = FinanceStrings.tr("Localizable", "assistantQuestionLimit", fallback: "Up to 1,000 characters. Supported periods: this month and last month.")
+  /// Ask about recorded spending
+  internal static let assistantQuestionPlaceholder = FinanceStrings.tr("Localizable", "assistantQuestionPlaceholder", fallback: "Ask about recorded spending")
+  /// Net spending is expenses minus refunds, across all saved accounts. Income, transfers, adjustments and unknown transactions are excluded. Currencies stay separate.
+  internal static let assistantScopeExplanation = FinanceStrings.tr("Localizable", "assistantScopeExplanation", fallback: "Net spending is expenses minus refunds, across all saved accounts. Income, transfers, adjustments and unknown transactions are excluded. Currencies stay separate.")
+  /// Suggested questions
+  internal static let assistantSuggestedQuestions = FinanceStrings.tr("Localizable", "assistantSuggestedQuestions", fallback: "Suggested questions")
+  /// How much did I spend this month?
+  internal static let assistantThisMonthQuestion = FinanceStrings.tr("Localizable", "assistantThisMonthQuestion", fallback: "How much did I spend this month?")
+  /// This question could not be matched to a supported query. Ask about total spending, a month comparison or one merchant for this month or last month, or use a suggested question.
+  internal static let assistantUnsupportedQuestion = FinanceStrings.tr("Localizable", "assistantUnsupportedQuestion", fallback: "This question could not be matched to a supported query. Ask about total spending, a month comparison or one merchant for this month or last month, or use a suggested question.")
+  /// View previous month transactions
+  internal static let assistantViewPreviousTransactions = FinanceStrings.tr("Localizable", "assistantViewPreviousTransactions", fallback: "View previous month transactions")
+  /// View contributing transactions
+  internal static let assistantViewTransactions = FinanceStrings.tr("Localizable", "assistantViewTransactions", fallback: "View contributing transactions")
+  /// Preparing answer
+  internal static let assistantWorking = FinanceStrings.tr("Localizable", "assistantWorking", fallback: "Preparing answer")
+  /// Your question
+  internal static let assistantYourQuestion = FinanceStrings.tr("Localizable", "assistantYourQuestion", fallback: "Your question")
   /// Bank
   internal static let bank = FinanceStrings.tr("Localizable", "bank", fallback: "Bank")
   /// Bonus
