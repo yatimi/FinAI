@@ -10,6 +10,8 @@ import SwiftUI
 
 struct PlanView: View {
     let store: StoreOf<PlanFeature>
+    let transactions: [Transaction]?
+    @Environment(\.scenePhase) private var scenePhase
     let openBudgets: () -> Void
     let openGoals: () -> Void
 
@@ -28,6 +30,9 @@ struct PlanView: View {
                     }
                 }
             }
+            if store.progressFailed {
+                Section { Text(.planProgressUnavailable).foregroundStyle(.secondary) }
+            }
             Section {
                 Button(action: openBudgets) {
                     Label(.budgets, systemImage: AppSymbol.analytics.rawValue)
@@ -40,12 +45,15 @@ struct PlanView: View {
                 }
                 ForEach(store.budgets) { budget in
                     Button { selectBudget(budget.id) } label: {
-                        MoneyMetricRow(title: budget.category.title, money: budget.limit)
+                        PlanBudgetSummary(budget: budget, progress: store.budgetPlans[budget.id])
+                            .frame(maxWidth: .infinity, alignment: .leading)
                             .contentShape(.rect)
                     }
                     .buttonStyle(.plain)
                 }
-            } header: { Text(.monthlyBudgets) }
+            } header: { Text(.monthlyBudgets) } footer: {
+                if !store.budgets.isEmpty { Text(.planBudgetSummaryExplanation) }
+            }
             Section {
                 Button(action: openGoals) {
                     Label(.savingsGoals, systemImage: AppSymbol.goals.rawValue)
@@ -58,17 +66,15 @@ struct PlanView: View {
                 }
                 ForEach(store.goals) { goal in
                     Button { selectGoal(goal.id) } label: {
-                        VStack(alignment: .leading, spacing: FinanceStyle.Spacing.compact) {
-                            Text(verbatim: goal.name).font(.headline)
-                            MoneyMetricRow(title: .goalSavedAmount, money: goal.saved)
-                            MoneyMetricRow(title: .goalTargetAmount, money: goal.target)
-                        }
+                        PlanGoalSummary(goal: goal, plan: store.goalPlans[goal.id])
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .contentShape(.rect)
                     }
                     .buttonStyle(.plain)
                 }
-            } header: { Text(.savingsGoals) }
+            } header: { Text(.savingsGoals) } footer: {
+                if !store.goals.isEmpty { Text(.planGoalSummaryExplanation) }
+            }
         }
         .scrollContentBackground(.hidden)
         .background(FinanceStyle.Surface.canvas)
@@ -79,7 +85,16 @@ struct PlanView: View {
                 Button(.addGoal, systemImage: AppSymbol.goals.rawValue, action: addGoal)
             } label: { Label(.addToPlan, systemImage: AppSymbol.add.rawValue) }
         }
-        .task { await store.send(.task).finish() }
+        .task {
+            store.send(.transactionsUpdated(transactions))
+            await store.send(.task).finish()
+        }
+        .onChange(of: transactions) { _, transactions in
+            store.send(.transactionsUpdated(transactions))
+        }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { store.send(.task) }
+        }
         .onDisappear { store.send(.cancelLoading) }
     }
 }

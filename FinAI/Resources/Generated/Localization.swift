@@ -528,8 +528,16 @@ internal enum FinanceStrings {
   internal static let period = FinanceStrings.tr("Localizable", "period", fallback: "Period")
   /// Plan
   internal static let plan = FinanceStrings.tr("Localizable", "plan", fallback: "Plan")
+  /// Spending progress is unavailable until local transactions are loaded and the calculation succeeds.
+  internal static let planBudgetProgressUnavailable = FinanceStrings.tr("Localizable", "planBudgetProgressUnavailable", fallback: "Spending progress is unavailable until local transactions are loaded and the calculation succeeds.")
+  /// Net spending is expenses minus refunds for the shown month. Each currency is kept separate.
+  internal static let planBudgetSummaryExplanation = FinanceStrings.tr("Localizable", "planBudgetSummaryExplanation", fallback: "Net spending is expenses minus refunds for the shown month. Each currency is kept separate.")
+  /// Savings are recorded manually. Goals do not represent an account balance or assess affordability.
+  internal static let planGoalSummaryExplanation = FinanceStrings.tr("Localizable", "planGoalSummaryExplanation", fallback: "Savings are recorded manually. Goals do not represent an account balance or assess affordability.")
   /// Unable to load your plan. Try again.
   internal static let planLoadFailure = FinanceStrings.tr("Localizable", "planLoadFailure", fallback: "Unable to load your plan. Try again.")
+  /// Progress could not be calculated. Saved goals and budgets are still available. Try reopening Plan or correcting the saved item.
+  internal static let planProgressUnavailable = FinanceStrings.tr("Localizable", "planProgressUnavailable", fallback: "Progress could not be calculated. Saved goals and budgets are still available. Try reopening Plan or correcting the saved item.")
   /// Possible duplicate
   internal static let possibleDuplicate = FinanceStrings.tr("Localizable", "possibleDuplicate", fallback: "Possible duplicate")
   /// Possible subscription

@@ -29,7 +29,7 @@ Demo data is loaded only after confirmation and only into an empty store. It inc
 
 ## How it works
 
-The three tabs are **Home**, **Transactions** and **Plan**. Home links to analytics and accounts. Plan brings saved category limits and savings goals together, with direct creation from the plus menu and editing from a saved item.
+The three tabs are **Home**, **Transactions** and **Plan**. Home links to analytics and accounts. Plan shows monthly budget limits, net spending, remaining amounts and overspend alongside manually recorded goal savings, remaining targets and deadline status. Progress bars accompany exact currency amounts. Create a budget or goal from the plus menu and open a saved item to edit it.
 
 Swift code calculates every total using `Decimal`. Currencies are kept separate, transfers are excluded from spending and income, and refunds reduce net spending without becoming income. Adjustments and unknown transactions are excluded from the monthly summary. The overview describes activity, not account balances. Analytics compares the current calendar month with the full previous month using saved transactions; the current month may be incomplete. Refunds apply to their recorded month and category. Percentage changes are shown only for a positive previous net spending total.
 
