@@ -16,6 +16,7 @@ struct AssistantAnswerView: View {
             Text(answer.query.kind == .comparison ? .assistantComparison : .netSpending)
                 .font(.headline)
             Text(answer.report.month, format: .dateTime.month(.wide).year())
+                .accessibilityIdentifier(AccessibilityID.assistantAnswerMonth)
             if let merchant = answer.query.merchant { Text(verbatim: merchant) }
             Text(.assistantScopeExplanation).font(.footnote).foregroundStyle(.secondary)
             Text(.monthlyComparisonExplanation).font(.footnote).foregroundStyle(.secondary)

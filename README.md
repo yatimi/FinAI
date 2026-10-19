@@ -117,7 +117,7 @@ Open **Home → Assistant** to ask about recorded net spending for this month or
 
 The model receives only the question and returns a structured query. Swift validates the query, resolves an exact saved merchant and calculates results using the same spending analytics as the rest of the app. Answers show the interpreted scope, calendar month, original currencies, recorded category changes and links to contributing transactions. Expenses minus refunds determine net spending; income, transfers, adjustments and unknown entries are excluded. Results reflect saved data and may be incomplete.
 
-This first version handles one independent question at a time. Custom date ranges, account/category/currency filters, exclusions, contextual follow-ups, advice and data changes are outside its supported scope. Unsupported or ambiguous queries require rephrasing or a suggested question. Questions and answers remain in memory while the assistant is open and are discarded when it closes. Answers are cleared when the financial data changes. No remote model, conversation storage or transaction upload is used.
+After a successful answer, **And last month?** and **And this month?** keep the same spending query and saved merchant while changing the calendar month. These buttons work without the model. The same short follow-ups can be typed in English, Russian or Ukrainian; other free-text questions still require the model. Context uses the last successful query and resets on Clear, data changes or a calendar-month change. Custom date ranges, account/category/currency filters, exclusions, broader contextual follow-ups, advice and data changes remain outside the supported scope. Unsupported or ambiguous queries require rephrasing or a suggested question. Questions and answers remain in memory while the assistant is open and are discarded when it closes. Answers are cleared when the financial data changes. No remote model, conversation storage or transaction upload is used.
 
 ## Regular payments
 
@@ -163,7 +163,7 @@ The app stores data locally, with no account, bank connection, remote AI service
 
 ## Planned
 
-1. Broader assistant tools and contextual follow-ups
+1. Broader assistant tools and richer contextual follow-ups
 2. Forecasts, what-if planning and richer goal tracking
 3. Broader statement, document and receipt import
 4. Investigation of connected banking

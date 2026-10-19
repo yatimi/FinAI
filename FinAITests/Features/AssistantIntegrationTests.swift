@@ -42,6 +42,7 @@ struct AssistantIntegrationTests {
         state.overview = try FinanceOverview.make(snapshot: snapshot, date: date, calendar: calendar)
         state.assistant = AssistantFeature.State(snapshot: snapshot, referenceDate: date, calendar: calendar)
         state.assistant?.answer = try FinancialAssistant().answer(.init(kind: .spending), snapshot: snapshot, date: date, calendar: calendar)
+        state.assistant?.previousQuery = .init(kind: .spending)
         state.transactions.query.text = "Existing search"
         let fresh = try FinanceOverview.make(snapshot: .empty, date: date, calendar: calendar)
         let store = TestStore(initialState: state) { AppFeature() } withDependencies: {
@@ -57,6 +58,7 @@ struct AssistantIntegrationTests {
         await store.receive(.assistant(.presented(.contextUpdated(.empty, date, calendar)))) {
             $0.assistant?.snapshot = .empty
             $0.assistant?.answer = nil
+            $0.assistant?.previousQuery = nil
         }
         #expect(store.state.transactions.query.text == "Existing search")
     }
@@ -70,6 +72,7 @@ struct AssistantIntegrationTests {
         state.transactions.query.text = "Existing search"
         state.assistant = AssistantFeature.State(snapshot: snapshot, referenceDate: date, calendar: calendar)
         state.assistant?.answer = try FinancialAssistant().answer(.init(kind: .spending), snapshot: snapshot, date: date, calendar: calendar)
+        state.assistant?.previousQuery = .init(kind: .spending)
         state.assistant?.isAnswerPresented = true
         let fresh = try FinanceOverview.make(snapshot: .empty, date: date, calendar: calendar)
         let store = TestStore(initialState: state) { AppFeature() } withDependencies: {
@@ -84,6 +87,7 @@ struct AssistantIntegrationTests {
         await store.receive(.assistant(.presented(.contextUpdated(.empty, date, calendar)))) {
             $0.assistant?.snapshot = .empty
             $0.assistant?.answer = nil
+            $0.assistant?.previousQuery = nil
             $0.assistant?.isAnswerPresented = false
         }
         #expect(store.state.transactions.query.text == "Existing search")

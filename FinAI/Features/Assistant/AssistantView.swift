@@ -34,11 +34,14 @@ struct AssistantView: View {
                     }
                 }
                 Section(.assistantYourQuestion) {
-                    if store.availability == .available {
+                    if store.availability == .available || store.previousQuery != nil {
                         TextField(.assistantQuestionPlaceholder, text: $store.question, axis: .vertical)
                             .lineLimit(2...5)
                             .accessibilityIdentifier(AccessibilityID.assistantQuestion)
                         Text(.assistantQuestionLimit).font(.footnote).foregroundStyle(.secondary)
+                        if store.availability != .available {
+                            Text(.assistantFollowUpTextExplanation).font(.footnote).foregroundStyle(.secondary)
+                        }
                         Button(.assistantAsk) { store.send(.askTapped) }
                             .disabled(store.question.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || store.question.count > 1_000)
                             .accessibilityIdentifier(AccessibilityID.assistantAsk)
@@ -80,8 +83,21 @@ struct AssistantView: View {
     private var answerContent: some View {
         List {
             if let answer = store.answer {
+                Section(.assistantFollowUp) {
+                    Text(.assistantFollowUpExplanation).font(.footnote).foregroundStyle(.secondary)
+                    Button(answer.query.period == .thisMonth ? .assistantFollowUpLastMonth : .assistantFollowUpThisMonth) {
+                        store.send(.followUp(answer.query.period == .thisMonth ? .lastMonth : .thisMonth))
+                    }
+                    .accessibilityIdentifier(AccessibilityID.assistantFollowUpPeriod)
+                }
                 AssistantAnswerView(answer: answer) { month, currency in
                     store.send(.showTransactions(month, currency))
+                }
+            }
+            if store.isLoading {
+                Section {
+                    ProgressView().accessibilityLabel(.assistantWorking)
+                    Button(.cancel) { store.send(.cancelTapped) }
                 }
             }
         }

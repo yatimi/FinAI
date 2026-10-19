@@ -3510,13 +3510,68 @@
         }
       }
     },
+    "assistantFollowUp": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Follow up"
+          }
+        }
+      }
+    },
+    "assistantFollowUpExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep the same spending question and merchant; change only the calendar month."
+          }
+        }
+      }
+    },
+    "assistantFollowUpLastMonth": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "And last month?"
+          }
+        }
+      }
+    },
+    "assistantFollowUpThisMonth": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "And this month?"
+          }
+        }
+      }
+    },
+    "assistantFollowUpTextExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Without the on-device model, use “And last month?” or “And this month?” to refine the last successful answer. Other free-text questions need the model."
+          }
+        }
+      }
+    },
     "assistantIntroduction": {
       "extractionState": "manual",
       "localizations": {
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Explore your recorded spending for this month or last month. Compare months or choose a saved merchant. Each question starts a new query."
+            "value": "Explore your recorded spending for this month or last month. Compare months or choose a saved merchant. After an answer, switch months while keeping the same spending question or merchant."
           }
         }
       }
