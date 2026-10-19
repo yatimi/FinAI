@@ -9,6 +9,29 @@ import XCTest
 
 final class AssistantUITests: XCTestCase {
     @MainActor
+    func testPeriodFollowUpWorksWithoutModelAndClearResetsContext() throws {
+        continueAfterFailure = false
+        let app = launch()
+        loadDemo(app)
+        app.buttons[AccessibilityID.openAssistant].tap()
+        app.buttons[AccessibilityID.assistantThisMonth].tap()
+        let month = app.staticTexts[AccessibilityID.assistantAnswerMonth]
+        XCTAssertTrue(month.waitForExistence(timeout: 5))
+        let currentMonth = month.label
+        let followUp = app.buttons[AccessibilityID.assistantFollowUpPeriod]
+        XCTAssertTrue(followUp.waitForExistence(timeout: 5))
+        followUp.tap()
+        XCTAssertTrue(app.buttons["And this month?"].waitForExistence(timeout: 5))
+        XCTAssertNotEqual(month.label, currentMonth)
+        followUp.tap()
+        XCTAssertTrue(app.buttons["And last month?"].waitForExistence(timeout: 5))
+        XCTAssertEqual(month.label, currentMonth)
+        app.navigationBars.buttons["Clear"].tap()
+        XCTAssertTrue(app.buttons[AccessibilityID.assistantThisMonth].waitForExistence(timeout: 5))
+        XCTAssertFalse(followUp.exists)
+    }
+
+    @MainActor
     func testSuggestedQuestionWorksWithoutModelAndOpensTransactionDetails() throws {
         continueAfterFailure = false
         let app = launch()

@@ -78,10 +78,20 @@ internal enum FinanceStrings {
   internal static let assistantDeviceUnavailable = FinanceStrings.tr("Localizable", "assistantDeviceUnavailable", fallback: "Free-text questions need a device that supports Apple Intelligence. Suggested questions work on this device.")
   /// Enable Apple Intelligence in Settings to ask free-text questions. Suggested questions work without it.
   internal static let assistantEnableIntelligence = FinanceStrings.tr("Localizable", "assistantEnableIntelligence", fallback: "Enable Apple Intelligence in Settings to ask free-text questions. Suggested questions work without it.")
+  /// Follow up
+  internal static let assistantFollowUp = FinanceStrings.tr("Localizable", "assistantFollowUp", fallback: "Follow up")
+  /// Keep the same spending question and merchant; change only the calendar month.
+  internal static let assistantFollowUpExplanation = FinanceStrings.tr("Localizable", "assistantFollowUpExplanation", fallback: "Keep the same spending question and merchant; change only the calendar month.")
+  /// And last month?
+  internal static let assistantFollowUpLastMonth = FinanceStrings.tr("Localizable", "assistantFollowUpLastMonth", fallback: "And last month?")
+  /// Without the on-device model, use “And last month?” or “And this month?” to refine the last successful answer. Other free-text questions need the model.
+  internal static let assistantFollowUpTextExplanation = FinanceStrings.tr("Localizable", "assistantFollowUpTextExplanation", fallback: "Without the on-device model, use “And last month?” or “And this month?” to refine the last successful answer. Other free-text questions need the model.")
+  /// And this month?
+  internal static let assistantFollowUpThisMonth = FinanceStrings.tr("Localizable", "assistantFollowUpThisMonth", fallback: "And this month?")
   /// The on-device model could not interpret this question. Try rephrasing it or use a suggested question.
   internal static let assistantInterpretationFailed = FinanceStrings.tr("Localizable", "assistantInterpretationFailed", fallback: "The on-device model could not interpret this question. Try rephrasing it or use a suggested question.")
-  /// Explore your recorded spending for this month or last month. Compare months or choose a saved merchant. Each question starts a new query.
-  internal static let assistantIntroduction = FinanceStrings.tr("Localizable", "assistantIntroduction", fallback: "Explore your recorded spending for this month or last month. Compare months or choose a saved merchant. Each question starts a new query.")
+  /// Explore your recorded spending for this month or last month. Compare months or choose a saved merchant. After an answer, switch months while keeping the same spending question or merchant.
+  internal static let assistantIntroduction = FinanceStrings.tr("Localizable", "assistantIntroduction", fallback: "Explore your recorded spending for this month or last month. Compare months or choose a saved merchant. After an answer, switch months while keeping the same spending question or merchant.")
   /// The on-device model does not support the current language. You can still use the suggested questions.
   internal static let assistantLanguageUnavailable = FinanceStrings.tr("Localizable", "assistantLanguageUnavailable", fallback: "The on-device model does not support the current language. You can still use the suggested questions.")
   /// How much did I spend last month?
