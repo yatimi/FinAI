@@ -16,7 +16,10 @@ struct PlanFeatureTests {
         let goal = try SavingsGoal(id: UUID(), name: "Laptop", target: Money(amount: 1000, currency: .eur), saved: Money(amount: 100, currency: .eur), deadline: TestFixtures.date)
         var initial = PlanFeature.State()
         initial.goals = [goal]
+        initial.goalPlans = [goal.id: try GoalPlanningService().plan(for: goal, on: TestFixtures.date, calendar: TestFixtures.calendar)]
         let store = TestStore(initialState: initial) { PlanFeature() } withDependencies: {
+            $0.date.now = TestFixtures.date
+            $0.calendar = TestFixtures.calendar
             $0.goalsClient.load = { throw ValidationError.invalidSnapshot }
             $0.budgetsClient.load = { [] }
         }

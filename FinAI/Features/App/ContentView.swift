@@ -52,6 +52,7 @@ struct ContentView: View {
             Tab(.plan, systemImage: AppSymbol.goals.rawValue, value: .plan) {
                 NavigationStack {
                     PlanView(store: store.scope(state: \.plan, action: \.plan),
+                             transactions: store.overview?.snapshot.transactions,
                              openBudgets: { store.send(.budgetsTapped) },
                              openGoals: { store.send(.goalsTapped) },
                              addBudget: { store.send(.addBudgetTapped) },

@@ -3400,6 +3400,50 @@
       },
       "extractionState": "manual"
     },
+    "planProgressUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Progress could not be calculated. Saved goals and budgets are still available. Try reopening Plan or correcting the saved item."
+          }
+        }
+      }
+    },
+    "planBudgetProgressUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spending progress is unavailable until local transactions are loaded and the calculation succeeds."
+          }
+        }
+      }
+    },
+    "planBudgetSummaryExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net spending is expenses minus refunds for the shown month. Each currency is kept separate."
+          }
+        }
+      }
+    },
+    "planGoalSummaryExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Savings are recorded manually. Goals do not represent an account balance or assess affordability."
+          }
+        }
+      }
+    },
     "plan": {
       "localizations": {
         "en": {

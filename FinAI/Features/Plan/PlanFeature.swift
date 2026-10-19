@@ -16,19 +16,26 @@ struct PlanFeature {
     struct State: Equatable {
         var goals: [SavingsGoal] = []
         var budgets: [CategoryBudget] = []
+        var transactions: [Transaction]?
+        var goalPlans: [UUID: GoalPlan] = [:]
+        var budgetPlans: [UUID: BudgetProgress] = [:]
         var isLoading = false
         var loadFailed = false
+        var progressFailed = false
     }
 
     enum Action: Equatable {
         case task
         case cancelLoading
+        case transactionsUpdated([Transaction]?)
         case loaded([SavingsGoal], [CategoryBudget])
         case failed
     }
 
     @Dependency(\.goalsClient) var goalsClient
     @Dependency(\.budgetsClient) var budgetsClient
+    @Dependency(\.date.now) var now
+    @Dependency(\.calendar) var calendar
 
     var body: some ReducerOf<Self> {
         Reduce { state, action in
@@ -37,6 +44,7 @@ struct PlanFeature {
                 guard !state.isLoading else { return .none }
                 state.isLoading = true
                 state.loadFailed = false
+                updateProgress(&state)
                 let goalsClient = goalsClient
                 let budgetsClient = budgetsClient
                 return .run { send in
@@ -53,17 +61,56 @@ struct PlanFeature {
             case .cancelLoading:
                 state.isLoading = false
                 return .cancel(id: CancelID.loading)
+            case let .transactionsUpdated(transactions):
+                state.transactions = transactions
+                updateProgress(&state)
+                return .none
             case let .loaded(goals, budgets):
+                guard state.isLoading else { return .none }
                 state.isLoading = false
                 state.goals = goals
                 state.budgets = budgets
                 state.loadFailed = false
+                updateProgress(&state)
                 return .none
             case .failed:
+                guard state.isLoading else { return .none }
                 state.isLoading = false
                 state.loadFailed = true
                 return .none
             }
+        }
+    }
+
+    private func updateProgress(_ state: inout State) {
+        guard !state.goals.isEmpty || !state.budgets.isEmpty else {
+            state.goalPlans = [:]
+            state.budgetPlans = [:]
+            state.progressFailed = false
+            return
+        }
+        let date = now
+        let calendar = calendar
+        do {
+            var goals: [UUID: GoalPlan] = [:]
+            for goal in state.goals {
+                goals[goal.id] = try GoalPlanningService().plan(for: goal, on: date, calendar: calendar)
+            }
+            var budgets: [UUID: BudgetProgress] = [:]
+            if let transactions = state.transactions {
+                for budget in state.budgets {
+                    budgets[budget.id] = try BudgetPlanningService().progress(
+                        for: budget, transactions: transactions, on: date, calendar: calendar
+                    )
+                }
+            }
+            state.goalPlans = goals
+            state.budgetPlans = budgets
+            state.progressFailed = false
+        } catch {
+            state.goalPlans = [:]
+            state.budgetPlans = [:]
+            state.progressFailed = true
         }
     }
 }
