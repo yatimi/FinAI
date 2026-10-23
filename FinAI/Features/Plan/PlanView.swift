@@ -9,7 +9,7 @@ import ComposableArchitecture
 import SwiftUI
 
 struct PlanView: View {
-    let store: StoreOf<PlanFeature>
+    @Bindable var store: StoreOf<PlanFeature>
     let transactions: [Transaction]?
     @Environment(\.scenePhase) private var scenePhase
     let openBudgets: () -> Void
@@ -22,6 +22,12 @@ struct PlanView: View {
 
     var body: some View {
         List {
+            Section {
+                Button { store.send(.forecastTapped) } label: {
+                    Label(.monthEndForecast, systemImage: AppSymbol.overview.rawValue)
+                }
+                .accessibilityIdentifier(AccessibilityID.openMonthForecast)
+            }
             if store.isLoading { ProgressView { Text(.updatingPlan) } }
             if store.loadFailed {
                 Section {
@@ -84,6 +90,9 @@ struct PlanView: View {
                 Button(.addBudget, systemImage: AppSymbol.analytics.rawValue, action: addBudget)
                 Button(.addGoal, systemImage: AppSymbol.goals.rawValue, action: addGoal)
             } label: { Label(.addToPlan, systemImage: AppSymbol.add.rawValue) }
+        }
+        .sheet(item: $store.scope(state: \.forecast, action: \.forecast)) { forecastStore in
+            ForecastView(store: forecastStore)
         }
         .task {
             store.send(.transactionsUpdated(transactions))
