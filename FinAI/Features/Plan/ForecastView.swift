@@ -18,6 +18,12 @@ struct ForecastView: View {
                     Text(.forecastCalculationUnavailable)
                 } else if let report = store.report {
                     Section {
+                        NavigationLink {
+                            WhatIfView(store: store)
+                        } label: { Label(.whatIfTitle, systemImage: AppSymbol.whatIf.rawValue) }
+                        .accessibilityIdentifier(AccessibilityID.openWhatIf)
+                    }
+                    Section {
                         LabeledContent { Text(report.month, format: .dateTime.month(.wide).year()) }
                             label: { Text(.forecastMonth) }
                         LabeledContent { Text(report.throughDay, format: .dateTime.day().month(.wide).year()) }

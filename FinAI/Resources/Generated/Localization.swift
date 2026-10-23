@@ -802,6 +802,52 @@ internal enum FinanceStrings {
   internal static let utilities = FinanceStrings.tr("Localizable", "utilities", fallback: "Utilities")
   /// Weekly
   internal static let weekly = FinanceStrings.tr("Localizable", "weekly", fallback: "Weekly")
+  /// Additional expense
+  internal static let whatIfAdditionalExpense = FinanceStrings.tr("Localizable", "whatIfAdditionalExpense", fallback: "Additional expense")
+  /// Additional income
+  internal static let whatIfAdditionalIncome = FinanceStrings.tr("Localizable", "whatIfAdditionalIncome", fallback: "Additional income")
+  /// Scenario amount
+  internal static let whatIfAmount = FinanceStrings.tr("Localizable", "whatIfAmount", fallback: "Scenario amount")
+  /// Baseline net flow
+  internal static let whatIfBaselineFlow = FinanceStrings.tr("Localizable", "whatIfBaselineFlow", fallback: "Baseline net flow")
+  /// Baseline net spending
+  internal static let whatIfBaselineSpending = FinanceStrings.tr("Localizable", "whatIfBaselineSpending", fallback: "Baseline net spending")
+  /// Calculate scenario
+  internal static let whatIfCalculate = FinanceStrings.tr("Localizable", "whatIfCalculate", fallback: "Calculate scenario")
+  /// The scenario could not be calculated within supported decimal precision. Try a smaller amount.
+  internal static let whatIfCalculationUnavailable = FinanceStrings.tr("Localizable", "whatIfCalculationUnavailable", fallback: "The scenario could not be calculated within supported decimal precision. Try a smaller amount.")
+  /// Change
+  internal static let whatIfChange = FinanceStrings.tr("Localizable", "whatIfChange", fallback: "Change")
+  /// You can reduce only the estimated remaining expenses. Recorded expenses stay unchanged.
+  internal static let whatIfExpenseReductionLimit = FinanceStrings.tr("Localizable", "whatIfExpenseReductionLimit", fallback: "You can reduce only the estimated remaining expenses. Recorded expenses stay unchanged.")
+  /// Try one unrecorded change in this month’s original currency. The amount adds to or reduces the baseline forecast; it does not change transactions, budgets, goals or account balances. Scenarios are temporary and are discarded when the forecast closes.
+  internal static let whatIfExplanation = FinanceStrings.tr("Localizable", "whatIfExplanation", fallback: "Try one unrecorded change in this month’s original currency. The amount adds to or reduces the baseline forecast; it does not change transactions, budgets, goals or account balances. Scenarios are temporary and are discarded when the forecast closes.")
+  /// Change in net flow
+  internal static let whatIfFlowChange = FinanceStrings.tr("Localizable", "whatIfFlowChange", fallback: "Change in net flow")
+  /// You can reduce only the assumed remaining income. Recorded income stays unchanged.
+  internal static let whatIfIncomeReductionLimit = FinanceStrings.tr("Localizable", "whatIfIncomeReductionLimit", fallback: "You can reduce only the assumed remaining income. Recorded income stays unchanged.")
+  /// Enter a positive amount using your regional number format.
+  internal static let whatIfInvalidAmount = FinanceStrings.tr("Localizable", "whatIfInvalidAmount", fallback: "Enter a positive amount using your regional number format.")
+  /// A baseline forecast is needed for this currency. Import the previous month’s transactions first.
+  internal static let whatIfNeedsForecast = FinanceStrings.tr("Localizable", "whatIfNeedsForecast", fallback: "A baseline forecast is needed for this currency. Import the previous month’s transactions first.")
+  /// Reduce expected expenses
+  internal static let whatIfReducedExpenses = FinanceStrings.tr("Localizable", "whatIfReducedExpenses", fallback: "Reduce expected expenses")
+  /// Reduce expected income
+  internal static let whatIfReducedIncome = FinanceStrings.tr("Localizable", "whatIfReducedIncome", fallback: "Reduce expected income")
+  /// Reset scenario
+  internal static let whatIfReset = FinanceStrings.tr("Localizable", "whatIfReset", fallback: "Reset scenario")
+  /// Each calculation starts from the baseline, not the previous scenario. A positive change means higher projected net flow. This is a current-month estimate with the same assumptions as the forecast, not an affordability assessment or a prediction of goal completion.
+  internal static let whatIfResultExplanation = FinanceStrings.tr("Localizable", "whatIfResultExplanation", fallback: "Each calculation starts from the baseline, not the previous scenario. A positive change means higher projected net flow. This is a current-month estimate with the same assumptions as the forecast, not an affordability assessment or a prediction of goal completion.")
+  /// Scenario · %@
+  internal static func whatIfResultHeading(_ p1: Any) -> String {
+    return FinanceStrings.tr("Localizable", "whatIfResultHeading", String(describing: p1), fallback: "Scenario · %@")
+  }
+  /// Scenario net flow
+  internal static let whatIfScenarioFlow = FinanceStrings.tr("Localizable", "whatIfScenarioFlow", fallback: "Scenario net flow")
+  /// Scenario net spending
+  internal static let whatIfScenarioSpending = FinanceStrings.tr("Localizable", "whatIfScenarioSpending", fallback: "Scenario net spending")
+  /// What if?
+  internal static let whatIfTitle = FinanceStrings.tr("Localizable", "whatIfTitle", fallback: "What if?")
   /// Yearly
   internal static let yearly = FinanceStrings.tr("Localizable", "yearly", fallback: "Yearly")
 }

@@ -4224,6 +4224,248 @@
           }
         }
       }
+    },
+    "whatIfTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What if?"
+          }
+        }
+      }
+    },
+    "whatIfChange": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change"
+          }
+        }
+      }
+    },
+    "whatIfAmount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scenario amount"
+          }
+        }
+      }
+    },
+    "whatIfAdditionalExpense": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Additional expense"
+          }
+        }
+      }
+    },
+    "whatIfAdditionalIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Additional income"
+          }
+        }
+      }
+    },
+    "whatIfReducedExpenses": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reduce expected expenses"
+          }
+        }
+      }
+    },
+    "whatIfReducedIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reduce expected income"
+          }
+        }
+      }
+    },
+    "whatIfCalculate": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calculate scenario"
+          }
+        }
+      }
+    },
+    "whatIfReset": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset scenario"
+          }
+        }
+      }
+    },
+    "whatIfNeedsForecast": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A baseline forecast is needed for this currency. Import the previous month’s transactions first."
+          }
+        }
+      }
+    },
+    "whatIfExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try one unrecorded change in this month’s original currency. The amount adds to or reduces the baseline forecast; it does not change transactions, budgets, goals or account balances. Scenarios are temporary and are discarded when the forecast closes."
+          }
+        }
+      }
+    },
+    "whatIfBaselineSpending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Baseline net spending"
+          }
+        }
+      }
+    },
+    "whatIfScenarioSpending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scenario net spending"
+          }
+        }
+      }
+    },
+    "whatIfBaselineFlow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Baseline net flow"
+          }
+        }
+      }
+    },
+    "whatIfScenarioFlow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scenario net flow"
+          }
+        }
+      }
+    },
+    "whatIfFlowChange": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change in net flow"
+          }
+        }
+      }
+    },
+    "whatIfResultHeading": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scenario · %@"
+          }
+        }
+      }
+    },
+    "whatIfResultExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Each calculation starts from the baseline, not the previous scenario. A positive change means higher projected net flow. This is a current-month estimate with the same assumptions as the forecast, not an affordability assessment or a prediction of goal completion."
+          }
+        }
+      }
+    },
+    "whatIfInvalidAmount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a positive amount using your regional number format."
+          }
+        }
+      }
+    },
+    "whatIfExpenseReductionLimit": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can reduce only the estimated remaining expenses. Recorded expenses stay unchanged."
+          }
+        }
+      }
+    },
+    "whatIfIncomeReductionLimit": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can reduce only the assumed remaining income. Recorded income stays unchanged."
+          }
+        }
+      }
+    },
+    "whatIfCalculationUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The scenario could not be calculated within supported decimal precision. Try a smaller amount."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

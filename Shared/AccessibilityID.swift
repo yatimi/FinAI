@@ -7,6 +7,15 @@
 
 /// Stable automation identifiers shared by the app and its UI tests.
 enum AccessibilityID {
+    static let whatIfKeyboardDone = "whatIfKeyboardDone"
+    static let openWhatIf = "openWhatIf"
+    static let whatIfAmount = "whatIfAmount"
+    static let whatIfChange = "whatIfChange"
+    static let whatIfCurrency = "whatIfCurrency"
+    static let whatIfCalculate = "whatIfCalculate"
+    static let whatIfReset = "whatIfReset"
+    static let whatIfError = "whatIfError"
+
     static let openMonthForecast = "openMonthForecast"
     static let assistantFollowUpPeriod = "assistant-follow-up-period"
     static let assistantAnswerMonth = "assistant-answer-month"
