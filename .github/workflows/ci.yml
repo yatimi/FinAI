@@ -29,7 +29,7 @@ jobs:
       DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
     steps:
       - uses: actions/checkout@v4
-      - name: Choose an available iPhone simulator
+      - name: Choose a standard iPhone simulator
         run: |
           xcodebuild -version
           xcrun simctl list devices available --json > /tmp/finai-devices.json
@@ -37,13 +37,20 @@ jobs:
           import json, os
           with open('/tmp/finai-devices.json') as source:
               runtimes = json.load(source)['devices']
-          devices = [device for runtime, values in sorted(runtimes.items(), reverse=True)
+          devices = [(runtime, device) for runtime, values in sorted(runtimes.items(), reverse=True)
                      if any(version in runtime for version in ('iOS-26', 'iOS-27')) for device in values
-                     if device['name'].startswith('iPhone') and device.get('isAvailable')]
-          if not devices:
-              raise SystemExit('No available iOS 26 or 27 iPhone simulator')
+                     if device['name'].startswith('iPhone ') and device.get('isAvailable')]
+          # This suite exercises compact iPhone navigation. Large-display layouts need a separate suite.
+          preferred = [(runtime, device) for runtime, device in devices if device['name'] == 'iPhone 17']
+          if not preferred:
+              preferred = [(runtime, device) for runtime, device in devices
+                           if device['name'].removeprefix('iPhone ')[:1].isdigit()]
+          if not preferred:
+              raise SystemExit('No standard iOS 26 or 27 iPhone simulator available')
+          runtime, device = preferred[0]
+          print(f"UI regression target: {device['name']} ({runtime})")
           with open(os.environ['GITHUB_ENV'], 'a') as output:
-              output.write('SIMULATOR_ID=' + devices[0]['udid'] + '\n')
+              output.write('SIMULATOR_ID=' + device['udid'] + '\n')
           PYTHON
       - name: Cache package sources
         uses: actions/cache@v4

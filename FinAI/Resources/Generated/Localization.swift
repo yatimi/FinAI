@@ -306,6 +306,54 @@ internal enum FinanceStrings {
   internal static let firstObserved = FinanceStrings.tr("Localizable", "firstObserved", fallback: "First observed")
   /// First rows
   internal static let firstRows = FinanceStrings.tr("Localizable", "firstRows", fallback: "First rows")
+  /// Assumptions and limits
+  internal static let forecastAssumptions = FinanceStrings.tr("Localizable", "forecastAssumptions", fallback: "Assumptions and limits")
+  /// How this is calculated
+  internal static let forecastCalculationDetails = FinanceStrings.tr("Localizable", "forecastCalculationDetails", fallback: "How this is calculated")
+  /// The forecast could not be calculated. Check your saved data and try opening it again.
+  internal static let forecastCalculationUnavailable = FinanceStrings.tr("Localizable", "forecastCalculationUnavailable", fallback: "The forecast could not be calculated. Check your saved data and try opening it again.")
+  /// No expense or income history for this currency in the previous month. A forecast is unavailable.
+  internal static let forecastCurrencyHistoryMissing = FinanceStrings.tr("Localizable", "forecastCurrencyHistoryMissing", fallback: "No expense or income history for this currency in the previous month. A forecast is unavailable.")
+  /// Saved transactions are unavailable. Refresh your data and try again.
+  internal static let forecastDataUnavailable = FinanceStrings.tr("Localizable", "forecastDataUnavailable", fallback: "Saved transactions are unavailable. Refresh your data and try again.")
+  /// History month
+  internal static let forecastHistoryMonth = FinanceStrings.tr("Localizable", "forecastHistoryMonth", fallback: "History month")
+  /// Assumes complete imports and unchanged habits and income. A record does not prove the month is complete. Missing payments, changed prices and irregular income can make this estimate inaccurate. Recurring payments need three matching occurrences; stale patterns are not scheduled. No future refunds or transactions dated after today are included. Transfers, adjustments and unknown entries are excluded. Net spending is expenses minus recorded refunds; net flow is income minus net spending. This is not an account balance, available money or an affordability assessment. Currencies stay separate.
+  internal static let forecastLimitations = FinanceStrings.tr("Localizable", "forecastLimitations", fallback: "Assumes complete imports and unchanged habits and income. A record does not prove the month is complete. Missing payments, changed prices and irregular income can make this estimate inaccurate. Recurring payments need three matching occurrences; stale patterns are not scheduled. No future refunds or transactions dated after today are included. Transfers, adjustments and unknown entries are excluded. Net spending is expenses minus recorded refunds; net flow is income minus net spending. This is not an account balance, available money or an affordability assessment. Currencies stay separate.")
+  /// An end-of-day estimate. Last month’s ordinary expenses are averaged over its calendar days and applied from tomorrow to month end. Active detected recurring expenses use their expected dates instead. Total income is assumed to match last month, or recorded income if higher.
+  internal static let forecastMethodExplanation = FinanceStrings.tr("Localizable", "forecastMethodExplanation", fallback: "An end-of-day estimate. Last month’s ordinary expenses are averaged over its calendar days and applied from tomorrow to month end. Active detected recurring expenses use their expected dates instead. Total income is assumed to match last month, or recorded income if higher.")
+  /// Forecast month
+  internal static let forecastMonth = FinanceStrings.tr("Localizable", "forecastMonth", fallback: "Forecast month")
+  /// Estimated month-end net flow
+  internal static let forecastMonthNetFlow = FinanceStrings.tr("Localizable", "forecastMonthNetFlow", fallback: "Estimated month-end net flow")
+  /// Estimated month-end net spending
+  internal static let forecastMonthNetSpending = FinanceStrings.tr("Localizable", "forecastMonthNetSpending", fallback: "Estimated month-end net spending")
+  /// Import last month’s transactions to build a forecast.
+  internal static let forecastNoHistory = FinanceStrings.tr("Localizable", "forecastNoHistory", fallback: "Import last month’s transactions to build a forecast.")
+  /// Recorded expenses
+  internal static let forecastRecordedExpenses = FinanceStrings.tr("Localizable", "forecastRecordedExpenses", fallback: "Recorded expenses")
+  /// Recorded income
+  internal static let forecastRecordedIncome = FinanceStrings.tr("Localizable", "forecastRecordedIncome", fallback: "Recorded income")
+  /// Recorded net flow
+  internal static let forecastRecordedNetFlow = FinanceStrings.tr("Localizable", "forecastRecordedNetFlow", fallback: "Recorded net flow")
+  /// Recorded net spending
+  internal static let forecastRecordedNetSpending = FinanceStrings.tr("Localizable", "forecastRecordedNetSpending", fallback: "Recorded net spending")
+  /// Recorded refunds
+  internal static let forecastRecordedRefunds = FinanceStrings.tr("Localizable", "forecastRecordedRefunds", fallback: "Recorded refunds")
+  /// Recorded through
+  internal static let forecastRecordedThrough = FinanceStrings.tr("Localizable", "forecastRecordedThrough", fallback: "Recorded through")
+  /// Assumed remaining income
+  internal static let forecastRemainingIncome = FinanceStrings.tr("Localizable", "forecastRemainingIncome", fallback: "Assumed remaining income")
+  /// Expected remaining recurring expenses
+  internal static let forecastRemainingRecurring = FinanceStrings.tr("Localizable", "forecastRemainingRecurring", fallback: "Expected remaining recurring expenses")
+  /// Estimated remaining ordinary expenses
+  internal static let forecastRemainingVariable = FinanceStrings.tr("Localizable", "forecastRemainingVariable", fallback: "Estimated remaining ordinary expenses")
+  /// Based on last month’s recorded activity. Assumes complete imports and unchanged habits and income. Estimates are not available balances.
+  internal static let forecastSummaryExplanation = FinanceStrings.tr("Localizable", "forecastSummaryExplanation", fallback: "Based on last month’s recorded activity. Assumes complete imports and unchanged habits and income. Estimates are not available balances.")
+  /// Estimated total expenses
+  internal static let forecastTotalExpenses = FinanceStrings.tr("Localizable", "forecastTotalExpenses", fallback: "Estimated total expenses")
+  /// Estimated total income
+  internal static let forecastTotalIncome = FinanceStrings.tr("Localizable", "forecastTotalIncome", fallback: "Estimated total income")
   /// Freelance
   internal static let freelanceIncome = FinanceStrings.tr("Localizable", "freelanceIncome", fallback: "Freelance")
   /// From
@@ -462,6 +510,8 @@ internal enum FinanceStrings {
   internal static let moneyIn = FinanceStrings.tr("Localizable", "moneyIn", fallback: "Money in")
   /// Money out
   internal static let moneyOut = FinanceStrings.tr("Localizable", "moneyOut", fallback: "Money out")
+  /// Month-end forecast
+  internal static let monthEndForecast = FinanceStrings.tr("Localizable", "monthEndForecast", fallback: "Month-end forecast")
   /// Monthly
   internal static let monthly = FinanceStrings.tr("Localizable", "monthly", fallback: "Monthly")
   /// Monthly budgets

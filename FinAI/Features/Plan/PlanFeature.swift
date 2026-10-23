@@ -14,6 +14,7 @@ struct PlanFeature {
 
     @ObservableState
     struct State: Equatable {
+        @Presents var forecast: ForecastFeature.State?
         var goals: [SavingsGoal] = []
         var budgets: [CategoryBudget] = []
         var transactions: [Transaction]?
@@ -26,6 +27,8 @@ struct PlanFeature {
 
     enum Action: Equatable {
         case task
+        case forecastTapped
+        case forecast(PresentationAction<ForecastFeature.Action>)
         case cancelLoading
         case transactionsUpdated([Transaction]?)
         case loaded([SavingsGoal], [CategoryBudget])
@@ -40,11 +43,18 @@ struct PlanFeature {
     var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
+            case .forecastTapped:
+                state.forecast = ForecastFeature.State()
+                updateForecast(&state)
+                return .none
+            case .forecast:
+                return .none
             case .task:
                 guard !state.isLoading else { return .none }
                 state.isLoading = true
                 state.loadFailed = false
                 updateProgress(&state)
+                updateForecast(&state)
                 let goalsClient = goalsClient
                 let budgetsClient = budgetsClient
                 return .run { send in
@@ -64,6 +74,7 @@ struct PlanFeature {
             case let .transactionsUpdated(transactions):
                 state.transactions = transactions
                 updateProgress(&state)
+                updateForecast(&state)
                 return .none
             case let .loaded(goals, budgets):
                 guard state.isLoading else { return .none }
@@ -72,6 +83,7 @@ struct PlanFeature {
                 state.budgets = budgets
                 state.loadFailed = false
                 updateProgress(&state)
+                updateForecast(&state)
                 return .none
             case .failed:
                 guard state.isLoading else { return .none }
@@ -80,6 +92,12 @@ struct PlanFeature {
                 return .none
             }
         }
+        .ifLet(\.$forecast, action: \.forecast) { ForecastFeature() }
+    }
+
+    private func updateForecast(_ state: inout State) {
+        let transactions = state.transactions
+        state.forecast?.update(transactions: transactions, date: now, calendar: calendar)
     }
 
     private func updateProgress(_ state: inout State) {

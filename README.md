@@ -19,6 +19,7 @@ Version **0.2.0** is the latest source release. Build and run it with Xcode; no 
 - Possible weekly, monthly and yearly recurring expenses, with evidence counts, estimated dates and subscription hints
 - Transaction search across merchant names and original descriptions, with combined date, account, category, type and currency filters
 - Transaction details with original descriptions, categories, source and account information
+- An explainable month-end spending and net-flow forecast using previous-month activity and detected recurring expenses, separated by currency
 - Repeating monthly category budgets with exact limits, net spending, remaining amounts and overspend per original currency
 - Local savings goals with editable targets, deadlines and manually recorded savings; deterministic remaining amounts and monthly contribution schedules
 - Saved-transaction editing from a list swipe action or transaction details, with validation, explicit saving and preserved original values
@@ -131,6 +132,14 @@ Open **Plan → Budgets** to create or edit a monthly category limit in one curr
 
 Spending uses expenses minus refunds recorded in the current month and category. Transfers, income, adjustments and unknown transactions are excluded. Currencies are never converted or combined. Refunds can make net spending negative and the remaining amount larger than the limit. A negative remaining amount is shown alongside the amount over budget. Budgets are stored locally; edits require explicit saving and conflicting changes are rejected.
 
+## Month-end forecast
+
+Open **Plan → Month-end forecast** for an end-of-day estimate of net spending and net flow, separately for each original currency. Expand **How this is calculated** to see recorded expenses, refunds and income alongside assumed remaining amounts. **Assumptions and limits** explains the method.
+
+Ordinary expenses from the previous calendar month are averaged over its calendar days and applied from tomorrow to month end. Active detected recurring expenses are excluded from that average and scheduled by their original cadence and expected dates, preserving month-end anchors. Already posted payments are counted once; stale patterns are not scheduled. Income is assumed to reach the previous month’s recorded total, or the current recorded total if higher. On the final day, only recorded amounts remain. Refunds are included only when recorded; transfers, adjustments, unknown entries and transactions dated after today are excluded.
+
+The estimate requires expense or income history for that currency in the preceding month. Missing history produces an unavailable forecast rather than a zero estimate. Complete imports, stable habits and unchanged income are assumptions, not verified facts. Irregular income, missing payments and changed prices can make the result inaccurate. This is not an account balance, available money or an affordability assessment. Forecasting does not change saved records or use AI. Estimated ordinary expenses round once to the currency’s standard precision; recorded amounts retain their original precision.
+
 ## Savings goals
 
 Open **Plan → Savings goals** to create or edit a goal with a name, target amount, original currency, deadline and manually recorded savings. Saving a goal does not move money or change transactions or account balances. Each goal is calculated separately; currencies are never combined.
@@ -151,6 +160,8 @@ xcodebuild test \
   CODE_SIGNING_ALLOWED=NO
 ```
 
+Forecast tests cover recurring-payment double counting, weekly/monthly/yearly dates, month-end anchors, separate accounts and currencies, missing history, future records, refunds, income assumptions, month/year/leap-year boundaries, daylight saving, rounding, overflow and refreshed data. UI journeys cover empty history, calculation details and accessibility text.
+
 Budget tests cover category and currency boundaries, month boundaries, exact amounts, refunds, duplicate limits, migration from schema version 5, reopening storage, cancellation, stale edits, save failures and refreshed transactions. The budget UI journey creates, edits and reopens a budget and rejects a duplicate.
 
 Goal tests cover exact localized input, currency precision, deadline and year boundaries, completion, migration from schema version 4, reopening storage, cancellation, stale edits and save failures. The goals UI journey creates, edits and reopens a saved goal.
@@ -164,7 +175,7 @@ The app stores data locally, with no account, bank connection, remote AI service
 ## Planned
 
 1. Broader assistant tools and richer contextual follow-ups
-2. Forecasts, what-if planning and richer goal tracking
+2. What-if planning and richer goal tracking
 3. Broader statement, document and receipt import
 4. Investigation of connected banking
 

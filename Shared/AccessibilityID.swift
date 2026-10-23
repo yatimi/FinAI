@@ -7,6 +7,7 @@
 
 /// Stable automation identifiers shared by the app and its UI tests.
 enum AccessibilityID {
+    static let openMonthForecast = "openMonthForecast"
     static let assistantFollowUpPeriod = "assistant-follow-up-period"
     static let assistantAnswerMonth = "assistant-answer-month"
     static let openAssistant = "openAssistant"

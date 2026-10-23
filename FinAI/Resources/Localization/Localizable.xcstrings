@@ -3949,6 +3949,281 @@
           }
         }
       }
+    },
+    "monthEndForecast": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Month-end forecast"
+          }
+        }
+      }
+    },
+    "forecastMonth": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forecast month"
+          }
+        }
+      }
+    },
+    "forecastRecordedThrough": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recorded through"
+          }
+        }
+      }
+    },
+    "forecastHistoryMonth": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History month"
+          }
+        }
+      }
+    },
+    "forecastCalculationUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The forecast could not be calculated. Check your saved data and try opening it again."
+          }
+        }
+      }
+    },
+    "forecastDataUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved transactions are unavailable. Refresh your data and try again."
+          }
+        }
+      }
+    },
+    "forecastNoHistory": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import last month’s transactions to build a forecast."
+          }
+        }
+      }
+    },
+    "forecastCurrencyHistoryMissing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No expense or income history for this currency in the previous month. A forecast is unavailable."
+          }
+        }
+      }
+    },
+    "forecastMonthNetSpending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimated month-end net spending"
+          }
+        }
+      }
+    },
+    "forecastMonthNetFlow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimated month-end net flow"
+          }
+        }
+      }
+    },
+    "forecastRecordedExpenses": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recorded expenses"
+          }
+        }
+      }
+    },
+    "forecastRemainingVariable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimated remaining ordinary expenses"
+          }
+        }
+      }
+    },
+    "forecastRemainingRecurring": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expected remaining recurring expenses"
+          }
+        }
+      }
+    },
+    "forecastRecordedRefunds": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recorded refunds"
+          }
+        }
+      }
+    },
+    "forecastTotalExpenses": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimated total expenses"
+          }
+        }
+      }
+    },
+    "forecastRecordedIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recorded income"
+          }
+        }
+      }
+    },
+    "forecastRemainingIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assumed remaining income"
+          }
+        }
+      }
+    },
+    "forecastTotalIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimated total income"
+          }
+        }
+      }
+    },
+    "forecastCalculationDetails": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How this is calculated"
+          }
+        }
+      }
+    },
+    "forecastRecordedNetSpending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recorded net spending"
+          }
+        }
+      }
+    },
+    "forecastRecordedNetFlow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recorded net flow"
+          }
+        }
+      }
+    },
+    "forecastMethodExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An end-of-day estimate. Last month’s ordinary expenses are averaged over its calendar days and applied from tomorrow to month end. Active detected recurring expenses use their expected dates instead. Total income is assumed to match last month, or recorded income if higher."
+          }
+        }
+      }
+    },
+    "forecastLimitations": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assumes complete imports and unchanged habits and income. A record does not prove the month is complete. Missing payments, changed prices and irregular income can make this estimate inaccurate. Recurring payments need three matching occurrences; stale patterns are not scheduled. No future refunds or transactions dated after today are included. Transfers, adjustments and unknown entries are excluded. Net spending is expenses minus recorded refunds; net flow is income minus net spending. This is not an account balance, available money or an affordability assessment. Currencies stay separate."
+          }
+        }
+      }
+    },
+    "forecastSummaryExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Based on last month’s recorded activity. Assumes complete imports and unchanged habits and income. Estimates are not available balances."
+          }
+        }
+      }
+    },
+    "forecastAssumptions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assumptions and limits"
+          }
+        }
+      }
     }
   },
   "version": "1.0"
