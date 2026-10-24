@@ -20,6 +20,7 @@ Version **0.2.0** is the latest source release. Build and run it with Xcode; no 
 - Transaction search across merchant names and original descriptions, with combined date, account, category, type and currency filters
 - Transaction details with original descriptions, categories, source and account information
 - An explainable month-end spending and net-flow forecast using previous-month activity and detected recurring expenses, separated by currency
+- Temporary current-month what-if scenarios for additional expenses/income or reductions of estimated remaining amounts
 - Repeating monthly category budgets with exact limits, net spending, remaining amounts and overspend per original currency
 - Local savings goals with editable targets, deadlines and manually recorded savings; deterministic remaining amounts and monthly contribution schedules
 - Saved-transaction editing from a list swipe action or transaction details, with validation, explicit saving and preserved original values
@@ -140,6 +141,14 @@ Ordinary expenses from the previous calendar month are averaged over its calenda
 
 The estimate requires expense or income history for that currency in the preceding month. Missing history produces an unavailable forecast rather than a zero estimate. Complete imports, stable habits and unchanged income are assumptions, not verified facts. Irregular income, missing payments and changed prices can make the result inaccurate. This is not an account balance, available money or an affordability assessment. Forecasting does not change saved records or use AI. Estimated ordinary expenses round once to the currency’s standard precision; recorded amounts retain their original precision.
 
+## What-if scenarios
+
+Open **Plan → Month-end forecast → What if?**. Choose one change, its original currency and a positive amount, then tap **Calculate scenario**. Compare baseline and scenario net spending and net flow, alongside the exact change in projected net flow.
+
+A scenario applies one unrecorded change to this month’s forecast. Additional expenses or income increase the corresponding forecast total. Reductions can affect only estimated remaining expenses or assumed remaining income; they cannot erase recorded transactions. Each calculation starts from the baseline, so repeated calculations do not accumulate changes. Refunds retain their recorded treatment and currencies stay separate. A currency needs an available baseline forecast.
+
+Scenarios are temporary: they never change transactions, budgets, goals or account balances. Reset clears the draft and result; closing the forecast discards them. Editing the input clears the old result. When the baseline changes, the result is cleared for recalculation. If its currency is no longer available, the draft amount is also cleared. This is a current-month comparison with the forecast’s existing assumptions; it does not assess affordability or predict goal completion.
+
 ## Savings goals
 
 Open **Plan → Savings goals** to create or edit a goal with a name, target amount, original currency, deadline and manually recorded savings. Saving a goal does not move money or change transactions or account balances. Each goal is calculated separately; currencies are never combined.
@@ -160,6 +169,8 @@ xcodebuild test \
   CODE_SIGNING_ALLOWED=NO
 ```
 
+What-if tests cover exact changes, currency boundaries, recorded-amount floors, refunds, invalid input, overflow, independent recalculation, reset and stale-result invalidation. UI journeys exercise scenario calculation, reduction validation, reset, unchanged recorded transactions and accessibility text.
+
 Forecast tests cover recurring-payment double counting, weekly/monthly/yearly dates, month-end anchors, separate accounts and currencies, missing history, future records, refunds, income assumptions, month/year/leap-year boundaries, daylight saving, rounding, overflow and refreshed data. UI journeys cover empty history, calculation details and accessibility text.
 
 Budget tests cover category and currency boundaries, month boundaries, exact amounts, refunds, duplicate limits, migration from schema version 5, reopening storage, cancellation, stale edits, save failures and refreshed transactions. The budget UI journey creates, edits and reopens a budget and rejects a duplicate.
@@ -175,7 +186,7 @@ The app stores data locally, with no account, bank connection, remote AI service
 ## Planned
 
 1. Broader assistant tools and richer contextual follow-ups
-2. What-if planning and richer goal tracking
+2. Longer-term planning and richer goal tracking
 3. Broader statement, document and receipt import
 4. Investigation of connected banking
 

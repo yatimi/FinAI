@@ -6,6 +6,7 @@
 //
 
 enum AppSymbol: String {
+    case whatIf = "arrow.triangle.branch"
     case previous = "chevron.left"
     case next = "chevron.right"
     case assistant = "bubble.left.and.text.bubble.right"
