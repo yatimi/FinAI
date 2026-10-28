@@ -23,6 +23,7 @@ Version **0.2.0** is the latest source release. Build and run it with Xcode; no 
 - Temporary current-month what-if scenarios for additional expenses/income or reductions of estimated remaining amounts
 - Repeating monthly category budgets with exact limits, net spending, remaining amounts and overspend per original currency
 - Local savings goals with editable targets, deadlines and manually recorded savings; deterministic remaining amounts and monthly contribution schedules
+- Personal debts in either direction, with optional due dates, dated partial repayments and exact remaining amounts in the original currency
 - Saved-transaction editing from a list swipe action or transaction details, with validation, explicit saving and preserved original values
 - A read-only spending assistant with suggested questions, optional on-device free-text interpretation, currency-separated results and transaction drilldowns
 - English String Catalog localization and locale-aware money and date formatting
@@ -60,6 +61,12 @@ Requirements: Xcode 27 or later and an iOS 26 or later simulator or device.
 4. Choose **Explore demo**, or use **Import transactions** to load CSV or a supported PDF statement.
 
 For a physical device, choose your own signing team for the app and test targets. Data persists between launches. The first confirmed import replaces synthetic demo records, with a warning before confirmation. Saved transactions can be edited; deletion and manual entry are not available yet.
+
+## Personal debts
+
+Open **Plan → Personal debts**, or choose **Add debt** from the Plan plus menu. Record who you owe or who owes you, the original positive amount and currency, the debt date and an optional due date. Record each repayment to see the remaining amount, repayment history and active, overdue or settled status.
+
+Repayments must be positive, use the debt’s currency and cannot exceed the remaining amount. Future debt and repayment dates are rejected; due dates may be in the future. These planning records do not create transactions or change spending, income, forecasts or account balances. Existing debts and repayments cannot be edited or deleted in this initial version.
 
 ## Correcting transactions
 
