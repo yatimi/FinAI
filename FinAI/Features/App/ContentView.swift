@@ -55,8 +55,10 @@ struct ContentView: View {
                              transactions: store.overview?.snapshot.transactions,
                              openBudgets: { store.send(.budgetsTapped) },
                              openGoals: { store.send(.goalsTapped) },
+                             openDebts: { store.send(.debtsTapped) },
                              addBudget: { store.send(.addBudgetTapped) },
                              addGoal: { store.send(.addGoalTapped) },
+                             addDebt: { store.send(.addDebtTapped) },
                              selectBudget: { store.send(.budgetTapped($0)) },
                              selectGoal: { store.send(.goalTapped($0)) })
                 }
@@ -85,6 +87,7 @@ struct ContentView: View {
         .sheet(item: $store.scope(state: \.merchantRules, action: \.merchantRules)) { MerchantRulesView(store: $0) }
         .sheet(item: $store.scope(state: \.budgets, action: \.budgets)) { BudgetsView(store: $0) }
         .sheet(item: $store.scope(state: \.goals, action: \.goals)) { GoalsView(store: $0) }
+        .sheet(item: $store.scope(state: \.debts, action: \.debts)) { DebtsView(store: $0) }
         .sheet(item: $store.scope(state: \.importFlow, action: \.importFlow)) { ImportView(store: $0) }
         .task { await store.send(.task).finish() }
         .onDisappear { store.send(.cancelLoading) }

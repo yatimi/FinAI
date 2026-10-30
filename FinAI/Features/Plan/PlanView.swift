@@ -14,9 +14,11 @@ struct PlanView: View {
     @Environment(\.scenePhase) private var scenePhase
     let openBudgets: () -> Void
     let openGoals: () -> Void
+    let openDebts: () -> Void
 
     let addBudget: () -> Void
     let addGoal: () -> Void
+    let addDebt: () -> Void
     let selectBudget: (UUID) -> Void
     let selectGoal: (UUID) -> Void
 
@@ -27,6 +29,9 @@ struct PlanView: View {
                     Label(.monthEndForecast, systemImage: AppSymbol.overview.rawValue)
                 }
                 .accessibilityIdentifier(AccessibilityID.openMonthForecast)
+            }
+            Section {
+                Button(action: openDebts) { Label(.personalDebts, systemImage: AppSymbol.debts.rawValue) }
             }
             if store.isLoading { ProgressView { Text(.updatingPlan) } }
             if store.loadFailed {
@@ -89,6 +94,7 @@ struct PlanView: View {
             Menu {
                 Button(.addBudget, systemImage: AppSymbol.analytics.rawValue, action: addBudget)
                 Button(.addGoal, systemImage: AppSymbol.goals.rawValue, action: addGoal)
+                Button(.addDebt, systemImage: AppSymbol.debts.rawValue, action: addDebt)
             } label: { Label(.addToPlan, systemImage: AppSymbol.add.rawValue) }
         }
         .sheet(item: $store.scope(state: \.forecast, action: \.forecast)) { forecastStore in

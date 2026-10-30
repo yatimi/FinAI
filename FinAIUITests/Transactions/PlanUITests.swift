@@ -21,8 +21,8 @@ final class PlanUITests: XCTestCase {
         XCTAssertTrue(app.tabBars.buttons["Plan"].waitForExistence(timeout: 15))
         app.tabBars.buttons["Plan"].tap()
         let goals = app.buttons[AccessibilityID.openGoals]
-        XCTAssertTrue(goals.waitForExistence(timeout: 10))
         for _ in 0..<5 where !goals.isHittable || goals.frame.maxY > app.tabBars.firstMatch.frame.minY { app.swipeUp() }
+        XCTAssertTrue(goals.waitForExistence(timeout: 10))
         XCTAssertTrue(goals.isHittable)
         let image = XCTAttachment(screenshot: app.screenshot())
         image.name = "Plan dark accessibility"

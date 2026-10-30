@@ -30,6 +30,7 @@ struct AppFeature {
         @Presents var detail: TransactionDetailFeature.State?
         @Presents var budgets: BudgetsFeature.State?
         @Presents var goals: GoalsFeature.State?
+        @Presents var debts: DebtsFeature.State?
     }
 
     enum Action: BindableAction, Equatable {
@@ -51,6 +52,9 @@ struct AppFeature {
         case goalTapped(UUID)
         case budgetsTapped
         case budgets(PresentationAction<BudgetsFeature.Action>)
+        case addDebtTapped
+        case debtsTapped
+        case debts(PresentationAction<DebtsFeature.Action>)
         case goalsTapped
         case goals(PresentationAction<GoalsFeature.Action>)
         case merchantRules(PresentationAction<MerchantRulesFeature.Action>)
@@ -79,6 +83,7 @@ struct AppFeature {
         .ifLet(\.$merchantRules, action: \.merchantRules) { MerchantRulesFeature() }
         .ifLet(\.$budgets, action: \.budgets) { BudgetsFeature() }
         .ifLet(\.$goals, action: \.goals) { GoalsFeature() }
+        .ifLet(\.$debts, action: \.debts) { DebtsFeature() }
         .ifLet(\.$detail, action: \.detail) { TransactionDetailFeature() }
         .ifLet(\.$importFlow, action: \.importFlow) { ImportFeature() }
     }
@@ -170,6 +175,12 @@ struct AppFeature {
             case .budgetsTapped:
                 state.budgets = BudgetsFeature.State(transactions: state.overview?.snapshot.transactions ?? [])
                 return .none
+            case .addDebtTapped:
+                state.debts = DebtsFeature.State(addAfterLoading: true)
+                return .none
+            case .debtsTapped:
+                state.debts = DebtsFeature.State()
+                return .none
             case .goalsTapped:
                 state.goals = GoalsFeature.State()
                 return .none
@@ -206,7 +217,7 @@ struct AppFeature {
                 )
             case .goals(.dismiss), .budgets(.dismiss):
                 return .send(.plan(.task))
-            case .assistant, .analytics, .plan, .binding, .alert, .detail, .importFlow, .transactions, .merchantRules, .goals, .budgets:
+            case .assistant, .analytics, .plan, .binding, .alert, .detail, .importFlow, .transactions, .merchantRules, .goals, .budgets, .debts:
                 return .none
             }
         }

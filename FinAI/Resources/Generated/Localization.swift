@@ -22,6 +22,8 @@ internal enum FinanceStrings {
   internal static let aCsvFieldIsTooLong = FinanceStrings.tr("Localizable", "aCsvFieldIsTooLong", fallback: "A CSV field is too long.")
   /// Add budget
   internal static let addBudget = FinanceStrings.tr("Localizable", "addBudget", fallback: "Add budget")
+  /// Add debt
+  internal static let addDebt = FinanceStrings.tr("Localizable", "addDebt", fallback: "Add debt")
   /// Add goal
   internal static let addGoal = FinanceStrings.tr("Localizable", "addGoal", fallback: "Add goal")
   /// Add rule
@@ -224,6 +226,50 @@ internal enum FinanceStrings {
   internal static let dateFormat = FinanceStrings.tr("Localizable", "dateFormat", fallback: "Date format")
   /// Debit
   internal static let debit = FinanceStrings.tr("Localizable", "debit", fallback: "Debit")
+  /// Active
+  internal static let debtActive = FinanceStrings.tr("Localizable", "debtActive", fallback: "Active")
+  /// This debt changed. Cancel editing and reload before recording another repayment.
+  internal static let debtChangedFailure = FinanceStrings.tr("Localizable", "debtChangedFailure", fallback: "This debt changed. Cancel editing and reload before recording another repayment.")
+  /// Debt details
+  internal static let debtDetails = FinanceStrings.tr("Localizable", "debtDetails", fallback: "Debt details")
+  /// Who owes whom
+  internal static let debtDirection = FinanceStrings.tr("Localizable", "debtDirection", fallback: "Who owes whom")
+  /// Due date
+  internal static let debtDueDate = FinanceStrings.tr("Localizable", "debtDueDate", fallback: "Due date")
+  /// Record money you owe or lent to someone. Repayments reduce this debt only; they do not create bank transactions or change income, spending or account balances. Saved debts and repayments cannot be edited or deleted yet.
+  internal static let debtExplanation = FinanceStrings.tr("Localizable", "debtExplanation", fallback: "Record money you owe or lent to someone. Repayments reduce this debt only; they do not create bank transactions or change income, spending or account balances. Saved debts and repayments cannot be edited or deleted yet.")
+  /// Set a due date
+  internal static let debtHasDueDate = FinanceStrings.tr("Localizable", "debtHasDueDate", fallback: "Set a due date")
+  /// Enter a person, a positive amount and a valid currency. Debt and repayment dates cannot be in the future. A repayment must be on or after the debt date and cannot exceed the remaining debt. The due date cannot precede the debt date.
+  internal static let debtInvalidInput = FinanceStrings.tr("Localizable", "debtInvalidInput", fallback: "Enter a person, a positive amount and a valid currency. Debt and repayment dates cannot be in the future. A repayment must be on or after the debt date and cannot exceed the remaining debt. The due date cannot precede the debt date.")
+  /// I owe
+  internal static let debtIOwe = FinanceStrings.tr("Localizable", "debtIOwe", fallback: "I owe")
+  /// Overdue
+  internal static let debtOverdue = FinanceStrings.tr("Localizable", "debtOverdue", fallback: "Overdue")
+  /// Owed to me
+  internal static let debtOwedToMe = FinanceStrings.tr("Localizable", "debtOwedToMe", fallback: "Owed to me")
+  /// Person
+  internal static let debtPerson = FinanceStrings.tr("Localizable", "debtPerson", fallback: "Person")
+  /// Original debt amount
+  internal static let debtPrincipal = FinanceStrings.tr("Localizable", "debtPrincipal", fallback: "Original debt amount")
+  /// Remaining debt
+  internal static let debtRemaining = FinanceStrings.tr("Localizable", "debtRemaining", fallback: "Remaining debt")
+  /// Repaid
+  internal static let debtRepaid = FinanceStrings.tr("Localizable", "debtRepaid", fallback: "Repaid")
+  /// Repayment amount
+  internal static let debtRepaymentAmount = FinanceStrings.tr("Localizable", "debtRepaymentAmount", fallback: "Repayment amount")
+  /// Repayment date
+  internal static let debtRepaymentDate = FinanceStrings.tr("Localizable", "debtRepaymentDate", fallback: "Repayment date")
+  /// Repayment history
+  internal static let debtRepaymentHistory = FinanceStrings.tr("Localizable", "debtRepaymentHistory", fallback: "Repayment history")
+  /// Settled
+  internal static let debtSettled = FinanceStrings.tr("Localizable", "debtSettled", fallback: "Settled")
+  /// Unable to load debts. Your saved data has not been replaced.
+  internal static let debtsLoadFailure = FinanceStrings.tr("Localizable", "debtsLoadFailure", fallback: "Unable to load debts. Your saved data has not been replaced.")
+  /// Unable to save. Your draft is preserved; please try again.
+  internal static let debtsSaveFailure = FinanceStrings.tr("Localizable", "debtsSaveFailure", fallback: "Unable to save. Your draft is preserved; please try again.")
+  /// Debt date
+  internal static let debtStartDate = FinanceStrings.tr("Localizable", "debtStartDate", fallback: "Debt date")
   /// Default currency (EUR, USD…)
   internal static let defaultCurrencyEurUsd = FinanceStrings.tr("Localizable", "defaultCurrencyEurUsd", fallback: "Default currency (EUR, USD…)")
   /// Default transaction type
@@ -256,6 +302,8 @@ internal enum FinanceStrings {
   internal static let discardBudgetChanges = FinanceStrings.tr("Localizable", "discardBudgetChanges", fallback: "Discard budget changes?")
   /// Discard changes
   internal static let discardChanges = FinanceStrings.tr("Localizable", "discardChanges", fallback: "Discard changes")
+  /// Discard unsaved debt changes?
+  internal static let discardDebtChanges = FinanceStrings.tr("Localizable", "discardDebtChanges", fallback: "Discard unsaved debt changes?")
   /// Discard goal changes?
   internal static let discardGoalChanges = FinanceStrings.tr("Localizable", "discardGoalChanges", fallback: "Discard goal changes?")
   /// Discard changes?
@@ -536,6 +584,8 @@ internal enum FinanceStrings {
   internal static let noAccountsYet = FinanceStrings.tr("Localizable", "noAccountsYet", fallback: "No accounts yet")
   /// No budgets yet.
   internal static let noBudgetsYet = FinanceStrings.tr("Localizable", "noBudgetsYet", fallback: "No budgets yet.")
+  /// No debts yet
+  internal static let noDebtsYet = FinanceStrings.tr("Localizable", "noDebtsYet", fallback: "No debts yet")
   /// No expenses or refunds in these two months.
   internal static let noExpensesOrRefundsInTheseTwoMonths = FinanceStrings.tr("Localizable", "noExpensesOrRefundsInTheseTwoMonths", fallback: "No expenses or refunds in these two months.")
   /// No savings goals yet.
@@ -576,6 +626,8 @@ internal enum FinanceStrings {
   internal static let percentageChangeUnavailableExplanation = FinanceStrings.tr("Localizable", "percentageChangeUnavailableExplanation", fallback: "Percentage change is unavailable when previous net spending is zero or negative.")
   /// Period
   internal static let period = FinanceStrings.tr("Localizable", "period", fallback: "Period")
+  /// Personal debts
+  internal static let personalDebts = FinanceStrings.tr("Localizable", "personalDebts", fallback: "Personal debts")
   /// Plan
   internal static let plan = FinanceStrings.tr("Localizable", "plan", fallback: "Plan")
   /// Spending progress is unavailable until local transactions are loaded and the calculation succeeds.
@@ -600,6 +652,8 @@ internal enum FinanceStrings {
   internal static let previousMonth = FinanceStrings.tr("Localizable", "previousMonth", fallback: "Previous month")
   /// Previous month net spending
   internal static let previousMonthNetSpending = FinanceStrings.tr("Localizable", "previousMonthNetSpending", fallback: "Previous month net spending")
+  /// Record repayment
+  internal static let recordDebtRepayment = FinanceStrings.tr("Localizable", "recordDebtRepayment", fallback: "Record repayment")
   /// Possible recurring expenses, not confirmed contracts. Matching uses at least three equal payments to the same saved merchant, on one account and in one currency. Weekly dates may vary by one day; monthly and yearly dates by three days.
   internal static let recurringDetectionExplanation = FinanceStrings.tr("Localizable", "recurringDetectionExplanation", fallback: "Possible recurring expenses, not confirmed contracts. Matching uses at least three equal payments to the same saved merchant, on one account and in one currency. Weekly dates may vary by one day; monthly and yearly dates by three days.")
   /// Estimated from saved activity. Future payment dates and amounts are not guaranteed.
@@ -644,6 +698,12 @@ internal enum FinanceStrings {
   internal static let saveBudget = FinanceStrings.tr("Localizable", "saveBudget", fallback: "Save budget")
   /// Saved budgets
   internal static let savedBudgets = FinanceStrings.tr("Localizable", "savedBudgets", fallback: "Saved budgets")
+  /// Saved debts
+  internal static let savedDebts = FinanceStrings.tr("Localizable", "savedDebts", fallback: "Saved debts")
+  /// Save debt
+  internal static let saveDebt = FinanceStrings.tr("Localizable", "saveDebt", fallback: "Save debt")
+  /// Save repayment
+  internal static let saveDebtRepayment = FinanceStrings.tr("Localizable", "saveDebtRepayment", fallback: "Save repayment")
   /// Saved goals
   internal static let savedGoals = FinanceStrings.tr("Localizable", "savedGoals", fallback: "Saved goals")
   /// Saved merchant rules
@@ -786,6 +846,8 @@ internal enum FinanceStrings {
   internal static let unsupportedStatementMessage = FinanceStrings.tr("Localizable", "unsupportedStatementMessage", fallback: "This PDF format is not supported. Choose a complete German Sparkasse statement with the Datum / Erläuterung / Betrag EUR table.")
   /// Updating budgets…
   internal static let updatingBudgets = FinanceStrings.tr("Localizable", "updatingBudgets", fallback: "Updating budgets…")
+  /// Updating debts…
+  internal static let updatingDebts = FinanceStrings.tr("Localizable", "updatingDebts", fallback: "Updating debts…")
   /// Updating goals…
   internal static let updatingGoals = FinanceStrings.tr("Localizable", "updatingGoals", fallback: "Updating goals…")
   /// Updating plan…

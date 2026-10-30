@@ -75,6 +75,16 @@ actor FinanceDatabase {
         return try BudgetStore().save(budget, expected: expected, in: makeContext())
     }
 
+    func loadDebts(date: Date, calendar: Calendar) throws -> [PersonalDebt] {
+        try Task.checkCancellation()
+        return try DebtStore().load(in: makeContext(), date: date, calendar: calendar)
+    }
+
+    func saveDebt(_ debt: PersonalDebt, expected: PersonalDebt?, date: Date, calendar: Calendar) throws -> [PersonalDebt] {
+        try Task.checkCancellation()
+        return try DebtStore().save(debt, expected: expected, in: makeContext(), date: date, calendar: calendar)
+    }
+
     private func makeContext() throws -> ModelContext {
         let container: ModelContainer
         if let existing = self.container {
