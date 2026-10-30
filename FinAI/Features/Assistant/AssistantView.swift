@@ -25,6 +25,11 @@ struct AssistantView: View {
                     Button(.assistantLastMonthQuestion) { store.send(.suggested(AssistantQuery(kind: .spending, period: .lastMonth))) }
                     Button(.assistantCompareQuestion) { store.send(.suggested(AssistantQuery(kind: .comparison))) }
                         .accessibilityIdentifier(AccessibilityID.assistantCompare)
+                    DisclosureGroup {
+                        ForEach(AssistantCategoryVocabulary.categories, id: \.self) { category in
+                            Button(category.title) { store.send(.suggested(AssistantQuery(kind: .spending, category: category))) }
+                        }
+                    } label: { Text(.assistantCategoryQuestion) }
                     if !store.merchants.isEmpty {
                         Menu {
                             ForEach(store.merchants, id: \.self) { merchant in
@@ -34,20 +39,19 @@ struct AssistantView: View {
                     }
                 }
                 Section(.assistantYourQuestion) {
-                    if store.availability == .available || store.previousQuery != nil {
+                    Group {
                         TextField(.assistantQuestionPlaceholder, text: $store.question, axis: .vertical)
                             .lineLimit(2...5)
                             .accessibilityIdentifier(AccessibilityID.assistantQuestion)
                         Text(.assistantQuestionLimit).font(.footnote).foregroundStyle(.secondary)
                         if store.availability != .available {
+                            Text(availabilityExplanation).font(.footnote).foregroundStyle(.secondary)
                             Text(.assistantFollowUpTextExplanation).font(.footnote).foregroundStyle(.secondary)
+                            Button(.assistantCheckAvailability) { store.send(.task) }
                         }
                         Button(.assistantAsk) { store.send(.askTapped) }
                             .disabled(store.question.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || store.question.count > 1_000)
                             .accessibilityIdentifier(AccessibilityID.assistantAsk)
-                    } else {
-                        Text(availabilityExplanation)
-                        Button(.assistantCheckAvailability) { store.send(.task) }
                     }
                 }
                 if store.isLoading {
@@ -74,6 +78,13 @@ struct AssistantView: View {
             }
             .sheet(item: $store.scope(state: \.detail, action: \.detail)) { TransactionDetailView(store: $0) }
         }
+        .sheet(isPresented: $store.isRentMerchantSelectionPresented, onDismiss: {
+            store.send(.rentSelectionCancelled)
+        }) {
+            AssistantRentMerchantView(merchants: store.merchants,
+                                      choose: { store.send(.rentMerchantChosen($0)) },
+                                      cancel: { store.send(.rentSelectionCancelled) })
+        }
         .task { store.send(.task) }
         .onChange(of: scenePhase) { _, phase in
             if phase == .active { store.send(.task) }
@@ -89,6 +100,12 @@ struct AssistantView: View {
                         store.send(.followUp(answer.query.period == .thisMonth ? .lastMonth : .thisMonth))
                     }
                     .accessibilityIdentifier(AccessibilityID.assistantFollowUpPeriod)
+                    if !store.merchants.isEmpty {
+                        Button(.assistantWithoutRent) { store.send(.withoutRentTapped) }
+                    }
+                    if answer.query.excludedMerchant != nil {
+                        Button(.assistantRemoveExclusion) { store.send(.removeExclusionTapped) }
+                    }
                 }
                 AssistantAnswerView(answer: answer) { month, currency in
                     store.send(.showTransactions(month, currency))
