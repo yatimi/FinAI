@@ -12,29 +12,24 @@ struct FinancialAssistant: Sendable {
     func answer(_ query: AssistantQuery, snapshot: FinanceSnapshot, date: Date, calendar: Calendar) throws -> AssistantAnswer {
         try Task.checkCancellation()
         var resolved = query
-        let transactions: [Transaction]
+        if let category = query.category {
+            guard query.kind != .merchant, AssistantCategoryVocabulary.categories.contains(category) else {
+                throw AssistantError.unsupportedQuestion
+            }
+        }
         if query.kind == .merchant {
             guard let supplied = query.merchant else { throw AssistantError.unsupportedQuestion }
-            let requested = supplied.trimmingCharacters(in: .whitespacesAndNewlines)
-            guard !requested.isEmpty else { throw AssistantError.unsupportedQuestion }
-            let saved = Set(snapshot.transactions.map(\.merchant))
-            let matches: Set<String>
-            if saved.contains(supplied) {
-                matches = [supplied]
-            } else if saved.contains(requested) {
-                matches = [requested]
-            } else {
-                matches = saved.filter {
-                    $0.compare(requested, options: [.caseInsensitive, .diacriticInsensitive], locale: Locale(identifier: "en_US_POSIX")) == .orderedSame
-                }
-            }
-            guard matches.count <= 1 else { throw AssistantError.ambiguousMerchant }
-            guard let merchant = matches.first else { throw AssistantError.merchantNotFound }
-            resolved.merchant = merchant
-            transactions = snapshot.transactions.filter { $0.merchant == merchant }
+            resolved.merchant = try merchant(named: supplied, in: snapshot)
         } else {
             guard query.merchant == nil else { throw AssistantError.unsupportedQuestion }
-            transactions = snapshot.transactions
+        }
+        if let excluded = query.excludedMerchant {
+            resolved.excludedMerchant = try merchant(named: excluded, in: snapshot)
+        }
+        let transactions = snapshot.transactions.filter { row in
+            (resolved.merchant == nil || row.merchant == resolved.merchant)
+                && (resolved.category == nil || row.category == resolved.category)
+                && (resolved.excludedMerchant == nil || row.merchant != resolved.excludedMerchant)
         }
         guard let currentMonth = calendar.dateInterval(of: .month, for: date),
               let selectedDate = calendar.date(byAdding: .month, value: query.period == .thisMonth ? 0 : -1, to: currentMonth.start) else {
@@ -65,4 +60,20 @@ struct FinancialAssistant: Sendable {
         try Task.checkCancellation()
         return AssistantAnswer(query: resolved, report: report, categoryChanges: changes)
     }
+
+    private func merchant(named supplied: String, in snapshot: FinanceSnapshot) throws -> String {
+        let requested = supplied.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !requested.isEmpty else { throw AssistantError.unsupportedQuestion }
+        let saved = Set(snapshot.transactions.map(\.merchant))
+        if saved.contains(supplied) { return supplied }
+        if saved.contains(requested) { return requested }
+        let matches = saved.filter {
+            $0.compare(requested, options: [.caseInsensitive, .diacriticInsensitive],
+                       locale: Locale(identifier: "en_US_POSIX")) == .orderedSame
+        }
+        guard matches.count <= 1 else { throw AssistantError.ambiguousMerchant }
+        guard let merchant = matches.first else { throw AssistantError.merchantNotFound }
+        return merchant
+    }
+
 }

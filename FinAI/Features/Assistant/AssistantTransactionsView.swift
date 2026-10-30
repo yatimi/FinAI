@@ -18,6 +18,11 @@ struct AssistantTransactionsView: View {
                     Text(drilldown.month, format: .dateTime.month(.wide).year())
                     Text(verbatim: drilldown.currency.code)
                     if case let .merchant(merchant) = drilldown.group { Text(verbatim: merchant) }
+                    if case let .category(category) = drilldown.group { Text(category.title) }
+                    if let excluded = drilldown.excludedMerchant {
+                        Text(.assistantExcludedMerchant)
+                        Text(verbatim: excluded)
+                    }
                     Text(.spendingDrilldownExplanation).font(.footnote).foregroundStyle(.secondary)
                 }
             }

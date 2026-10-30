@@ -22,6 +22,8 @@ struct AssistantFeature {
         var requestID: UUID?
         var answer: AssistantAnswer?
         var previousQuery: AssistantQuery?
+        var pendingRentQuery: AssistantQuery?
+        var isRentMerchantSelectionPresented = false
         var isAnswerPresented = false
         var failure: AssistantError?
         var drilldown: SpendingDrilldown?
@@ -38,6 +40,8 @@ struct AssistantFeature {
         case task, askTapped, cancelTapped, clearTapped, closeTapped
         case suggested(AssistantQuery)
         case followUp(AssistantQuery.Period)
+        case withoutRentTapped, rentSelectionCancelled, removeExclusionTapped
+        case rentMerchantChosen(String)
         case response(UUID, Result<AssistantAnswer, AssistantError>)
         case contextUpdated(FinanceSnapshot, Date, Calendar)
         case showTransactions(Date, Currency)
@@ -72,12 +76,35 @@ struct AssistantFeature {
                 do {
                     let previous = state.calendar.isDate(now, equalTo: state.referenceDate, toGranularity: .month)
                         ? state.previousQuery : nil
+                    if AssistantFollowUp().isRentRefinement(question) {
+                        guard let previous, !state.isLoading else { throw AssistantError.unsupportedQuestion }
+                        return chooseRentMerchant(&state, query: previous)
+                    }
                     let query = try AssistantFollowUp().resolve(question, previous: previous)
+                        ?? AssistantCategoryQuestion().resolve(question)
                     return start(&state, query: query, question: question)
                 } catch {
                     state.failure = .unsupportedQuestion
                     return .none
                 }
+            case .withoutRentTapped:
+                guard !state.isLoading, let previous = state.previousQuery,
+                      state.calendar.isDate(now, equalTo: state.referenceDate, toGranularity: .month) else { return .none }
+                return chooseRentMerchant(&state, query: previous)
+            case .rentSelectionCancelled:
+                state.pendingRentQuery = nil
+                state.isRentMerchantSelectionPresented = false
+                return .none
+            case let .rentMerchantChosen(merchant):
+                guard var query = state.pendingRentQuery, state.merchants.contains(merchant), !state.isLoading,
+                      state.calendar.isDate(now, equalTo: state.referenceDate, toGranularity: .month) else { return .none }
+                query.excludedMerchant = merchant
+                return start(&state, query: query, question: "", preservingPresentation: true)
+            case .removeExclusionTapped:
+                guard !state.isLoading, var query = state.previousQuery, query.excludedMerchant != nil,
+                      state.calendar.isDate(now, equalTo: state.referenceDate, toGranularity: .month) else { return .none }
+                query.excludedMerchant = nil
+                return start(&state, query: query, question: "", preservingPresentation: true)
             case let .followUp(period):
                 guard !state.isLoading, let previous = state.previousQuery,
                       state.calendar.isDate(now, equalTo: state.referenceDate, toGranularity: .month) else {
@@ -112,6 +139,8 @@ struct AssistantFeature {
                 state.requestID = nil
                 state.answer = nil
                 state.previousQuery = nil
+                state.pendingRentQuery = nil
+                state.isRentMerchantSelectionPresented = false
                 state.isAnswerPresented = false
                 state.failure = nil
                 state.drilldown = nil
@@ -126,6 +155,8 @@ struct AssistantFeature {
                 state.requestID = nil
                 state.answer = nil
                 state.previousQuery = nil
+                state.pendingRentQuery = nil
+                state.isRentMerchantSelectionPresented = false
                 state.isAnswerPresented = false
                 state.failure = nil
                 state.drilldown = nil
@@ -136,7 +167,9 @@ struct AssistantFeature {
                       month == answer.report.month || (answer.query.kind == .comparison && month == answer.report.previousMonth),
                       answer.report.currencies.contains(where: { $0.currency == currency }) else { return .none }
                 state.drilldown = SpendingDrilldown(month: month, currency: currency,
-                                                  group: answer.query.merchant.map { .merchant($0) })
+                                                  group: answer.query.category.map { .category($0) }
+                                                    ?? answer.query.merchant.map { .merchant($0) },
+                                                  excludedMerchant: answer.query.excludedMerchant)
                 state.isDrilldownPresented = true
                 return .none
             case let .transactionTapped(id):
@@ -156,9 +189,19 @@ struct AssistantFeature {
         .ifLet(\.$detail, action: \.detail) { TransactionDetailFeature() }
     }
 
+    private func chooseRentMerchant(_ state: inout State, query: AssistantQuery) -> Effect<Action> {
+        guard !state.merchants.isEmpty else { state.failure = .merchantNotFound; return .none }
+        state.pendingRentQuery = query
+        state.isRentMerchantSelectionPresented = true
+        state.failure = nil
+        return .none
+    }
+
     private func start(_ state: inout State, query: AssistantQuery?, question: String,
                        preservingPresentation: Bool = false) -> Effect<Action> {
         let id = uuid()
+        state.pendingRentQuery = nil
+        state.isRentMerchantSelectionPresented = false
         state.requestID = id
         state.answer = nil
         state.isAnswerPresented = preservingPresentation && state.isAnswerPresented

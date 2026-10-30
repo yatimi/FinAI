@@ -14,4 +14,6 @@ struct AssistantQuery: Equatable, Sendable {
     var kind: Kind
     var period: Period = .thisMonth
     var merchant: String?
+    var category: Category?
+    var excludedMerchant: String?
 }

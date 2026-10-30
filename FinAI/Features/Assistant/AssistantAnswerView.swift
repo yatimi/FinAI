@@ -18,6 +18,12 @@ struct AssistantAnswerView: View {
             Text(answer.report.month, format: .dateTime.month(.wide).year())
                 .accessibilityIdentifier(AccessibilityID.assistantAnswerMonth)
             if let merchant = answer.query.merchant { Text(verbatim: merchant) }
+            if let category = answer.query.category { Text(category.title) }
+            if let excluded = answer.query.excludedMerchant {
+                Text(.assistantExcludedMerchant).font(.headline)
+                Text(verbatim: excluded)
+                Text(.assistantExclusionExplanation).font(.footnote).foregroundStyle(.secondary)
+            }
             Text(.assistantScopeExplanation).font(.footnote).foregroundStyle(.secondary)
             Text(.monthlyComparisonExplanation).font(.footnote).foregroundStyle(.secondary)
         }
