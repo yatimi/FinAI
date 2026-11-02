@@ -12,12 +12,14 @@ struct SpendingDrilldown: Equatable, Sendable {
     let month: Date
     let currency: Currency
     var group: SpendingBreakdown.Group?
+    var excludedMerchant: String? = nil
 
     func transactions(in snapshot: FinanceSnapshot, calendar: Calendar) -> [Transaction] {
         guard let interval = calendar.dateInterval(of: .month, for: month) else { return [] }
         return snapshot.transactions.filter { row in
             guard row.money.currency == currency, row.kind == .expense || row.kind == .refund,
-                  row.date >= interval.start, row.date < interval.end else { return false }
+                  row.date >= interval.start, row.date < interval.end,
+                  excludedMerchant == nil || row.merchant != excludedMerchant else { return false }
             switch group {
             case let .category(category): return row.category == category
             case let .merchant(merchant): return row.merchant == merchant

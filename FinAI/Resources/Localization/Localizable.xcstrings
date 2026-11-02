@@ -3571,7 +3571,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Keep the same spending question and merchant; change only the calendar month."
+            "value": "Switch months while keeping this query, category and merchant exclusion. “Without rent” asks you to choose which saved merchant to exclude."
           }
         }
       }
@@ -3604,7 +3604,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Without the on-device model, use “And last month?” or “And this month?” to refine the last successful answer. Other free-text questions need the model."
+            "value": "Suggested questions and complete category phrases such as “How much did I spend on groceries?” work without the model. After an answer, use “And last month?”, “And this month?” or “And without rent?”. Rent exclusion asks you to choose its saved merchant."
           }
         }
       }
@@ -3615,7 +3615,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Explore your recorded spending for this month or last month. Compare months or choose a saved merchant. After an answer, switch months while keeping the same spending question or merchant."
+            "value": "Explore recorded spending for this month or last month. Compare months or choose a category or saved merchant. Follow-ups keep the selected category and merchant exclusion when switching months."
           }
         }
       }
@@ -3813,7 +3813,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This question could not be matched to a supported query. Ask about total spending, a month comparison or one merchant for this month or last month, or use a suggested question."
+            "value": "This question could not be matched to a supported query. Ask about spending, one category, a month comparison or one merchant for this month or last month, or use a suggested question."
           }
         }
       }
@@ -4804,6 +4804,83 @@
           "stringUnit": {
             "state": "translated",
             "value": "This debt changed. Cancel editing and reload before recording another repayment."
+          }
+        }
+      }
+    },
+    "assistantCategoryQuestion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spending by category"
+          }
+        }
+      }
+    },
+    "assistantWithoutRent": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Without rent…"
+          }
+        }
+      }
+    },
+    "assistantChooseRentMerchant": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose the saved merchant for rent"
+          }
+        }
+      }
+    },
+    "assistantRentMerchantExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose the merchant whose payments represent rent. All expenses and refunds at that merchant will be excluded, including any payments unrelated to rent. Housing is not excluded automatically."
+          }
+        }
+      }
+    },
+    "assistantExcludedMerchant": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluded merchant"
+          }
+        }
+      }
+    },
+    "assistantExclusionExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All recorded expenses and refunds at this saved merchant are excluded. Other housing transactions remain included."
+          }
+        }
+      }
+    },
+    "assistantRemoveExclusion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Include the excluded merchant again"
           }
         }
       }

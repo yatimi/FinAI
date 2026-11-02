@@ -22,8 +22,15 @@ struct GeneratedAssistantQuery: Sendable {
     @Guide(description: "Exact merchant name from the question for merchant spending only, otherwise an empty string.")
     var merchant: String
 
+    @Guide(description: "For spending or comparison only, use one explicit category raw name from the supported list, otherwise an empty string. Rent is not housing.")
+    var category: String = ""
+
     func validated(question: String) throws -> AssistantQuery {
         guard period != .unsupported, operation != .unsupported else { throw AssistantError.unsupportedQuestion }
+        let tokens = question.lowercased().components(separatedBy: CharacterSet.alphanumerics.inverted)
+        guard !tokens.contains(where: { ["without", "excluding", "except", "без", "кроме", "окрім"].contains($0) }) else {
+            throw AssistantError.unsupportedQuestion
+        }
         let name = merchant.trimmingCharacters(in: .whitespacesAndNewlines)
         let kind: AssistantQuery.Kind
         switch operation {
@@ -40,7 +47,23 @@ struct GeneratedAssistantQuery: Sendable {
                 throw AssistantError.unsupportedQuestion
             }
         }
+        if kind != .merchant, tokens.contains(where: { ["rent", "аренда", "аренду", "аренды", "оренда", "оренду", "оренди"].contains($0) }) {
+            throw AssistantError.unsupportedQuestion
+        }
+        let categoryName = category.trimmingCharacters(in: .whitespacesAndNewlines)
+        let resolvedCategory: Category?
+        if categoryName.isEmpty { resolvedCategory = nil }
+        else {
+            guard kind != .merchant, let value = Category(rawValue: categoryName),
+                  AssistantCategoryVocabulary.categories.contains(value),
+                  AssistantCategoryVocabulary.mentioned(in: question) == [value] else {
+                throw AssistantError.unsupportedQuestion
+            }
+            resolvedCategory = value
+        }
+        if kind != .merchant, resolvedCategory == nil,
+           !AssistantCategoryVocabulary.mentioned(in: question).isEmpty { throw AssistantError.unsupportedQuestion }
         return AssistantQuery(kind: kind, period: period == .thisMonth ? .thisMonth : .lastMonth,
-                              merchant: name.isEmpty ? nil : name)
+                              merchant: name.isEmpty ? nil : name, category: resolvedCategory)
     }
 }

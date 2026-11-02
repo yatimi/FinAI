@@ -78,9 +78,11 @@ final class WhatIfUITests: XCTestCase {
         image.lifetime = .keepAlways
         add(image)
         let reset = app.buttons[AccessibilityID.whatIfReset]
-        for _ in 0..<16 where !reset.isHittable { app.swipeDown() }
+        UITestVisibility.reveal(reset, in: app, below: app.navigationBars["What if?"], scrollingUp: false)
         reset.tap()
-        for _ in 0..<8 where !amount.isHittable { app.swipeDown() }
+        UITestVisibility.reveal(amount, in: app, below: app.navigationBars["What if?"], scrollingUp: false)
+        let cleared = XCTNSPredicateExpectation(predicate: NSPredicate(format: "value == %@", "Scenario amount"), object: amount)
+        XCTAssertEqual(XCTWaiter.wait(for: [cleared], timeout: 5), .completed)
         XCTAssertEqual(amount.value as? String, "Scenario amount")
         if !largeText {
             app.buttons[AccessibilityID.whatIfChange].tap()

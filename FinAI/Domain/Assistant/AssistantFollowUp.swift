@@ -27,6 +27,11 @@ struct AssistantFollowUp: Sendable {
         return applying(period, to: previous)
     }
 
+    func isRentRefinement(_ question: String) -> Bool {
+        ["without rent", "and without rent", "а без аренды", "без аренды", "а без оренди", "без оренди"]
+            .contains(AssistantCategoryVocabulary.normalized(question))
+    }
+
     func applying(_ period: AssistantQuery.Period, to previous: AssistantQuery) -> AssistantQuery {
         var query = previous
         query.period = period
