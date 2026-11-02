@@ -11,6 +11,7 @@ enum AppSymbol: String {
     case next = "chevron.right"
     case assistant = "bubble.left.and.text.bubble.right"
     case edit = "pencil"
+    case privacy = "lock.fill"
     case goals = "target"
     case debts = "person.2"
     case home = "house"
