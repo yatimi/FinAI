@@ -93,6 +93,9 @@ actor FinanceDatabase {
             container = try configuration.makeContainer()
             self.container = container
         }
+        for store in container.configurations where !store.isStoredInMemoryOnly {
+            try StoreFileProtection().protectStoreFiles(at: store.url)
+        }
         let context = ModelContext(container)
         context.autosaveEnabled = false
         return context

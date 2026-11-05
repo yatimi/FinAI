@@ -4884,6 +4884,17 @@
           }
         }
       }
+    },
+    "privacyPreviewHidden": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Financial details are hidden while the app is inactive."
+          }
+        }
+      }
     }
   },
   "version": "1.0"

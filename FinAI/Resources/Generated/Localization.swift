@@ -666,6 +666,8 @@ internal enum FinanceStrings {
   internal static let previousMonth = FinanceStrings.tr("Localizable", "previousMonth", fallback: "Previous month")
   /// Previous month net spending
   internal static let previousMonthNetSpending = FinanceStrings.tr("Localizable", "previousMonthNetSpending", fallback: "Previous month net spending")
+  /// Financial details are hidden while the app is inactive.
+  internal static let privacyPreviewHidden = FinanceStrings.tr("Localizable", "privacyPreviewHidden", fallback: "Financial details are hidden while the app is inactive.")
   /// Record repayment
   internal static let recordDebtRepayment = FinanceStrings.tr("Localizable", "recordDebtRepayment", fallback: "Record repayment")
   /// Possible recurring expenses, not confirmed contracts. Matching uses at least three equal payments to the same saved merchant, on one account and in one currency. Weekly dates may vary by one day; monthly and yearly dates by three days.

@@ -25,6 +25,10 @@ struct FinanceStoreConfiguration: Sendable {
         } else {
             configuration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: inMemory, cloudKitDatabase: .none)
         }
-        return try ModelContainer(for: schema, configurations: [configuration])
+        let protection = StoreFileProtection()
+        if !configuration.isStoredInMemoryOnly { try protection.prepareDirectory(for: configuration.url) }
+        let container = try ModelContainer(for: schema, configurations: [configuration])
+        if !configuration.isStoredInMemoryOnly { try protection.protectStoreFiles(at: configuration.url) }
+        return container
     }
 }

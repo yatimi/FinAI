@@ -64,6 +64,7 @@ struct ContentView: View {
                 }
             }
         }
+        .background { PrivacyShield().frame(width: 0, height: 0).accessibilityHidden(true) }
         .tint(FinanceStyle.ColorRole.accent)
         .safeAreaInset(edge: .top) {
             if let failure = store.failure {

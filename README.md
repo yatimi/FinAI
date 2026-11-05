@@ -188,7 +188,9 @@ Tests cover decimal arithmetic and validation, currency separation, transfers an
 
 ## Privacy
 
-The app stores data locally, with no account, bank connection, remote AI service, analytics SDK or custom backend. SwiftData CloudKit integration is disabled. Free-text questions use the on-device language model; financial records are not supplied to it. Future remote processing will require explicit consent and a defined privacy boundary. System iPhone backups remain supported and can include financial data, depending on the user’s backup settings.
+The app stores data locally, with no account, bank connection, remote AI service, analytics SDK or custom backend. SwiftData CloudKit integration is disabled. Free-text questions use the on-device language model; financial records are not supplied to it. Future remote processing will require explicit consent and a defined privacy boundary. The local database directory, database and SQLite journal files use iOS Complete Data Protection. The app applies and checks file protection when opening the store and before creating persistence contexts. Device locking and encryption behavior must be verified on a physical device; simulator runs verify data preservation and UI lifecycle behavior, while file-protection attributes require a physical device. Protection or locked-store failures follow the existing error/retry paths without replacing saved data.
+
+A separate privacy window covers app-owned screens and presented sheets while the scene is inactive or in the background, including app-switcher previews. It does not authenticate app access or prevent screenshots taken while the app is active. System iPhone backups remain supported and can include financial data, depending on the user’s backup settings.
 
 ## Planned
 
