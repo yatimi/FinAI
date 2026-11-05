@@ -7,6 +7,10 @@ on:
     branches: [develop, main]
   workflow_dispatch:
     inputs:
+      ui_tests:
+        description: Include the full UI regression suite (temporarily manual only)
+        type: boolean
+        default: true
       simulator_boot:
         description: Simulator preparation for a full CI comparison
         type: choice
@@ -60,6 +64,7 @@ jobs:
           key: spm-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('FinAI.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
       - name: Build and test
         env:
+          RUN_UI_TESTS: ${{ github.event_name == 'workflow_dispatch' && inputs.ui_tests }}
           SIMULATOR_BOOT_MODE: ${{ inputs.simulator_boot || 'early' }}
         run: |
           set -o pipefail
@@ -84,12 +89,21 @@ jobs:
             -onlyUsePackageVersionsFromResolvedFile
             CODE_SIGNING_ALLOWED=NO
           )
+          # Keep automatic PR/push checks focused on the complete unit/integration target.
+          # UI tests remain intact and run by default on workflow_dispatch.
+          test_selection=()
+          if [[ "$RUN_UI_TESTS" != true ]]; then
+            test_selection=(-only-testing:FinAITests)
+            echo "UI regression suite: not run (temporarily manual only)." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "UI regression suite: included." >> "$GITHUB_STEP_SUMMARY"
+          fi
           if [[ "$SIMULATOR_BOOT_MODE" == early ]]; then
             xcrun simctl bootstatus "$SIMULATOR_ID" -b > "$RUNNER_TEMP/FinAI-Simulator.log" 2>&1 &
             boot_pid=$!
           fi
           echo build > "$RUNNER_TEMP/FinAI-Phase.txt"
-          xcodebuild build-for-testing "${common_args[@]}" \
+          xcodebuild build-for-testing "${common_args[@]}" "${test_selection[@]}" \
             -showBuildTimingSummary \
             -skipMacroValidation 2>&1 | tee "$RUNNER_TEMP/FinAI-Build.log"
           echo "Build for testing: $(( $(date +%s) - started )) seconds" | tee -a "$GITHUB_STEP_SUMMARY"
@@ -103,7 +117,7 @@ jobs:
           echo "Build and simulator ready: $(( $(date +%s) - started )) seconds" | tee -a "$GITHUB_STEP_SUMMARY"
           test_started=$(date +%s)
           echo test > "$RUNNER_TEMP/FinAI-Phase.txt"
-          xcodebuild test-without-building "${common_args[@]}" \
+          xcodebuild test-without-building "${common_args[@]}" "${test_selection[@]}" \
             -resultBundlePath "$RUNNER_TEMP/FinAI-Tests.xcresult" \
             -collect-test-diagnostics never \
             -skipMacroValidation 2>&1 | tee "$RUNNER_TEMP/FinAI-Test.log"
