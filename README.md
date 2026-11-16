@@ -4,6 +4,8 @@ A local-first personal finance app for iOS for importing transactions, understan
 
 Version **0.2.0** is the latest source release. Build and run it with Xcode; no App Store or TestFlight distribution is included. See the [changelog](CHANGELOG.md) and [release process](docs/RELEASING.md).
 
+The capabilities below describe the development branch for the upcoming **0.3.0** source release. Use the `v0.2.0` tag for the latest published version.
+
 ## Available today
 
 - Synthetic demo data across bank, savings and credit accounts

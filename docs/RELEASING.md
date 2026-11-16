@@ -19,12 +19,14 @@ These are provisional capability targets, not delivery dates. Split or adjust sc
 | --- | --- |
 | 0.1.0 | Local foundation, demo, CSV import, merchant suggestions, search and basic analytics |
 | 0.2.0 | Recurring payments and subscriptions, improved import and duplicate review |
-| 0.3.0 | Assistant backed by deterministic financial tools |
-| 0.4.0 | Goals, budgets, forecasts and what-if planning |
+| 0.3.0 | Spending assistant, initial goals/budgets/forecast/what-if/debts, and text-based Sparkasse PDF import |
+| 0.4.0 | Broader assistant queries and richer planning, subject to a separately agreed scope |
 | 0.5.0 | Document, screenshot and receipt import |
 | 1.0.0 | Validated everyday-use experience |
 
-The next import scope is a focused text-based PDF statement format before assistant work. Broader scanned-document and receipt extraction remain separate future work. Connected banking requires a separate investigation before release scope is committed.
+The initial text-based Sparkasse PDF format is implemented. Additional banks, scanned documents and receipt extraction remain separate future scopes. Connected banking requires a separate investigation before release scope is committed.
+
+Before publishing 0.3.0, verify store protection through physical-device lock/unlock, inspect app-switcher previews with a presented editor, and exercise free-text interpretation on a device with Foundation Models ready. Simulator results alone do not establish these behaviors. Keep the release PR in draft until these checks are recorded and the full simulator regression suite passes. Replace the changelog's Unreleased marker and update the README's latest-release statement as part of final release preparation.
 
 ## Release checklist
 

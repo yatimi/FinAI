@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.3.0 — Unreleased
+
+Local spending assistance, planning and a first supported PDF statement format.
+
+- Ask about this or last month's spending, compare months, and narrow answers to a category or saved merchant. Follow up with a month change or explicitly exclude a merchant for rent; inspect the transactions behind each answer.
+- Use suggested questions without Apple Intelligence, with optional on-device Foundation Models interpretation of supported free-text questions. Swift validates queries and calculates all financial results.
+- Create monthly category budgets and savings goals with manually recorded progress, and see their summaries in Plan.
+- Inspect an explainable month-end forecast and compare one temporary what-if change without modifying saved financial records.
+- Record personal debts in either direction and dated partial repayments, with exact outstanding amounts and due-date status.
+- Import supported text-based German Sparkasse PDF statements locally, with balance reconciliation, duplicate review and explicit confirmation.
+- Review imports in a compact layout and correct saved transactions while preserving their original values and import identity.
+- Explore calendar-month charts, category and merchant breakdowns, and the contributing transactions through Home, Transactions and Plan.
+- Apply iOS Complete Data Protection to the local store and SQLite sidecars, and cover inactive app screens and sheets with a privacy window. System backups remain supported.
+
+### Scope and limitations
+
+This is a source release for iOS 26 or later, built with Xcode 27 or later. No App Store or TestFlight distribution is included. Physical-device lock/unlock protection, app-switcher preview inspection and live Foundation Models validation remain release verification items.
+
+The assistant supports a limited set of read-only spending queries, without persistent conversation history, remote processing or arbitrary date ranges. Suggested questions remain available when the on-device model is unavailable. Financial records are not supplied to the model.
+
+Forecasts depend on imported history and stated assumptions; they are not balances or affordability assessments. What-if scenarios cover one current-month change. Goal savings are manual inputs. Debts and repayments are independent of transactions and cannot yet be corrected or deleted. Original currencies remain separate, without exchange-rate conversion.
+
+PDF support is limited to the documented text-based Sparkasse layout. Other bank formats, scanned documents, receipts, manual transaction creation and connected banking remain future work. The privacy window does not authenticate access or prevent screenshots of an active app; system backups may include financial data.
+
+Automatic CI runs the complete unit/integration target. The full UI regression suite remains available through a manual workflow run while CI runtime is addressed.
+
 ## 0.2.0 — 2026-10-05
 
 Second source release, improving local import review and recurring-payment analysis.
