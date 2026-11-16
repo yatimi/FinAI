@@ -23,6 +23,12 @@ struct FinAIApp: App {
             importState.document = document
             importState.mapping = .suggested(for: document)
             initialState.importFlow = importState
+        } else if ProcessInfo.processInfo.arguments.contains("--uitesting"),
+                  let text = ProcessInfo.processInfo.environment["FINAI_TEST_STATEMENT"],
+                  let statement = try? SparkasseStatementParser().parse(pages: text.components(separatedBy: "\u{000C}"), name: "UI test.pdf") {
+            var importState = ImportFeature.State(snapshot: .empty, newAccountID: UUID())
+            importState.statement = statement
+            initialState.importFlow = importState
         }
         #endif
         _store = State(initialValue: Store(initialState: initialState) {
@@ -31,9 +37,13 @@ struct FinAIApp: App {
             $0.financeClient = .live(database: database)
             $0.importClient = .live(database: database)
             $0.merchantRulesClient = .live(database: database)
+            $0.budgetsClient = .live(database: database)
+            $0.goalsClient = .live(database: database)
+            $0.debtsClient = .live(database: database)
             #if DEBUG
             if ProcessInfo.processInfo.arguments.contains("--uitesting") {
                 // Keep synthetic UI journeys independent of month boundaries and device time zones.
+                $0.assistantClient.availability = { _ in .notEnabled }
                 $0.date.now = Date(timeIntervalSince1970: 1_790_380_800)
                 var calendar = Calendar(identifier: .gregorian)
                 calendar.timeZone = .gmt

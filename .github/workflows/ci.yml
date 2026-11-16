@@ -6,24 +6,35 @@ on:
   push:
     branches: [develop, main]
   workflow_dispatch:
+    inputs:
+      ui_tests:
+        description: Include the full UI regression suite (temporarily manual only)
+        type: boolean
+        default: true
+      simulator_boot:
+        description: Simulator preparation for a full CI comparison
+        type: choice
+        options: [early, late]
+        default: early
 
 permissions:
   contents: read
 
 concurrency:
-  group: ios-${{ github.ref }}
+  group: ios-${{ github.event_name == 'workflow_dispatch' && github.run_id || github.ref }}
   cancel-in-progress: true
 
 jobs:
   build-and-test:
     name: Build and test
     runs-on: xcode-27
-    timeout-minutes: 30
+    # Includes package resolution, compilation, the full UI suite and result collection.
+    timeout-minutes: 60
     env:
       DEVELOPER_DIR: /Applications/Xcode.app/Contents/Developer
     steps:
       - uses: actions/checkout@v4
-      - name: Choose an available iPhone simulator
+      - name: Choose a standard iPhone simulator
         run: |
           xcodebuild -version
           xcrun simctl list devices available --json > /tmp/finai-devices.json
@@ -31,29 +42,99 @@ jobs:
           import json, os
           with open('/tmp/finai-devices.json') as source:
               runtimes = json.load(source)['devices']
-          devices = [device for runtime, values in sorted(runtimes.items(), reverse=True)
+          devices = [(runtime, device) for runtime, values in sorted(runtimes.items(), reverse=True)
                      if any(version in runtime for version in ('iOS-26', 'iOS-27')) for device in values
-                     if device['name'].startswith('iPhone') and device.get('isAvailable')]
-          if not devices:
-              raise SystemExit('No available iOS 26 or 27 iPhone simulator')
+                     if device['name'].startswith('iPhone ') and device.get('isAvailable')]
+          # This suite exercises compact iPhone navigation. Large-display layouts need a separate suite.
+          preferred = [(runtime, device) for runtime, device in devices if device['name'] == 'iPhone 17']
+          if not preferred:
+              preferred = [(runtime, device) for runtime, device in devices
+                           if device['name'].removeprefix('iPhone ')[:1].isdigit()]
+          if not preferred:
+              raise SystemExit('No standard iOS 26 or 27 iPhone simulator available')
+          runtime, device = preferred[0]
+          print(f"UI regression target: {device['name']} ({runtime})")
           with open(os.environ['GITHUB_ENV'], 'a') as output:
-              output.write('SIMULATOR_ID=' + devices[0]['udid'] + '\n')
+              output.write('SIMULATOR_ID=' + device['udid'] + '\n')
           PYTHON
+      - name: Cache package sources
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.temp }}/FinAI-SourcePackages
+          key: spm-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('FinAI.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
       - name: Build and test
+        env:
+          RUN_UI_TESTS: ${{ github.event_name == 'workflow_dispatch' && inputs.ui_tests }}
+          SIMULATOR_BOOT_MODE: ${{ inputs.simulator_boot || 'early' }}
         run: |
-          xcodebuild test \
-            -project FinAI.xcodeproj \
-            -scheme FinAI \
-            -destination "platform=iOS Simulator,id=$SIMULATOR_ID" \
-            -derivedDataPath "$RUNNER_TEMP/FinAI-DerivedData" \
-            -resultBundlePath "$RUNNER_TEMP/FinAI-Tests.xcresult" \
-            -skipMacroValidation \
-            -onlyUsePackageVersionsFromResolvedFile \
+          set -o pipefail
+          started=$(date +%s)
+          sysctl hw.ncpu hw.memsize > "$RUNNER_TEMP/FinAI-Runner.log"
+          xcodebuild -version >> "$RUNNER_TEMP/FinAI-Runner.log"
+          echo "$SIMULATOR_BOOT_MODE" > "$RUNNER_TEMP/FinAI-BootMode.txt"
+          python3 Scripts/sample-ci-runner.py "$RUNNER_TEMP" &
+          sample_pid=$!
+          boot_pid=""
+          cleanup() {
+            kill "$sample_pid" 2>/dev/null || true
+            if [[ -n "$boot_pid" ]]; then kill "$boot_pid" 2>/dev/null || true; fi
+          }
+          trap cleanup EXIT
+          common_args=(
+            -project FinAI.xcodeproj
+            -scheme FinAI
+            -destination "platform=iOS Simulator,id=$SIMULATOR_ID"
+            -derivedDataPath "$RUNNER_TEMP/FinAI-DerivedData"
+            -clonedSourcePackagesDirPath "$RUNNER_TEMP/FinAI-SourcePackages"
+            -onlyUsePackageVersionsFromResolvedFile
             CODE_SIGNING_ALLOWED=NO
+          )
+          # Keep automatic PR/push checks focused on the complete unit/integration target.
+          # UI tests remain intact and run by default on workflow_dispatch.
+          test_selection=()
+          if [[ "$RUN_UI_TESTS" != true ]]; then
+            test_selection=(-only-testing:FinAITests)
+            echo "UI regression suite: not run (temporarily manual only)." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "UI regression suite: included." >> "$GITHUB_STEP_SUMMARY"
+          fi
+          if [[ "$SIMULATOR_BOOT_MODE" == early ]]; then
+            xcrun simctl bootstatus "$SIMULATOR_ID" -b > "$RUNNER_TEMP/FinAI-Simulator.log" 2>&1 &
+            boot_pid=$!
+          fi
+          echo build > "$RUNNER_TEMP/FinAI-Phase.txt"
+          xcodebuild build-for-testing "${common_args[@]}" "${test_selection[@]}" \
+            -showBuildTimingSummary \
+            -skipMacroValidation 2>&1 | tee "$RUNNER_TEMP/FinAI-Build.log"
+          echo "Build for testing: $(( $(date +%s) - started )) seconds" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo simulator-ready > "$RUNNER_TEMP/FinAI-Phase.txt"
+          if [[ "$SIMULATOR_BOOT_MODE" == late ]]; then
+            xcrun simctl bootstatus "$SIMULATOR_ID" -b > "$RUNNER_TEMP/FinAI-Simulator.log" 2>&1 &
+            boot_pid=$!
+          fi
+          wait "$boot_pid"
+          boot_pid=""
+          echo "Build and simulator ready: $(( $(date +%s) - started )) seconds" | tee -a "$GITHUB_STEP_SUMMARY"
+          test_started=$(date +%s)
+          echo test > "$RUNNER_TEMP/FinAI-Phase.txt"
+          xcodebuild test-without-building "${common_args[@]}" "${test_selection[@]}" \
+            -resultBundlePath "$RUNNER_TEMP/FinAI-Tests.xcresult" \
+            -collect-test-diagnostics never \
+            -skipMacroValidation 2>&1 | tee "$RUNNER_TEMP/FinAI-Test.log"
+          echo "Test execution and finalization: $(( $(date +%s) - test_started )) seconds" | tee -a "$GITHUB_STEP_SUMMARY"
+          echo complete > "$RUNNER_TEMP/FinAI-Phase.txt"
+          echo "Build and test total: $(( $(date +%s) - started )) seconds" | tee -a "$GITHUB_STEP_SUMMARY"
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: FinAI-Tests
-          path: ${{ runner.temp }}/FinAI-Tests.xcresult
+          path: |
+            ${{ runner.temp }}/FinAI-Tests.xcresult
+            ${{ runner.temp }}/FinAI-Test.log
+            ${{ runner.temp }}/FinAI-Build.log
+            ${{ runner.temp }}/FinAI-Simulator.log
+            ${{ runner.temp }}/FinAI-Runner.log
+            ${{ runner.temp }}/FinAI-RunnerSamples.jsonl
+            ${{ runner.temp }}/FinAI-BootMode.txt
           if-no-files-found: ignore

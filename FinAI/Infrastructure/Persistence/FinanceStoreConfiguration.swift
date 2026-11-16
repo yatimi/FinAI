@@ -18,13 +18,17 @@ struct FinanceStoreConfiguration: Sendable {
     }
 
     func makeContainer() throws -> ModelContainer {
-        let schema = Schema([AccountRecord.self, TransactionRecord.self, ImportSessionRecord.self, MerchantRuleRecord.self], version: Schema.Version(3, 0, 0))
+        let schema = Schema([AccountRecord.self, TransactionRecord.self, ImportSessionRecord.self, MerchantRuleRecord.self, GoalRecord.self, BudgetRecord.self, DebtRecord.self, DebtRepaymentRecord.self], version: Schema.Version(7, 0, 0))
         let configuration: ModelConfiguration
         if let storeURL {
             configuration = ModelConfiguration(schema: schema, url: storeURL, cloudKitDatabase: .none)
         } else {
             configuration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: inMemory, cloudKitDatabase: .none)
         }
-        return try ModelContainer(for: schema, configurations: [configuration])
+        let protection = StoreFileProtection()
+        if !configuration.isStoredInMemoryOnly { try protection.prepareDirectory(for: configuration.url) }
+        let container = try ModelContainer(for: schema, configurations: [configuration])
+        if !configuration.isStoredInMemoryOnly { try protection.protectStoreFiles(at: configuration.url) }
+        return container
     }
 }

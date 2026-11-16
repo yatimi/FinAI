@@ -17,7 +17,7 @@ struct ImportBatchStore {
         let batchID = batch.id
         let receipt = try context.fetch(FetchDescriptor<ImportSessionRecord>(predicate: #Predicate { $0.id == batchID })).first
         if let receipt {
-            let existingByID = Dictionary(uniqueKeysWithValues: existing.transactions.map { ($0.id, $0) })
+            let existingByID = Dictionary(uniqueKeysWithValues: existing.originalTransactions.map { ($0.id, $0) })
             guard receipt.transactionIDs == batch.transactions.map(\.id),
                   receipt.accountID == batch.account.id,
                   receipt.sourceName == batch.sourceName,

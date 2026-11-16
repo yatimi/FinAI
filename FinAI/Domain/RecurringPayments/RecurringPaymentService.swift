@@ -59,7 +59,7 @@ struct RecurringPaymentService: Sendable {
         cadence == .weekly ? 1 : 3
     }
 
-    private func expectedDay(
+    func expectedDay(
         after count: Int, from anchor: Date, cadence: RecurringPayment.Cadence, calendar: Calendar
     ) -> Date? {
         switch cadence {

@@ -30,10 +30,28 @@ struct SpendingAnalyticsService: Sendable {
                 currency: currency, current: currentTotal, previous: previousTotal, change: change,
                 changeRatio: ratio(change: change.amount, baseline: previousTotal.amount),
                 categories: breakdown(rows, currency: currency) { .category($0.category) },
-                merchants: breakdown(rows, currency: currency) { .merchant($0.merchant) }
+                merchants: breakdown(rows, currency: currency) { .merchant($0.merchant) },
+                days: dailySpending(rows, currency: currency, month: month, calendar: calendar)
             )
         }
         return SpendingAnalytics(month: month.start, previousMonth: previousMonth.start, currencies: results)
+    }
+
+    private func dailySpending(
+        _ transactions: [Transaction], currency: Currency, month: DateInterval, calendar: Calendar
+    ) throws -> [DailySpending] {
+        let grouped = Dictionary(grouping: transactions) { calendar.startOfDay(for: $0.date) }
+        var days: [DailySpending] = []
+        var date = month.start
+        while date < month.end {
+            let totals = try totals(grouped[date] ?? [], currency: currency)
+            days.append(DailySpending(date: date, netSpending: totals.netSpending))
+            guard let next = calendar.date(byAdding: .day, value: 1, to: date), next > date else {
+                throw ValidationError.invalidSnapshot
+            }
+            date = next
+        }
+        return days
     }
 
     private func breakdown(
@@ -41,19 +59,24 @@ struct SpendingAnalyticsService: Sendable {
         group: (Transaction) -> SpendingBreakdown.Group
     ) throws -> [SpendingBreakdown] {
         try Dictionary(grouping: transactions, by: group).map { key, rows in
-            var expenses = Money.zero(currency)
-            var refunds = Money.zero(currency)
-            for row in rows {
-                if row.kind == .expense { expenses = try expenses.adding(row.money) }
-                else { refunds = try refunds.adding(row.money) }
-            }
-            return try SpendingBreakdown(
-                group: key, expenses: expenses, refunds: refunds, netSpending: expenses.subtracting(refunds)
+            let totals = try totals(rows, currency: currency)
+            return SpendingBreakdown(
+                group: key, expenses: totals.expenses, refunds: totals.refunds, netSpending: totals.netSpending
             )
         }.sorted {
             if $0.netSpending.amount != $1.netSpending.amount { return $0.netSpending.amount > $1.netSpending.amount }
             return sortKey($0.group) < sortKey($1.group)
         }
+    }
+
+    private func totals(_ transactions: [Transaction], currency: Currency) throws -> (expenses: Money, refunds: Money, netSpending: Money) {
+        var expenses = Money.zero(currency)
+        var refunds = Money.zero(currency)
+        for row in transactions {
+            if row.kind == .expense { expenses = try expenses.adding(row.money) }
+            else if row.kind == .refund { refunds = try refunds.adding(row.money) }
+        }
+        return (expenses, refunds, try expenses.subtracting(refunds))
     }
 
     private func sortKey(_ group: SpendingBreakdown.Group) -> String {

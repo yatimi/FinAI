@@ -23,6 +23,8 @@ final class TransactionRecord {
     var category: String
     var incomeKind: String?
     var source: String
+    /// Immutable snapshot taken before the first correction. Existing stores migrate with nil.
+    var originalData: Data?
 
     init(_ transaction: Transaction) {
         id = transaction.id
@@ -37,6 +39,18 @@ final class TransactionRecord {
         category = transaction.category.rawValue
         incomeKind = transaction.incomeKind?.rawValue
         source = transaction.source.rawValue
+    }
+
+    func apply(_ transaction: Transaction) {
+        accountID = transaction.accountID
+        date = transaction.date
+        merchant = transaction.merchant
+        amount = NSDecimalNumber(decimal: transaction.money.amount).stringValue
+        currencyCode = transaction.money.currency.code
+        direction = transaction.direction.rawValue
+        kind = transaction.kind.rawValue
+        category = transaction.category.rawValue
+        incomeKind = transaction.incomeKind?.rawValue
     }
 
     func domainValue() throws -> Transaction {

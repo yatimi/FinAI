@@ -6,6 +6,7 @@
 //
 
 enum ImportError: Error, Equatable {
+    case pdfTooLarge, lockedPDF, pdfNeedsText, unsupportedStatement, malformedStatement, statementBalanceMismatch
     case unreadableFile, fileTooLarge, unsupportedEncoding, malformedCSV
     case emptyFile, tooManyRows, tooManyColumns, fieldTooLong, invalidMapping
     case invalidAmount, invalidDate, invalidCurrency, invalidKind, missingDescription, missingMerchant

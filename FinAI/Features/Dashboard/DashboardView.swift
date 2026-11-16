@@ -16,53 +16,87 @@ struct DashboardView: View {
         Group {
             if let overview {
                 if overview.snapshot.accounts.isEmpty {
-                    ContentUnavailableView {
-                        Label(.understandYourFinances, systemImage: AppSymbol.gettingStarted.rawValue)
-                    } description: {
-                        Text(.gettingStartedExplanation)
-                    } actions: {
-                        Button(.exploreDemo, action: loadDemo)
-                            .buttonStyle(.borderedProminent)
-                            .disabled(isLoading)
-                            .accessibilityIdentifier(AccessibilityID.loadDemo)
+                    ScrollView {
+                        FinanceEmptyState(
+                            title: .understandYourFinances,
+                            message: .gettingStartedExplanation,
+                            systemImage: AppSymbol.gettingStarted.rawValue,
+                            actionTitle: .exploreDemo,
+                            action: loadDemo,
+                            isLoading: isLoading,
+                            actionAccessibilityIdentifier: AccessibilityID.loadDemo
+                        )
                     }
                 } else {
-                    List {
-                        Section {
-                            Label(overview.snapshot.transactions.allSatisfy { $0.source == .demo }
-                                  ? .demoDataOnDevice : .localDataOnDevice, systemImage: AppSymbol.localStorage.rawValue)
-                                .font(.subheadline)
-                            Text(overview.month, format: .dateTime.month(.wide).year())
-                                .font(.title2.bold())
-                        }
-                        ForEach(overview.summaries) { summary in
-                            Section(summary.currency.code) {
-                                MoneyMetricRow(title: .income, money: summary.income)
-                                MoneyMetricRow(title: .expenses, money: summary.expenses)
-                                MoneyMetricRow(title: .refunds, money: summary.refunds)
-                                MoneyMetricRow(title: .netSpending, money: summary.netSpending)
-                                MoneyMetricRow(title: .netFlow, money: summary.netFlow)
+                    ScrollView {
+                        LazyVStack(alignment: .leading, spacing: FinanceStyle.Spacing.spacious) {
+                            VStack(alignment: .leading, spacing: FinanceStyle.Spacing.compact) {
+                                Text(overview.month, format: .dateTime.month(.wide).year())
+                                    .font(FinanceStyle.Typography.heading)
+                                    .accessibilityAddTraits(.isHeader)
+                                Label(overview.snapshot.transactions.allSatisfy { $0.source == .demo }
+                                      ? .demoDataOnDevice : .localDataOnDevice, systemImage: AppSymbol.localStorage.rawValue)
+                                    .font(FinanceStyle.Typography.label)
+                                    .foregroundStyle(FinanceStyle.ColorRole.secondaryText)
                             }
-                        }
-                        if overview.summaries.isEmpty {
-                            Text(.noTransactionsThisMonth)
-                        }
-                        Section {
+                            ForEach(overview.summaries) { summary in
+                                currencySummary(summary)
+                            }
+                            if overview.summaries.isEmpty {
+                                FinanceEmptyState(
+                                    title: .noTransactionsThisMonth,
+                                    message: .dashboardTotalsExplanation,
+                                    systemImage: "calendar"
+                                )
+                            }
                             Text(.dashboardTotalsExplanation)
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
+                                .font(FinanceStyle.Typography.explanation)
+                                .foregroundStyle(FinanceStyle.ColorRole.secondaryText)
                         }
+                        .padding(FinanceStyle.Spacing.standard)
                     }
+                    .background(FinanceStyle.Surface.canvas)
                     .accessibilityIdentifier(AccessibilityID.dashboard)
                 }
             } else if isLoading {
-                ProgressView(.loadingLocalData)
+                FinanceLoadingState(title: .loadingLocalData)
             } else {
                 ContentUnavailableView(.localDataUnavailable, systemImage: AppSymbol.unavailableStorage.rawValue)
             }
         }
+        .foregroundStyle(FinanceStyle.ColorRole.text)
+        .tint(FinanceStyle.ColorRole.accent)
         .overlay(alignment: .topTrailing) {
             if isLoading && overview != nil { ProgressView().padding().accessibilityLabel(.loadingLocalData) }
+        }
+    }
+
+    private func currencySummary(_ summary: CurrencySummary) -> some View {
+        VStack(alignment: .leading, spacing: FinanceStyle.Spacing.section) {
+            VStack(alignment: .leading, spacing: FinanceStyle.Spacing.compact) {
+                Text(verbatim: summary.currency.code)
+                    .font(.headline)
+                    .accessibilityAddTraits(.isHeader)
+                VStack(alignment: .leading, spacing: FinanceStyle.Spacing.compact) {
+                    Text(.netSpending)
+                        .font(FinanceStyle.Typography.label)
+                        .foregroundStyle(FinanceStyle.ColorRole.secondaryText)
+                    MoneyText(money: summary.netSpending)
+                        .font(FinanceStyle.Typography.amount)
+                        .fixedSize(horizontal: false, vertical: true)
+                }
+                .accessibilityElement(children: .combine)
+            }
+
+            VStack(alignment: .leading, spacing: FinanceStyle.Spacing.standard) {
+                MoneyMetricRow(title: .income, money: summary.income)
+                MoneyMetricRow(title: .expenses, money: summary.expenses)
+                MoneyMetricRow(title: .refunds, money: summary.refunds)
+                Divider()
+                MoneyMetricRow(title: .netFlow, money: summary.netFlow)
+                    .font(.headline)
+            }
+            Divider()
         }
     }
 }

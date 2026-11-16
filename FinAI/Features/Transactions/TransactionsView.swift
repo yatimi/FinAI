@@ -25,6 +25,10 @@ struct TransactionsView: View {
                         .contentShape(Rectangle())
                 }
                 .buttonStyle(.plain)
+                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    Button(.editTransaction, systemImage: AppSymbol.edit.rawValue) { store.send(.editTapped(transaction.id)) }
+                        .tint(.blue)
+                }
             }
         }
         .accessibilityIdentifier(AccessibilityID.transactionList)

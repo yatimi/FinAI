@@ -30,6 +30,13 @@ final class CSVImportUITests: XCTestCase {
         XCTAssertTrue(app.navigationBars["Review import"].waitForExistence(timeout: 10))
         XCTAssertTrue(app.staticTexts["Selected transactions: 2"].exists)
         XCTAssertTrue(app.staticTexts["Invalid rows to skip: 1"].exists)
+        let compact = app.switches[AccessibilityID.compactImportReview]
+        XCTAssertEqual(compact.value as? String, "1")
+        XCTAssertFalse(app.textFields["Merchant or payee"].firstMatch.exists)
+        let details = app.buttons[AccessibilityID.importDetails(row: 2)]
+        for _ in 0..<5 where !details.isHittable { app.swipeUp() }
+        XCTAssertTrue(details.isHittable)
+        details.tap()
         let merchant = app.textFields["Merchant or payee"].firstMatch
         for _ in 0..<5 {
             if merchant.isHittable { break }
@@ -39,6 +46,26 @@ final class CSVImportUITests: XCTestCase {
         merchant.tap()
         merchant.typeText(" Market")
         app.keyboards.buttons["Done"].tap()
+        let reviewNavigationBar = app.navigationBars["Review import"]
+        for _ in 0..<8 {
+            if compact.isHittable, compact.frame.minY > reviewNavigationBar.frame.maxY { break }
+            app.swipeDown()
+        }
+        XCTAssertTrue(compact.isHittable)
+        XCTAssertGreaterThan(compact.frame.minY, reviewNavigationBar.frame.maxY)
+        let compactControl = app.collectionViews.cells
+            .containing(.switch, identifier: AccessibilityID.compactImportReview)
+            .switches.matching(NSPredicate(format: "label == ''")).firstMatch
+        XCTAssertTrue(compactControl.isHittable)
+        compactControl.tap()
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "value == %@", "0"), object: compact
+        )], timeout: 5), .completed)
+        compactControl.tap()
+        XCTAssertEqual(XCTWaiter.wait(for: [XCTNSPredicateExpectation(
+            predicate: NSPredicate(format: "value == %@", "1"), object: compact
+        )], timeout: 5), .completed)
+        XCTAssertTrue(app.staticTexts["Selected transactions: 2"].exists)
         app.buttons[AccessibilityID.confirmSelectedImport].tap()
         app.alerts.buttons["Cancel"].tap()
         XCTAssertTrue(app.navigationBars["Review import"].exists)
@@ -47,7 +74,8 @@ final class CSVImportUITests: XCTestCase {
         XCTAssertTrue(app.navigationBars["Transactions"].waitForExistence(timeout: 10))
         XCTAssertTrue(app.staticTexts["REWE Market"].exists)
         XCTAssertTrue(app.staticTexts["Test employer"].exists)
-        app.tabBars.buttons["Accounts"].tap()
+        app.tabBars.buttons["Home"].tap()
+        app.buttons["Accounts"].tap()
         XCTAssertTrue(app.staticTexts["Test bank"].waitForExistence(timeout: 5))
     }
 
@@ -78,9 +106,16 @@ final class CSVImportUITests: XCTestCase {
         decision.tap()
         XCTAssertEqual(decision.label, "Skip this transaction")
         app.buttons[AccessibilityID.confirmSelectedImport].tap()
-        XCTAssertTrue(app.alerts.staticTexts["Selected: 2. Skipped: 0. Your CSV file will not be changed."].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.alerts.staticTexts["Selected: 2. Skipped: 0. Your source file will not be changed."].waitForExistence(timeout: 5))
         app.alerts.buttons["Confirm import"].tap()
         XCTAssertTrue(app.navigationBars["Transactions"].waitForExistence(timeout: 10))
-        XCTAssertEqual(app.staticTexts.matching(identifier: "REWE").count, 2)
+        let list = app.collectionViews[AccessibilityID.transactionList]
+        XCTAssertTrue(list.waitForExistence(timeout: 5))
+        // Verify imported transactions through list rows rather than accessibility text nodes.
+        XCTAssertTrue(list.cells.element(boundBy: 1).waitForExistence(timeout: 5))
+        XCTAssertEqual(list.cells.count, 2)
+        for row in list.cells.allElementsBoundByIndex {
+            XCTAssertTrue(row.buttons.matching(NSPredicate(format: "label CONTAINS %@", "REWE")).firstMatch.exists)
+        }
     }
 }

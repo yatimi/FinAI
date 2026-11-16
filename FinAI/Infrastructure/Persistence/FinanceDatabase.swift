@@ -33,6 +33,11 @@ actor FinanceDatabase {
         try ImportBatchStore().save(batch, in: makeContext())
     }
 
+    func editTransaction(expected: Transaction, replacement: Transaction, date: Date, calendar: Calendar) throws -> FinanceOverview {
+        try Task.checkCancellation()
+        return try TransactionEditStore().save(expected: expected, replacement: replacement, date: date, calendar: calendar, in: makeContext())
+    }
+
     func loadMerchantRules() throws -> [MerchantRule] {
         try Task.checkCancellation()
         return try MerchantRuleStore().load(in: makeContext())
@@ -49,6 +54,37 @@ actor FinanceDatabase {
         return try MerchantRuleStore().delete(id, in: makeContext())
     }
 
+    func loadGoals() throws -> [SavingsGoal] {
+        try Task.checkCancellation()
+        return try GoalStore().load(in: makeContext())
+    }
+
+    func saveGoal(_ goal: SavingsGoal, expected: SavingsGoal?) throws -> [SavingsGoal] {
+        try Task.checkCancellation()
+        try goal.validate()
+        return try GoalStore().save(goal, expected: expected, in: makeContext())
+    }
+
+    func loadBudgets() throws -> [CategoryBudget] {
+        try Task.checkCancellation()
+        return try BudgetStore().load(in: makeContext())
+    }
+
+    func saveBudget(_ budget: CategoryBudget, expected: CategoryBudget?) throws -> [CategoryBudget] {
+        try Task.checkCancellation()
+        return try BudgetStore().save(budget, expected: expected, in: makeContext())
+    }
+
+    func loadDebts(date: Date, calendar: Calendar) throws -> [PersonalDebt] {
+        try Task.checkCancellation()
+        return try DebtStore().load(in: makeContext(), date: date, calendar: calendar)
+    }
+
+    func saveDebt(_ debt: PersonalDebt, expected: PersonalDebt?, date: Date, calendar: Calendar) throws -> [PersonalDebt] {
+        try Task.checkCancellation()
+        return try DebtStore().save(debt, expected: expected, in: makeContext(), date: date, calendar: calendar)
+    }
+
     private func makeContext() throws -> ModelContext {
         let container: ModelContainer
         if let existing = self.container {
@@ -56,6 +92,9 @@ actor FinanceDatabase {
         } else {
             container = try configuration.makeContainer()
             self.container = container
+        }
+        for store in container.configurations where !store.isStoredInMemoryOnly {
+            try StoreFileProtection().protectStoreFiles(at: store.url)
         }
         let context = ModelContext(container)
         context.autosaveEnabled = false

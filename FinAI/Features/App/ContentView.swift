@@ -14,13 +14,32 @@ struct ContentView: View {
 
     var body: some View {
         TabView(selection: $store.selectedTab) {
-            Tab(.overview, systemImage: AppSymbol.overview.rawValue, value: .dashboard) {
+            Tab(.home, systemImage: AppSymbol.home.rawValue, value: .dashboard) {
                 NavigationStack {
                     DashboardView(overview: store.overview, isLoading: store.isLoading) {
                         store.send(.demoTapped)
                     }
+                    .safeAreaInset(edge: .bottom) {
+                        ViewThatFits(in: .horizontal) {
+                            HStack {
+                                analyticsLink
+                                Spacer()
+                                accountsLink
+                            }
+                            VStack(alignment: .leading, spacing: FinanceStyle.Spacing.standard) {
+                                analyticsLink
+                                accountsLink
+                            }
+                        }
+                        .padding()
+                        .background(FinanceStyle.Surface.card)
+                    }
                     .navigationTitle(.finAI)
-                    .toolbar { importButton; refreshButton }
+                    .toolbar {
+                        assistantButton
+                        importButton
+                        refreshButton
+                    }
                 }
             }
             Tab(.transactions, systemImage: AppSymbol.transactions.rawValue, value: .transactions) {
@@ -30,23 +49,23 @@ struct ContentView: View {
                     .toolbar { importButton }
                 }
             }
-            Tab(.analytics, systemImage: AppSymbol.analytics.rawValue, value: .analytics) {
+            Tab(.plan, systemImage: AppSymbol.goals.rawValue, value: .plan) {
                 NavigationStack {
-                    AnalyticsView(store: store)
-                        .navigationTitle(.analytics)
-                        .toolbar { refreshButton }
-                }
-            }
-            Tab(.accounts, systemImage: AppSymbol.accounts.rawValue, value: .accounts) {
-                NavigationStack {
-                    AccountsView(accounts: store.overview?.snapshot.accounts ?? [])
-                        .navigationTitle(.accounts)
-                        .toolbar {
-                            Button(.merchantRules, systemImage: AppSymbol.merchantRules.rawValue) { store.send(.merchantRulesTapped) }
-                        }
+                    PlanView(store: store.scope(state: \.plan, action: \.plan),
+                             transactions: store.overview?.snapshot.transactions,
+                             openBudgets: { store.send(.budgetsTapped) },
+                             openGoals: { store.send(.goalsTapped) },
+                             openDebts: { store.send(.debtsTapped) },
+                             addBudget: { store.send(.addBudgetTapped) },
+                             addGoal: { store.send(.addGoalTapped) },
+                             addDebt: { store.send(.addDebtTapped) },
+                             selectBudget: { store.send(.budgetTapped($0)) },
+                             selectGoal: { store.send(.goalTapped($0)) })
                 }
             }
         }
+        .background { PrivacyShield().frame(width: 0, height: 0).accessibilityHidden(true) }
+        .tint(FinanceStyle.ColorRole.accent)
         .safeAreaInset(edge: .top) {
             if let failure = store.failure {
                 VStack(spacing: 8) {
@@ -62,10 +81,14 @@ struct ContentView: View {
             }
         }
         .alert($store.scope(state: \.alert, action: \.alert))
+        .sheet(item: $store.scope(state: \.assistant, action: \.assistant)) { AssistantView(store: $0) }
         .sheet(item: $store.scope(state: \.detail, action: \.detail)) { detailStore in
             TransactionDetailView(store: detailStore)
         }
         .sheet(item: $store.scope(state: \.merchantRules, action: \.merchantRules)) { MerchantRulesView(store: $0) }
+        .sheet(item: $store.scope(state: \.budgets, action: \.budgets)) { BudgetsView(store: $0) }
+        .sheet(item: $store.scope(state: \.goals, action: \.goals)) { GoalsView(store: $0) }
+        .sheet(item: $store.scope(state: \.debts, action: \.debts)) { DebtsView(store: $0) }
         .sheet(item: $store.scope(state: \.importFlow, action: \.importFlow)) { ImportView(store: $0) }
         .task { await store.send(.task).finish() }
         .onDisappear { store.send(.cancelLoading) }
@@ -74,8 +97,38 @@ struct ContentView: View {
         }
     }
 
+    private var analyticsLink: some View {
+        NavigationLink {
+            AnalyticsView(store: store)
+                .navigationTitle(.analytics)
+                .toolbar { refreshButton }
+        } label: {
+            Label(.analytics, systemImage: AppSymbol.analytics.rawValue)
+        }
+    }
+
+    private var accountsLink: some View {
+        NavigationLink {
+            AccountsView(accounts: store.overview?.snapshot.accounts ?? [])
+                .navigationTitle(.accounts)
+                .toolbar {
+                    Button(.merchantRules, systemImage: AppSymbol.merchantRules.rawValue) {
+                        store.send(.merchantRulesTapped)
+                    }
+                }
+        } label: {
+            Label(.accounts, systemImage: AppSymbol.accounts.rawValue)
+        }
+    }
+
+    private var assistantButton: some View {
+        Button(.assistant, systemImage: AppSymbol.assistant.rawValue) { store.send(.assistantTapped) }
+            .disabled(store.isLoading || store.overview == nil)
+            .accessibilityIdentifier(AccessibilityID.openAssistant)
+    }
+
     private var importButton: some View {
-        Button(.importCsv, systemImage: AppSymbol.importFile.rawValue) { store.send(.importTapped) }
+        Button(.importTransactions, systemImage: AppSymbol.importFile.rawValue) { store.send(.importTapped) }
             .disabled(store.isLoading || store.overview == nil)
             .accessibilityIdentifier(AccessibilityID.openImport)
     }

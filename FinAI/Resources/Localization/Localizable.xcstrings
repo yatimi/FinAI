@@ -1,6 +1,248 @@
 {
   "sourceLanguage": "en",
   "strings": {
+    "addGoal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add goal"
+          }
+        }
+      }
+    },
+    "discardGoalChanges": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discard goal changes?"
+          }
+        }
+      }
+    },
+    "editGoal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit goal"
+          }
+        }
+      }
+    },
+    "goalChangedFailure": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This goal has changed. Close and reopen goals before editing again."
+          }
+        }
+      }
+    },
+    "goalCompleted": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goal completed"
+          }
+        }
+      }
+    },
+    "goalDeadline": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deadline"
+          }
+        }
+      }
+    },
+    "goalDetails": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goal details"
+          }
+        }
+      }
+    },
+    "goalInvalidInput": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a name, positive target, nonnegative savings, valid currency code and date."
+          }
+        }
+      }
+    },
+    "goalMonthlyContribution": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Required per month"
+          }
+        }
+      }
+    },
+    "goalName": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Goal name"
+          }
+        }
+      }
+    },
+    "goalOverdue": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deadline passed — revise the date or savings amount."
+          }
+        }
+      }
+    },
+    "goalPlanningExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Record savings manually. Goals do not move money or change account balances. Monthly contributions include the current and deadline months and are rounded up. This schedule does not assess affordability."
+          }
+        }
+      }
+    },
+    "goalRemainingAmount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remaining"
+          }
+        }
+      }
+    },
+    "goalSavedAmount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Already saved"
+          }
+        }
+      }
+    },
+    "goalTargetAmount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Target amount"
+          }
+        }
+      }
+    },
+    "goalsLoadFailure": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to load goals. Try again before editing."
+          }
+        }
+      }
+    },
+    "goalsSaveFailure": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to save the goal. Your draft is preserved; try again."
+          }
+        }
+      }
+    },
+    "noGoalsYet": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No savings goals yet."
+          }
+        }
+      }
+    },
+    "saveGoal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save goal"
+          }
+        }
+      }
+    },
+    "savedGoals": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved goals"
+          }
+        }
+      }
+    },
+    "savingsGoals": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Savings goals"
+          }
+        }
+      }
+    },
+    "updatingGoals": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updating goals…"
+          }
+        }
+      }
+    },
     "aCsvFieldIsTooLong": {
       "extractionState": "manual",
       "localizations": {
@@ -210,6 +452,17 @@
         }
       }
     },
+    "bonusIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bonus"
+          }
+        }
+      }
+    },
     "cancel": {
       "extractionState": "manual",
       "localizations": {
@@ -353,6 +606,17 @@
         }
       }
     },
+    "compactReview": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Compact review"
+          }
+        }
+      }
+    },
     "confirmImport": {
       "extractionState": "manual",
       "localizations": {
@@ -436,7 +700,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Current month net spending"
+            "value": "Selected month net spending"
           }
         }
       }
@@ -601,7 +865,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Demo data will be replaced. Selected: %lld. Skipped: %lld. Your CSV file will not be changed."
+            "value": "Demo data will be replaced. Selected: %lld. Skipped: %lld. Your source file will not be changed."
           }
         }
       }
@@ -661,6 +925,28 @@
         }
       }
     },
+    "discardChanges": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discard changes"
+          }
+        }
+      }
+    },
+    "discardTransactionChanges": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discard changes?"
+          }
+        }
+      }
+    },
     "done": {
       "extractionState": "manual",
       "localizations": {
@@ -712,6 +998,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Edit rule"
+          }
+        }
+      }
+    },
+    "editTransaction": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit transaction"
           }
         }
       }
@@ -799,7 +1096,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Explore demo data or import a CSV from Overview to get started."
+            "value": "Explore demo data or import CSV or a supported PDF statement from Overview to get started."
           }
         }
       }
@@ -870,6 +1167,17 @@
         }
       }
     },
+    "freelanceIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Freelance"
+          }
+        }
+      }
+    },
     "from": {
       "extractionState": "manual",
       "localizations": {
@@ -898,7 +1206,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Import a CSV file using the toolbar, or explore with synthetic demo data."
+            "value": "Import CSV or a supported PDF statement using the toolbar, or explore with synthetic demo data."
           }
         }
       }
@@ -942,7 +1250,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Selected: %lld. Skipped: %lld. Your CSV file will not be changed."
+            "value": "Selected: %lld. Skipped: %lld. Your source file will not be changed."
           }
         }
       }
@@ -1046,6 +1354,28 @@
         }
       }
     },
+    "incomeSource": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Income source"
+          }
+        }
+      }
+    },
+    "interestIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interest"
+          }
+        }
+      }
+    },
     "interpretation": {
       "extractionState": "manual",
       "localizations": {
@@ -1141,6 +1471,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Keep both transactions"
+          }
+        }
+      }
+    },
+    "keepEditing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Keep editing"
           }
         }
       }
@@ -1415,7 +1756,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Current calendar month compared with the full previous month. The current month may be incomplete. Only saved transactions are included; missing activity is treated as zero."
+            "value": "Selected calendar month compared with the full previous month. Current-month data may be incomplete; results use saved transactions only."
           }
         }
       }
@@ -1503,7 +1844,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No expenses or refunds in %@ this month."
+            "value": "No expenses or refunds in %@ in the selected month."
           }
         }
       }
@@ -1603,6 +1944,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Original description"
+          }
+        }
+      }
+    },
+    "originalTransactionValues": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original values"
           }
         }
       }
@@ -1805,6 +2157,17 @@
         }
       }
     },
+    "reimbursementIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reimbursement"
+          }
+        }
+      }
+    },
     "resetSearchAndFilters": {
       "extractionState": "manual",
       "localizations": {
@@ -1882,6 +2245,17 @@
         }
       }
     },
+    "salaryIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salary"
+          }
+        }
+      }
+    },
     "sameAmountAndASimilarDescriptionWithinThreeDays": {
       "extractionState": "manual",
       "localizations": {
@@ -1937,6 +2311,17 @@
         }
       }
     },
+    "saveTransaction": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save"
+          }
+        }
+      }
+    },
     "savedMerchantRules": {
       "extractionState": "manual",
       "localizations": {
@@ -1955,6 +2340,17 @@
           "stringUnit": {
             "state": "translated",
             "value": "Saved transactions will stay unchanged."
+          }
+        }
+      }
+    },
+    "savingTransaction": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saving transaction…"
           }
         }
       }
@@ -2157,6 +2553,39 @@
         }
       }
     },
+    "transactionAmount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Amount"
+          }
+        }
+      }
+    },
+    "transactionAmountExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a nonnegative amount. Money in or out is selected separately."
+          }
+        }
+      }
+    },
+    "transactionChangesNotSaved": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your transaction changes have not been saved."
+          }
+        }
+      }
+    },
     "transactionDetails": {
       "extractionState": "manual",
       "localizations": {
@@ -2164,6 +2593,105 @@
           "stringUnit": {
             "state": "translated",
             "value": "Transaction details"
+          }
+        }
+      }
+    },
+    "transactionEditInvalidAccount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The selected account is no longer available. Close and reopen this transaction."
+          }
+        }
+      }
+    },
+    "transactionEditInvalidAmount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a valid nonnegative amount using your locale’s decimal separator."
+          }
+        }
+      }
+    },
+    "transactionEditInvalidCurrency": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a supported three-letter currency code, such as EUR or USD."
+          }
+        }
+      }
+    },
+    "transactionEditInvalidDate": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a valid date."
+          }
+        }
+      }
+    },
+    "transactionEditInvalidDirection": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expenses require money out. Income and refunds require money in."
+          }
+        }
+      }
+    },
+    "transactionEditMissingMerchant": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a merchant or payee."
+          }
+        }
+      }
+    },
+    "transactionEditSaveFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your changes could not be saved. Try again."
+          }
+        }
+      }
+    },
+    "transactionEditStorageChanged": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This transaction changed since you opened it. Your edits are still here. Close and reopen it to review the latest values."
+          }
+        }
+      }
+    },
+    "transactionEditUnsupportedTotals": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This amount would exceed the supported precision for financial totals."
           }
         }
       }
@@ -2186,6 +2714,28 @@
           "stringUnit": {
             "state": "translated",
             "value": "Filters apply together. Custom dates include both the first and last day."
+          }
+        }
+      }
+    },
+    "importRowDetails": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original description and editing"
+          }
+        }
+      }
+    },
+    "transactionOriginalPreserved": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your original imported values and description are preserved when you save corrections."
           }
         }
       }
@@ -2388,6 +2938,17 @@
         }
       }
     },
+    "unspecifiedIncomeSource": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unspecified"
+          }
+        }
+      }
+    },
     "unsupportedImportTotalsMessage": {
       "extractionState": "manual",
       "localizations": {
@@ -2472,6 +3033,1865 @@
           "stringUnit": {
             "state": "translated",
             "value": "Yearly"
+          }
+        }
+      }
+    },
+    "importTransactions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import transactions"
+          }
+        }
+      }
+    },
+    "importFile": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import file"
+          }
+        }
+      }
+    },
+    "chooseImportFile": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose CSV or PDF file"
+          }
+        }
+      }
+    },
+    "importFileRequirementsExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "CSV: UTF-8 or UTF-16 with a header row. PDF: supported German Sparkasse statements with selectable text. Files are processed on this device."
+          }
+        }
+      }
+    },
+    "statementReviewExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statement balances were verified before preview. Review all transaction types, especially credits and transfers. Booking dates are used; value dates and fee appendices do not create extra transactions. Nothing is saved until you confirm."
+          }
+        }
+      }
+    },
+    "statementCurrency": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Statement currency: %@"
+          }
+        }
+      }
+    },
+    "editImportAccount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit account"
+          }
+        }
+      }
+    },
+    "pdfSizeLimitMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose a PDF smaller than 10 MB with at most 100 pages and 2 MB of extracted text."
+          }
+        }
+      }
+    },
+    "lockedPdfMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This PDF is password protected. Choose an unlocked copy."
+          }
+        }
+      }
+    },
+    "pdfTextRequiredMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Every PDF page must contain selectable text. Scanned or image-only statements are not supported yet."
+          }
+        }
+      }
+    },
+    "unsupportedStatementMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This PDF format is not supported. Choose a complete German Sparkasse statement with the Datum / Erläuterung / Betrag EUR table."
+          }
+        }
+      }
+    },
+    "malformedStatementMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The statement could not be read completely. No data was imported. Choose a complete original PDF."
+          }
+        }
+      }
+    },
+    "statementBalanceMismatchMessage": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The extracted transactions do not reconcile with the statement balances. No data was imported."
+          }
+        }
+      }
+    },
+    "budgets": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Budgets"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetDetails": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Budget details"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetLimit": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly limit"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetSpent": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net spending"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetRemaining": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remaining"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetExceeded": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Over budget"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetPlanningExplanation": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly category limits across all accounts. Same-currency refunds received this month reduce spending; transfers and income are excluded. Limits repeat each calendar month. No currency conversion or money movement."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "updatingBudgets": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updating budgets…"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "saveBudget": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save budget"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "addBudget": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add budget"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "editBudget": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Edit budget"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "savedBudgets": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved budgets"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "noBudgetsYet": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No budgets yet."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetsLoadFailure": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to load budgets. Try again before editing."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetsSaveFailure": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to save budget. Your changes are kept. Try again."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetInvalidInput": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a valid positive limit and currency."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetChangedFailure": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This budget has changed. Close and reopen budgets before editing again."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "budgetDuplicateFailure": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A budget already exists for this category and currency. Edit that budget instead."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "discardBudgetChanges": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discard budget changes?"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "home": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Home"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "planProgressUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Progress could not be calculated. Saved goals and budgets are still available. Try reopening Plan or correcting the saved item."
+          }
+        }
+      }
+    },
+    "planBudgetProgressUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spending progress is unavailable until local transactions are loaded and the calculation succeeds."
+          }
+        }
+      }
+    },
+    "planBudgetSummaryExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net spending is expenses minus refunds for the shown month. Each currency is kept separate."
+          }
+        }
+      }
+    },
+    "planGoalSummaryExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Savings are recorded manually. Goals do not represent an account balance or assess affordability."
+          }
+        }
+      }
+    },
+    "plan": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plan"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "monthlyBudgets": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Monthly budgets"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "updatingPlan": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updating plan…"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "planLoadFailure": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to load your plan. Try again."
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "addToPlan": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add to plan"
+          }
+        }
+      },
+      "extractionState": "manual"
+    },
+    "nextMonth": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Next month"
+          }
+        }
+      }
+    },
+    "dailyNetSpending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daily net spending"
+          }
+        }
+      }
+    },
+    "spendingDrilldownExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expenses minus refunds in this month and currency. Tap a transaction to inspect or correct it."
+          }
+        }
+      }
+    },
+    "dailyTotals": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Daily totals"
+          }
+        }
+      }
+    },
+    "assistant": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assistant"
+          }
+        }
+      }
+    },
+    "assistantFollowUp": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Follow up"
+          }
+        }
+      }
+    },
+    "assistantFollowUpExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Switch months while keeping this query, category and merchant exclusion. “Without rent” asks you to choose which saved merchant to exclude."
+          }
+        }
+      }
+    },
+    "assistantFollowUpLastMonth": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "And last month?"
+          }
+        }
+      }
+    },
+    "assistantFollowUpThisMonth": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "And this month?"
+          }
+        }
+      }
+    },
+    "assistantFollowUpTextExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suggested questions and complete category phrases such as “How much did I spend on groceries?” work without the model. After an answer, use “And last month?”, “And this month?” or “And without rent?”. Rent exclusion asks you to choose its saved merchant."
+          }
+        }
+      }
+    },
+    "assistantIntroduction": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Explore recorded spending for this month or last month. Compare months or choose a category or saved merchant. Follow-ups keep the selected category and merchant exclusion when switching months."
+          }
+        }
+      }
+    },
+    "assistantPrivacyExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Questions are processed on this device. Calculations use saved transactions; questions and answers are not saved."
+          }
+        }
+      }
+    },
+    "assistantSuggestedQuestions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Suggested questions"
+          }
+        }
+      }
+    },
+    "assistantThisMonthQuestion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How much did I spend this month?"
+          }
+        }
+      }
+    },
+    "assistantLastMonthQuestion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How much did I spend last month?"
+          }
+        }
+      }
+    },
+    "assistantCompareQuestion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What changed from last month?"
+          }
+        }
+      }
+    },
+    "assistantMerchantQuestion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spending at a merchant this month"
+          }
+        }
+      }
+    },
+    "assistantYourQuestion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your question"
+          }
+        }
+      }
+    },
+    "assistantQuestionPlaceholder": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ask about recorded spending"
+          }
+        }
+      }
+    },
+    "assistantQuestionLimit": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Up to 1,000 characters. Supported periods: this month and last month."
+          }
+        }
+      }
+    },
+    "assistantAsk": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ask"
+          }
+        }
+      }
+    },
+    "assistantCheckAvailability": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check availability"
+          }
+        }
+      }
+    },
+    "assistantWorking": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Preparing answer"
+          }
+        }
+      }
+    },
+    "assistantClear": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Clear"
+          }
+        }
+      }
+    },
+    "assistantDeviceUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Free-text questions need a device that supports Apple Intelligence. Suggested questions work on this device."
+          }
+        }
+      }
+    },
+    "assistantEnableIntelligence": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enable Apple Intelligence in Settings to ask free-text questions. Suggested questions work without it."
+          }
+        }
+      }
+    },
+    "assistantModelNotReady": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The on-device language model is not ready. You can use the suggested questions while it becomes available."
+          }
+        }
+      }
+    },
+    "assistantLanguageUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The on-device model does not support the current language. You can still use the suggested questions."
+          }
+        }
+      }
+    },
+    "assistantUnsupportedQuestion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This question could not be matched to a supported query. Ask about spending, one category, a month comparison or one merchant for this month or last month, or use a suggested question."
+          }
+        }
+      }
+    },
+    "assistantChooseSavedMerchant": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No unique saved merchant matched the question. Choose a merchant from the suggested questions to use its exact saved name."
+          }
+        }
+      }
+    },
+    "assistantModelUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Free-text questions are currently unavailable. Check Apple Intelligence availability or use a suggested question."
+          }
+        }
+      }
+    },
+    "assistantInterpretationFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The on-device model could not interpret this question. Try rephrasing it or use a suggested question."
+          }
+        }
+      }
+    },
+    "assistantCalculationFailed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The recorded data could not be calculated safely. No answer is shown. Try again after reviewing your transactions."
+          }
+        }
+      }
+    },
+    "assistantAnswerScope": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Interpreted query"
+          }
+        }
+      }
+    },
+    "assistantComparison": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spending comparison"
+          }
+        }
+      }
+    },
+    "assistantScopeExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Net spending is expenses minus refunds, across all saved accounts. Income, transfers, adjustments and unknown transactions are excluded. Currencies stay separate."
+          }
+        }
+      }
+    },
+    "assistantViewTransactions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View contributing transactions"
+          }
+        }
+      }
+    },
+    "assistantViewPreviousTransactions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "View previous month transactions"
+          }
+        }
+      }
+    },
+    "assistantCategoryChanges": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recorded changes by category"
+          }
+        }
+      }
+    },
+    "assistantAnswer": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Answer"
+          }
+        }
+      }
+    },
+    "assistantNoCategoryChanges": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No net spending changes by category."
+          }
+        }
+      }
+    },
+    "monthEndForecast": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Month-end forecast"
+          }
+        }
+      }
+    },
+    "forecastMonth": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Forecast month"
+          }
+        }
+      }
+    },
+    "forecastRecordedThrough": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recorded through"
+          }
+        }
+      }
+    },
+    "forecastHistoryMonth": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "History month"
+          }
+        }
+      }
+    },
+    "forecastCalculationUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The forecast could not be calculated. Check your saved data and try opening it again."
+          }
+        }
+      }
+    },
+    "forecastDataUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved transactions are unavailable. Refresh your data and try again."
+          }
+        }
+      }
+    },
+    "forecastNoHistory": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Import last month’s transactions to build a forecast."
+          }
+        }
+      }
+    },
+    "forecastCurrencyHistoryMissing": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No expense or income history for this currency in the previous month. A forecast is unavailable."
+          }
+        }
+      }
+    },
+    "forecastMonthNetSpending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimated month-end net spending"
+          }
+        }
+      }
+    },
+    "forecastMonthNetFlow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimated month-end net flow"
+          }
+        }
+      }
+    },
+    "forecastRecordedExpenses": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recorded expenses"
+          }
+        }
+      }
+    },
+    "forecastRemainingVariable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimated remaining ordinary expenses"
+          }
+        }
+      }
+    },
+    "forecastRemainingRecurring": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expected remaining recurring expenses"
+          }
+        }
+      }
+    },
+    "forecastRecordedRefunds": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recorded refunds"
+          }
+        }
+      }
+    },
+    "forecastTotalExpenses": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimated total expenses"
+          }
+        }
+      }
+    },
+    "forecastRecordedIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recorded income"
+          }
+        }
+      }
+    },
+    "forecastRemainingIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assumed remaining income"
+          }
+        }
+      }
+    },
+    "forecastTotalIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Estimated total income"
+          }
+        }
+      }
+    },
+    "forecastCalculationDetails": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "How this is calculated"
+          }
+        }
+      }
+    },
+    "forecastRecordedNetSpending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recorded net spending"
+          }
+        }
+      }
+    },
+    "forecastRecordedNetFlow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Recorded net flow"
+          }
+        }
+      }
+    },
+    "forecastMethodExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "An end-of-day estimate. Last month’s ordinary expenses are averaged over its calendar days and applied from tomorrow to month end. Active detected recurring expenses use their expected dates instead. Total income is assumed to match last month, or recorded income if higher."
+          }
+        }
+      }
+    },
+    "forecastLimitations": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assumes complete imports and unchanged habits and income. A record does not prove the month is complete. Missing payments, changed prices and irregular income can make this estimate inaccurate. Recurring payments need three matching occurrences; stale patterns are not scheduled. No future refunds or transactions dated after today are included. Transfers, adjustments and unknown entries are excluded. Net spending is expenses minus recorded refunds; net flow is income minus net spending. This is not an account balance, available money or an affordability assessment. Currencies stay separate."
+          }
+        }
+      }
+    },
+    "forecastSummaryExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Based on last month’s recorded activity. Assumes complete imports and unchanged habits and income. Estimates are not available balances."
+          }
+        }
+      }
+    },
+    "forecastAssumptions": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Assumptions and limits"
+          }
+        }
+      }
+    },
+    "whatIfTitle": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "What if?"
+          }
+        }
+      }
+    },
+    "whatIfChange": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change"
+          }
+        }
+      }
+    },
+    "whatIfAmount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scenario amount"
+          }
+        }
+      }
+    },
+    "whatIfAdditionalExpense": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Additional expense"
+          }
+        }
+      }
+    },
+    "whatIfAdditionalIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Additional income"
+          }
+        }
+      }
+    },
+    "whatIfReducedExpenses": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reduce expected expenses"
+          }
+        }
+      }
+    },
+    "whatIfReducedIncome": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reduce expected income"
+          }
+        }
+      }
+    },
+    "whatIfCalculate": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Calculate scenario"
+          }
+        }
+      }
+    },
+    "whatIfReset": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reset scenario"
+          }
+        }
+      }
+    },
+    "whatIfNeedsForecast": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "A baseline forecast is needed for this currency. Import the previous month’s transactions first."
+          }
+        }
+      }
+    },
+    "whatIfExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try one unrecorded change in this month’s original currency. The amount adds to or reduces the baseline forecast; it does not change transactions, budgets, goals or account balances. Scenarios are temporary and are discarded when the forecast closes."
+          }
+        }
+      }
+    },
+    "whatIfBaselineSpending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Baseline net spending"
+          }
+        }
+      }
+    },
+    "whatIfScenarioSpending": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scenario net spending"
+          }
+        }
+      }
+    },
+    "whatIfBaselineFlow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Baseline net flow"
+          }
+        }
+      }
+    },
+    "whatIfScenarioFlow": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scenario net flow"
+          }
+        }
+      }
+    },
+    "whatIfFlowChange": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Change in net flow"
+          }
+        }
+      }
+    },
+    "whatIfResultHeading": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scenario · %@"
+          }
+        }
+      }
+    },
+    "whatIfResultExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Each calculation starts from the baseline, not the previous scenario. A positive change means higher projected net flow. This is a current-month estimate with the same assumptions as the forecast, not an affordability assessment or a prediction of goal completion."
+          }
+        }
+      }
+    },
+    "whatIfInvalidAmount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a positive amount using your regional number format."
+          }
+        }
+      }
+    },
+    "whatIfExpenseReductionLimit": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can reduce only the estimated remaining expenses. Recorded expenses stay unchanged."
+          }
+        }
+      }
+    },
+    "whatIfIncomeReductionLimit": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "You can reduce only the assumed remaining income. Recorded income stays unchanged."
+          }
+        }
+      }
+    },
+    "whatIfCalculationUnavailable": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "The scenario could not be calculated within supported decimal precision. Try a smaller amount."
+          }
+        }
+      }
+    },
+    "personalDebts": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Personal debts"
+          }
+        }
+      }
+    },
+    "debtDetails": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Debt details"
+          }
+        }
+      }
+    },
+    "debtPerson": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Person"
+          }
+        }
+      }
+    },
+    "debtDirection": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Who owes whom"
+          }
+        }
+      }
+    },
+    "debtIOwe": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "I owe"
+          }
+        }
+      }
+    },
+    "debtOwedToMe": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Owed to me"
+          }
+        }
+      }
+    },
+    "debtPrincipal": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Original debt amount"
+          }
+        }
+      }
+    },
+    "debtStartDate": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Debt date"
+          }
+        }
+      }
+    },
+    "debtHasDueDate": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Set a due date"
+          }
+        }
+      }
+    },
+    "debtDueDate": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Due date"
+          }
+        }
+      }
+    },
+    "debtRepaid": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repaid"
+          }
+        }
+      }
+    },
+    "debtRemaining": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Remaining debt"
+          }
+        }
+      }
+    },
+    "debtSettled": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Settled"
+          }
+        }
+      }
+    },
+    "debtOverdue": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Overdue"
+          }
+        }
+      }
+    },
+    "debtActive": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Active"
+          }
+        }
+      }
+    },
+    "debtRepaymentHistory": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repayment history"
+          }
+        }
+      }
+    },
+    "recordDebtRepayment": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Record repayment"
+          }
+        }
+      }
+    },
+    "debtRepaymentAmount": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repayment amount"
+          }
+        }
+      }
+    },
+    "debtRepaymentDate": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Repayment date"
+          }
+        }
+      }
+    },
+    "addDebt": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Add debt"
+          }
+        }
+      }
+    },
+    "saveDebt": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save debt"
+          }
+        }
+      }
+    },
+    "saveDebtRepayment": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Save repayment"
+          }
+        }
+      }
+    },
+    "savedDebts": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Saved debts"
+          }
+        }
+      }
+    },
+    "noDebtsYet": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No debts yet"
+          }
+        }
+      }
+    },
+    "updatingDebts": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Updating debts…"
+          }
+        }
+      }
+    },
+    "discardDebtChanges": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Discard unsaved debt changes?"
+          }
+        }
+      }
+    },
+    "debtExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Record money you owe or lent to someone. Repayments reduce this debt only; they do not create bank transactions or change income, spending or account balances. Saved debts and repayments cannot be edited or deleted yet."
+          }
+        }
+      }
+    },
+    "debtsLoadFailure": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to load debts. Your saved data has not been replaced."
+          }
+        }
+      }
+    },
+    "debtsSaveFailure": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Unable to save. Your draft is preserved; please try again."
+          }
+        }
+      }
+    },
+    "debtInvalidInput": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Enter a person, a positive amount and a valid currency. Debt and repayment dates cannot be in the future. A repayment must be on or after the debt date and cannot exceed the remaining debt. The due date cannot precede the debt date."
+          }
+        }
+      }
+    },
+    "debtChangedFailure": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "This debt changed. Cancel editing and reload before recording another repayment."
+          }
+        }
+      }
+    },
+    "assistantCategoryQuestion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Spending by category"
+          }
+        }
+      }
+    },
+    "assistantWithoutRent": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Without rent…"
+          }
+        }
+      }
+    },
+    "assistantChooseRentMerchant": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose the saved merchant for rent"
+          }
+        }
+      }
+    },
+    "assistantRentMerchantExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Choose the merchant whose payments represent rent. All expenses and refunds at that merchant will be excluded, including any payments unrelated to rent. Housing is not excluded automatically."
+          }
+        }
+      }
+    },
+    "assistantExcludedMerchant": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Excluded merchant"
+          }
+        }
+      }
+    },
+    "assistantExclusionExplanation": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "All recorded expenses and refunds at this saved merchant are excluded. Other housing transactions remain included."
+          }
+        }
+      }
+    },
+    "assistantRemoveExclusion": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Include the excluded merchant again"
+          }
+        }
+      }
+    },
+    "privacyPreviewHidden": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Financial details are hidden while the app is inactive."
           }
         }
       }

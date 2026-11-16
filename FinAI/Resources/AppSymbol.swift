@@ -6,6 +6,15 @@
 //
 
 enum AppSymbol: String {
+    case whatIf = "arrow.triangle.branch"
+    case previous = "chevron.left"
+    case next = "chevron.right"
+    case assistant = "bubble.left.and.text.bubble.right"
+    case edit = "pencil"
+    case privacy = "lock.fill"
+    case goals = "target"
+    case debts = "person.2"
+    case home = "house"
     case overview = "chart.bar"
     case transactions = "list.bullet.rectangle"
     case analytics = "chart.pie"

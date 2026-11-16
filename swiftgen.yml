@@ -1,0 +1,12 @@
+xcassets:
+  inputs: FinAI/Resources/Assets.xcassets
+  outputs:
+    - templatePath: Scripts/Templates/colors.stencil
+      output: ${FINAI_GENERATED_OUTPUT}/Assets.swift
+strings:
+  inputs: ${FINAI_LOCALIZATION_INPUT}/en.lproj
+  outputs:
+    - templateName: structured-swift5
+      output: ${FINAI_GENERATED_OUTPUT}/Localization.swift
+      params:
+        enumName: FinanceStrings

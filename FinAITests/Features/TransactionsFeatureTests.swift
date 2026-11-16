@@ -57,7 +57,7 @@ struct TransactionsFeatureTests {
         #expect(transaction.merchant == "REWE")
         let account = try #require(snapshot.accounts.first { $0.id == transaction.accountID })
         await store.send(.transactions(.transactionTapped(transaction.id))) {
-            $0.detail = TransactionDetailFeature.State(transaction: transaction, accountName: account.name)
+            $0.detail = TransactionDetailFeature.State(transaction: transaction, accountName: account.name, accounts: snapshot.accounts, original: snapshot.originals[transaction.id])
         }
         await store.send(.detail(.dismiss)) { $0.detail = nil }
     }
