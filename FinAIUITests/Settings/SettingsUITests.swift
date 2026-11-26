@@ -81,7 +81,7 @@ final class SettingsUITests: XCTestCase {
         XCTAssertTrue(navigation.waitForExistence(timeout: 5))
         let language = app.buttons[AccessibilityID.settingsLanguage]
         UITestVisibility.reveal(language, in: app, below: navigation)
-        XCTAssertEqual(language.label, "Відкрити налаштування мови в iOS")
+        XCTAssertEqual(language.label, "Змінити мову")
         let privacy = app.buttons[AccessibilityID.settingsPrivacy]
         UITestVisibility.reveal(privacy, in: app, below: navigation)
         privacy.tap()

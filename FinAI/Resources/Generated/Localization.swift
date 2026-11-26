@@ -780,12 +780,12 @@ internal enum FinanceStrings {
   internal static let settingsAppearanceExplanation = FinanceStrings.tr("Localizable", "settingsAppearanceExplanation", fallback: "System follows your device appearance. Your choice is saved on this device.")
   /// Language
   internal static let settingsLanguage = FinanceStrings.tr("Localizable", "settingsLanguage", fallback: "Language")
-  /// FinAI supports English and Ukrainian. Choose the app language in iOS Settings. Your regional number, currency and date formats are kept.
-  internal static let settingsLanguageExplanation = FinanceStrings.tr("Localizable", "settingsLanguageExplanation", fallback: "FinAI supports English and Ukrainian. Choose the app language in iOS Settings. Your regional number, currency and date formats are kept.")
+  /// Choose English or Ukrainian in Settings.
+  internal static let settingsLanguageExplanation = FinanceStrings.tr("Localizable", "settingsLanguageExplanation", fallback: "Choose English or Ukrainian in Settings.")
   /// Could not open Settings. Open the iOS Settings app and find FinAI to change its language.
   internal static let settingsLanguageUnavailable = FinanceStrings.tr("Localizable", "settingsLanguageUnavailable", fallback: "Could not open Settings. Open the iOS Settings app and find FinAI to change its language.")
-  /// Open iOS language settings
-  internal static let settingsOpenLanguage = FinanceStrings.tr("Localizable", "settingsOpenLanguage", fallback: "Open iOS language settings")
+  /// Change language
+  internal static let settingsOpenLanguage = FinanceStrings.tr("Localizable", "settingsOpenLanguage", fallback: "Change language")
   /// Privacy
   internal static let settingsPrivacy = FinanceStrings.tr("Localizable", "settingsPrivacy", fallback: "Privacy")
   /// Shopping

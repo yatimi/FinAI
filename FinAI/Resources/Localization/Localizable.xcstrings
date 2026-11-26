@@ -7691,13 +7691,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Open iOS language settings"
+            "value": "Change language"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Відкрити налаштування мови в iOS"
+            "value": "Змінити мову"
           }
         }
       }
@@ -7708,13 +7708,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "FinAI supports English and Ukrainian. Choose the app language in iOS Settings. Your regional number, currency and date formats are kept."
+            "value": "Choose English or Ukrainian in Settings."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "FinAI підтримує англійську й українську. Виберіть мову програми в налаштуваннях iOS. Регіональні формати чисел, валют і дат зберігаються."
+            "value": "Виберіть англійську або українську в налаштуваннях."
           }
         }
       }
