@@ -13,6 +13,23 @@ import UIKit
 @MainActor
 @Suite(.serialized)
 struct PrivacyShieldTests {
+    @Test func appearanceUpdatesExistingAndReattachedPrivacyWindows() throws {
+        let scene = try #require(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
+        let controller = PrivacyShieldWindowController()
+        controller.appearance = .dark
+        controller.attach(to: scene)
+        defer { controller.detach() }
+        #expect(controller.window?.overrideUserInterfaceStyle == .dark)
+        controller.appearance = .light
+        #expect(controller.window?.overrideUserInterfaceStyle == .light)
+        controller.detach()
+        controller.attach(to: scene)
+        #expect(controller.window?.overrideUserInterfaceStyle == .light)
+        controller.appearance = .system
+        #expect(controller.window?.overrideUserInterfaceStyle == .unspecified)
+        #expect(controller.window?.isKeyWindow == false)
+    }
+
     @Test func coversPresentedWindowsWithoutTakingKeyStatusUntilSceneBecomesActive() throws {
         let scene = try #require(UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }.first)
         let keyWindow = scene.windows.first { $0.isKeyWindow }

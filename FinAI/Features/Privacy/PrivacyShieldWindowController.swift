@@ -13,6 +13,17 @@ import UIKit
 final class PrivacyShieldWindowController: NSObject {
     private(set) var window: UIWindow?
     private weak var scene: UIWindowScene?
+    var appearance: AppAppearance = .system {
+        didSet { window?.overrideUserInterfaceStyle = interfaceStyle }
+    }
+
+    private var interfaceStyle: UIUserInterfaceStyle {
+        switch appearance {
+        case .system: .unspecified
+        case .light: .light
+        case .dark: .dark
+        }
+    }
 
     func attach(to scene: UIWindowScene?) {
         guard self.scene !== scene else { return }
@@ -20,6 +31,7 @@ final class PrivacyShieldWindowController: NSObject {
         guard let scene else { return }
         self.scene = scene
         let window = UIWindow(windowScene: scene)
+        window.overrideUserInterfaceStyle = interfaceStyle
         window.windowLevel = .alert + 1
         window.isUserInteractionEnabled = false
         let root = UIHostingController(rootView: PrivacyShieldView())

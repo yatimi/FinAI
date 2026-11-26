@@ -7,6 +7,11 @@
 
 /// Stable automation identifiers shared by the app and its UI tests.
 enum AccessibilityID {
+    static let openSettings = "openSettings"
+    static let closeSettings = "closeSettings"
+    static let settingsAppearance = "settingsAppearance"
+    static let settingsLanguage = "settingsLanguage"
+    static let settingsPrivacy = "settingsPrivacy"
     static let whatIfKeyboardDone = "whatIfKeyboardDone"
     static let openWhatIf = "openWhatIf"
     static let whatIfAmount = "whatIfAmount"

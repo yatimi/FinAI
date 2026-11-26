@@ -15,6 +15,20 @@ struct FinAIApp: App {
     init() {
         let database = FinanceDatabase(inMemory: ProcessInfo.processInfo.arguments.contains("--uitesting"))
         var initialState = AppFeature.State()
+        var settingsClient = SettingsClient.liveValue
+        #if DEBUG
+        if ProcessInfo.processInfo.arguments.contains("--uitesting") {
+            // Isolate UI-test preferences from the user's app and other test journeys.
+            if let suite = ProcessInfo.processInfo.environment["FINAI_TEST_PREFERENCES"],
+               let defaults = UserDefaults(suiteName: "FinAI.UITests.\(suite)") {
+                settingsClient = .live(defaults: defaults)
+            } else {
+                settingsClient = SettingsClient(loadAppearance: { .system }, saveAppearance: { _ in })
+            }
+        }
+        #endif
+        let preferencesClient = settingsClient
+        initialState.settings.appearance = preferencesClient.loadAppearance()
         #if DEBUG
         if ProcessInfo.processInfo.arguments.contains("--uitesting"),
            let csv = ProcessInfo.processInfo.environment["FINAI_TEST_CSV"],
@@ -34,6 +48,7 @@ struct FinAIApp: App {
         _store = State(initialValue: Store(initialState: initialState) {
             AppFeature()
         } withDependencies: {
+            $0.settingsClient = preferencesClient
             $0.financeClient = .live(database: database)
             $0.importClient = .live(database: database)
             $0.merchantRulesClient = .live(database: database)

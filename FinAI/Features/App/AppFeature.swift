@@ -15,6 +15,8 @@ struct AppFeature {
 
     @ObservableState
     struct State: Equatable {
+        var settings = SettingsFeature.State()
+        var isSettingsPresented = false
         var analytics = AnalyticsFeature.State()
         var plan = PlanFeature.State()
         var selectedTab = Tab.dashboard
@@ -34,6 +36,7 @@ struct AppFeature {
     }
 
     enum Action: BindableAction, Equatable {
+        case settings(SettingsFeature.Action)
         case binding(BindingAction<State>)
         case assistantTapped
         case assistant(PresentationAction<AssistantFeature.Action>)
@@ -74,6 +77,7 @@ struct AppFeature {
 
     var body: some ReducerOf<Self> {
         BindingReducer()
+        Scope(state: \.settings, action: \.settings) { SettingsFeature() }
         Scope(state: \.analytics, action: \.analytics) { AnalyticsFeature() }
         Scope(state: \.plan, action: \.plan) { PlanFeature() }
         Scope(state: \.transactions, action: \.transactions) { TransactionsFeature() }
@@ -217,7 +221,7 @@ struct AppFeature {
                 )
             case .goals(.dismiss), .budgets(.dismiss):
                 return .send(.plan(.task))
-            case .assistant, .analytics, .plan, .binding, .alert, .detail, .importFlow, .transactions, .merchantRules, .goals, .budgets, .debts:
+            case .settings, .assistant, .analytics, .plan, .binding, .alert, .detail, .importFlow, .transactions, .merchantRules, .goals, .budgets, .debts:
                 return .none
             }
         }

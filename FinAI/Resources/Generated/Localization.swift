@@ -54,6 +54,12 @@ internal enum FinanceStrings {
   internal static let amountColumn = FinanceStrings.tr("Localizable", "amountColumn", fallback: "Amount column")
   /// Analytics
   internal static let analytics = FinanceStrings.tr("Localizable", "analytics", fallback: "Analytics")
+  /// Dark
+  internal static let appearanceDark = FinanceStrings.tr("Localizable", "appearanceDark", fallback: "Dark")
+  /// Light
+  internal static let appearanceLight = FinanceStrings.tr("Localizable", "appearanceLight", fallback: "Light")
+  /// System
+  internal static let appearanceSystem = FinanceStrings.tr("Localizable", "appearanceSystem", fallback: "System")
   /// Assistant
   internal static let assistant = FinanceStrings.tr("Localizable", "assistant", fallback: "Assistant")
   /// Answer
@@ -666,8 +672,28 @@ internal enum FinanceStrings {
   internal static let previousMonth = FinanceStrings.tr("Localizable", "previousMonth", fallback: "Previous month")
   /// Previous month net spending
   internal static let previousMonthNetSpending = FinanceStrings.tr("Localizable", "previousMonthNetSpending", fallback: "Previous month net spending")
+  /// When available, Apple’s on-device model interprets your question. Financial records are not sent to the model. Swift code performs the calculations locally. Questions and answers are not saved. Suggested questions work without Apple Intelligence.
+  internal static let privacyAssistantDetails = FinanceStrings.tr("Localizable", "privacyAssistantDetails", fallback: "When available, Apple’s on-device model interprets your question. Financial records are not sent to the model. Swift code performs the calculations locally. Questions and answers are not saved. Suggested questions work without Apple Intelligence.")
+  /// On-device assistant
+  internal static let privacyAssistantTitle = FinanceStrings.tr("Localizable", "privacyAssistantTitle", fallback: "On-device assistant")
+  /// System backups may include FinAI data, depending on your device and iCloud backup settings. Manage those backups in iOS Settings. Local storage does not mean your system backups stay on this device.
+  internal static let privacyBackupDetails = FinanceStrings.tr("Localizable", "privacyBackupDetails", fallback: "System backups may include FinAI data, depending on your device and iCloud backup settings. Manage those backups in iOS Settings. Local storage does not mean your system backups stay on this device.")
+  /// Device backups
+  internal static let privacyBackupTitle = FinanceStrings.tr("Localizable", "privacyBackupTitle", fallback: "Device backups")
+  /// Imports are processed on this device and saved only after confirmation. FinAI does not retain a copy of the source file or change it. Choosing a file from a cloud provider in Files may download it to your device.
+  internal static let privacyImportDetails = FinanceStrings.tr("Localizable", "privacyImportDetails", fallback: "Imports are processed on this device and saved only after confirmation. FinAI does not retain a copy of the source file or change it. Choosing a file from a cloud provider in Files may download it to your device.")
+  /// Imported files
+  internal static let privacyImportTitle = FinanceStrings.tr("Localizable", "privacyImportTitle", fallback: "Imported files")
+  /// FinAI stores your financial data locally. There is no required account, custom backend, bank connection or analytics service. FinAI does not sync your database with CloudKit.
+  internal static let privacyLocalDetails = FinanceStrings.tr("Localizable", "privacyLocalDetails", fallback: "FinAI stores your financial data locally. There is no required account, custom backend, bank connection or analytics service. FinAI does not sync your database with CloudKit.")
+  /// Stored on your device
+  internal static let privacyLocalTitle = FinanceStrings.tr("Localizable", "privacyLocalTitle", fallback: "Stored on your device")
   /// Financial details are hidden while the app is inactive.
   internal static let privacyPreviewHidden = FinanceStrings.tr("Localizable", "privacyPreviewHidden", fallback: "Financial details are hidden while the app is inactive.")
+  /// FinAI covers financial details while inactive and uses iOS Complete Data Protection for its database files. This is not a separate app lock and does not block screenshots while you are using the app.
+  internal static let privacyProtectionDetails = FinanceStrings.tr("Localizable", "privacyProtectionDetails", fallback: "FinAI covers financial details while inactive and uses iOS Complete Data Protection for its database files. This is not a separate app lock and does not block screenshots while you are using the app.")
+  /// While the app is inactive
+  internal static let privacyProtectionTitle = FinanceStrings.tr("Localizable", "privacyProtectionTitle", fallback: "While the app is inactive")
   /// Record repayment
   internal static let recordDebtRepayment = FinanceStrings.tr("Localizable", "recordDebtRepayment", fallback: "Record repayment")
   /// Possible recurring expenses, not confirmed contracts. Matching uses at least three equal payments to the same saved merchant, on one account and in one currency. Weekly dates may vary by one day; monthly and yearly dates by three days.
@@ -746,6 +772,22 @@ internal enum FinanceStrings {
   internal static func selectedTransactions(_ p1: Int) -> String {
     return FinanceStrings.tr("Localizable", "selectedTransactions", p1, fallback: "Selected transactions: %lld")
   }
+  /// Settings
+  internal static let settings = FinanceStrings.tr("Localizable", "settings", fallback: "Settings")
+  /// Appearance
+  internal static let settingsAppearance = FinanceStrings.tr("Localizable", "settingsAppearance", fallback: "Appearance")
+  /// System follows your device appearance. Your choice is saved on this device.
+  internal static let settingsAppearanceExplanation = FinanceStrings.tr("Localizable", "settingsAppearanceExplanation", fallback: "System follows your device appearance. Your choice is saved on this device.")
+  /// Language
+  internal static let settingsLanguage = FinanceStrings.tr("Localizable", "settingsLanguage", fallback: "Language")
+  /// FinAI supports English and Ukrainian. Choose the app language in iOS Settings. Your regional number, currency and date formats are kept.
+  internal static let settingsLanguageExplanation = FinanceStrings.tr("Localizable", "settingsLanguageExplanation", fallback: "FinAI supports English and Ukrainian. Choose the app language in iOS Settings. Your regional number, currency and date formats are kept.")
+  /// Could not open Settings. Open the iOS Settings app and find FinAI to change its language.
+  internal static let settingsLanguageUnavailable = FinanceStrings.tr("Localizable", "settingsLanguageUnavailable", fallback: "Could not open Settings. Open the iOS Settings app and find FinAI to change its language.")
+  /// Open iOS language settings
+  internal static let settingsOpenLanguage = FinanceStrings.tr("Localizable", "settingsOpenLanguage", fallback: "Open iOS language settings")
+  /// Privacy
+  internal static let settingsPrivacy = FinanceStrings.tr("Localizable", "settingsPrivacy", fallback: "Privacy")
   /// Shopping
   internal static let shopping = FinanceStrings.tr("Localizable", "shopping", fallback: "Shopping")
   /// Skip this transaction

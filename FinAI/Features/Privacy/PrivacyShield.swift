@@ -10,7 +10,13 @@ import UIKit
 
 /// Attaches one privacy window to the same scene as this SwiftUI hierarchy, including its sheets.
 struct PrivacyShield: UIViewRepresentable {
-    func makeCoordinator() -> PrivacyShieldWindowController { PrivacyShieldWindowController() }
+    var appearance: AppAppearance = .system
+
+    func makeCoordinator() -> PrivacyShieldWindowController {
+        let controller = PrivacyShieldWindowController()
+        controller.appearance = appearance
+        return controller
+    }
 
     func makeUIView(context: Context) -> SceneObserverView {
         let view = SceneObserverView()
@@ -19,6 +25,7 @@ struct PrivacyShield: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: SceneObserverView, context: Context) {
+        context.coordinator.appearance = appearance
         context.coordinator.attach(to: uiView.window?.windowScene)
     }
 

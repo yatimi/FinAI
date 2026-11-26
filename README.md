@@ -28,13 +28,16 @@ The capabilities below describe the development branch for the upcoming **0.3.0*
 - Personal debts in either direction, with optional due dates, dated partial repayments and exact remaining amounts in the original currency
 - Saved-transaction editing from a list swipe action or transaction details, with validation, explicit saving and preserved original values
 - A read-only spending assistant with suggested questions, optional on-device free-text interpretation, currency-separated results and transaction drilldowns
-- English String Catalog localization and locale-aware money and date formatting
+- English and Ukrainian interfaces with locale-aware money and date formatting
+- Settings with saved System, Light and Dark appearance, an iOS app-language shortcut and an in-app privacy explanation
 
 Demo data is loaded only after confirmation and only into an empty store. It includes salary, rent, groceries, transport, subscriptions, utilities, shopping, refunds and transfers across three months. No bank account or personal data is needed.
 
 ## How it works
 
 The three tabs are **Home**, **Transactions** and **Plan**. Home links to analytics and accounts. Plan shows monthly budget limits, net spending, remaining amounts and overspend alongside manually recorded goal savings, remaining targets and deadline status. Progress bars accompany exact currency amounts. Create a budget or goal from the plus menu and open a saved item to edit it.
+
+Open Settings from the gear button on Home. Appearance changes apply immediately and persist on this device. Choose English or Ukrainian through the app's language setting in iOS Settings; regional money, number and date formats remain separate from the interface language.
 
 Swift code calculates every total using `Decimal`. Currencies are kept separate, transfers are excluded from spending and income, and refunds reduce net spending without becoming income. Adjustments and unknown transactions are excluded from the monthly summary. The overview describes activity, not account balances. Analytics compares the current calendar month with the full previous month using saved transactions; the current month may be incomplete. Refunds apply to their recorded month and category. Percentage changes are shown only for a positive previous net spending total.
 

@@ -13,6 +13,7 @@ Local spending assistance, planning and a first supported PDF statement format.
 - Review imports in a compact layout and correct saved transactions while preserving their original values and import identity.
 - Explore calendar-month charts, category and merchant breakdowns, and the contributing transactions through Home, Transactions and Plan.
 - Apply iOS Complete Data Protection to the local store and SQLite sidecars, and cover inactive app screens and sheets with a privacy window. System backups remain supported.
+- Choose a saved System, Light or Dark appearance, use the interface in English or Ukrainian, and review local processing, imports, backups and privacy protection in Settings.
 
 ### Scope and limitations
 
