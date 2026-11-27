@@ -18,7 +18,7 @@ final class RecurringPaymentsUITests: XCTestCase {
         app.tabBars.buttons["Home"].tap()
         app.buttons["Analytics"].tap()
         app.buttons[AccessibilityID.openRecurringPayments].tap()
-        XCTAssertTrue(app.staticTexts["No regular payment patterns found. More transaction history may be needed."].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["No recurring payments found. Import more transaction history to check for regular payments."].waitForExistence(timeout: 5))
         app.navigationBars.buttons["Analytics"].tap()
         app.navigationBars.buttons["FinAI"].tap()
         app.buttons[AccessibilityID.loadDemo].tap()
@@ -29,7 +29,7 @@ final class RecurringPaymentsUITests: XCTestCase {
         app.buttons[AccessibilityID.openRecurringPayments].tap()
         let list = app.collectionViews[AccessibilityID.recurringPayments]
         XCTAssertTrue(list.waitForExistence(timeout: 5))
-        XCTAssertFalse(app.staticTexts["No regular payment patterns found. More transaction history may be needed."].exists)
+        XCTAssertFalse(app.staticTexts["No recurring payments found. Import more transaction history to check for regular payments."].exists)
         let interval = app.staticTexts.containing(NSPredicate(format: "label CONTAINS %@", "Monthly")).firstMatch
         for _ in 0..<3 where !interval.exists { list.swipeUp() }
         XCTAssertTrue(interval.exists, app.debugDescription)

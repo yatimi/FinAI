@@ -51,7 +51,7 @@ final class AssistantScopeUITests: XCTestCase {
         attachment.name = "Assistant-rent-exclusion-largest-text-dark"
         attachment.lifetime = .keepAlways
         add(attachment)
-        let remove = app.buttons["Include the excluded merchant again"]
+        let remove = app.buttons["Include this merchant"]
         reveal(remove, in: app, upward: false)
         remove.tap()
         assertTotal("1,711.48", in: app)
@@ -69,7 +69,9 @@ final class AssistantScopeUITests: XCTestCase {
         let excluded = app.staticTexts["Excluded merchant"]
         reveal(excluded, in: app)
         XCTAssertTrue(excluded.exists)
-        XCTAssertTrue(app.staticTexts["Demo rent"].exists)
+        let selectedMerchant = app.staticTexts["Demo rent"]
+        reveal(selectedMerchant, in: app)
+        XCTAssertTrue(selectedMerchant.exists)
     }
 
     @MainActor

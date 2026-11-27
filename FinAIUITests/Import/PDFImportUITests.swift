@@ -32,7 +32,7 @@ final class PDFImportUITests: XCTestCase {
         app.launch()
         let account = app.textFields[AccessibilityID.importAccountName]
         XCTAssertTrue(account.waitForExistence(timeout: 15))
-        XCTAssertFalse(app.staticTexts["Column mapping"].exists)
+        XCTAssertFalse(app.staticTexts["Match columns"].exists)
         XCTAssertTrue(app.staticTexts["Statement currency: EUR"].exists)
         account.tap()
         account.typeText("Statement bank")

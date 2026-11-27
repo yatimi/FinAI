@@ -34,7 +34,7 @@ final class DebtsUITests: XCTestCase {
         let add = app.buttons["Add debt"]
         reveal(add, in: app)
         add.tap()
-        let person = app.textFields["Person"]
+        let person = app.textFields["Person’s name"]
         reveal(person, in: app)
         person.tap(); person.typeText("Alex")
         app.buttons["Done"].tap()

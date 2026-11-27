@@ -13,34 +13,50 @@ struct ContentView: View {
     @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
+        tabs
+        .background { PrivacyShield(appearance: store.settings.appearance).frame(width: 0, height: 0).accessibilityHidden(true) }
+        .tint(FinanceStyle.ColorRole.accent)
+        .safeAreaInset(edge: .top) {
+            if let failure = store.failure {
+                VStack(spacing: 8) {
+                    Text(failure == .loading
+                         ? .unableToLoadLocalDataYourSavedDataHasNotBeenReplaced
+                         : .unableToSaveDemoDataPleaseTryAgain)
+                    Button(.tryAgain) { store.send(.refresh) }
+                }
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(.regularMaterial)
+                .accessibilityIdentifier(AccessibilityID.dataError)
+            }
+        }
+        .alert($store.scope(state: \.alert, action: \.alert))
+        .sheet(isPresented: $store.isSettingsPresented) {
+            SettingsView(store: store.scope(state: \.settings, action: \.settings)) {
+                store.send(.binding(.set(\.isSettingsPresented, false)))
+            }
+        }
+        .sheet(item: $store.scope(state: \.assistant, action: \.assistant)) { AssistantView(store: $0) }
+        .sheet(item: $store.scope(state: \.detail, action: \.detail)) { detailStore in
+            TransactionDetailView(store: detailStore)
+        }
+        .sheet(item: $store.scope(state: \.merchantRules, action: \.merchantRules)) { MerchantRulesView(store: $0) }
+        .sheet(item: $store.scope(state: \.budgets, action: \.budgets)) { BudgetsView(store: $0) }
+        .sheet(item: $store.scope(state: \.goals, action: \.goals)) { GoalsView(store: $0) }
+        .sheet(item: $store.scope(state: \.debts, action: \.debts)) { DebtsView(store: $0) }
+        .sheet(item: $store.scope(state: \.importFlow, action: \.importFlow)) { ImportView(store: $0) }
+        .preferredColorScheme(store.settings.appearance.colorScheme)
+        .task { await store.send(.task).finish() }
+        .onDisappear { store.send(.cancelLoading) }
+        .onChange(of: scenePhase) { _, phase in
+            if phase == .active { store.send(.refresh) }
+        }
+    }
+
+    private var tabs: some View {
         TabView(selection: $store.selectedTab) {
             Tab(.home, systemImage: AppSymbol.home.rawValue, value: .dashboard) {
-                NavigationStack {
-                    DashboardView(overview: store.overview, isLoading: store.isLoading) {
-                        store.send(.demoTapped)
-                    }
-                    .safeAreaInset(edge: .bottom) {
-                        ViewThatFits(in: .horizontal) {
-                            HStack {
-                                analyticsLink
-                                Spacer()
-                                accountsLink
-                            }
-                            VStack(alignment: .leading, spacing: FinanceStyle.Spacing.standard) {
-                                analyticsLink
-                                accountsLink
-                            }
-                        }
-                        .padding()
-                        .background(FinanceStyle.Surface.card)
-                    }
-                    .navigationTitle(.finAI)
-                    .toolbar {
-                        assistantButton
-                        importButton
-                        refreshButton
-                    }
-                }
+                homeView
             }
             Tab(.transactions, systemImage: AppSymbol.transactions.rawValue, value: .transactions) {
                 NavigationStack {
@@ -64,37 +80,40 @@ struct ContentView: View {
                 }
             }
         }
-        .background { PrivacyShield().frame(width: 0, height: 0).accessibilityHidden(true) }
-        .tint(FinanceStyle.ColorRole.accent)
-        .safeAreaInset(edge: .top) {
-            if let failure = store.failure {
-                VStack(spacing: 8) {
-                    Text(failure == .loading
-                         ? .unableToLoadLocalDataYourSavedDataHasNotBeenReplaced
-                         : .unableToSaveDemoDataPleaseTryAgain)
-                    Button(.tryAgain) { store.send(.refresh) }
+    }
+
+    private var homeView: some View {
+        NavigationStack {
+            DashboardView(overview: store.overview, isLoading: store.isLoading) {
+                store.send(.demoTapped)
+            }
+            .safeAreaInset(edge: .bottom) { overviewLinks }
+            .navigationTitle(.finAI)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) { settingsButton }
+                ToolbarItemGroup(placement: .topBarTrailing) {
+                    assistantButton
+                    importButton
+                    refreshButton
                 }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(.regularMaterial)
-                .accessibilityIdentifier(AccessibilityID.dataError)
             }
         }
-        .alert($store.scope(state: \.alert, action: \.alert))
-        .sheet(item: $store.scope(state: \.assistant, action: \.assistant)) { AssistantView(store: $0) }
-        .sheet(item: $store.scope(state: \.detail, action: \.detail)) { detailStore in
-            TransactionDetailView(store: detailStore)
+    }
+
+    private var overviewLinks: some View {
+        ViewThatFits(in: .horizontal) {
+            HStack {
+                analyticsLink
+                Spacer()
+                accountsLink
+            }
+            VStack(alignment: .leading, spacing: FinanceStyle.Spacing.standard) {
+                analyticsLink
+                accountsLink
+            }
         }
-        .sheet(item: $store.scope(state: \.merchantRules, action: \.merchantRules)) { MerchantRulesView(store: $0) }
-        .sheet(item: $store.scope(state: \.budgets, action: \.budgets)) { BudgetsView(store: $0) }
-        .sheet(item: $store.scope(state: \.goals, action: \.goals)) { GoalsView(store: $0) }
-        .sheet(item: $store.scope(state: \.debts, action: \.debts)) { DebtsView(store: $0) }
-        .sheet(item: $store.scope(state: \.importFlow, action: \.importFlow)) { ImportView(store: $0) }
-        .task { await store.send(.task).finish() }
-        .onDisappear { store.send(.cancelLoading) }
-        .onChange(of: scenePhase) { _, phase in
-            if phase == .active { store.send(.refresh) }
-        }
+        .padding()
+        .background(FinanceStyle.Surface.card)
     }
 
     private var analyticsLink: some View {
@@ -119,6 +138,13 @@ struct ContentView: View {
         } label: {
             Label(.accounts, systemImage: AppSymbol.accounts.rawValue)
         }
+    }
+
+    private var settingsButton: some View {
+        Button(.settings, systemImage: AppSymbol.settings.rawValue) {
+            store.send(.binding(.set(\.isSettingsPresented, true)))
+        }
+        .accessibilityIdentifier(AccessibilityID.openSettings)
     }
 
     private var assistantButton: some View {

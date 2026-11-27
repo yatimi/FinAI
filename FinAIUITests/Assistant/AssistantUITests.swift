@@ -68,7 +68,7 @@ final class AssistantUITests: XCTestCase {
         for _ in 0..<10 where !compare.isHittable { list.swipeUp() }
         XCTAssertTrue(compare.isHittable)
         compare.tap()
-        let changes = app.staticTexts["Recorded changes by category"]
+        let changes = app.staticTexts["Changes by category"]
         for _ in 0..<18 where !changes.isHittable { list.swipeUp() }
         XCTAssertTrue(changes.isHittable)
         let attachment = XCTAttachment(screenshot: app.screenshot())

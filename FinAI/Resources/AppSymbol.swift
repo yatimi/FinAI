@@ -6,6 +6,7 @@
 //
 
 enum AppSymbol: String {
+    case settings = "gearshape"
     case whatIf = "arrow.triangle.branch"
     case previous = "chevron.left"
     case next = "chevron.right"
