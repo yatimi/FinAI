@@ -18,8 +18,7 @@ final class CSVImportUITests: XCTestCase {
         let accountName = app.textFields[AccessibilityID.importAccountName]
         XCTAssertTrue(accountName.waitForExistence(timeout: 15))
         accountName.tap()
-        accountName.typeText("Test bank")
-        app.keyboards.buttons["Done"].tap()
+        accountName.typeText("Test bank\n")
         let preview = app.buttons[AccessibilityID.previewImport]
         for _ in 0..<8 {
             if preview.isHittable { break }
@@ -29,7 +28,7 @@ final class CSVImportUITests: XCTestCase {
         preview.tap()
         XCTAssertTrue(app.navigationBars["Review import"].waitForExistence(timeout: 10))
         XCTAssertTrue(app.staticTexts["Selected transactions: 2"].exists)
-        XCTAssertTrue(app.staticTexts["Invalid rows to skip: 1"].exists)
+        XCTAssertTrue(app.staticTexts["Rows with errors to skip: 1"].exists)
         let compact = app.switches[AccessibilityID.compactImportReview]
         XCTAssertEqual(compact.value as? String, "1")
         XCTAssertFalse(app.textFields["Merchant or payee"].firstMatch.exists)
@@ -44,8 +43,7 @@ final class CSVImportUITests: XCTestCase {
         }
         XCTAssertEqual(merchant.value as? String, "REWE")
         merchant.tap()
-        merchant.typeText(" Market")
-        app.keyboards.buttons["Done"].tap()
+        merchant.typeText(" Market\n")
         let reviewNavigationBar = app.navigationBars["Review import"]
         for _ in 0..<8 {
             if compact.isHittable, compact.frame.minY > reviewNavigationBar.frame.maxY { break }

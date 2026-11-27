@@ -18,8 +18,7 @@ final class MerchantRulesUITests: XCTestCase {
         let account = app.textFields[AccessibilityID.importAccountName]
         XCTAssertTrue(account.waitForExistence(timeout: 15))
         account.tap()
-        account.typeText("Test bank")
-        app.keyboards.buttons["Done"].tap()
+        account.typeText("Test bank\n")
         let preview = app.buttons[AccessibilityID.previewImport]
         reveal(preview, app: app)
         preview.tap()
@@ -34,15 +33,14 @@ final class MerchantRulesUITests: XCTestCase {
         let merchant = app.textFields[AccessibilityID.ruleMerchant]
         reveal(merchant, app: app)
         merchant.tap()
-        merchant.typeText(" Family")
-        app.keyboards.buttons["Done"].tap()
+        merchant.typeText(" Family\n")
         let save = app.buttons[AccessibilityID.saveMerchantRule]
         reveal(save, app: app)
         save.tap()
         XCTAssertTrue(app.buttons["Add rule"].waitForExistence(timeout: 10))
         app.navigationBars["Merchant rules"].buttons["Close"].tap()
-        for _ in 0..<10 where !app.buttons["Edit mapping"].isHittable { app.swipeDown() }
-        app.buttons["Edit mapping"].tap()
+        for _ in 0..<10 where !app.buttons["Change columns"].isHittable { app.swipeDown() }
+        app.buttons["Change columns"].tap()
         reveal(preview, app: app)
         preview.tap()
         XCTAssertTrue(app.navigationBars["Review import"].waitForExistence(timeout: 10))

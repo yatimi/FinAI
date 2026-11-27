@@ -12,14 +12,14 @@ import Foundation
 internal enum FinanceStrings {
   /// Account
   internal static let account = FinanceStrings.tr("Localizable", "account", fallback: "Account")
-  /// Account kind
-  internal static let accountKind = FinanceStrings.tr("Localizable", "accountKind", fallback: "Account kind")
+  /// Account type
+  internal static let accountKind = FinanceStrings.tr("Localizable", "accountKind", fallback: "Account type")
   /// Account name
   internal static let accountName = FinanceStrings.tr("Localizable", "accountName", fallback: "Account name")
   /// Accounts
   internal static let accounts = FinanceStrings.tr("Localizable", "accounts", fallback: "Accounts")
-  /// A CSV field is too long.
-  internal static let aCsvFieldIsTooLong = FinanceStrings.tr("Localizable", "aCsvFieldIsTooLong", fallback: "A CSV field is too long.")
+  /// One CSV value is too long. Shorten it and choose the file again.
+  internal static let aCsvFieldIsTooLong = FinanceStrings.tr("Localizable", "aCsvFieldIsTooLong", fallback: "One CSV value is too long. Shorten it and choose the file again.")
   /// Add budget
   internal static let addBudget = FinanceStrings.tr("Localizable", "addBudget", fallback: "Add budget")
   /// Add debt
@@ -64,84 +64,84 @@ internal enum FinanceStrings {
   internal static let assistant = FinanceStrings.tr("Localizable", "assistant", fallback: "Assistant")
   /// Answer
   internal static let assistantAnswer = FinanceStrings.tr("Localizable", "assistantAnswer", fallback: "Answer")
-  /// Interpreted query
-  internal static let assistantAnswerScope = FinanceStrings.tr("Localizable", "assistantAnswerScope", fallback: "Interpreted query")
+  /// What’s included
+  internal static let assistantAnswerScope = FinanceStrings.tr("Localizable", "assistantAnswerScope", fallback: "What’s included")
   /// Ask
   internal static let assistantAsk = FinanceStrings.tr("Localizable", "assistantAsk", fallback: "Ask")
-  /// The recorded data could not be calculated safely. No answer is shown. Try again after reviewing your transactions.
-  internal static let assistantCalculationFailed = FinanceStrings.tr("Localizable", "assistantCalculationFailed", fallback: "The recorded data could not be calculated safely. No answer is shown. Try again after reviewing your transactions.")
-  /// Recorded changes by category
-  internal static let assistantCategoryChanges = FinanceStrings.tr("Localizable", "assistantCategoryChanges", fallback: "Recorded changes by category")
+  /// Couldn’t calculate an accurate answer. Check your transactions and try again.
+  internal static let assistantCalculationFailed = FinanceStrings.tr("Localizable", "assistantCalculationFailed", fallback: "Couldn’t calculate an accurate answer. Check your transactions and try again.")
+  /// Changes by category
+  internal static let assistantCategoryChanges = FinanceStrings.tr("Localizable", "assistantCategoryChanges", fallback: "Changes by category")
   /// Spending by category
   internal static let assistantCategoryQuestion = FinanceStrings.tr("Localizable", "assistantCategoryQuestion", fallback: "Spending by category")
   /// Check availability
   internal static let assistantCheckAvailability = FinanceStrings.tr("Localizable", "assistantCheckAvailability", fallback: "Check availability")
-  /// Choose the saved merchant for rent
-  internal static let assistantChooseRentMerchant = FinanceStrings.tr("Localizable", "assistantChooseRentMerchant", fallback: "Choose the saved merchant for rent")
-  /// No unique saved merchant matched the question. Choose a merchant from the suggested questions to use its exact saved name.
-  internal static let assistantChooseSavedMerchant = FinanceStrings.tr("Localizable", "assistantChooseSavedMerchant", fallback: "No unique saved merchant matched the question. Choose a merchant from the suggested questions to use its exact saved name.")
+  /// Who do you pay rent to?
+  internal static let assistantChooseRentMerchant = FinanceStrings.tr("Localizable", "assistantChooseRentMerchant", fallback: "Who do you pay rent to?")
+  /// Couldn’t identify one merchant. Choose a merchant from the suggested questions.
+  internal static let assistantChooseSavedMerchant = FinanceStrings.tr("Localizable", "assistantChooseSavedMerchant", fallback: "Couldn’t identify one merchant. Choose a merchant from the suggested questions.")
   /// Clear
   internal static let assistantClear = FinanceStrings.tr("Localizable", "assistantClear", fallback: "Clear")
   /// What changed from last month?
   internal static let assistantCompareQuestion = FinanceStrings.tr("Localizable", "assistantCompareQuestion", fallback: "What changed from last month?")
   /// Spending comparison
   internal static let assistantComparison = FinanceStrings.tr("Localizable", "assistantComparison", fallback: "Spending comparison")
-  /// Free-text questions need a device that supports Apple Intelligence. Suggested questions work on this device.
-  internal static let assistantDeviceUnavailable = FinanceStrings.tr("Localizable", "assistantDeviceUnavailable", fallback: "Free-text questions need a device that supports Apple Intelligence. Suggested questions work on this device.")
-  /// Enable Apple Intelligence in Settings to ask free-text questions. Suggested questions work without it.
-  internal static let assistantEnableIntelligence = FinanceStrings.tr("Localizable", "assistantEnableIntelligence", fallback: "Enable Apple Intelligence in Settings to ask free-text questions. Suggested questions work without it.")
+  /// This device doesn’t support Apple Intelligence. You can still use suggested questions.
+  internal static let assistantDeviceUnavailable = FinanceStrings.tr("Localizable", "assistantDeviceUnavailable", fallback: "This device doesn’t support Apple Intelligence. You can still use suggested questions.")
+  /// Turn on Apple Intelligence in Settings to ask more questions. Suggested questions work without it.
+  internal static let assistantEnableIntelligence = FinanceStrings.tr("Localizable", "assistantEnableIntelligence", fallback: "Turn on Apple Intelligence in Settings to ask more questions. Suggested questions work without it.")
   /// Excluded merchant
   internal static let assistantExcludedMerchant = FinanceStrings.tr("Localizable", "assistantExcludedMerchant", fallback: "Excluded merchant")
   /// All recorded expenses and refunds at this saved merchant are excluded. Other housing transactions remain included.
   internal static let assistantExclusionExplanation = FinanceStrings.tr("Localizable", "assistantExclusionExplanation", fallback: "All recorded expenses and refunds at this saved merchant are excluded. Other housing transactions remain included.")
   /// Follow up
   internal static let assistantFollowUp = FinanceStrings.tr("Localizable", "assistantFollowUp", fallback: "Follow up")
-  /// Switch months while keeping this query, category and merchant exclusion. “Without rent” asks you to choose which saved merchant to exclude.
-  internal static let assistantFollowUpExplanation = FinanceStrings.tr("Localizable", "assistantFollowUpExplanation", fallback: "Switch months while keeping this query, category and merchant exclusion. “Without rent” asks you to choose which saved merchant to exclude.")
+  /// Switch months without changing the category or excluded merchant. Choose “Without rent” to select whose payments to leave out.
+  internal static let assistantFollowUpExplanation = FinanceStrings.tr("Localizable", "assistantFollowUpExplanation", fallback: "Switch months without changing the category or excluded merchant. Choose “Without rent” to select whose payments to leave out.")
   /// And last month?
   internal static let assistantFollowUpLastMonth = FinanceStrings.tr("Localizable", "assistantFollowUpLastMonth", fallback: "And last month?")
-  /// Suggested questions and complete category phrases such as “How much did I spend on groceries?” work without the model. After an answer, use “And last month?”, “And this month?” or “And without rent?”. Rent exclusion asks you to choose its saved merchant.
-  internal static let assistantFollowUpTextExplanation = FinanceStrings.tr("Localizable", "assistantFollowUpTextExplanation", fallback: "Suggested questions and complete category phrases such as “How much did I spend on groceries?” work without the model. After an answer, use “And last month?”, “And this month?” or “And without rent?”. Rent exclusion asks you to choose its saved merchant.")
+  /// Suggested questions and phrases like “How much did I spend on groceries?” work without Apple Intelligence. After an answer, try “And last month?”, “And this month?” or “And without rent?”. For rent, you’ll choose whose payments to leave out.
+  internal static let assistantFollowUpTextExplanation = FinanceStrings.tr("Localizable", "assistantFollowUpTextExplanation", fallback: "Suggested questions and phrases like “How much did I spend on groceries?” work without Apple Intelligence. After an answer, try “And last month?”, “And this month?” or “And without rent?”. For rent, you’ll choose whose payments to leave out.")
   /// And this month?
   internal static let assistantFollowUpThisMonth = FinanceStrings.tr("Localizable", "assistantFollowUpThisMonth", fallback: "And this month?")
-  /// The on-device model could not interpret this question. Try rephrasing it or use a suggested question.
-  internal static let assistantInterpretationFailed = FinanceStrings.tr("Localizable", "assistantInterpretationFailed", fallback: "The on-device model could not interpret this question. Try rephrasing it or use a suggested question.")
-  /// Explore recorded spending for this month or last month. Compare months or choose a category or saved merchant. Follow-ups keep the selected category and merchant exclusion when switching months.
-  internal static let assistantIntroduction = FinanceStrings.tr("Localizable", "assistantIntroduction", fallback: "Explore recorded spending for this month or last month. Compare months or choose a category or saved merchant. Follow-ups keep the selected category and merchant exclusion when switching months.")
-  /// The on-device model does not support the current language. You can still use the suggested questions.
-  internal static let assistantLanguageUnavailable = FinanceStrings.tr("Localizable", "assistantLanguageUnavailable", fallback: "The on-device model does not support the current language. You can still use the suggested questions.")
+  /// Couldn’t understand this question. Try rephrasing it or choose a suggested question.
+  internal static let assistantInterpretationFailed = FinanceStrings.tr("Localizable", "assistantInterpretationFailed", fallback: "Couldn’t understand this question. Try rephrasing it or choose a suggested question.")
+  /// Ask about spending this month or last month. Compare months or explore a category or merchant. Follow-up questions keep your category and excluded merchant when you switch months.
+  internal static let assistantIntroduction = FinanceStrings.tr("Localizable", "assistantIntroduction", fallback: "Ask about spending this month or last month. Compare months or explore a category or merchant. Follow-up questions keep your category and excluded merchant when you switch months.")
+  /// The on-device assistant doesn’t support this language. You can still use suggested questions.
+  internal static let assistantLanguageUnavailable = FinanceStrings.tr("Localizable", "assistantLanguageUnavailable", fallback: "The on-device assistant doesn’t support this language. You can still use suggested questions.")
   /// How much did I spend last month?
   internal static let assistantLastMonthQuestion = FinanceStrings.tr("Localizable", "assistantLastMonthQuestion", fallback: "How much did I spend last month?")
   /// Spending at a merchant this month
   internal static let assistantMerchantQuestion = FinanceStrings.tr("Localizable", "assistantMerchantQuestion", fallback: "Spending at a merchant this month")
-  /// The on-device language model is not ready. You can use the suggested questions while it becomes available.
-  internal static let assistantModelNotReady = FinanceStrings.tr("Localizable", "assistantModelNotReady", fallback: "The on-device language model is not ready. You can use the suggested questions while it becomes available.")
-  /// Free-text questions are currently unavailable. Check Apple Intelligence availability or use a suggested question.
-  internal static let assistantModelUnavailable = FinanceStrings.tr("Localizable", "assistantModelUnavailable", fallback: "Free-text questions are currently unavailable. Check Apple Intelligence availability or use a suggested question.")
+  /// Apple Intelligence isn’t ready yet. Use a suggested question while you wait.
+  internal static let assistantModelNotReady = FinanceStrings.tr("Localizable", "assistantModelNotReady", fallback: "Apple Intelligence isn’t ready yet. Use a suggested question while you wait.")
+  /// FinAI can’t use Apple Intelligence right now. Check its availability or choose a suggested question.
+  internal static let assistantModelUnavailable = FinanceStrings.tr("Localizable", "assistantModelUnavailable", fallback: "FinAI can’t use Apple Intelligence right now. Check its availability or choose a suggested question.")
   /// No net spending changes by category.
   internal static let assistantNoCategoryChanges = FinanceStrings.tr("Localizable", "assistantNoCategoryChanges", fallback: "No net spending changes by category.")
   /// Questions are processed on this device. Calculations use saved transactions; questions and answers are not saved.
   internal static let assistantPrivacyExplanation = FinanceStrings.tr("Localizable", "assistantPrivacyExplanation", fallback: "Questions are processed on this device. Calculations use saved transactions; questions and answers are not saved.")
-  /// Up to 1,000 characters. Supported periods: this month and last month.
-  internal static let assistantQuestionLimit = FinanceStrings.tr("Localizable", "assistantQuestionLimit", fallback: "Up to 1,000 characters. Supported periods: this month and last month.")
-  /// Ask about recorded spending
-  internal static let assistantQuestionPlaceholder = FinanceStrings.tr("Localizable", "assistantQuestionPlaceholder", fallback: "Ask about recorded spending")
-  /// Include the excluded merchant again
-  internal static let assistantRemoveExclusion = FinanceStrings.tr("Localizable", "assistantRemoveExclusion", fallback: "Include the excluded merchant again")
-  /// Choose the merchant whose payments represent rent. All expenses and refunds at that merchant will be excluded, including any payments unrelated to rent. Housing is not excluded automatically.
-  internal static let assistantRentMerchantExplanation = FinanceStrings.tr("Localizable", "assistantRentMerchantExplanation", fallback: "Choose the merchant whose payments represent rent. All expenses and refunds at that merchant will be excluded, including any payments unrelated to rent. Housing is not excluded automatically.")
+  /// Up to 1,000 characters. Ask about this month or last month.
+  internal static let assistantQuestionLimit = FinanceStrings.tr("Localizable", "assistantQuestionLimit", fallback: "Up to 1,000 characters. Ask about this month or last month.")
+  /// Ask about your spending
+  internal static let assistantQuestionPlaceholder = FinanceStrings.tr("Localizable", "assistantQuestionPlaceholder", fallback: "Ask about your spending")
+  /// Include this merchant
+  internal static let assistantRemoveExclusion = FinanceStrings.tr("Localizable", "assistantRemoveExclusion", fallback: "Include this merchant")
+  /// Choose the recipient of your rent payments. All expenses and refunds for this merchant will be excluded, even payments unrelated to rent. Other Housing transactions stay included.
+  internal static let assistantRentMerchantExplanation = FinanceStrings.tr("Localizable", "assistantRentMerchantExplanation", fallback: "Choose the recipient of your rent payments. All expenses and refunds for this merchant will be excluded, even payments unrelated to rent. Other Housing transactions stay included.")
   /// Net spending is expenses minus refunds, across all saved accounts. Income, transfers, adjustments and unknown transactions are excluded. Currencies stay separate.
   internal static let assistantScopeExplanation = FinanceStrings.tr("Localizable", "assistantScopeExplanation", fallback: "Net spending is expenses minus refunds, across all saved accounts. Income, transfers, adjustments and unknown transactions are excluded. Currencies stay separate.")
   /// Suggested questions
   internal static let assistantSuggestedQuestions = FinanceStrings.tr("Localizable", "assistantSuggestedQuestions", fallback: "Suggested questions")
   /// How much did I spend this month?
   internal static let assistantThisMonthQuestion = FinanceStrings.tr("Localizable", "assistantThisMonthQuestion", fallback: "How much did I spend this month?")
-  /// This question could not be matched to a supported query. Ask about spending, one category, a month comparison or one merchant for this month or last month, or use a suggested question.
-  internal static let assistantUnsupportedQuestion = FinanceStrings.tr("Localizable", "assistantUnsupportedQuestion", fallback: "This question could not be matched to a supported query. Ask about spending, one category, a month comparison or one merchant for this month or last month, or use a suggested question.")
-  /// View previous month transactions
-  internal static let assistantViewPreviousTransactions = FinanceStrings.tr("Localizable", "assistantViewPreviousTransactions", fallback: "View previous month transactions")
-  /// View contributing transactions
-  internal static let assistantViewTransactions = FinanceStrings.tr("Localizable", "assistantViewTransactions", fallback: "View contributing transactions")
+  /// Try asking about spending, a category, a merchant or a month comparison for this month or last month. You can also choose a suggested question.
+  internal static let assistantUnsupportedQuestion = FinanceStrings.tr("Localizable", "assistantUnsupportedQuestion", fallback: "Try asking about spending, a category, a merchant or a month comparison for this month or last month. You can also choose a suggested question.")
+  /// View last month’s transactions
+  internal static let assistantViewPreviousTransactions = FinanceStrings.tr("Localizable", "assistantViewPreviousTransactions", fallback: "View last month’s transactions")
+  /// View transactions
+  internal static let assistantViewTransactions = FinanceStrings.tr("Localizable", "assistantViewTransactions", fallback: "View transactions")
   /// Without rent…
   internal static let assistantWithoutRent = FinanceStrings.tr("Localizable", "assistantWithoutRent", fallback: "Without rent…")
   /// Preparing answer
@@ -160,12 +160,12 @@ internal enum FinanceStrings {
   internal static let budgetDuplicateFailure = FinanceStrings.tr("Localizable", "budgetDuplicateFailure", fallback: "A budget already exists for this category and currency. Edit that budget instead.")
   /// Over budget
   internal static let budgetExceeded = FinanceStrings.tr("Localizable", "budgetExceeded", fallback: "Over budget")
-  /// Enter a valid positive limit and currency.
-  internal static let budgetInvalidInput = FinanceStrings.tr("Localizable", "budgetInvalidInput", fallback: "Enter a valid positive limit and currency.")
+  /// Enter a limit greater than zero and a supported currency.
+  internal static let budgetInvalidInput = FinanceStrings.tr("Localizable", "budgetInvalidInput", fallback: "Enter a limit greater than zero and a supported currency.")
   /// Monthly limit
   internal static let budgetLimit = FinanceStrings.tr("Localizable", "budgetLimit", fallback: "Monthly limit")
-  /// Monthly category limits across all accounts. Same-currency refunds received this month reduce spending; transfers and income are excluded. Limits repeat each calendar month. No currency conversion or money movement.
-  internal static let budgetPlanningExplanation = FinanceStrings.tr("Localizable", "budgetPlanningExplanation", fallback: "Monthly category limits across all accounts. Same-currency refunds received this month reduce spending; transfers and income are excluded. Limits repeat each calendar month. No currency conversion or money movement.")
+  /// Set a monthly limit for each category across all accounts. Refunds in the same currency reduce this month’s spending; transfers and income are excluded. Limits repeat each calendar month. Budgets do not move money or convert currencies.
+  internal static let budgetPlanningExplanation = FinanceStrings.tr("Localizable", "budgetPlanningExplanation", fallback: "Set a monthly limit for each category across all accounts. Refunds in the same currency reduce this month’s spending; transfers and income are excluded. Limits repeat each calendar month. Budgets do not move money or convert currencies.")
   /// Remaining
   internal static let budgetRemaining = FinanceStrings.tr("Localizable", "budgetRemaining", fallback: "Remaining")
   /// Budgets
@@ -174,8 +174,8 @@ internal enum FinanceStrings {
   internal static let budgetsLoadFailure = FinanceStrings.tr("Localizable", "budgetsLoadFailure", fallback: "Unable to load budgets. Try again before editing.")
   /// Net spending
   internal static let budgetSpent = FinanceStrings.tr("Localizable", "budgetSpent", fallback: "Net spending")
-  /// Unable to save budget. Your changes are kept. Try again.
-  internal static let budgetsSaveFailure = FinanceStrings.tr("Localizable", "budgetsSaveFailure", fallback: "Unable to save budget. Your changes are kept. Try again.")
+  /// Couldn’t save this budget. Your edits are still here. Try again.
+  internal static let budgetsSaveFailure = FinanceStrings.tr("Localizable", "budgetsSaveFailure", fallback: "Couldn’t save this budget. Your edits are still here. Try again.")
   /// Cancel
   internal static let cancel = FinanceStrings.tr("Localizable", "cancel", fallback: "Cancel")
   /// Cancel editing
@@ -206,14 +206,14 @@ internal enum FinanceStrings {
   internal static func column(_ p1: Int, _ p2: Any) -> String {
     return FinanceStrings.tr("Localizable", "column", p1, String(describing: p2), fallback: "Column %lld: %@")
   }
-  /// Column mapping
-  internal static let columnMapping = FinanceStrings.tr("Localizable", "columnMapping", fallback: "Column mapping")
+  /// Match columns
+  internal static let columnMapping = FinanceStrings.tr("Localizable", "columnMapping", fallback: "Match columns")
   /// Compact review
   internal static let compactReview = FinanceStrings.tr("Localizable", "compactReview", fallback: "Compact review")
   /// Confirm import
   internal static let confirmImport = FinanceStrings.tr("Localizable", "confirmImport", fallback: "Confirm import")
-  /// A rule for this description, match mode and transaction type already exists. Edit that rule instead.
-  internal static let conflictingMerchantRuleMessage = FinanceStrings.tr("Localizable", "conflictingMerchantRuleMessage", fallback: "A rule for this description, match mode and transaction type already exists. Edit that rule instead.")
+  /// A rule with this description, match type and transaction type already exists. Edit the existing rule.
+  internal static let conflictingMerchantRuleMessage = FinanceStrings.tr("Localizable", "conflictingMerchantRuleMessage", fallback: "A rule with this description, match type and transaction type already exists. Edit the existing rule.")
   /// Credit
   internal static let credit = FinanceStrings.tr("Localizable", "credit", fallback: "Credit")
   /// CSV file
@@ -256,20 +256,20 @@ internal enum FinanceStrings {
   internal static let debtDirection = FinanceStrings.tr("Localizable", "debtDirection", fallback: "Who owes whom")
   /// Due date
   internal static let debtDueDate = FinanceStrings.tr("Localizable", "debtDueDate", fallback: "Due date")
-  /// Record money you owe or lent to someone. Repayments reduce this debt only; they do not create bank transactions or change income, spending or account balances. Saved debts and repayments cannot be edited or deleted yet.
-  internal static let debtExplanation = FinanceStrings.tr("Localizable", "debtExplanation", fallback: "Record money you owe or lent to someone. Repayments reduce this debt only; they do not create bank transactions or change income, spending or account balances. Saved debts and repayments cannot be edited or deleted yet.")
+  /// Record money you owe or have lent. Repayments reduce only this debt. They do not create bank transactions or change income, spending or account balances. You can’t edit or delete saved debts or repayments yet.
+  internal static let debtExplanation = FinanceStrings.tr("Localizable", "debtExplanation", fallback: "Record money you owe or have lent. Repayments reduce only this debt. They do not create bank transactions or change income, spending or account balances. You can’t edit or delete saved debts or repayments yet.")
   /// Set a due date
   internal static let debtHasDueDate = FinanceStrings.tr("Localizable", "debtHasDueDate", fallback: "Set a due date")
-  /// Enter a person, a positive amount and a valid currency. Debt and repayment dates cannot be in the future. A repayment must be on or after the debt date and cannot exceed the remaining debt. The due date cannot precede the debt date.
-  internal static let debtInvalidInput = FinanceStrings.tr("Localizable", "debtInvalidInput", fallback: "Enter a person, a positive amount and a valid currency. Debt and repayment dates cannot be in the future. A repayment must be on or after the debt date and cannot exceed the remaining debt. The due date cannot precede the debt date.")
+  /// Enter a name, an amount greater than zero and a supported currency. Debt and repayment dates can’t be in the future. A repayment must be on or after the debt date and no more than the remaining debt. The due date must be on or after the debt date.
+  internal static let debtInvalidInput = FinanceStrings.tr("Localizable", "debtInvalidInput", fallback: "Enter a name, an amount greater than zero and a supported currency. Debt and repayment dates can’t be in the future. A repayment must be on or after the debt date and no more than the remaining debt. The due date must be on or after the debt date.")
   /// I owe
   internal static let debtIOwe = FinanceStrings.tr("Localizable", "debtIOwe", fallback: "I owe")
   /// Overdue
   internal static let debtOverdue = FinanceStrings.tr("Localizable", "debtOverdue", fallback: "Overdue")
   /// Owed to me
   internal static let debtOwedToMe = FinanceStrings.tr("Localizable", "debtOwedToMe", fallback: "Owed to me")
-  /// Person
-  internal static let debtPerson = FinanceStrings.tr("Localizable", "debtPerson", fallback: "Person")
+  /// Person’s name
+  internal static let debtPerson = FinanceStrings.tr("Localizable", "debtPerson", fallback: "Person’s name")
   /// Original debt amount
   internal static let debtPrincipal = FinanceStrings.tr("Localizable", "debtPrincipal", fallback: "Original debt amount")
   /// Remaining debt
@@ -286,20 +286,20 @@ internal enum FinanceStrings {
   internal static let debtSettled = FinanceStrings.tr("Localizable", "debtSettled", fallback: "Settled")
   /// Unable to load debts. Your saved data has not been replaced.
   internal static let debtsLoadFailure = FinanceStrings.tr("Localizable", "debtsLoadFailure", fallback: "Unable to load debts. Your saved data has not been replaced.")
-  /// Unable to save. Your draft is preserved; please try again.
-  internal static let debtsSaveFailure = FinanceStrings.tr("Localizable", "debtsSaveFailure", fallback: "Unable to save. Your draft is preserved; please try again.")
+  /// Couldn’t save this debt or repayment. Your edits are still here. Try again.
+  internal static let debtsSaveFailure = FinanceStrings.tr("Localizable", "debtsSaveFailure", fallback: "Couldn’t save this debt or repayment. Your edits are still here. Try again.")
   /// Debt date
   internal static let debtStartDate = FinanceStrings.tr("Localizable", "debtStartDate", fallback: "Debt date")
-  /// Default currency (EUR, USD…)
-  internal static let defaultCurrencyEurUsd = FinanceStrings.tr("Localizable", "defaultCurrencyEurUsd", fallback: "Default currency (EUR, USD…)")
+  /// Default currency (e.g. EUR)
+  internal static let defaultCurrencyEurUsd = FinanceStrings.tr("Localizable", "defaultCurrencyEurUsd", fallback: "Default currency (e.g. EUR)")
   /// Default transaction type
   internal static let defaultTransactionType = FinanceStrings.tr("Localizable", "defaultTransactionType", fallback: "Default transaction type")
   /// Delete merchant rule?
   internal static let deleteMerchantRule = FinanceStrings.tr("Localizable", "deleteMerchantRule", fallback: "Delete merchant rule?")
   /// Delete rule
   internal static let deleteRule = FinanceStrings.tr("Localizable", "deleteRule", fallback: "Delete rule")
-  /// Synthetic accounts and transactions will be saved on this device. No bank connection is needed.
-  internal static let demoConfirmationMessage = FinanceStrings.tr("Localizable", "demoConfirmationMessage", fallback: "Synthetic accounts and transactions will be saved on this device. No bank connection is needed.")
+  /// Sample accounts and transactions will be saved on this device. No bank connection is needed.
+  internal static let demoConfirmationMessage = FinanceStrings.tr("Localizable", "demoConfirmationMessage", fallback: "Sample accounts and transactions will be saved on this device. No bank connection is needed.")
   /// Demo data · stored on this device
   internal static let demoDataOnDevice = FinanceStrings.tr("Localizable", "demoDataOnDevice", fallback: "Demo data · stored on this device")
   /// Demo data will be replaced only after you confirm this import.
@@ -322,8 +322,8 @@ internal enum FinanceStrings {
   internal static let discardBudgetChanges = FinanceStrings.tr("Localizable", "discardBudgetChanges", fallback: "Discard budget changes?")
   /// Discard changes
   internal static let discardChanges = FinanceStrings.tr("Localizable", "discardChanges", fallback: "Discard changes")
-  /// Discard unsaved debt changes?
-  internal static let discardDebtChanges = FinanceStrings.tr("Localizable", "discardDebtChanges", fallback: "Discard unsaved debt changes?")
+  /// Discard debt changes?
+  internal static let discardDebtChanges = FinanceStrings.tr("Localizable", "discardDebtChanges", fallback: "Discard debt changes?")
   /// Discard goal changes?
   internal static let discardGoalChanges = FinanceStrings.tr("Localizable", "discardGoalChanges", fallback: "Discard goal changes?")
   /// Discard changes?
@@ -338,8 +338,8 @@ internal enum FinanceStrings {
   internal static let editGoal = FinanceStrings.tr("Localizable", "editGoal", fallback: "Edit goal")
   /// Edit account
   internal static let editImportAccount = FinanceStrings.tr("Localizable", "editImportAccount", fallback: "Edit account")
-  /// Edit mapping
-  internal static let editMapping = FinanceStrings.tr("Localizable", "editMapping", fallback: "Edit mapping")
+  /// Change columns
+  internal static let editMapping = FinanceStrings.tr("Localizable", "editMapping", fallback: "Change columns")
   /// Edit merchant rule
   internal static let editMerchantRule = FinanceStrings.tr("Localizable", "editMerchantRule", fallback: "Edit merchant rule")
   /// Edit rule
@@ -358,20 +358,20 @@ internal enum FinanceStrings {
   internal static let expenses = FinanceStrings.tr("Localizable", "expenses", fallback: "Expenses")
   /// Explore demo
   internal static let exploreDemo = FinanceStrings.tr("Localizable", "exploreDemo", fallback: "Explore demo")
-  /// Explore demo data from Overview to get started.
-  internal static let exploreDemoDataFromOverviewToGetStarted = FinanceStrings.tr("Localizable", "exploreDemoDataFromOverviewToGetStarted", fallback: "Explore demo data from Overview to get started.")
-  /// Explore demo data or import CSV or a supported PDF statement from Overview to get started.
-  internal static let exploreDemoDataOrImportACsvFromOverviewToGetStarted = FinanceStrings.tr("Localizable", "exploreDemoDataOrImportACsvFromOverviewToGetStarted", fallback: "Explore demo data or import CSV or a supported PDF statement from Overview to get started.")
-  /// Explore with demo data?
-  internal static let exploreWithDemoData = FinanceStrings.tr("Localizable", "exploreWithDemoData", fallback: "Explore with demo data?")
+  /// Go to Home to try the demo.
+  internal static let exploreDemoDataFromOverviewToGetStarted = FinanceStrings.tr("Localizable", "exploreDemoDataFromOverviewToGetStarted", fallback: "Go to Home to try the demo.")
+  /// Go to Home to try the demo or import a CSV or supported PDF statement.
+  internal static let exploreDemoDataOrImportACsvFromOverviewToGetStarted = FinanceStrings.tr("Localizable", "exploreDemoDataOrImportACsvFromOverviewToGetStarted", fallback: "Go to Home to try the demo or import a CSV or supported PDF statement.")
+  /// Try the demo?
+  internal static let exploreWithDemoData = FinanceStrings.tr("Localizable", "exploreWithDemoData", fallback: "Try the demo?")
   /// Family
   internal static let family = FinanceStrings.tr("Localizable", "family", fallback: "Family")
   /// Filters
   internal static let filters = FinanceStrings.tr("Localizable", "filters", fallback: "Filters")
   /// FinAI
   internal static let finAI = FinanceStrings.tr("Localizable", "finAI", fallback: "FinAI")
-  /// First observed
-  internal static let firstObserved = FinanceStrings.tr("Localizable", "firstObserved", fallback: "First observed")
+  /// First payment
+  internal static let firstObserved = FinanceStrings.tr("Localizable", "firstObserved", fallback: "First payment")
   /// First rows
   internal static let firstRows = FinanceStrings.tr("Localizable", "firstRows", fallback: "First rows")
   /// Assumptions and limits
@@ -380,16 +380,18 @@ internal enum FinanceStrings {
   internal static let forecastCalculationDetails = FinanceStrings.tr("Localizable", "forecastCalculationDetails", fallback: "How this is calculated")
   /// The forecast could not be calculated. Check your saved data and try opening it again.
   internal static let forecastCalculationUnavailable = FinanceStrings.tr("Localizable", "forecastCalculationUnavailable", fallback: "The forecast could not be calculated. Check your saved data and try opening it again.")
-  /// No expense or income history for this currency in the previous month. A forecast is unavailable.
-  internal static let forecastCurrencyHistoryMissing = FinanceStrings.tr("Localizable", "forecastCurrencyHistoryMissing", fallback: "No expense or income history for this currency in the previous month. A forecast is unavailable.")
+  /// No expenses or income in this currency last month. Import that history to see a forecast.
+  internal static let forecastCurrencyHistoryMissing = FinanceStrings.tr("Localizable", "forecastCurrencyHistoryMissing", fallback: "No expenses or income in this currency last month. Import that history to see a forecast.")
   /// Saved transactions are unavailable. Refresh your data and try again.
   internal static let forecastDataUnavailable = FinanceStrings.tr("Localizable", "forecastDataUnavailable", fallback: "Saved transactions are unavailable. Refresh your data and try again.")
-  /// History month
-  internal static let forecastHistoryMonth = FinanceStrings.tr("Localizable", "forecastHistoryMonth", fallback: "History month")
-  /// Assumes complete imports and unchanged habits and income. A record does not prove the month is complete. Missing payments, changed prices and irregular income can make this estimate inaccurate. Recurring payments need three matching occurrences; stale patterns are not scheduled. No future refunds or transactions dated after today are included. Transfers, adjustments and unknown entries are excluded. Net spending is expenses minus recorded refunds; net flow is income minus net spending. This is not an account balance, available money or an affordability assessment. Currencies stay separate.
-  internal static let forecastLimitations = FinanceStrings.tr("Localizable", "forecastLimitations", fallback: "Assumes complete imports and unchanged habits and income. A record does not prove the month is complete. Missing payments, changed prices and irregular income can make this estimate inaccurate. Recurring payments need three matching occurrences; stale patterns are not scheduled. No future refunds or transactions dated after today are included. Transfers, adjustments and unknown entries are excluded. Net spending is expenses minus recorded refunds; net flow is income minus net spending. This is not an account balance, available money or an affordability assessment. Currencies stay separate.")
-  /// An end-of-day estimate. Last month’s ordinary expenses are averaged over its calendar days and applied from tomorrow to month end. Active detected recurring expenses use their expected dates instead. Total income is assumed to match last month, or recorded income if higher.
-  internal static let forecastMethodExplanation = FinanceStrings.tr("Localizable", "forecastMethodExplanation", fallback: "An end-of-day estimate. Last month’s ordinary expenses are averaged over its calendar days and applied from tomorrow to month end. Active detected recurring expenses use their expected dates instead. Total income is assumed to match last month, or recorded income if higher.")
+  /// Based on
+  internal static let forecastHistoryMonth = FinanceStrings.tr("Localizable", "forecastHistoryMonth", fallback: "Based on")
+  /// This estimate assumes all transactions are imported and your spending habits and income stay the same. Having some records does not mean a month is complete. Missing payments, price changes and irregular income can affect the result.
+  /// Recurring payments need at least three matching payments. Patterns with missed expected dates are not included in upcoming payments. Future refunds and transactions dated after today are excluded, along with transfers, adjustments and unknown transactions.
+  /// Net spending is expenses minus recorded refunds. Net flow is income minus net spending. Currencies stay separate. These estimates are not account balances and do not tell you how much is available to spend.
+  internal static let forecastLimitations = FinanceStrings.tr("Localizable", "forecastLimitations", fallback: "This estimate assumes all transactions are imported and your spending habits and income stay the same. Having some records does not mean a month is complete. Missing payments, price changes and irregular income can affect the result.\nRecurring payments need at least three matching payments. Patterns with missed expected dates are not included in upcoming payments. Future refunds and transactions dated after today are excluded, along with transfers, adjustments and unknown transactions.\nNet spending is expenses minus recorded refunds. Net flow is income minus net spending. Currencies stay separate. These estimates are not account balances and do not tell you how much is available to spend.")
+  /// The forecast starts at the end of today. FinAI spreads last month’s ordinary expenses evenly across its calendar days and uses that daily amount for tomorrow through month end. Active recurring payments use their expected dates instead. Total income is assumed to equal last month’s income, or this month’s recorded income if that is higher.
+  internal static let forecastMethodExplanation = FinanceStrings.tr("Localizable", "forecastMethodExplanation", fallback: "The forecast starts at the end of today. FinAI spreads last month’s ordinary expenses evenly across its calendar days and uses that daily amount for tomorrow through month end. Active recurring payments use their expected dates instead. Total income is assumed to equal last month’s income, or this month’s recorded income if that is higher.")
   /// Forecast month
   internal static let forecastMonth = FinanceStrings.tr("Localizable", "forecastMonth", fallback: "Forecast month")
   /// Estimated month-end net flow
@@ -410,14 +412,14 @@ internal enum FinanceStrings {
   internal static let forecastRecordedRefunds = FinanceStrings.tr("Localizable", "forecastRecordedRefunds", fallback: "Recorded refunds")
   /// Recorded through
   internal static let forecastRecordedThrough = FinanceStrings.tr("Localizable", "forecastRecordedThrough", fallback: "Recorded through")
-  /// Assumed remaining income
-  internal static let forecastRemainingIncome = FinanceStrings.tr("Localizable", "forecastRemainingIncome", fallback: "Assumed remaining income")
-  /// Expected remaining recurring expenses
-  internal static let forecastRemainingRecurring = FinanceStrings.tr("Localizable", "forecastRemainingRecurring", fallback: "Expected remaining recurring expenses")
-  /// Estimated remaining ordinary expenses
-  internal static let forecastRemainingVariable = FinanceStrings.tr("Localizable", "forecastRemainingVariable", fallback: "Estimated remaining ordinary expenses")
-  /// Based on last month’s recorded activity. Assumes complete imports and unchanged habits and income. Estimates are not available balances.
-  internal static let forecastSummaryExplanation = FinanceStrings.tr("Localizable", "forecastSummaryExplanation", fallback: "Based on last month’s recorded activity. Assumes complete imports and unchanged habits and income. Estimates are not available balances.")
+  /// Expected remaining income
+  internal static let forecastRemainingIncome = FinanceStrings.tr("Localizable", "forecastRemainingIncome", fallback: "Expected remaining income")
+  /// Expected recurring payments
+  internal static let forecastRemainingRecurring = FinanceStrings.tr("Localizable", "forecastRemainingRecurring", fallback: "Expected recurring payments")
+  /// Other expenses still expected
+  internal static let forecastRemainingVariable = FinanceStrings.tr("Localizable", "forecastRemainingVariable", fallback: "Other expenses still expected")
+  /// Estimated from last month’s transactions, assuming all transactions are imported and your spending habits and income stay the same. This is not an available account balance.
+  internal static let forecastSummaryExplanation = FinanceStrings.tr("Localizable", "forecastSummaryExplanation", fallback: "Estimated from last month’s transactions, assuming all transactions are imported and your spending habits and income stay the same. This is not an available account balance.")
   /// Estimated total expenses
   internal static let forecastTotalExpenses = FinanceStrings.tr("Localizable", "forecastTotalExpenses", fallback: "Estimated total expenses")
   /// Estimated total income
@@ -428,8 +430,8 @@ internal enum FinanceStrings {
   internal static let from = FinanceStrings.tr("Localizable", "from", fallback: "From")
   /// Full description
   internal static let fullDescription = FinanceStrings.tr("Localizable", "fullDescription", fallback: "Full description")
-  /// Import CSV or a supported PDF statement using the toolbar, or explore with synthetic demo data.
-  internal static let gettingStartedExplanation = FinanceStrings.tr("Localizable", "gettingStartedExplanation", fallback: "Import CSV or a supported PDF statement using the toolbar, or explore with synthetic demo data.")
+  /// Import a CSV or supported PDF statement, or try the demo without using your own data.
+  internal static let gettingStartedExplanation = FinanceStrings.tr("Localizable", "gettingStartedExplanation", fallback: "Import a CSV or supported PDF statement, or try the demo without using your own data.")
   /// This goal has changed. Close and reopen goals before editing again.
   internal static let goalChangedFailure = FinanceStrings.tr("Localizable", "goalChangedFailure", fallback: "This goal has changed. Close and reopen goals before editing again.")
   /// Goal completed
@@ -438,24 +440,24 @@ internal enum FinanceStrings {
   internal static let goalDeadline = FinanceStrings.tr("Localizable", "goalDeadline", fallback: "Deadline")
   /// Goal details
   internal static let goalDetails = FinanceStrings.tr("Localizable", "goalDetails", fallback: "Goal details")
-  /// Enter a name, positive target, nonnegative savings, valid currency code and date.
-  internal static let goalInvalidInput = FinanceStrings.tr("Localizable", "goalInvalidInput", fallback: "Enter a name, positive target, nonnegative savings, valid currency code and date.")
+  /// Enter a name, a target greater than zero, a currency and a deadline. Savings can be zero or more.
+  internal static let goalInvalidInput = FinanceStrings.tr("Localizable", "goalInvalidInput", fallback: "Enter a name, a target greater than zero, a currency and a deadline. Savings can be zero or more.")
   /// Required per month
   internal static let goalMonthlyContribution = FinanceStrings.tr("Localizable", "goalMonthlyContribution", fallback: "Required per month")
   /// Goal name
   internal static let goalName = FinanceStrings.tr("Localizable", "goalName", fallback: "Goal name")
-  /// Deadline passed — revise the date or savings amount.
-  internal static let goalOverdue = FinanceStrings.tr("Localizable", "goalOverdue", fallback: "Deadline passed — revise the date or savings amount.")
-  /// Record savings manually. Goals do not move money or change account balances. Monthly contributions include the current and deadline months and are rounded up. This schedule does not assess affordability.
-  internal static let goalPlanningExplanation = FinanceStrings.tr("Localizable", "goalPlanningExplanation", fallback: "Record savings manually. Goals do not move money or change account balances. Monthly contributions include the current and deadline months and are rounded up. This schedule does not assess affordability.")
+  /// The deadline has passed. Update the date or the amount saved.
+  internal static let goalOverdue = FinanceStrings.tr("Localizable", "goalOverdue", fallback: "The deadline has passed. Update the date or the amount saved.")
+  /// Enter your savings as you set money aside. Goals do not move money or change account balances. The monthly savings amount is rounded up and includes both this month and the deadline month. It does not tell you whether you can afford to save that amount.
+  internal static let goalPlanningExplanation = FinanceStrings.tr("Localizable", "goalPlanningExplanation", fallback: "Enter your savings as you set money aside. Goals do not move money or change account balances. The monthly savings amount is rounded up and includes both this month and the deadline month. It does not tell you whether you can afford to save that amount.")
   /// Remaining
   internal static let goalRemainingAmount = FinanceStrings.tr("Localizable", "goalRemainingAmount", fallback: "Remaining")
   /// Already saved
   internal static let goalSavedAmount = FinanceStrings.tr("Localizable", "goalSavedAmount", fallback: "Already saved")
   /// Unable to load goals. Try again before editing.
   internal static let goalsLoadFailure = FinanceStrings.tr("Localizable", "goalsLoadFailure", fallback: "Unable to load goals. Try again before editing.")
-  /// Unable to save the goal. Your draft is preserved; try again.
-  internal static let goalsSaveFailure = FinanceStrings.tr("Localizable", "goalsSaveFailure", fallback: "Unable to save the goal. Your draft is preserved; try again.")
+  /// Couldn’t save this goal. Your edits are still here. Try again.
+  internal static let goalsSaveFailure = FinanceStrings.tr("Localizable", "goalsSaveFailure", fallback: "Couldn’t save this goal. Your edits are still here. Try again.")
   /// Target amount
   internal static let goalTargetAmount = FinanceStrings.tr("Localizable", "goalTargetAmount", fallback: "Target amount")
   /// Groceries
@@ -472,8 +474,8 @@ internal enum FinanceStrings {
   }
   /// Import CSV
   internal static let importCsv = FinanceStrings.tr("Localizable", "importCsv", fallback: "Import CSV")
-  /// The sign controls direction, not the transaction type. Unknown transactions are excluded from overview totals until you choose a type in the preview.
-  internal static let importDirectionExplanation = FinanceStrings.tr("Localizable", "importDirectionExplanation", fallback: "The sign controls direction, not the transaction type. Unknown transactions are excluded from overview totals until you choose a type in the preview.")
+  /// The amount’s sign tells FinAI whether money came in or went out. Choose the transaction type separately. Transactions marked Unknown are left out of totals until you choose a type in the preview.
+  internal static let importDirectionExplanation = FinanceStrings.tr("Localizable", "importDirectionExplanation", fallback: "The amount’s sign tells FinAI whether money came in or went out. Choose the transaction type separately. Transactions marked Unknown are left out of totals until you choose a type in the preview.")
   /// Imported data
   internal static let importedData = FinanceStrings.tr("Localizable", "importedData", fallback: "Imported data")
   /// Import file
@@ -482,14 +484,14 @@ internal enum FinanceStrings {
   internal static let importFileRequirementsExplanation = FinanceStrings.tr("Localizable", "importFileRequirementsExplanation", fallback: "CSV: UTF-8 or UTF-16 with a header row. PDF: supported German Sparkasse statements with selectable text. Files are processed on this device.")
   /// Import needs attention
   internal static let importNeedsAttention = FinanceStrings.tr("Localizable", "importNeedsAttention", fallback: "Import needs attention")
-  /// Original description and editing
-  internal static let importRowDetails = FinanceStrings.tr("Localizable", "importRowDetails", fallback: "Original description and editing")
+  /// Review and edit
+  internal static let importRowDetails = FinanceStrings.tr("Localizable", "importRowDetails", fallback: "Review and edit")
   /// Import selected
   internal static let importSelected = FinanceStrings.tr("Localizable", "importSelected", fallback: "Import selected")
   /// Import selected transactions?
   internal static let importSelectedTransactions = FinanceStrings.tr("Localizable", "importSelectedTransactions", fallback: "Import selected transactions?")
-  /// The import could not be saved. Your previous data is preserved. Try again or reopen the import.
-  internal static let importStorageChangedMessage = FinanceStrings.tr("Localizable", "importStorageChangedMessage", fallback: "The import could not be saved. Your previous data is preserved. Try again or reopen the import.")
+  /// Couldn’t save this import. Your existing data is unchanged. Try again or reopen the import.
+  internal static let importStorageChangedMessage = FinanceStrings.tr("Localizable", "importStorageChangedMessage", fallback: "Couldn’t save this import. Your existing data is unchanged. Try again or reopen the import.")
   /// Import transactions
   internal static let importTransactions = FinanceStrings.tr("Localizable", "importTransactions", fallback: "Import transactions")
   /// Included
@@ -500,23 +502,23 @@ internal enum FinanceStrings {
   internal static let incomeSource = FinanceStrings.tr("Localizable", "incomeSource", fallback: "Income source")
   /// Interest
   internal static let interestIncome = FinanceStrings.tr("Localizable", "interestIncome", fallback: "Interest")
-  /// Interpretation
-  internal static let interpretation = FinanceStrings.tr("Localizable", "interpretation", fallback: "Interpretation")
+  /// Import options
+  internal static let interpretation = FinanceStrings.tr("Localizable", "interpretation", fallback: "Import options")
   /// Interval
   internal static let interval = FinanceStrings.tr("Localizable", "interval", fallback: "Interval")
   /// Choose an account or enter a new account name of up to 100 characters.
   internal static let invalidImportAccountMessage = FinanceStrings.tr("Localizable", "invalidImportAccountMessage", fallback: "Choose an account or enter a new account name of up to 100 characters.")
-  /// The amount does not match the selected number format or exceeds supported precision.
-  internal static let invalidImportAmountMessage = FinanceStrings.tr("Localizable", "invalidImportAmountMessage", fallback: "The amount does not match the selected number format or exceeds supported precision.")
-  /// The date does not match the selected format or is not a valid calendar date.
-  internal static let invalidImportDateMessage = FinanceStrings.tr("Localizable", "invalidImportDateMessage", fallback: "The date does not match the selected format or is not a valid calendar date.")
+  /// Check the amount and number format. FinAI can’t read this amount accurately.
+  internal static let invalidImportAmountMessage = FinanceStrings.tr("Localizable", "invalidImportAmountMessage", fallback: "Check the amount and number format. FinAI can’t read this amount accurately.")
+  /// Check that the date exists and matches the selected format.
+  internal static let invalidImportDateMessage = FinanceStrings.tr("Localizable", "invalidImportDateMessage", fallback: "Check that the date exists and matches the selected format.")
   /// The type must be expense, income, transfer, refund, adjustment or unknown.
   internal static let invalidImportKindMessage = FinanceStrings.tr("Localizable", "invalidImportKindMessage", fallback: "The type must be expense, income, transfer, refund, adjustment or unknown.")
   /// Enter a description with letters or numbers (up to 500 characters) and a merchant (up to 200 characters).
   internal static let invalidMerchantRuleMessage = FinanceStrings.tr("Localizable", "invalidMerchantRuleMessage", fallback: "Enter a description with letters or numbers (up to 500 characters) and a merchant (up to 200 characters).")
-  /// Invalid rows to skip: %lld
+  /// Rows with errors to skip: %lld
   internal static func invalidRowsToSkip(_ p1: Int) -> String {
-    return FinanceStrings.tr("Localizable", "invalidRowsToSkip", p1, fallback: "Invalid rows to skip: %lld")
+    return FinanceStrings.tr("Localizable", "invalidRowsToSkip", p1, fallback: "Rows with errors to skip: %lld")
   }
   /// Keep both transactions
   internal static let keepBothTransactions = FinanceStrings.tr("Localizable", "keepBothTransactions", fallback: "Keep both transactions")
@@ -524,8 +526,8 @@ internal enum FinanceStrings {
   internal static let keepEditing = FinanceStrings.tr("Localizable", "keepEditing", fallback: "Keep editing")
   /// Last month
   internal static let lastMonth = FinanceStrings.tr("Localizable", "lastMonth", fallback: "Last month")
-  /// Last observed
-  internal static let lastObserved = FinanceStrings.tr("Localizable", "lastObserved", fallback: "Last observed")
+  /// Latest payment
+  internal static let lastObserved = FinanceStrings.tr("Localizable", "lastObserved", fallback: "Latest payment")
   /// Possible duplicates are unchecked. Include them only if they are separate transactions. Unknown types are excluded from overview totals.
   internal static let legacyDuplicateReviewExplanation = FinanceStrings.tr("Localizable", "legacyDuplicateReviewExplanation", fallback: "Possible duplicates are unchecked. Include them only if they are separate transactions. Unknown types are excluded from overview totals.")
   /// Load demo data
@@ -564,14 +566,14 @@ internal enum FinanceStrings {
   internal static let merchantOrDescription = FinanceStrings.tr("Localizable", "merchantOrDescription", fallback: "Merchant or description")
   /// Merchant or payee
   internal static let merchantOrPayee = FinanceStrings.tr("Localizable", "merchantOrPayee", fallback: "Merchant or payee")
-  /// Matching ignores case, punctuation and spacing, and uses whole words. A short prefix can match many transactions; review every suggestion.
-  internal static let merchantRuleMatchingExplanation = FinanceStrings.tr("Localizable", "merchantRuleMatchingExplanation", fallback: "Matching ignores case, punctuation and spacing, and uses whole words. A short prefix can match many transactions; review every suggestion.")
+  /// Rules match whole words and ignore capitalization, punctuation and extra spaces. A short beginning of a description may match many transactions. Check each suggestion.
+  internal static let merchantRuleMatchingExplanation = FinanceStrings.tr("Localizable", "merchantRuleMatchingExplanation", fallback: "Rules match whole words and ignore capitalization, punctuation and extra spaces. A short beginning of a description may match many transactions. Check each suggestion.")
   /// Merchant rules
   internal static let merchantRules = FinanceStrings.tr("Localizable", "merchantRules", fallback: "Merchant rules")
-  /// Rules run locally before built-in suggestions. They apply to future previews only. Exact descriptions take priority, then the longest prefix. Transaction types, amounts and currencies stay unchanged.
-  internal static let merchantRulesExplanation = FinanceStrings.tr("Localizable", "merchantRulesExplanation", fallback: "Rules run locally before built-in suggestions. They apply to future previews only. Exact descriptions take priority, then the longest prefix. Transaction types, amounts and currencies stay unchanged.")
-  /// Known merchants and categories are suggested locally. Review and correct them before saving. Changing the transaction type resets its category suggestion.
-  internal static let merchantSuggestionsExplanation = FinanceStrings.tr("Localizable", "merchantSuggestionsExplanation", fallback: "Known merchants and categories are suggested locally. Review and correct them before saving. Changing the transaction type resets its category suggestion.")
+  /// Your rules apply to future imports before FinAI’s suggestions. An exact description match takes priority, followed by the longest matching beginning. Rules do not change transaction types, amounts or currencies.
+  internal static let merchantRulesExplanation = FinanceStrings.tr("Localizable", "merchantRulesExplanation", fallback: "Your rules apply to future imports before FinAI’s suggestions. An exact description match takes priority, followed by the longest matching beginning. Rules do not change transaction types, amounts or currencies.")
+  /// FinAI suggests merchants and categories on this device. Check them before saving. Changing a transaction’s type resets its suggested category.
+  internal static let merchantSuggestionsExplanation = FinanceStrings.tr("Localizable", "merchantSuggestionsExplanation", fallback: "FinAI suggests merchants and categories on this device. Check them before saving. Changing a transaction’s type resets its suggested category.")
   /// Money direction
   internal static let moneyDirection = FinanceStrings.tr("Localizable", "moneyDirection", fallback: "Money direction")
   /// Money in
@@ -584,8 +586,8 @@ internal enum FinanceStrings {
   internal static let monthly = FinanceStrings.tr("Localizable", "monthly", fallback: "Monthly")
   /// Monthly budgets
   internal static let monthlyBudgets = FinanceStrings.tr("Localizable", "monthlyBudgets", fallback: "Monthly budgets")
-  /// Selected calendar month compared with the full previous month. Current-month data may be incomplete; results use saved transactions only.
-  internal static let monthlyComparisonExplanation = FinanceStrings.tr("Localizable", "monthlyComparisonExplanation", fallback: "Selected calendar month compared with the full previous month. Current-month data may be incomplete; results use saved transactions only.")
+  /// Compares the selected calendar month with the full previous month using saved transactions. This month’s data may be incomplete.
+  internal static let monthlyComparisonExplanation = FinanceStrings.tr("Localizable", "monthlyComparisonExplanation", fallback: "Compares the selected calendar month with the full previous month using saved transactions. This month’s data may be incomplete.")
   /// Negative out, positive in
   internal static let negativeOutPositiveIn = FinanceStrings.tr("Localizable", "negativeOutPositiveIn", fallback: "Negative out, positive in")
   /// Net flow
@@ -596,8 +598,8 @@ internal enum FinanceStrings {
   internal static let newAccount = FinanceStrings.tr("Localizable", "newAccount", fallback: "New account")
   /// New merchant rule
   internal static let newMerchantRule = FinanceStrings.tr("Localizable", "newMerchantRule", fallback: "New merchant rule")
-  /// Next date from pattern
-  internal static let nextDateFromPattern = FinanceStrings.tr("Localizable", "nextDateFromPattern", fallback: "Next date from pattern")
+  /// Next expected payment
+  internal static let nextDateFromPattern = FinanceStrings.tr("Localizable", "nextDateFromPattern", fallback: "Next expected payment")
   /// Next month
   internal static let nextMonth = FinanceStrings.tr("Localizable", "nextMonth", fallback: "Next month")
   /// No accounts yet
@@ -614,8 +616,8 @@ internal enum FinanceStrings {
   internal static let noMatchingTransactions = FinanceStrings.tr("Localizable", "noMatchingTransactions", fallback: "No matching transactions")
   /// No merchant rules saved.
   internal static let noMerchantRulesSaved = FinanceStrings.tr("Localizable", "noMerchantRulesSaved", fallback: "No merchant rules saved.")
-  /// No regular payment patterns found. More transaction history may be needed.
-  internal static let noRecurringPaymentsExplanation = FinanceStrings.tr("Localizable", "noRecurringPaymentsExplanation", fallback: "No regular payment patterns found. More transaction history may be needed.")
+  /// No recurring payments found. Import more transaction history to check for regular payments.
+  internal static let noRecurringPaymentsExplanation = FinanceStrings.tr("Localizable", "noRecurringPaymentsExplanation", fallback: "No recurring payments found. Import more transaction history to check for regular payments.")
   /// No expenses or refunds in %@ in the selected month.
   internal static func noSpendingForCurrencyThisMonth(_ p1: Any) -> String {
     return FinanceStrings.tr("Localizable", "noSpendingForCurrencyThisMonth", String(describing: p1), fallback: "No expenses or refunds in %@ in the selected month.")
@@ -642,24 +644,24 @@ internal enum FinanceStrings {
   internal static let pdfTextRequiredMessage = FinanceStrings.tr("Localizable", "pdfTextRequiredMessage", fallback: "Every PDF page must contain selectable text. Scanned or image-only statements are not supported yet.")
   /// Percentage change
   internal static let percentageChange = FinanceStrings.tr("Localizable", "percentageChange", fallback: "Percentage change")
-  /// Percentage change is unavailable when previous net spending is zero or negative.
-  internal static let percentageChangeUnavailableExplanation = FinanceStrings.tr("Localizable", "percentageChangeUnavailableExplanation", fallback: "Percentage change is unavailable when previous net spending is zero or negative.")
+  /// A percentage change can’t be calculated when the previous month’s net spending is zero or less.
+  internal static let percentageChangeUnavailableExplanation = FinanceStrings.tr("Localizable", "percentageChangeUnavailableExplanation", fallback: "A percentage change can’t be calculated when the previous month’s net spending is zero or less.")
   /// Period
   internal static let period = FinanceStrings.tr("Localizable", "period", fallback: "Period")
   /// Personal debts
   internal static let personalDebts = FinanceStrings.tr("Localizable", "personalDebts", fallback: "Personal debts")
   /// Plan
   internal static let plan = FinanceStrings.tr("Localizable", "plan", fallback: "Plan")
-  /// Spending progress is unavailable until local transactions are loaded and the calculation succeeds.
-  internal static let planBudgetProgressUnavailable = FinanceStrings.tr("Localizable", "planBudgetProgressUnavailable", fallback: "Spending progress is unavailable until local transactions are loaded and the calculation succeeds.")
+  /// Spending progress will appear once your transactions load and FinAI can calculate the totals.
+  internal static let planBudgetProgressUnavailable = FinanceStrings.tr("Localizable", "planBudgetProgressUnavailable", fallback: "Spending progress will appear once your transactions load and FinAI can calculate the totals.")
   /// Net spending is expenses minus refunds for the shown month. Each currency is kept separate.
   internal static let planBudgetSummaryExplanation = FinanceStrings.tr("Localizable", "planBudgetSummaryExplanation", fallback: "Net spending is expenses minus refunds for the shown month. Each currency is kept separate.")
-  /// Savings are recorded manually. Goals do not represent an account balance or assess affordability.
-  internal static let planGoalSummaryExplanation = FinanceStrings.tr("Localizable", "planGoalSummaryExplanation", fallback: "Savings are recorded manually. Goals do not represent an account balance or assess affordability.")
+  /// Enter savings yourself. Goals are not account balances and do not tell you how much you can afford to save.
+  internal static let planGoalSummaryExplanation = FinanceStrings.tr("Localizable", "planGoalSummaryExplanation", fallback: "Enter savings yourself. Goals are not account balances and do not tell you how much you can afford to save.")
   /// Unable to load your plan. Try again.
   internal static let planLoadFailure = FinanceStrings.tr("Localizable", "planLoadFailure", fallback: "Unable to load your plan. Try again.")
-  /// Progress could not be calculated. Saved goals and budgets are still available. Try reopening Plan or correcting the saved item.
-  internal static let planProgressUnavailable = FinanceStrings.tr("Localizable", "planProgressUnavailable", fallback: "Progress could not be calculated. Saved goals and budgets are still available. Try reopening Plan or correcting the saved item.")
+  /// Couldn’t calculate progress. Your goals and budgets are still available. Reopen Plan or check the saved amounts and dates.
+  internal static let planProgressUnavailable = FinanceStrings.tr("Localizable", "planProgressUnavailable", fallback: "Couldn’t calculate progress. Your goals and budgets are still available. Reopen Plan or check the saved amounts and dates.")
   /// Possible duplicate
   internal static let possibleDuplicate = FinanceStrings.tr("Localizable", "possibleDuplicate", fallback: "Possible duplicate")
   /// Possible subscription
@@ -672,36 +674,36 @@ internal enum FinanceStrings {
   internal static let previousMonth = FinanceStrings.tr("Localizable", "previousMonth", fallback: "Previous month")
   /// Previous month net spending
   internal static let previousMonthNetSpending = FinanceStrings.tr("Localizable", "previousMonthNetSpending", fallback: "Previous month net spending")
-  /// When available, Apple’s on-device model interprets your question. Financial records are not sent to the model. Swift code performs the calculations locally. Questions and answers are not saved. Suggested questions work without Apple Intelligence.
-  internal static let privacyAssistantDetails = FinanceStrings.tr("Localizable", "privacyAssistantDetails", fallback: "When available, Apple’s on-device model interprets your question. Financial records are not sent to the model. Swift code performs the calculations locally. Questions and answers are not saved. Suggested questions work without Apple Intelligence.")
+  /// Apple Intelligence can help understand your questions on this device. It does not receive your financial records. FinAI calculates the answers on your device and does not save questions or answers. Suggested questions work without Apple Intelligence.
+  internal static let privacyAssistantDetails = FinanceStrings.tr("Localizable", "privacyAssistantDetails", fallback: "Apple Intelligence can help understand your questions on this device. It does not receive your financial records. FinAI calculates the answers on your device and does not save questions or answers. Suggested questions work without Apple Intelligence.")
   /// On-device assistant
   internal static let privacyAssistantTitle = FinanceStrings.tr("Localizable", "privacyAssistantTitle", fallback: "On-device assistant")
-  /// System backups may include FinAI data, depending on your device and iCloud backup settings. Manage those backups in iOS Settings. Local storage does not mean your system backups stay on this device.
-  internal static let privacyBackupDetails = FinanceStrings.tr("Localizable", "privacyBackupDetails", fallback: "System backups may include FinAI data, depending on your device and iCloud backup settings. Manage those backups in iOS Settings. Local storage does not mean your system backups stay on this device.")
+  /// Device backups may include your FinAI data, including in iCloud if you use iCloud Backup. Manage backups in Settings.
+  internal static let privacyBackupDetails = FinanceStrings.tr("Localizable", "privacyBackupDetails", fallback: "Device backups may include your FinAI data, including in iCloud if you use iCloud Backup. Manage backups in Settings.")
   /// Device backups
   internal static let privacyBackupTitle = FinanceStrings.tr("Localizable", "privacyBackupTitle", fallback: "Device backups")
-  /// Imports are processed on this device and saved only after confirmation. FinAI does not retain a copy of the source file or change it. Choosing a file from a cloud provider in Files may download it to your device.
-  internal static let privacyImportDetails = FinanceStrings.tr("Localizable", "privacyImportDetails", fallback: "Imports are processed on this device and saved only after confirmation. FinAI does not retain a copy of the source file or change it. Choosing a file from a cloud provider in Files may download it to your device.")
+  /// Files are processed on this device. Transactions are saved only after you confirm. FinAI does not keep a copy of the original file or change it. Selecting a cloud file in Files may download it to your device.
+  internal static let privacyImportDetails = FinanceStrings.tr("Localizable", "privacyImportDetails", fallback: "Files are processed on this device. Transactions are saved only after you confirm. FinAI does not keep a copy of the original file or change it. Selecting a cloud file in Files may download it to your device.")
   /// Imported files
   internal static let privacyImportTitle = FinanceStrings.tr("Localizable", "privacyImportTitle", fallback: "Imported files")
-  /// FinAI stores your financial data locally. There is no required account, custom backend, bank connection or analytics service. FinAI does not sync your database with CloudKit.
-  internal static let privacyLocalDetails = FinanceStrings.tr("Localizable", "privacyLocalDetails", fallback: "FinAI stores your financial data locally. There is no required account, custom backend, bank connection or analytics service. FinAI does not sync your database with CloudKit.")
+  /// Your financial data is stored on this device. No account or bank connection is required. FinAI does not send your data to a server, track your activity or sync your financial records across devices.
+  internal static let privacyLocalDetails = FinanceStrings.tr("Localizable", "privacyLocalDetails", fallback: "Your financial data is stored on this device. No account or bank connection is required. FinAI does not send your data to a server, track your activity or sync your financial records across devices.")
   /// Stored on your device
   internal static let privacyLocalTitle = FinanceStrings.tr("Localizable", "privacyLocalTitle", fallback: "Stored on your device")
   /// Financial details are hidden while the app is inactive.
   internal static let privacyPreviewHidden = FinanceStrings.tr("Localizable", "privacyPreviewHidden", fallback: "Financial details are hidden while the app is inactive.")
-  /// FinAI covers financial details while inactive and uses iOS Complete Data Protection for its database files. This is not a separate app lock and does not block screenshots while you are using the app.
-  internal static let privacyProtectionDetails = FinanceStrings.tr("Localizable", "privacyProtectionDetails", fallback: "FinAI covers financial details while inactive and uses iOS Complete Data Protection for its database files. This is not a separate app lock and does not block screenshots while you are using the app.")
+  /// FinAI hides financial details when you leave the app. Its data files use iOS protection that restricts access while the device is locked. FinAI has no separate app lock and does not prevent screenshots while you use it.
+  internal static let privacyProtectionDetails = FinanceStrings.tr("Localizable", "privacyProtectionDetails", fallback: "FinAI hides financial details when you leave the app. Its data files use iOS protection that restricts access while the device is locked. FinAI has no separate app lock and does not prevent screenshots while you use it.")
   /// While the app is inactive
   internal static let privacyProtectionTitle = FinanceStrings.tr("Localizable", "privacyProtectionTitle", fallback: "While the app is inactive")
   /// Record repayment
   internal static let recordDebtRepayment = FinanceStrings.tr("Localizable", "recordDebtRepayment", fallback: "Record repayment")
-  /// Possible recurring expenses, not confirmed contracts. Matching uses at least three equal payments to the same saved merchant, on one account and in one currency. Weekly dates may vary by one day; monthly and yearly dates by three days.
-  internal static let recurringDetectionExplanation = FinanceStrings.tr("Localizable", "recurringDetectionExplanation", fallback: "Possible recurring expenses, not confirmed contracts. Matching uses at least three equal payments to the same saved merchant, on one account and in one currency. Weekly dates may vary by one day; monthly and yearly dates by three days.")
-  /// Estimated from saved activity. Future payment dates and amounts are not guaranteed.
-  internal static let recurringEstimateExplanation = FinanceStrings.tr("Localizable", "recurringEstimateExplanation", fallback: "Estimated from saved activity. Future payment dates and amounts are not guaranteed.")
-  /// Only positive expenses are considered. Transfers, refunds, income and future transactions are excluded. Changed amounts, missing periods and irregular groups may not be detected. The subscription label also requires every matched payment to use the Subscriptions category. Nothing is changed or scheduled automatically.
-  internal static let recurringLimitationsExplanation = FinanceStrings.tr("Localizable", "recurringLimitationsExplanation", fallback: "Only positive expenses are considered. Transfers, refunds, income and future transactions are excluded. Changed amounts, missing periods and irregular groups may not be detected. The subscription label also requires every matched payment to use the Subscriptions category. Nothing is changed or scheduled automatically.")
+  /// These are possible recurring payments, not confirmed agreements. FinAI looks for at least three payments with the same amount, merchant, account and currency. Weekly dates can differ by one day; monthly and yearly dates by three days.
+  internal static let recurringDetectionExplanation = FinanceStrings.tr("Localizable", "recurringDetectionExplanation", fallback: "These are possible recurring payments, not confirmed agreements. FinAI looks for at least three payments with the same amount, merchant, account and currency. Weekly dates can differ by one day; monthly and yearly dates by three days.")
+  /// Estimates use your saved transactions. Future payment dates and amounts may change.
+  internal static let recurringEstimateExplanation = FinanceStrings.tr("Localizable", "recurringEstimateExplanation", fallback: "Estimates use your saved transactions. Future payment dates and amounts may change.")
+  /// Only expenses greater than zero are included. Transfers, refunds, income and future-dated transactions are excluded. Changed amounts, missing payments and irregular schedules may go undetected. A payment is marked as a possible subscription only if all matching payments have the Subscriptions category. FinAI does not change or schedule payments.
+  internal static let recurringLimitationsExplanation = FinanceStrings.tr("Localizable", "recurringLimitationsExplanation", fallback: "Only expenses greater than zero are included. Transfers, refunds, income and future-dated transactions are excluded. Changed amounts, missing payments and irregular schedules may go undetected. A payment is marked as a possible subscription only if all matching payments have the Subscriptions category. FinAI does not change or schedule payments.")
   /// Refresh
   internal static let refresh = FinanceStrings.tr("Localizable", "refresh", fallback: "Refresh")
   /// Refund
@@ -766,8 +768,8 @@ internal enum FinanceStrings {
   internal static let savingsGoals = FinanceStrings.tr("Localizable", "savingsGoals", fallback: "Savings goals")
   /// Saving transaction…
   internal static let savingTransaction = FinanceStrings.tr("Localizable", "savingTransaction", fallback: "Saving transaction…")
-  /// Select at least one valid transaction.
-  internal static let selectAtLeastOneValidTransaction = FinanceStrings.tr("Localizable", "selectAtLeastOneValidTransaction", fallback: "Select at least one valid transaction.")
+  /// Select at least one transaction without errors.
+  internal static let selectAtLeastOneValidTransaction = FinanceStrings.tr("Localizable", "selectAtLeastOneValidTransaction", fallback: "Select at least one transaction without errors.")
   /// Selected transactions: %lld
   internal static func selectedTransactions(_ p1: Int) -> String {
     return FinanceStrings.tr("Localizable", "selectedTransactions", p1, fallback: "Selected transactions: %lld")
@@ -776,14 +778,14 @@ internal enum FinanceStrings {
   internal static let settings = FinanceStrings.tr("Localizable", "settings", fallback: "Settings")
   /// Appearance
   internal static let settingsAppearance = FinanceStrings.tr("Localizable", "settingsAppearance", fallback: "Appearance")
-  /// System follows your device appearance. Your choice is saved on this device.
-  internal static let settingsAppearanceExplanation = FinanceStrings.tr("Localizable", "settingsAppearanceExplanation", fallback: "System follows your device appearance. Your choice is saved on this device.")
+  /// System matches your device’s appearance. Your choice is saved on this device.
+  internal static let settingsAppearanceExplanation = FinanceStrings.tr("Localizable", "settingsAppearanceExplanation", fallback: "System matches your device’s appearance. Your choice is saved on this device.")
   /// Language
   internal static let settingsLanguage = FinanceStrings.tr("Localizable", "settingsLanguage", fallback: "Language")
   /// Choose English or Ukrainian in Settings.
   internal static let settingsLanguageExplanation = FinanceStrings.tr("Localizable", "settingsLanguageExplanation", fallback: "Choose English or Ukrainian in Settings.")
-  /// Could not open Settings. Open the iOS Settings app and find FinAI to change its language.
-  internal static let settingsLanguageUnavailable = FinanceStrings.tr("Localizable", "settingsLanguageUnavailable", fallback: "Could not open Settings. Open the iOS Settings app and find FinAI to change its language.")
+  /// Couldn’t open Settings. Open Settings and select FinAI to change the app language.
+  internal static let settingsLanguageUnavailable = FinanceStrings.tr("Localizable", "settingsLanguageUnavailable", fallback: "Couldn’t open Settings. Open Settings and select FinAI to change the app language.")
   /// Change language
   internal static let settingsOpenLanguage = FinanceStrings.tr("Localizable", "settingsOpenLanguage", fallback: "Change language")
   /// Privacy
@@ -794,26 +796,26 @@ internal enum FinanceStrings {
   internal static let skipThisTransaction = FinanceStrings.tr("Localizable", "skipThisTransaction", fallback: "Skip this transaction")
   /// Source
   internal static let source = FinanceStrings.tr("Localizable", "source", fallback: "Source")
-  /// Breakdowns show the current month, ordered by net spending. Refunds reduce spending in their recorded month and category. Merchant names use saved values. Transfers, income, adjustments and unknown transactions are excluded.
-  internal static let spendingBreakdownExplanation = FinanceStrings.tr("Localizable", "spendingBreakdownExplanation", fallback: "Breakdowns show the current month, ordered by net spending. Refunds reduce spending in their recorded month and category. Merchant names use saved values. Transfers, income, adjustments and unknown transactions are excluded.")
+  /// Shows this month’s expenses minus refunds, from highest to lowest. Refunds reduce spending in the month and category where they were recorded. Merchants use their saved names. Transfers, income, adjustments and unknown transactions are excluded.
+  internal static let spendingBreakdownExplanation = FinanceStrings.tr("Localizable", "spendingBreakdownExplanation", fallback: "Shows this month’s expenses minus refunds, from highest to lowest. Refunds reduce spending in the month and category where they were recorded. Merchants use their saved names. Transfers, income, adjustments and unknown transactions are excluded.")
   /// Expenses minus refunds in this month and currency. Tap a transaction to inspect or correct it.
   internal static let spendingDrilldownExplanation = FinanceStrings.tr("Localizable", "spendingDrilldownExplanation", fallback: "Expenses minus refunds in this month and currency. Tap a transaction to inspect or correct it.")
-  /// Expected date has passed without a matching saved payment. This pattern may have ended, changed, or be missing imported data.
-  internal static let staleRecurringPaymentExplanation = FinanceStrings.tr("Localizable", "staleRecurringPaymentExplanation", fallback: "Expected date has passed without a matching saved payment. This pattern may have ended, changed, or be missing imported data.")
-  /// The extracted transactions do not reconcile with the statement balances. No data was imported.
-  internal static let statementBalanceMismatchMessage = FinanceStrings.tr("Localizable", "statementBalanceMismatchMessage", fallback: "The extracted transactions do not reconcile with the statement balances. No data was imported.")
+  /// The expected date has passed, but no matching payment is saved. The payment may have stopped or changed, or it may be missing from your imports.
+  internal static let staleRecurringPaymentExplanation = FinanceStrings.tr("Localizable", "staleRecurringPaymentExplanation", fallback: "The expected date has passed, but no matching payment is saved. The payment may have stopped or changed, or it may be missing from your imports.")
+  /// The transactions don’t match the statement’s opening and closing balances. Nothing was imported. Check that you selected the complete statement.
+  internal static let statementBalanceMismatchMessage = FinanceStrings.tr("Localizable", "statementBalanceMismatchMessage", fallback: "The transactions don’t match the statement’s opening and closing balances. Nothing was imported. Check that you selected the complete statement.")
   /// Statement currency: %@
   internal static func statementCurrency(_ p1: Any) -> String {
     return FinanceStrings.tr("Localizable", "statementCurrency", String(describing: p1), fallback: "Statement currency: %@")
   }
-  /// Statement balances were verified before preview. Review all transaction types, especially credits and transfers. Booking dates are used; value dates and fee appendices do not create extra transactions. Nothing is saved until you confirm.
-  internal static let statementReviewExplanation = FinanceStrings.tr("Localizable", "statementReviewExplanation", fallback: "Statement balances were verified before preview. Review all transaction types, especially credits and transfers. Booking dates are used; value dates and fee appendices do not create extra transactions. Nothing is saved until you confirm.")
+  /// The transactions match the statement’s opening and closing balances. Check their types, especially money in and transfers. FinAI uses booking dates; value dates and fee appendices do not create extra transactions. Nothing is saved until you confirm.
+  internal static let statementReviewExplanation = FinanceStrings.tr("Localizable", "statementReviewExplanation", fallback: "The transactions match the statement’s opening and closing balances. Check their types, especially money in and transfers. FinAI uses booking dates; value dates and fee appendices do not create extra transactions. Nothing is saved until you confirm.")
   /// Subscriptions
   internal static let subscriptions = FinanceStrings.tr("Localizable", "subscriptions", fallback: "Subscriptions")
-  /// Synthetic demo data
-  internal static let syntheticDemoData = FinanceStrings.tr("Localizable", "syntheticDemoData", fallback: "Synthetic demo data")
-  /// The description is empty.
-  internal static let theDescriptionIsEmpty = FinanceStrings.tr("Localizable", "theDescriptionIsEmpty", fallback: "The description is empty.")
+  /// Sample data
+  internal static let syntheticDemoData = FinanceStrings.tr("Localizable", "syntheticDemoData", fallback: "Sample data")
+  /// Enter a description.
+  internal static let theDescriptionIsEmpty = FinanceStrings.tr("Localizable", "theDescriptionIsEmpty", fallback: "Enter a description.")
   /// The end date must be on or after the start date.
   internal static let theEndDateMustBeOnOrAfterTheStartDate = FinanceStrings.tr("Localizable", "theEndDateMustBeOnOrAfterTheStartDate", fallback: "The end date must be on or after the start date.")
   /// The file needs a header and at least one data row.
@@ -830,16 +832,16 @@ internal enum FinanceStrings {
   internal static let transaction = FinanceStrings.tr("Localizable", "transaction", fallback: "Transaction")
   /// Amount
   internal static let transactionAmount = FinanceStrings.tr("Localizable", "transactionAmount", fallback: "Amount")
-  /// Enter a nonnegative amount. Money in or out is selected separately.
-  internal static let transactionAmountExplanation = FinanceStrings.tr("Localizable", "transactionAmountExplanation", fallback: "Enter a nonnegative amount. Money in or out is selected separately.")
+  /// Enter zero or a positive amount. Choose money in or money out separately.
+  internal static let transactionAmountExplanation = FinanceStrings.tr("Localizable", "transactionAmountExplanation", fallback: "Enter zero or a positive amount. Choose money in or money out separately.")
   /// Your transaction changes have not been saved.
   internal static let transactionChangesNotSaved = FinanceStrings.tr("Localizable", "transactionChangesNotSaved", fallback: "Your transaction changes have not been saved.")
   /// Transaction details
   internal static let transactionDetails = FinanceStrings.tr("Localizable", "transactionDetails", fallback: "Transaction details")
   /// The selected account is no longer available. Close and reopen this transaction.
   internal static let transactionEditInvalidAccount = FinanceStrings.tr("Localizable", "transactionEditInvalidAccount", fallback: "The selected account is no longer available. Close and reopen this transaction.")
-  /// Enter a valid nonnegative amount using your locale’s decimal separator.
-  internal static let transactionEditInvalidAmount = FinanceStrings.tr("Localizable", "transactionEditInvalidAmount", fallback: "Enter a valid nonnegative amount using your locale’s decimal separator.")
+  /// Enter zero or a positive amount using your regional number format.
+  internal static let transactionEditInvalidAmount = FinanceStrings.tr("Localizable", "transactionEditInvalidAmount", fallback: "Enter zero or a positive amount using your regional number format.")
   /// Enter a supported three-letter currency code, such as EUR or USD.
   internal static let transactionEditInvalidCurrency = FinanceStrings.tr("Localizable", "transactionEditInvalidCurrency", fallback: "Enter a supported three-letter currency code, such as EUR or USD.")
   /// Choose a valid date.
@@ -850,16 +852,16 @@ internal enum FinanceStrings {
   internal static let transactionEditMissingMerchant = FinanceStrings.tr("Localizable", "transactionEditMissingMerchant", fallback: "Enter a merchant or payee.")
   /// Your changes could not be saved. Try again.
   internal static let transactionEditSaveFailed = FinanceStrings.tr("Localizable", "transactionEditSaveFailed", fallback: "Your changes could not be saved. Try again.")
-  /// This transaction changed since you opened it. Your edits are still here. Close and reopen it to review the latest values.
-  internal static let transactionEditStorageChanged = FinanceStrings.tr("Localizable", "transactionEditStorageChanged", fallback: "This transaction changed since you opened it. Your edits are still here. Close and reopen it to review the latest values.")
-  /// This amount would exceed the supported precision for financial totals.
-  internal static let transactionEditUnsupportedTotals = FinanceStrings.tr("Localizable", "transactionEditUnsupportedTotals", fallback: "This amount would exceed the supported precision for financial totals.")
+  /// This transaction changed since you opened it. Your edits are still here. Close and reopen it to see the latest version.
+  internal static let transactionEditStorageChanged = FinanceStrings.tr("Localizable", "transactionEditStorageChanged", fallback: "This transaction changed since you opened it. Your edits are still here. Close and reopen it to see the latest version.")
+  /// FinAI can’t calculate an accurate total with this amount. Check the amount and currency.
+  internal static let transactionEditUnsupportedTotals = FinanceStrings.tr("Localizable", "transactionEditUnsupportedTotals", fallback: "FinAI can’t calculate an accurate total with this amount. Check the amount and currency.")
   /// Transaction filters
   internal static let transactionFilters = FinanceStrings.tr("Localizable", "transactionFilters", fallback: "Transaction filters")
   /// Filters apply together. Custom dates include both the first and last day.
   internal static let transactionFiltersExplanation = FinanceStrings.tr("Localizable", "transactionFiltersExplanation", fallback: "Filters apply together. Custom dates include both the first and last day.")
-  /// Your original imported values and description are preserved when you save corrections.
-  internal static let transactionOriginalPreserved = FinanceStrings.tr("Localizable", "transactionOriginalPreserved", fallback: "Your original imported values and description are preserved when you save corrections.")
+  /// Your original imported values and descriptions are kept when you save changes.
+  internal static let transactionOriginalPreserved = FinanceStrings.tr("Localizable", "transactionOriginalPreserved", fallback: "Your original imported values and descriptions are kept when you save changes.")
   /// Transactions
   internal static let transactions = FinanceStrings.tr("Localizable", "transactions", fallback: "Transactions")
   /// Transactions to review
@@ -880,8 +882,8 @@ internal enum FinanceStrings {
   internal static let tryAnotherSearchOrResetYourFilters = FinanceStrings.tr("Localizable", "tryAnotherSearchOrResetYourFilters", fallback: "Try another search or reset your filters.")
   /// Type column
   internal static let typeColumn = FinanceStrings.tr("Localizable", "typeColumn", fallback: "Type column")
-  /// Unable to load local data. Your saved data has not been replaced.
-  internal static let unableToLoadLocalDataYourSavedDataHasNotBeenReplaced = FinanceStrings.tr("Localizable", "unableToLoadLocalDataYourSavedDataHasNotBeenReplaced", fallback: "Unable to load local data. Your saved data has not been replaced.")
+  /// Couldn’t load your data. Your saved data is unchanged.
+  internal static let unableToLoadLocalDataYourSavedDataHasNotBeenReplaced = FinanceStrings.tr("Localizable", "unableToLoadLocalDataYourSavedDataHasNotBeenReplaced", fallback: "Couldn’t load your data. Your saved data is unchanged.")
   /// Unable to load merchant rules. Try again before editing.
   internal static let unableToLoadMerchantRulesTryAgainBeforeEditing = FinanceStrings.tr("Localizable", "unableToLoadMerchantRulesTryAgainBeforeEditing", fallback: "Unable to load merchant rules. Try again before editing.")
   /// Unable to save demo data. Please try again.
@@ -898,8 +900,8 @@ internal enum FinanceStrings {
   internal static let unreadableImportFileMessage = FinanceStrings.tr("Localizable", "unreadableImportFileMessage", fallback: "The file could not be read. Choose it again and check access in Files.")
   /// Unspecified
   internal static let unspecifiedIncomeSource = FinanceStrings.tr("Localizable", "unspecifiedIncomeSource", fallback: "Unspecified")
-  /// These amounts cannot be combined with your saved data without losing precision. Check the amounts and number format.
-  internal static let unsupportedImportTotalsMessage = FinanceStrings.tr("Localizable", "unsupportedImportTotalsMessage", fallback: "These amounts cannot be combined with your saved data without losing precision. Check the amounts and number format.")
+  /// FinAI can’t calculate accurate totals with these amounts. Check the amounts and number format.
+  internal static let unsupportedImportTotalsMessage = FinanceStrings.tr("Localizable", "unsupportedImportTotalsMessage", fallback: "FinAI can’t calculate accurate totals with these amounts. Check the amounts and number format.")
   /// This PDF format is not supported. Choose a complete German Sparkasse statement with the Datum / Erläuterung / Betrag EUR table.
   internal static let unsupportedStatementMessage = FinanceStrings.tr("Localizable", "unsupportedStatementMessage", fallback: "This PDF format is not supported. Choose a complete German Sparkasse statement with the Datum / Erläuterung / Betrag EUR table.")
   /// Updating budgets…
@@ -934,30 +936,30 @@ internal enum FinanceStrings {
   internal static let whatIfBaselineSpending = FinanceStrings.tr("Localizable", "whatIfBaselineSpending", fallback: "Baseline net spending")
   /// Calculate scenario
   internal static let whatIfCalculate = FinanceStrings.tr("Localizable", "whatIfCalculate", fallback: "Calculate scenario")
-  /// The scenario could not be calculated within supported decimal precision. Try a smaller amount.
-  internal static let whatIfCalculationUnavailable = FinanceStrings.tr("Localizable", "whatIfCalculationUnavailable", fallback: "The scenario could not be calculated within supported decimal precision. Try a smaller amount.")
+  /// FinAI can’t calculate this scenario accurately. Try a smaller amount.
+  internal static let whatIfCalculationUnavailable = FinanceStrings.tr("Localizable", "whatIfCalculationUnavailable", fallback: "FinAI can’t calculate this scenario accurately. Try a smaller amount.")
   /// Change
   internal static let whatIfChange = FinanceStrings.tr("Localizable", "whatIfChange", fallback: "Change")
   /// You can reduce only the estimated remaining expenses. Recorded expenses stay unchanged.
   internal static let whatIfExpenseReductionLimit = FinanceStrings.tr("Localizable", "whatIfExpenseReductionLimit", fallback: "You can reduce only the estimated remaining expenses. Recorded expenses stay unchanged.")
-  /// Try one unrecorded change in this month’s original currency. The amount adds to or reduces the baseline forecast; it does not change transactions, budgets, goals or account balances. Scenarios are temporary and are discarded when the forecast closes.
-  internal static let whatIfExplanation = FinanceStrings.tr("Localizable", "whatIfExplanation", fallback: "Try one unrecorded change in this month’s original currency. The amount adds to or reduces the baseline forecast; it does not change transactions, budgets, goals or account balances. Scenarios are temporary and are discarded when the forecast closes.")
+  /// Try a change that isn’t in your transactions yet, using this month’s currency. The amount adjusts the starting forecast without changing transactions, budgets, goals or account balances. The scenario is cleared when you close the forecast.
+  internal static let whatIfExplanation = FinanceStrings.tr("Localizable", "whatIfExplanation", fallback: "Try a change that isn’t in your transactions yet, using this month’s currency. The amount adjusts the starting forecast without changing transactions, budgets, goals or account balances. The scenario is cleared when you close the forecast.")
   /// Change in net flow
   internal static let whatIfFlowChange = FinanceStrings.tr("Localizable", "whatIfFlowChange", fallback: "Change in net flow")
   /// You can reduce only the assumed remaining income. Recorded income stays unchanged.
   internal static let whatIfIncomeReductionLimit = FinanceStrings.tr("Localizable", "whatIfIncomeReductionLimit", fallback: "You can reduce only the assumed remaining income. Recorded income stays unchanged.")
-  /// Enter a positive amount using your regional number format.
-  internal static let whatIfInvalidAmount = FinanceStrings.tr("Localizable", "whatIfInvalidAmount", fallback: "Enter a positive amount using your regional number format.")
-  /// A baseline forecast is needed for this currency. Import the previous month’s transactions first.
-  internal static let whatIfNeedsForecast = FinanceStrings.tr("Localizable", "whatIfNeedsForecast", fallback: "A baseline forecast is needed for this currency. Import the previous month’s transactions first.")
+  /// Enter an amount greater than zero using your regional number format.
+  internal static let whatIfInvalidAmount = FinanceStrings.tr("Localizable", "whatIfInvalidAmount", fallback: "Enter an amount greater than zero using your regional number format.")
+  /// Import last month’s transactions in this currency to create a starting forecast.
+  internal static let whatIfNeedsForecast = FinanceStrings.tr("Localizable", "whatIfNeedsForecast", fallback: "Import last month’s transactions in this currency to create a starting forecast.")
   /// Reduce expected expenses
   internal static let whatIfReducedExpenses = FinanceStrings.tr("Localizable", "whatIfReducedExpenses", fallback: "Reduce expected expenses")
   /// Reduce expected income
   internal static let whatIfReducedIncome = FinanceStrings.tr("Localizable", "whatIfReducedIncome", fallback: "Reduce expected income")
   /// Reset scenario
   internal static let whatIfReset = FinanceStrings.tr("Localizable", "whatIfReset", fallback: "Reset scenario")
-  /// Each calculation starts from the baseline, not the previous scenario. A positive change means higher projected net flow. This is a current-month estimate with the same assumptions as the forecast, not an affordability assessment or a prediction of goal completion.
-  internal static let whatIfResultExplanation = FinanceStrings.tr("Localizable", "whatIfResultExplanation", fallback: "Each calculation starts from the baseline, not the previous scenario. A positive change means higher projected net flow. This is a current-month estimate with the same assumptions as the forecast, not an affordability assessment or a prediction of goal completion.")
+  /// Each calculation starts from the original forecast. A positive change means a higher net flow. The same forecast assumptions apply. This estimate does not tell you whether you can afford a purchase or when you’ll reach a savings goal.
+  internal static let whatIfResultExplanation = FinanceStrings.tr("Localizable", "whatIfResultExplanation", fallback: "Each calculation starts from the original forecast. A positive change means a higher net flow. The same forecast assumptions apply. This estimate does not tell you whether you can afford a purchase or when you’ll reach a savings goal.")
   /// Scenario · %@
   internal static func whatIfResultHeading(_ p1: Any) -> String {
     return FinanceStrings.tr("Localizable", "whatIfResultHeading", String(describing: p1), fallback: "Scenario · %@")

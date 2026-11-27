@@ -61,7 +61,7 @@ final class FinAIUITests: XCTestCase {
         XCTAssertTrue(list.waitForExistence(timeout: 5))
         list.buttons.firstMatch.tap()
         XCTAssertTrue(app.navigationBars["Transaction details"].waitForExistence(timeout: 5))
-        let provenance = app.staticTexts["Synthetic demo data"]
+        let provenance = app.staticTexts["Sample data"]
         for _ in 0..<6 where !provenance.exists {
             app.swipeUp()
         }

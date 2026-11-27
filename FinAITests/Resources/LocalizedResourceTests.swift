@@ -45,7 +45,7 @@ struct LocalizedResourceTests {
     @Test func domainLabelsAndImportFailuresResolveFromAppCatalog() {
         #expect(english(Transaction.Kind.refund.title) == "Refund")
         #expect(english(Category.housing.title) == "Housing")
-        #expect(english(ImportError.storageChanged.message) == "The import could not be saved. Your previous data is preserved. Try again or reopen the import.")
+        #expect(english(ImportError.storageChanged.message) == "Couldn’t save this import. Your existing data is unchanged. Try again or reopen the import.")
     }
 
     private func english(_ resource: LocalizedStringResource) -> String {

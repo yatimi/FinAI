@@ -30,7 +30,7 @@
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Відхилити зміни цілі?"
+            "value": "Не зберігати зміни цілі?"
           }
         }
       }
@@ -126,13 +126,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Enter a name, positive target, nonnegative savings, valid currency code and date."
+            "value": "Enter a name, a target greater than zero, a currency and a deadline. Savings can be zero or more."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Введіть назву, додатну цільову суму, невід’ємні заощадження, дійсний код валюти та дату."
+            "value": "Введіть назву, цільову суму більшу за нуль, валюту й кінцеву дату. Сума заощаджень може бути нульовою або більшою."
           }
         }
       }
@@ -177,13 +177,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Deadline passed — revise the date or savings amount."
+            "value": "The deadline has passed. Update the date or the amount saved."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Кінцева дата минула — перегляньте дату або суму заощаджень."
+            "value": "Кінцева дата минула. Оновіть дату або суму заощаджень."
           }
         }
       }
@@ -194,13 +194,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Record savings manually. Goals do not move money or change account balances. Monthly contributions include the current and deadline months and are rounded up. This schedule does not assess affordability."
+            "value": "Enter your savings as you set money aside. Goals do not move money or change account balances. The monthly savings amount is rounded up and includes both this month and the deadline month. It does not tell you whether you can afford to save that amount."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Записуйте заощадження вручну. Цілі не переміщують гроші й не змінюють залишки на рахунках. Щомісячні внески включають поточний і кінцевий місяці та округлюються вгору. Цей графік не оцінює, чи можете ви дозволити собі ці внески."
+            "value": "Вносьте заощадження, коли відкладаєте гроші. Цілі не переміщують кошти й не змінюють баланси рахунків. Щомісячна сума округлюється вгору; розрахунок включає цей місяць і місяць кінцевої дати. Він не визначає, чи можете ви дозволити собі відкладати цю суму."
           }
         }
       }
@@ -279,13 +279,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Unable to save the goal. Your draft is preserved; try again."
+            "value": "Couldn’t save this goal. Your edits are still here. Try again."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Не вдалося зберегти ціль. Чернетку збережено; повторіть спробу."
+            "value": "Не вдалося зберегти ціль. Введені дані залишилися на екрані. Спробуйте ще раз."
           }
         }
       }
@@ -381,13 +381,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "A CSV field is too long."
+            "value": "One CSV value is too long. Shorten it and choose the file again."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Поле CSV задовге."
+            "value": "Одне зі значень у CSV задовге. Скоротіть його й виберіть файл знову."
           }
         }
       }
@@ -449,13 +449,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Account kind"
+            "value": "Account type"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Вид рахунку"
+            "value": "Тип рахунку"
           }
         }
       }
@@ -925,13 +925,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Column mapping"
+            "value": "Match columns"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Зіставлення стовпців"
+            "value": "Зіставити стовпці"
           }
         }
       }
@@ -976,13 +976,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "A rule for this description, match mode and transaction type already exists. Edit that rule instead."
+            "value": "A rule with this description, match type and transaction type already exists. Edit the existing rule."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Правило для цього опису, режиму зіставлення й типу операції вже існує. Відредагуйте його."
+            "value": "Правило з цим описом, способом зіставлення й типом операції вже існує. Відредагуйте наявне правило."
           }
         }
       }
@@ -1214,13 +1214,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Default currency (EUR, USD…)"
+            "value": "Default currency (e.g. EUR)"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Типова валюта (EUR, USD…)"
+            "value": "Основна валюта (наприклад, EUR)"
           }
         }
       }
@@ -1237,7 +1237,7 @@
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Типовий тип операції"
+            "value": "Тип операції за замовчуванням"
           }
         }
       }
@@ -1282,7 +1282,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Synthetic accounts and transactions will be saved on this device. No bank connection is needed."
+            "value": "Sample accounts and transactions will be saved on this device. No bank connection is needed."
           }
         },
         "uk": {
@@ -1322,7 +1322,7 @@
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Демонстраційні дані · збережено на цьому пристрої"
+            "value": "Демодані · збережено на цьому пристрої"
           }
         }
       }
@@ -1441,7 +1441,7 @@
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Відхилити зміни"
+            "value": "Не зберігати"
           }
         }
       }
@@ -1458,7 +1458,7 @@
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Відхилити зміни?"
+            "value": "Не зберігати зміни?"
           }
         }
       }
@@ -1503,13 +1503,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Edit mapping"
+            "value": "Change columns"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Змінити зіставлення"
+            "value": "Змінити стовпці"
           }
         }
       }
@@ -1673,13 +1673,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Explore demo data from Overview to get started."
+            "value": "Go to Home to try the demo."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Почніть із демонстраційних даних на екрані огляду."
+            "value": "Перейдіть на вкладку «Головна», щоб переглянути демодані."
           }
         }
       }
@@ -1690,13 +1690,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Explore demo data or import CSV or a supported PDF statement from Overview to get started."
+            "value": "Go to Home to try the demo or import a CSV or supported PDF statement."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Почніть із демонстраційних даних або імпорту CSV чи підтримуваної PDF-виписки на екрані огляду."
+            "value": "На вкладці «Головна» можна переглянути демодані або імпортувати CSV чи підтримувану PDF-виписку."
           }
         }
       }
@@ -1707,13 +1707,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Explore with demo data?"
+            "value": "Try the demo?"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Завантажити демонстраційні дані?"
+            "value": "Спробувати демодані?"
           }
         }
       }
@@ -1775,13 +1775,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "First observed"
+            "value": "First payment"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Перша операція"
+            "value": "Перший платіж"
           }
         }
       }
@@ -1860,13 +1860,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Import CSV or a supported PDF statement using the toolbar, or explore with synthetic demo data."
+            "value": "Import a CSV or supported PDF statement, or try the demo without using your own data."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Імпортуйте CSV або підтримувану PDF-виписку через панель інструментів чи перегляньте демонстраційні дані."
+            "value": "Імпортуйте CSV чи підтримувану PDF-виписку або спробуйте демодані без власних фінансових даних."
           }
         }
       }
@@ -1962,13 +1962,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The sign controls direction, not the transaction type. Unknown transactions are excluded from overview totals until you choose a type in the preview."
+            "value": "The amount’s sign tells FinAI whether money came in or went out. Choose the transaction type separately. Transactions marked Unknown are left out of totals until you choose a type in the preview."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Знак визначає напрямок, а не тип операції. Невідомі операції не враховуються в підсумках огляду, доки ви не виберете тип під час попереднього перегляду."
+            "value": "Знак суми визначає надходження або списання коштів. Тип операції вибирається окремо. Операції з невідомим типом не враховуються в підсумках, доки ви не виберете тип під час перегляду."
           }
         }
       }
@@ -2030,13 +2030,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The import could not be saved. Your previous data is preserved. Try again or reopen the import."
+            "value": "Couldn’t save this import. Your existing data is unchanged. Try again or reopen the import."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Не вдалося зберегти імпорт. Попередні дані збережено. Повторіть спробу або відкрийте імпорт знову."
+            "value": "Не вдалося зберегти імпорт. Наявні дані не змінилися. Спробуйте ще раз або відкрийте імпорт знову."
           }
         }
       }
@@ -2132,13 +2132,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Interpretation"
+            "value": "Import options"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Тлумачення"
+            "value": "Параметри імпорту"
           }
         }
       }
@@ -2183,13 +2183,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The amount does not match the selected number format or exceeds supported precision."
+            "value": "Check the amount and number format. FinAI can’t read this amount accurately."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Сума не відповідає вибраному формату чисел або перевищує підтримувану точність."
+            "value": "Перевірте суму й формат чисел. FinAI не може точно прочитати цю суму."
           }
         }
       }
@@ -2200,13 +2200,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The date does not match the selected format or is not a valid calendar date."
+            "value": "Check that the date exists and matches the selected format."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Дата не відповідає вибраному формату або не є дійсною календарною датою."
+            "value": "Перевірте, чи існує така дата й чи відповідає вона вибраному формату."
           }
         }
       }
@@ -2251,13 +2251,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Invalid rows to skip: %lld"
+            "value": "Rows with errors to skip: %lld"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Недійсних рядків для пропуску: %lld"
+            "value": "Рядків із помилками для пропуску: %lld"
           }
         }
       }
@@ -2308,7 +2308,7 @@
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Минулого місяця"
+            "value": "Минулий місяць"
           }
         }
       }
@@ -2319,7 +2319,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Last observed"
+            "value": "Latest payment"
           }
         },
         "uk": {
@@ -2574,13 +2574,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Matching ignores case, punctuation and spacing, and uses whole words. A short prefix can match many transactions; review every suggestion."
+            "value": "Rules match whole words and ignore capitalization, punctuation and extra spaces. A short beginning of a description may match many transactions. Check each suggestion."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Зіставлення не враховує регістр, розділові знаки й пробіли та використовує цілі слова. Короткий початок опису може відповідати багатьом операціям; перевіряйте кожну пропозицію."
+            "value": "Правила зіставляють цілі слова без урахування великих і малих літер, розділових знаків і зайвих пробілів. Короткий початок опису може підходити до багатьох операцій. Перевіряйте кожну пропозицію."
           }
         }
       }
@@ -2608,13 +2608,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Rules run locally before built-in suggestions. They apply to future previews only. Exact descriptions take priority, then the longest prefix. Transaction types, amounts and currencies stay unchanged."
+            "value": "Your rules apply to future imports before FinAI’s suggestions. An exact description match takes priority, followed by the longest matching beginning. Rules do not change transaction types, amounts or currencies."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Правила виконуються локально перед вбудованими пропозиціями й діють лише для майбутніх попередніх переглядів. Спочатку перевіряються точні описи, потім найдовший початок опису. Типи операцій, суми й валюти не змінюються."
+            "value": "Ваші правила застосовуються до майбутніх імпортів перед пропозиціями FinAI. Пріоритет має точний збіг опису, потім — найдовший початок, що збігається. Правила не змінюють типи операцій, суми чи валюти."
           }
         }
       }
@@ -2625,13 +2625,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Known merchants and categories are suggested locally. Review and correct them before saving. Changing the transaction type resets its category suggestion."
+            "value": "FinAI suggests merchants and categories on this device. Check them before saving. Changing a transaction’s type resets its suggested category."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Відомі продавці й категорії пропонуються локально. Перевірте та виправте їх перед збереженням. Зміна типу операції скидає запропоновану категорію."
+            "value": "FinAI пропонує продавців і категорії на цьому пристрої. Перевірте їх перед збереженням. Зміна типу операції скидає запропоновану категорію."
           }
         }
       }
@@ -2710,13 +2710,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Selected calendar month compared with the full previous month. Current-month data may be incomplete; results use saved transactions only."
+            "value": "Compares the selected calendar month with the full previous month using saved transactions. This month’s data may be incomplete."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Вибраний календарний місяць порівнюється з повним попереднім місяцем. Дані поточного місяця можуть бути неповними; результати враховують лише збережені операції."
+            "value": "Порівняння вибраного календарного місяця з повним попереднім місяцем за збереженими операціями. Дані цього місяця можуть бути неповними."
           }
         }
       }
@@ -2812,13 +2812,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Next date from pattern"
+            "value": "Next expected payment"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Наступна дата за закономірністю"
+            "value": "Наступний очікуваний платіж"
           }
         }
       }
@@ -2914,13 +2914,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No regular payment patterns found. More transaction history may be needed."
+            "value": "No recurring payments found. Import more transaction history to check for regular payments."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Регулярних платежів не знайдено. Можливо, потрібна довша історія операцій."
+            "value": "Регулярних платежів не знайдено. Імпортуйте більше попередніх операцій, щоб перевірити їх наявність."
           }
         }
       }
@@ -3084,13 +3084,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Percentage change is unavailable when previous net spending is zero or negative."
+            "value": "A percentage change can’t be calculated when the previous month’s net spending is zero or less."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Зміна у відсотках недоступна, коли попередні чисті витрати дорівнюють нулю або від’ємні."
+            "value": "Зміну у відсотках неможливо обчислити, якщо чисті витрати попереднього місяця дорівнюють нулю або менші за нього."
           }
         }
       }
@@ -3220,13 +3220,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Possible recurring expenses, not confirmed contracts. Matching uses at least three equal payments to the same saved merchant, on one account and in one currency. Weekly dates may vary by one day; monthly and yearly dates by three days."
+            "value": "These are possible recurring payments, not confirmed agreements. FinAI looks for at least three payments with the same amount, merchant, account and currency. Weekly dates can differ by one day; monthly and yearly dates by three days."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Можливі регулярні витрати, а не підтверджені договори. Зіставлення потребує щонайменше трьох однакових платежів тому самому збереженому продавцю з одного рахунку в одній валюті. Щотижневі дати можуть відрізнятися на один день; щомісячні та щорічні — на три дні."
+            "value": "Це можливі регулярні платежі, а не підтверджені домовленості. FinAI шукає щонайменше три платежі з однаковою сумою, продавцем, рахунком і валютою. Щотижневі дати можуть відрізнятися на один день; щомісячні та щорічні — на три дні."
           }
         }
       }
@@ -3237,13 +3237,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Estimated from saved activity. Future payment dates and amounts are not guaranteed."
+            "value": "Estimates use your saved transactions. Future payment dates and amounts may change."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Оцінка за збереженими операціями. Дати й суми майбутніх платежів не гарантовані."
+            "value": "Оцінки ґрунтуються на збережених операціях. Дати й суми майбутніх платежів можуть змінюватися."
           }
         }
       }
@@ -3254,13 +3254,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Only positive expenses are considered. Transfers, refunds, income and future transactions are excluded. Changed amounts, missing periods and irregular groups may not be detected. The subscription label also requires every matched payment to use the Subscriptions category. Nothing is changed or scheduled automatically."
+            "value": "Only expenses greater than zero are included. Transfers, refunds, income and future-dated transactions are excluded. Changed amounts, missing payments and irregular schedules may go undetected. A payment is marked as a possible subscription only if all matching payments have the Subscriptions category. FinAI does not change or schedule payments."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Враховуються лише додатні витрати. Перекази, повернення коштів, доходи та майбутні операції виключено. Зміни сум, пропущені періоди й нерегулярні групи можуть не визначатися. Позначка підписки також вимагає категорії «Підписки» в усіх відповідних платежах. Нічого не змінюється й не планується автоматично."
+            "value": "Враховуються лише витрати більші за нуль. Перекази, повернення коштів, доходи й операції з майбутніми датами виключено. Зміни сум, пропущені платежі й нерегулярні дати можуть не визначатися. Позначка можливої підписки з’являється, лише якщо всі відповідні платежі мають категорію «Підписки». FinAI не змінює й не планує платежі."
           }
         }
       }
@@ -3662,13 +3662,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Select at least one valid transaction."
+            "value": "Select at least one transaction without errors."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Виберіть принаймні одну дійсну операцію."
+            "value": "Виберіть принаймні одну операцію без помилок."
           }
         }
       }
@@ -3747,13 +3747,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Breakdowns show the current month, ordered by net spending. Refunds reduce spending in their recorded month and category. Merchant names use saved values. Transfers, income, adjustments and unknown transactions are excluded."
+            "value": "Shows this month’s expenses minus refunds, from highest to lowest. Refunds reduce spending in the month and category where they were recorded. Merchants use their saved names. Transfers, income, adjustments and unknown transactions are excluded."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Розподіл показує поточний місяць за спаданням чистих витрат. Повернення зменшують витрати у своєму місяці й категорії. Використовуються збережені назви продавців. Перекази, доходи, коригування й невідомі операції виключено."
+            "value": "Витрати цього місяця за вирахуванням повернень коштів, від найбільших до найменших. Повернення зменшують витрати в місяці й категорії, де їх записано. Використовуються збережені назви продавців. Перекази, доходи, коригування й невідомі операції виключено."
           }
         }
       }
@@ -3764,13 +3764,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Expected date has passed without a matching saved payment. This pattern may have ended, changed, or be missing imported data."
+            "value": "The expected date has passed, but no matching payment is saved. The payment may have stopped or changed, or it may be missing from your imports."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Очікувана дата минула без відповідного збереженого платежу. Платежі могли припинитися чи змінитися або бракує імпортованих даних."
+            "value": "Очікувана дата минула, але відповідного платежу немає. Платежі могли припинитися чи змінитися або платіж не потрапив до імпорту."
           }
         }
       }
@@ -3798,13 +3798,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Synthetic demo data"
+            "value": "Sample data"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Штучні демодані"
+            "value": "Демодані"
           }
         }
       }
@@ -3815,13 +3815,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The description is empty."
+            "value": "Enter a description."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Опис порожній."
+            "value": "Введіть опис."
           }
         }
       }
@@ -3889,7 +3889,7 @@
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Цього місяця"
+            "value": "Цей місяць"
           }
         }
       }
@@ -3968,13 +3968,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Enter a nonnegative amount. Money in or out is selected separately."
+            "value": "Enter zero or a positive amount. Choose money in or money out separately."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Введіть невід’ємну суму. Надходження або списання вибирається окремо."
+            "value": "Введіть нуль або суму більшу за нуль. Надходження чи списання виберіть окремо."
           }
         }
       }
@@ -4036,13 +4036,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Enter a valid nonnegative amount using your locale’s decimal separator."
+            "value": "Enter zero or a positive amount using your regional number format."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Введіть дійсну невід’ємну суму з десятковим роздільником вашого регіону."
+            "value": "Введіть нуль або суму більшу за нуль у форматі чисел вашого регіону."
           }
         }
       }
@@ -4138,13 +4138,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This transaction changed since you opened it. Your edits are still here. Close and reopen it to review the latest values."
+            "value": "This transaction changed since you opened it. Your edits are still here. Close and reopen it to see the latest version."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ця операція змінилася після відкриття. Ваші правки збережено на екрані. Закрийте та знову відкрийте її, щоб переглянути актуальні значення."
+            "value": "Ця операція змінилася після відкриття. Ваші правки залишилися на екрані. Закрийте й відкрийте операцію знову, щоб побачити актуальні дані."
           }
         }
       }
@@ -4155,13 +4155,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This amount would exceed the supported precision for financial totals."
+            "value": "FinAI can’t calculate an accurate total with this amount. Check the amount and currency."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ця сума перевищить підтримувану точність фінансових підсумків."
+            "value": "FinAI не може точно обчислити підсумок із цією сумою. Перевірте суму й валюту."
           }
         }
       }
@@ -4206,13 +4206,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Original description and editing"
+            "value": "Review and edit"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Початковий опис і редагування"
+            "value": "Переглянути й змінити"
           }
         }
       }
@@ -4223,13 +4223,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Your original imported values and description are preserved when you save corrections."
+            "value": "Your original imported values and descriptions are kept when you save changes."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Початкові імпортовані значення й опис зберігаються після внесення виправлень."
+            "value": "Початкові імпортовані значення й описи зберігаються після внесення змін."
           }
         }
       }
@@ -4410,13 +4410,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Unable to load local data. Your saved data has not been replaced."
+            "value": "Couldn’t load your data. Your saved data is unchanged."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Не вдалося завантажити локальні дані. Збережені дані не замінено."
+            "value": "Не вдалося завантажити дані. Збережені дані не змінилися."
           }
         }
       }
@@ -4563,13 +4563,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "These amounts cannot be combined with your saved data without losing precision. Check the amounts and number format."
+            "value": "FinAI can’t calculate accurate totals with these amounts. Check the amounts and number format."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ці суми неможливо об’єднати зі збереженими даними без втрати точності. Перевірте суми й формат чисел."
+            "value": "FinAI не може точно обчислити підсумки з цими сумами. Перевірте суми й формат чисел."
           }
         }
       }
@@ -4767,13 +4767,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Statement balances were verified before preview. Review all transaction types, especially credits and transfers. Booking dates are used; value dates and fee appendices do not create extra transactions. Nothing is saved until you confirm."
+            "value": "The transactions match the statement’s opening and closing balances. Check their types, especially money in and transfers. FinAI uses booking dates; value dates and fee appendices do not create extra transactions. Nothing is saved until you confirm."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Баланси виписки перевірено перед переглядом. Перевірте всі типи операцій, особливо зарахування й перекази. Використовуються дати проведення; дати валютування й додатки з комісіями не створюють зайвих операцій. Нічого не зберігається без підтвердження."
+            "value": "Операції відповідають початковому й кінцевому балансам виписки. Перевірте їхні типи, особливо надходження та перекази. FinAI використовує дати проведення; дати валютування й додатки з комісіями не створюють додаткових операцій. Нічого не зберігається без підтвердження."
           }
         }
       }
@@ -4903,13 +4903,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The extracted transactions do not reconcile with the statement balances. No data was imported."
+            "value": "The transactions don’t match the statement’s opening and closing balances. Nothing was imported. Check that you selected the complete statement."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Видобуті операції не узгоджуються з балансами виписки. Дані не імпортовано."
+            "value": "Операції не відповідають початковому й кінцевому балансам виписки. Нічого не імпортовано. Перевірте, чи вибрано повну виписку."
           }
         }
       }
@@ -5021,13 +5021,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Monthly category limits across all accounts. Same-currency refunds received this month reduce spending; transfers and income are excluded. Limits repeat each calendar month. No currency conversion or money movement."
+            "value": "Set a monthly limit for each category across all accounts. Refunds in the same currency reduce this month’s spending; transfers and income are excluded. Limits repeat each calendar month. Budgets do not move money or convert currencies."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Місячні ліміти категорій для всіх рахунків. Повернення в тій самій валюті цього місяця зменшують витрати; перекази й доходи виключено. Ліміти повторюються щомісяця. Без конвертації валют і переміщення коштів."
+            "value": "Установіть місячний ліміт категорії для всіх рахунків. Повернення в тій самій валюті зменшують витрати цього місяця; перекази й доходи виключено. Ліміти повторюються щомісяця. Бюджети не переміщують кошти й не конвертують валюти."
           }
         }
       },
@@ -5157,13 +5157,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Unable to save budget. Your changes are kept. Try again."
+            "value": "Couldn’t save this budget. Your edits are still here. Try again."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Не вдалося зберегти бюджет. Правки залишилися на екрані. Спробуйте ще раз."
+            "value": "Не вдалося зберегти бюджет. Введені дані залишилися на екрані. Спробуйте ще раз."
           }
         }
       },
@@ -5174,13 +5174,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Enter a valid positive limit and currency."
+            "value": "Enter a limit greater than zero and a supported currency."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Введіть дійсний додатний ліміт і валюту."
+            "value": "Введіть ліміт більший за нуль і підтримувану валюту."
           }
         }
       },
@@ -5231,7 +5231,7 @@
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Відхилити зміни бюджету?"
+            "value": "Не зберігати зміни бюджету?"
           }
         }
       },
@@ -5260,13 +5260,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Progress could not be calculated. Saved goals and budgets are still available. Try reopening Plan or correcting the saved item."
+            "value": "Couldn’t calculate progress. Your goals and budgets are still available. Reopen Plan or check the saved amounts and dates."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Не вдалося обчислити прогрес. Збережені цілі й бюджети доступні. Відкрийте план знову або виправте збережений запис."
+            "value": "Не вдалося обчислити прогрес. Ваші цілі й бюджети доступні. Відкрийте «План» знову або перевірте збережені суми й дати."
           }
         }
       }
@@ -5277,13 +5277,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Spending progress is unavailable until local transactions are loaded and the calculation succeeds."
+            "value": "Spending progress will appear once your transactions load and FinAI can calculate the totals."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Прогрес витрат недоступний, доки не завантажено локальні операції й не завершено обчислення."
+            "value": "Прогрес витрат з’явиться, коли операції завантажаться й FinAI зможе обчислити підсумки."
           }
         }
       }
@@ -5311,13 +5311,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Savings are recorded manually. Goals do not represent an account balance or assess affordability."
+            "value": "Enter savings yourself. Goals are not account balances and do not tell you how much you can afford to save."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Заощадження вносяться вручну. Цілі не відображають баланс рахунку й не оцінюють фінансову спроможність."
+            "value": "Вносьте заощадження самостійно. Цілі не є балансами рахунків і не визначають, скільки ви можете дозволити собі відкладати."
           }
         }
       }
@@ -5515,13 +5515,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Switch months while keeping this query, category and merchant exclusion. “Without rent” asks you to choose which saved merchant to exclude."
+            "value": "Switch months without changing the category or excluded merchant. Choose “Without rent” to select whose payments to leave out."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Перемикайте місяці, зберігаючи запит, категорію й виключеного продавця. «А без оренди?» пропонує вибрати збереженого продавця для виключення."
+            "value": "Перемикайте місяці зі збереженням категорії й виключеного продавця. Виберіть «Без оренди», щоб указати, чиї платежі не враховувати."
           }
         }
       }
@@ -5566,13 +5566,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Suggested questions and complete category phrases such as “How much did I spend on groceries?” work without the model. After an answer, use “And last month?”, “And this month?” or “And without rent?”. Rent exclusion asks you to choose its saved merchant."
+            "value": "Suggested questions and phrases like “How much did I spend on groceries?” work without Apple Intelligence. After an answer, try “And last month?”, “And this month?” or “And without rent?”. For rent, you’ll choose whose payments to leave out."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Запропоновані запитання й повні фрази з категорією, наприклад «Скільки я витратив на продукти?», працюють без моделі. Після відповіді використовуйте «А за минулий місяць?», «А за цей місяць?» або «А без оренди?». Для виключення оренди потрібно вибрати збереженого продавця."
+            "value": "Запропоновані запитання й фрази на зразок «Скільки я витратив на продукти?» працюють без Apple Intelligence. Після відповіді спробуйте «А за минулий місяць?», «А за цей місяць?» або «А без оренди?». Для оренди потрібно вибрати, чиї платежі не враховувати."
           }
         }
       }
@@ -5583,13 +5583,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Explore recorded spending for this month or last month. Compare months or choose a category or saved merchant. Follow-ups keep the selected category and merchant exclusion when switching months."
+            "value": "Ask about spending this month or last month. Compare months or explore a category or merchant. Follow-up questions keep your category and excluded merchant when you switch months."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Досліджуйте збережені витрати за цей або минулий місяць. Порівнюйте місяці, вибирайте категорію чи збереженого продавця. Уточнення зберігають вибрану категорію й виключеного продавця під час зміни місяця."
+            "value": "Запитайте про витрати цього або минулого місяця. Порівняйте місяці чи перегляньте витрати за категорією або продавцем. Під час зміни місяця уточнення зберігають вибрану категорію й виключеного продавця."
           }
         }
       }
@@ -5640,7 +5640,7 @@
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Скільки я витратив цього місяця?"
+            "value": "Скільки витрачено цього місяця?"
           }
         }
       }
@@ -5657,7 +5657,7 @@
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Скільки я витратив минулого місяця?"
+            "value": "Скільки витрачено минулого місяця?"
           }
         }
       }
@@ -5719,13 +5719,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Ask about recorded spending"
+            "value": "Ask about your spending"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Запитайте про збережені витрати"
+            "value": "Запитайте про свої витрати"
           }
         }
       }
@@ -5736,13 +5736,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Up to 1,000 characters. Supported periods: this month and last month."
+            "value": "Up to 1,000 characters. Ask about this month or last month."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "До 1000 символів. Підтримувані періоди: цей і минулий місяць."
+            "value": "До 1000 символів. Запитуйте про цей або минулий місяць."
           }
         }
       }
@@ -5821,13 +5821,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free-text questions need a device that supports Apple Intelligence. Suggested questions work on this device."
+            "value": "This device doesn’t support Apple Intelligence. You can still use suggested questions."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Для довільних запитань потрібен пристрій із підтримкою Apple Intelligence. Запропоновані запитання працюють на цьому пристрої."
+            "value": "Цей пристрій не підтримує Apple Intelligence. Ви можете користуватися запропонованими запитаннями."
           }
         }
       }
@@ -5838,13 +5838,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Enable Apple Intelligence in Settings to ask free-text questions. Suggested questions work without it."
+            "value": "Turn on Apple Intelligence in Settings to ask more questions. Suggested questions work without it."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Увімкніть Apple Intelligence у налаштуваннях для довільних запитань. Запропоновані запитання працюють без нього."
+            "value": "Увімкніть Apple Intelligence у налаштуваннях, щоб ставити більше запитань. Запропоновані запитання працюють без нього."
           }
         }
       }
@@ -5855,13 +5855,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The on-device language model is not ready. You can use the suggested questions while it becomes available."
+            "value": "Apple Intelligence isn’t ready yet. Use a suggested question while you wait."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Модель мови на пристрої ще не готова. Поки вона готується, використовуйте запропоновані запитання."
+            "value": "Apple Intelligence ще не готовий. Поки чекаєте, скористайтеся запропонованим запитанням."
           }
         }
       }
@@ -5872,13 +5872,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The on-device model does not support the current language. You can still use the suggested questions."
+            "value": "The on-device assistant doesn’t support this language. You can still use suggested questions."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Модель на пристрої не підтримує поточну мову. Ви можете використовувати запропоновані запитання."
+            "value": "Асистент на пристрої не підтримує цю мову. Ви можете користуватися запропонованими запитаннями."
           }
         }
       }
@@ -5889,13 +5889,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This question could not be matched to a supported query. Ask about spending, one category, a month comparison or one merchant for this month or last month, or use a suggested question."
+            "value": "Try asking about spending, a category, a merchant or a month comparison for this month or last month. You can also choose a suggested question."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Не вдалося зіставити це запитання з підтримуваним запитом. Запитайте про витрати, одну категорію, порівняння місяців або одного продавця за цей чи минулий місяць або виберіть запропоноване запитання."
+            "value": "Запитайте про витрати, категорію, продавця чи порівняння за цей або минулий місяць. Також можна вибрати запропоноване запитання."
           }
         }
       }
@@ -5906,13 +5906,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No unique saved merchant matched the question. Choose a merchant from the suggested questions to use its exact saved name."
+            "value": "Couldn’t identify one merchant. Choose a merchant from the suggested questions."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Не вдалося однозначно визначити збереженого продавця. Виберіть продавця із запропонованих запитань, щоб використати його точну збережену назву."
+            "value": "Не вдалося визначити одного продавця. Виберіть його із запропонованих запитань."
           }
         }
       }
@@ -5923,13 +5923,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Free-text questions are currently unavailable. Check Apple Intelligence availability or use a suggested question."
+            "value": "FinAI can’t use Apple Intelligence right now. Check its availability or choose a suggested question."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Довільні запитання зараз недоступні. Перевірте доступність Apple Intelligence або використовуйте запропоноване запитання."
+            "value": "FinAI зараз не може використовувати Apple Intelligence. Перевірте його доступність або виберіть запропоноване запитання."
           }
         }
       }
@@ -5940,13 +5940,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The on-device model could not interpret this question. Try rephrasing it or use a suggested question."
+            "value": "Couldn’t understand this question. Try rephrasing it or choose a suggested question."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Модель на пристрої не змогла зрозуміти запитання. Перефразуйте його або використовуйте запропоноване запитання."
+            "value": "Не вдалося зрозуміти запитання. Перефразуйте його або виберіть запропоноване запитання."
           }
         }
       }
@@ -5957,13 +5957,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The recorded data could not be calculated safely. No answer is shown. Try again after reviewing your transactions."
+            "value": "Couldn’t calculate an accurate answer. Check your transactions and try again."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Не вдалося безпечно обчислити збережені дані. Відповідь не показано. Перевірте операції й спробуйте ще раз."
+            "value": "Не вдалося точно обчислити відповідь. Перевірте операції й спробуйте ще раз."
           }
         }
       }
@@ -5974,13 +5974,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Interpreted query"
+            "value": "What’s included"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Розпізнаний запит"
+            "value": "Що враховано"
           }
         }
       }
@@ -6025,13 +6025,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "View contributing transactions"
+            "value": "View transactions"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Переглянути враховані операції"
+            "value": "Переглянути операції"
           }
         }
       }
@@ -6042,13 +6042,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "View previous month transactions"
+            "value": "View last month’s transactions"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Переглянути операції минулого місяця"
+            "value": "Операції минулого місяця"
           }
         }
       }
@@ -6059,7 +6059,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Recorded changes by category"
+            "value": "Changes by category"
           }
         },
         "uk": {
@@ -6161,13 +6161,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "History month"
+            "value": "Based on"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Місяць історії"
+            "value": "На основі"
           }
         }
       }
@@ -6229,13 +6229,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "No expense or income history for this currency in the previous month. A forecast is unavailable."
+            "value": "No expenses or income in this currency last month. Import that history to see a forecast."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "За попередній місяць немає історії витрат або доходів у цій валюті. Прогноз недоступний."
+            "value": "За минулий місяць немає витрат або доходів у цій валюті. Імпортуйте ці операції, щоб побачити прогноз."
           }
         }
       }
@@ -6297,13 +6297,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Estimated remaining ordinary expenses"
+            "value": "Other expenses still expected"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Оцінка решти звичайних витрат"
+            "value": "Інші очікувані витрати"
           }
         }
       }
@@ -6314,13 +6314,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Expected remaining recurring expenses"
+            "value": "Expected recurring payments"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Очікувана решта регулярних витрат"
+            "value": "Очікувані регулярні платежі"
           }
         }
       }
@@ -6382,13 +6382,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Assumed remaining income"
+            "value": "Expected remaining income"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Припущення щодо решти доходів"
+            "value": "Очікувані доходи до кінця місяця"
           }
         }
       }
@@ -6467,13 +6467,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "An end-of-day estimate. Last month’s ordinary expenses are averaged over its calendar days and applied from tomorrow to month end. Active detected recurring expenses use their expected dates instead. Total income is assumed to match last month, or recorded income if higher."
+            "value": "The forecast starts at the end of today. FinAI spreads last month’s ordinary expenses evenly across its calendar days and uses that daily amount for tomorrow through month end. Active recurring payments use their expected dates instead. Total income is assumed to equal last month’s income, or this month’s recorded income if that is higher."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Оцінка станом на кінець дня. Звичайні витрати минулого місяця усереднюються за його календарними днями й застосовуються від завтра до кінця місяця. Для активних регулярних витрат використовуються очікувані дати. Загальний дохід вважається рівним доходу минулого місяця або вже збереженому доходу, якщо той більший."
+            "value": "Прогноз починається з кінця сьогоднішнього дня. FinAI ділить звичайні витрати минулого місяця на кількість його календарних днів і застосовує цю щоденну суму від завтра до кінця місяця. Для активних регулярних платежів використовуються очікувані дати. Загальний дохід вважається рівним доходу минулого місяця або вже записаному доходу цього місяця, якщо він більший."
           }
         }
       }
@@ -6484,13 +6484,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Assumes complete imports and unchanged habits and income. A record does not prove the month is complete. Missing payments, changed prices and irregular income can make this estimate inaccurate. Recurring payments need three matching occurrences; stale patterns are not scheduled. No future refunds or transactions dated after today are included. Transfers, adjustments and unknown entries are excluded. Net spending is expenses minus recorded refunds; net flow is income minus net spending. This is not an account balance, available money or an affordability assessment. Currencies stay separate."
+            "value": "This estimate assumes all transactions are imported and your spending habits and income stay the same. Having some records does not mean a month is complete. Missing payments, price changes and irregular income can affect the result.\nRecurring payments need at least three matching payments. Patterns with missed expected dates are not included in upcoming payments. Future refunds and transactions dated after today are excluded, along with transfers, adjustments and unknown transactions.\nNet spending is expenses minus recorded refunds. Net flow is income minus net spending. Currencies stay separate. These estimates are not account balances and do not tell you how much is available to spend."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Припускається повнота імпорту й незмінність звичок та доходів. Наявність запису не доводить повноти місяця. Пропущені платежі, зміни цін і нерегулярні доходи можуть знизити точність. Для регулярних платежів потрібні три збіги; прострочені закономірності не плануються. Майбутні повернення й операції після сьогодні не враховуються. Перекази, коригування й невідомі записи виключено. Чисті витрати — витрати мінус збережені повернення; чистий потік — доходи мінус чисті витрати. Це не баланс рахунку, доступні кошти чи оцінка фінансової спроможності. Валюти враховуються окремо."
+            "value": "Ця оцінка передбачає повний імпорт операцій і незмінні звички витрат та доходи. Наявність окремих записів не означає, що місяць повний. Пропущені платежі, зміни цін і нерегулярні доходи можуть вплинути на результат.\nДля регулярних платежів потрібні щонайменше три збіги. Якщо очікувана дата платежу минула без запису, він не включається до майбутніх платежів. Майбутні повернення й операції після сьогодні не враховуються, як і перекази, коригування та невідомі операції.\nЧисті витрати — це витрати мінус записані повернення. Чистий потік — доходи мінус чисті витрати. Валюти враховуються окремо. Ці оцінки не є балансами рахунків і не визначають, скільки можна витратити."
           }
         }
       }
@@ -6501,13 +6501,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Based on last month’s recorded activity. Assumes complete imports and unchanged habits and income. Estimates are not available balances."
+            "value": "Estimated from last month’s transactions, assuming all transactions are imported and your spending habits and income stay the same. This is not an available account balance."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "На основі збережених операцій минулого місяця. Припускається повнота імпорту й незмінність звичок та доходів. Оцінки не є доступними залишками."
+            "value": "Оцінка за операціями минулого місяця за умови повного імпорту й незмінних витрат і доходів. Це не доступний залишок на рахунку."
           }
         }
       }
@@ -6688,13 +6688,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "A baseline forecast is needed for this currency. Import the previous month’s transactions first."
+            "value": "Import last month’s transactions in this currency to create a starting forecast."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Для цієї валюти потрібен базовий прогноз. Спочатку імпортуйте операції попереднього місяця."
+            "value": "Імпортуйте операції минулого місяця в цій валюті, щоб створити початковий прогноз."
           }
         }
       }
@@ -6705,13 +6705,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Try one unrecorded change in this month’s original currency. The amount adds to or reduces the baseline forecast; it does not change transactions, budgets, goals or account balances. Scenarios are temporary and are discarded when the forecast closes."
+            "value": "Try a change that isn’t in your transactions yet, using this month’s currency. The amount adjusts the starting forecast without changing transactions, budgets, goals or account balances. The scenario is cleared when you close the forecast."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Спробуйте одну незбережену зміну в початковій валюті цього місяця. Сума збільшує або зменшує базовий прогноз; операції, бюджети, цілі й баланси рахунків не змінюються. Сценарії тимчасові й видаляються після закриття прогнозу."
+            "value": "Спробуйте зміну, якої ще немає серед операцій, у валюті цього місяця. Сума змінить початковий прогноз, але не операції, бюджети, цілі чи баланси рахунків. Сценарій зникне після закриття прогнозу."
           }
         }
       }
@@ -6824,13 +6824,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Each calculation starts from the baseline, not the previous scenario. A positive change means higher projected net flow. This is a current-month estimate with the same assumptions as the forecast, not an affordability assessment or a prediction of goal completion."
+            "value": "Each calculation starts from the original forecast. A positive change means a higher net flow. The same forecast assumptions apply. This estimate does not tell you whether you can afford a purchase or when you’ll reach a savings goal."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Кожне обчислення починається з базового прогнозу, а не попереднього сценарію. Додатна зміна означає більший прогнозований чистий потік. Це оцінка поточного місяця з тими самими припущеннями, що й прогноз, а не оцінка фінансової спроможності чи завершення цілі."
+            "value": "Кожне обчислення починається з початкового прогнозу. Додатна зміна означає більший чистий потік. Припущення прогнозу залишаються тими самими. Ця оцінка не визначає, чи можете ви дозволити собі покупку або коли досягнете цілі заощаджень."
           }
         }
       }
@@ -6841,13 +6841,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Enter a positive amount using your regional number format."
+            "value": "Enter an amount greater than zero using your regional number format."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Введіть додатну суму у форматі чисел вашого регіону."
+            "value": "Введіть суму більшу за нуль у форматі чисел вашого регіону."
           }
         }
       }
@@ -6892,13 +6892,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "The scenario could not be calculated within supported decimal precision. Try a smaller amount."
+            "value": "FinAI can’t calculate this scenario accurately. Try a smaller amount."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Не вдалося обчислити сценарій у межах підтримуваної десяткової точності. Спробуйте меншу суму."
+            "value": "FinAI не може точно обчислити цей сценарій. Спробуйте меншу суму."
           }
         }
       }
@@ -6943,13 +6943,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Person"
+            "value": "Person’s name"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Особа"
+            "value": "Ім’я людини"
           }
         }
       }
@@ -6983,7 +6983,7 @@
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Я винен"
+            "value": "Мій борг"
           }
         }
       }
@@ -7334,13 +7334,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Discard unsaved debt changes?"
+            "value": "Discard debt changes?"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Відхилити незбережені зміни боргу?"
+            "value": "Не зберігати зміни боргу?"
           }
         }
       }
@@ -7351,13 +7351,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Record money you owe or lent to someone. Repayments reduce this debt only; they do not create bank transactions or change income, spending or account balances. Saved debts and repayments cannot be edited or deleted yet."
+            "value": "Record money you owe or have lent. Repayments reduce only this debt. They do not create bank transactions or change income, spending or account balances. You can’t edit or delete saved debts or repayments yet."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Записуйте кошти, які ви винні або позичили іншій особі. Погашення зменшує лише цей борг; воно не створює банківських операцій і не змінює доходи, витрати чи баланси рахунків. Збережені борги й погашення поки не можна редагувати або видаляти."
+            "value": "Записуйте гроші, які ви винні або позичили іншій людині. Погашення зменшують лише цей борг. Вони не створюють банківських операцій і не змінюють доходи, витрати чи баланси рахунків. Збережені борги й погашення поки не можна редагувати або видаляти."
           }
         }
       }
@@ -7385,13 +7385,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Unable to save. Your draft is preserved; please try again."
+            "value": "Couldn’t save this debt or repayment. Your edits are still here. Try again."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Не вдалося зберегти. Чернетка залишилася на екрані; спробуйте ще раз."
+            "value": "Не вдалося зберегти борг або погашення. Введені дані залишилися на екрані. Спробуйте ще раз."
           }
         }
       }
@@ -7402,13 +7402,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Enter a person, a positive amount and a valid currency. Debt and repayment dates cannot be in the future. A repayment must be on or after the debt date and cannot exceed the remaining debt. The due date cannot precede the debt date."
+            "value": "Enter a name, an amount greater than zero and a supported currency. Debt and repayment dates can’t be in the future. A repayment must be on or after the debt date and no more than the remaining debt. The due date must be on or after the debt date."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Введіть особу, додатну суму й дійсну валюту. Дати боргу й погашення не можуть бути в майбутньому. Погашення має бути не раніше дати боргу й не перевищувати його залишок. Строк повернення не може передувати даті боргу."
+            "value": "Введіть ім’я, суму більшу за нуль і підтримувану валюту. Дати боргу й погашення не можуть бути майбутніми. Дата погашення має бути не раніше дати боргу, а сума — не більшою за залишок. Строк повернення має бути не раніше дати боргу."
           }
         }
       }
@@ -7470,13 +7470,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Choose the saved merchant for rent"
+            "value": "Who do you pay rent to?"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Виберіть збереженого продавця для оренди"
+            "value": "Кому ви сплачуєте оренду?"
           }
         }
       }
@@ -7487,13 +7487,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Choose the merchant whose payments represent rent. All expenses and refunds at that merchant will be excluded, including any payments unrelated to rent. Housing is not excluded automatically."
+            "value": "Choose the recipient of your rent payments. All expenses and refunds for this merchant will be excluded, even payments unrelated to rent. Other Housing transactions stay included."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Виберіть продавця, платежі якому означають оренду. Усі витрати й повернення в цього продавця буде виключено, зокрема не пов’язані з орендою. Категорія «Житло» автоматично не виключається."
+            "value": "Виберіть отримувача орендної плати. Усі витрати й повернення коштів для цього продавця буде виключено, навіть не пов’язані з орендою. Інші операції категорії «Житло» враховуватимуться."
           }
         }
       }
@@ -7538,13 +7538,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Include the excluded merchant again"
+            "value": "Include this merchant"
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Знову включити виключеного продавця"
+            "value": "Враховувати цього продавця"
           }
         }
       }
@@ -7657,7 +7657,7 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "System follows your device appearance. Your choice is saved on this device."
+            "value": "System matches your device’s appearance. Your choice is saved on this device."
           }
         },
         "uk": {
@@ -7725,13 +7725,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Could not open Settings. Open the iOS Settings app and find FinAI to change its language."
+            "value": "Couldn’t open Settings. Open Settings and select FinAI to change the app language."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Не вдалося відкрити налаштування. Відкрийте програму «Параметри» iOS і знайдіть FinAI, щоб змінити мову."
+            "value": "Не вдалося відкрити налаштування. Відкрийте їх і виберіть FinAI, щоб змінити мову програми."
           }
         }
       }
@@ -7776,13 +7776,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "FinAI stores your financial data locally. There is no required account, custom backend, bank connection or analytics service. FinAI does not sync your database with CloudKit."
+            "value": "Your financial data is stored on this device. No account or bank connection is required. FinAI does not send your data to a server, track your activity or sync your financial records across devices."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "FinAI зберігає фінансові дані локально. Обліковий запис не потрібен; немає власного сервера, підключення до банку чи служби аналітики. FinAI не синхронізує базу даних із CloudKit."
+            "value": "Ваші фінансові дані зберігаються на цьому пристрої. Обліковий запис і підключення до банку не потрібні. FinAI не надсилає дані на сервер, не відстежує вашу активність і не синхронізує фінансові записи між пристроями."
           }
         }
       }
@@ -7810,13 +7810,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "When available, Apple’s on-device model interprets your question. Financial records are not sent to the model. Swift code performs the calculations locally. Questions and answers are not saved. Suggested questions work without Apple Intelligence."
+            "value": "Apple Intelligence can help understand your questions on this device. It does not receive your financial records. FinAI calculates the answers on your device and does not save questions or answers. Suggested questions work without Apple Intelligence."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Коли доступна, модель Apple на пристрої розпізнає ваше запитання. Фінансові записи не передаються моделі. Код Swift виконує обчислення локально. Запитання й відповіді не зберігаються. Запропоновані запитання працюють без Apple Intelligence."
+            "value": "Apple Intelligence може допомогти зрозуміти ваші запитання на цьому пристрої. Фінансові записи йому не передаються. FinAI обчислює відповіді на пристрої й не зберігає запитання чи відповіді. Запропоновані запитання працюють без Apple Intelligence."
           }
         }
       }
@@ -7844,13 +7844,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "System backups may include FinAI data, depending on your device and iCloud backup settings. Manage those backups in iOS Settings. Local storage does not mean your system backups stay on this device."
+            "value": "Device backups may include your FinAI data, including in iCloud if you use iCloud Backup. Manage backups in Settings."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Системні резервні копії можуть містити дані FinAI залежно від налаштувань пристрою й резервного копіювання iCloud. Керуйте ними в налаштуваннях iOS. Локальне збереження не означає, що системні резервні копії залишаються на цьому пристрої."
+            "value": "Резервні копії пристрою можуть містити дані FinAI, зокрема в iCloud, якщо ви використовуєте резервне копіювання iCloud. Керуйте резервними копіями в налаштуваннях."
           }
         }
       }
@@ -7878,13 +7878,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "FinAI covers financial details while inactive and uses iOS Complete Data Protection for its database files. This is not a separate app lock and does not block screenshots while you are using the app."
+            "value": "FinAI hides financial details when you leave the app. Its data files use iOS protection that restricts access while the device is locked. FinAI has no separate app lock and does not prevent screenshots while you use it."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "FinAI приховує фінансові дані, коли програма неактивна, і використовує iOS Complete Data Protection для файлів бази даних. Це не окреме блокування програми; знімки екрана під час користування не блокуються."
+            "value": "FinAI приховує фінансові дані, коли ви залишаєте програму. Файли даних захищені засобами iOS, які обмежують доступ, коли пристрій заблоковано. FinAI не має окремого блокування програми й не забороняє знімки екрана під час користування."
           }
         }
       }
@@ -7912,13 +7912,13 @@
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "Imports are processed on this device and saved only after confirmation. FinAI does not retain a copy of the source file or change it. Choosing a file from a cloud provider in Files may download it to your device."
+            "value": "Files are processed on this device. Transactions are saved only after you confirm. FinAI does not keep a copy of the original file or change it. Selecting a cloud file in Files may download it to your device."
           }
         },
         "uk": {
           "stringUnit": {
             "state": "translated",
-            "value": "Імпорт обробляється на цьому пристрої й зберігається лише після підтвердження. FinAI не зберігає копії початкового файлу й не змінює його. Вибір файлу хмарного провайдера в програмі «Файли» може завантажити його на пристрій."
+            "value": "Файли обробляються на цьому пристрої. Операції зберігаються лише після підтвердження. FinAI не зберігає копії початкового файлу й не змінює його. Вибір хмарного файлу в програмі «Файли» може завантажити його на пристрій."
           }
         }
       }

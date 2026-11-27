@@ -89,7 +89,7 @@ final class ForecastUITests: XCTestCase {
         UITestVisibility.reveal(details, in: app, below: app.navigationBars["Month-end forecast"])
         details.tap()
         let variable = app.staticTexts.matching(NSPredicate(format: "label CONTAINS %@ AND label CONTAINS %@",
-                                                           "Estimated remaining ordinary expenses", "€40.00")).firstMatch
+                                                           "Other expenses still expected", "€40.00")).firstMatch
         for _ in 0..<10 where !variable.isHittable { app.swipeUp() }
         XCTAssertTrue(variable.exists)
         app.navigationBars["Month-end forecast"].buttons["Done"].tap()
